@@ -7,6 +7,7 @@
 - `OpenAI / Anthropic / Google` 官方博客追踪
 - `模型发布` 追踪
 - `MCP / tools / agent infra` 追踪
+- `Agent eval / benchmark` 追踪
 
 目标不是做资讯堆积，而是保留高信号内容，并把每周变化整理成可持续维护的判断文档。
 
@@ -75,6 +76,17 @@
 - `code execution`
 - `skills / sandbox / state`
 
+### 6. Agent Eval / Benchmark 追踪
+
+文件：[agent-eval-benchmark追踪.md](./agent-eval-benchmark追踪.md)
+
+关注主题：
+
+- `memory eval`
+- `long-horizon benchmark`
+- `tool use eval`
+- `主观质量 rubric`
+
 ## 仓库结构
 
 ```text
@@ -82,6 +94,7 @@
 ├── AGENTS.md
 ├── README.md
 ├── AI三巨头博客追踪.md
+├── agent-eval-benchmark追踪.md
 ├── MCP-tools-agent-infra追踪.md
 ├── agent-llm周GitHub热点追踪.md
 ├── agent-llm周论文追踪.md
@@ -95,8 +108,9 @@
 1. 先看 `AI三巨头博客追踪`，快速理解大厂当前公开主线
 2. 再看 `模型发布追踪`，建立模型层的横向比较基线
 3. 然后看 `MCP / tools / agent infra追踪`，理解工程基础设施主线
-4. 再看 `agent-llm周论文追踪`，补研究侧趋势和长期主题
-5. 最后看 `agent-llm周GitHub热点追踪`，判断哪些方向已经开始工程化
+4. 再看 `agent-eval-benchmark追踪`，收口评测和 benchmark 方法学
+5. 然后看 `agent-llm周论文追踪`，补研究侧趋势和长期主题
+6. 最后看 `agent-llm周GitHub热点追踪`，判断哪些方向已经开始工程化
 
 ## 更新原则
 
