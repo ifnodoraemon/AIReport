@@ -5,6 +5,8 @@
 - `Agent / LLM` 论文追踪
 - `Agent / LLM` GitHub 热点追踪
 - `OpenAI / Anthropic / Google` 官方博客追踪
+- `模型发布` 追踪
+- `MCP / tools / agent infra` 追踪
 
 目标不是做资讯堆积，而是保留高信号内容，并把每周变化整理成可持续维护的判断文档。
 
@@ -51,14 +53,39 @@
 - `context`
 - `multimodal`
 
+### 4. 模型发布追踪
+
+文件：[模型发布追踪.md](./模型发布追踪.md)
+
+关注主题：
+
+- `frontier model`
+- `低成本小模型`
+- `tool use / agent-friendly`
+- `上下文 / multimodal / 价格分层`
+
+### 5. MCP / Tools / Agent Infra 追踪
+
+文件：[MCP-tools-agent-infra追踪.md](./MCP-tools-agent-infra追踪.md)
+
+关注主题：
+
+- `MCP`
+- `runtime / shell / container`
+- `code execution`
+- `skills / sandbox / state`
+
 ## 仓库结构
 
 ```text
 .
+├── AGENTS.md
 ├── README.md
 ├── AI三巨头博客追踪.md
+├── MCP-tools-agent-infra追踪.md
 ├── agent-llm周GitHub热点追踪.md
-└── agent-llm周论文追踪.md
+├── agent-llm周论文追踪.md
+└── 模型发布追踪.md
 ```
 
 ## 使用方式
@@ -66,8 +93,10 @@
 建议从下面顺序阅读：
 
 1. 先看 `AI三巨头博客追踪`，快速理解大厂当前公开主线
-2. 再看 `agent-llm周论文追踪`，补研究侧趋势和长期主题
-3. 最后看 `agent-llm周GitHub热点追踪`，判断哪些方向已经开始工程化
+2. 再看 `模型发布追踪`，建立模型层的横向比较基线
+3. 然后看 `MCP / tools / agent infra追踪`，理解工程基础设施主线
+4. 再看 `agent-llm周论文追踪`，补研究侧趋势和长期主题
+5. 最后看 `agent-llm周GitHub热点追踪`，判断哪些方向已经开始工程化
 
 ## 更新原则
 
@@ -80,7 +109,6 @@
 
 ## 后续可扩展方向
 
-- 新增 `模型发布追踪`
-- 新增 `MCP / tools / agent infra` 专题
 - 新增 `eval / benchmark` 专题
+- 新增 `安全 / governance` 专题
 - 新增按周汇总的 `weekly digest`
