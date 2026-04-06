@@ -5,6 +5,7 @@ Thumbs.db
 # Editor files
 .idea/
 .vscode/
+.codex
+.codex/
 *.swp
 *.swo
-
