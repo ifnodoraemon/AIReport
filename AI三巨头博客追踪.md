@@ -1,10 +1,10 @@
 # AI 三巨头博客追踪
 
-最后更新：2026-03-25
+最后更新：2026-04-06
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
-跟踪范围：截至 `2026-03-25` 检索到的 `OpenAI`、`Anthropic`、`Google / Google DeepMind` 官方博客、新闻与工程文章；优先保留和 `model`、`agent`、`tool use`、`runtime`、`eval`、`context`、`多模态产品化` 相关的高信号条目
+跟踪范围：截至 `2026-04-06` 检索到的 `OpenAI`、`Anthropic`、`Google / Google DeepMind` 官方博客、新闻与工程文章；优先保留和 `model`、`agent`、`tool use`、`runtime`、`eval`、`context`、`多模态产品化` 相关的高信号条目
 
 ## 目的
 
@@ -194,6 +194,62 @@
 ## 来源说明
 
 - 仅使用三家官方站点页面：`openai.com`、`anthropic.com`、`blog.google / deepmind.google`
-- 日期以对应文章页展示日期为准，统一按 `2026-03-25` 检索结果整理
+- 日期以对应文章页展示日期为准，当前文档已补充至 `2026-04-06`
 - `OpenAI` 官方站点存在 locale 跳转与首页推荐变化，因此应优先以文章直链而不是首页块位为准
 
+## 2026-04-06 当周补充
+
+### 新增 / 补录条目
+
+- `OpenAI` | `2026-03-25` | `Inside our approach to the Model Spec`
+  方向：`alignment / eval / model behavior`
+  核心信号：OpenAI 已把模型行为规范从“内部训练准则”推进到“公开 spec + 公开 eval”组合，且明确把 `chain of command`、`agentic settings`、`side effects` 写成可审阅规则。
+  为什么重要：这说明 `agent` 的可控性竞争，已经不只是 prompt engineering，而是 `spec-first + eval-first`。
+  建议动作：把 `Model Spec` 和 `Model Spec Evals` 加入长期跟踪，不再只把它视作安全声明。
+  来源：https://openai.com/index/our-approach-to-the-model-spec/
+
+- `OpenAI` | `2026-03-19` | `How we monitor internal coding agents for misalignment`
+  方向：`agent monitoring / safety / production governance`
+  核心信号：OpenAI 已在内部用 `GPT-5.4 Thinking` 监控数千万条 coding agent 轨迹，并把“近实时审查 + 人工分级处置”当成标准做法。
+  为什么重要：这把 `monitoring` 从“上线后补丁”提升成 agent 部署的默认基础设施。
+  建议动作：后续在 `MCP / infra` 和 `eval` 文档里把 `monitor -> alert -> triage -> prompt fix` 视作统一闭环。
+  来源：https://openai.com/index/how-we-monitor-internal-coding-agents-misalignment/
+
+- `Anthropic` | `2026-02-17` | `Introducing Claude Sonnet 4.6` `补录`
+  方向：`coding / agent / context / productization`
+  核心信号：Sonnet 线已明显升级为更强的 `agent-default` 产品层，公开强调 `1M context beta`、`context compaction beta`、`tool search`、`memory`、`code execution` 和 `skills`。
+  为什么重要：Anthropic 的公开产品面正在把 `memory + compaction + tool search` 做成默认能力，而不是高级附加项。
+  建议动作：把这条视作对既有 `MCP + long-running harness` 判断的强化，而不是另起新主题。
+  来源：https://www.anthropic.com/news/claude-sonnet-4-6
+
+- `Google` | `2026-04-02` | `Gemma 4: Byte for byte, the most capable open models`
+  方向：`open model / agentic workflows`
+  核心信号：Google 公开把 `advanced reasoning`、`function calling`、`structured JSON output`、`system instructions` 与 `agentic workflows` 直接绑定到 `Gemma 4`。
+  为什么重要：这意味着 Google 不只在闭源 Gemini 线上讲 agent，开放模型线也开始正面抢占 agent 工作流入口。
+  建议动作：在模型追踪里单独保留 `open model for agents` 这一支，不要只看闭源旗舰。
+  来源：https://blog.google/innovation-and-ai/technology/developers-tools/gemma-4/
+
+- `Google` | `2026-03-26` | `Gemini 3.1 Flash Live: Making audio AI more natural and reliable`
+  方向：`real-time audio / voice-first agent`
+  核心信号：Google 正把低延迟、高自然度语音交互视作下一代 agent 入口，而不是附属模态。
+  为什么重要：如果后续 agent 入口从文本扩展到 `live audio`，工具调用、状态管理和评测方式都会变化。
+  建议动作：把 `voice-first agent` 加入观察列表，尤其关注它和实时工具调用的耦合。
+  来源：https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-live/
+
+- `Google` | `2026-03-26` | `Protecting people from harmful manipulation`
+  方向：`safety eval / persuasion risk`
+  核心信号：Google DeepMind 发布了可复现实验材料，把 `harmful manipulation` 做成可运行的人类研究工具包和评测框架。
+  为什么重要：这让“对话型 agent 是否会通过语言误导用户”从抽象伦理问题变成可测能力边界。
+  建议动作：后续在评测文档里补 `persuasion / manipulation` 维度，尤其面向语音和高拟真交互。
+  来源：https://deepmind.google/blog/protecting-people-from-harmful-manipulation/
+
+### 横向变化
+
+- `OpenAI` 的新增信号集中在 `spec + monitoring + eval`，说明它正在补齐“agent 能力越强，行为边界越要可公开解释”的治理层。
+- `Anthropic` 虽然本周没有新的同量级工程博客，但 `Sonnet 4.6` 的产品说明强化了其 `memory / compaction / skills / tool search` 路线。
+- `Google` 新增信号最分散，但更清楚地形成了 `open model + real-time audio + safety measurement` 三条线并进的格局。
+
+### 本次处理重复主题的方式
+
+- 和已有主表同主题但能强化判断的内容，优先放入这里作为 `状态强化 / 补录`，不重复改写旧表。
+- 只有在出现明显新方向时，才考虑后续进入主表。

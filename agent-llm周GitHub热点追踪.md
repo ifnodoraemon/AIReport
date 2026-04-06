@@ -1,10 +1,10 @@
 # Agent / LLM GitHub 每周热点追踪
 
-最后更新：2026-03-25
+最后更新：2026-04-06
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
-跟踪范围：`2026-03-19` 至 `2026-03-25` 的 GitHub Trending 周榜，以及对应仓库主页
+跟踪范围：持续记录 GitHub Trending 周榜，以及对应仓库主页；当前文档已包含 `2026-03-19` 至 `2026-04-06` 的多周快照
 
 ## 目的
 
@@ -163,4 +163,67 @@
 - `Python`：https://github.com/trending/python?since=weekly
 - `TypeScript`：https://github.com/trending/typescript?since=weekly
 - 仓库细节以各项目 GitHub 主页为准。
-- 这份文档记录的是 `2026-03-25` 当天可见的周榜快照，后续 stars 数和 release 信息可能继续变化。
+- 这份文档目前包含 `2026-03-25` 与 `2026-04-06` 两个周榜快照，后续 stars 数和 release 信息可能继续变化。
+
+## 2026-04-06 当周
+
+### 新上榜项目
+
+- 项目：`NousResearch/hermes-agent`
+  方向：`stateful agent / personal growth loop`
+  热度：`9,940 stars this week`
+  为什么重要：从描述看，它强调 agent 随使用持续成长，和本仓库关注的 `memory-first` 路线直接同向。
+  建议动作：优先看它如何组织 `memory`、`state` 和长期行为演进，而不是只看 prompt 层包装。
+  来源：https://github.com/trending/python?since=weekly ; https://github.com/NousResearch/hermes-agent
+
+- 项目：`Yeachan-Heo/oh-my-claudecode`
+  方向：`teams-first multi-agent orchestration`
+  热度：`9,112 stars this week`
+  为什么重要：说明 `Claude Code` 周边生态已经开始从单 agent 提升到团队协作和编排层。
+  建议动作：观察它对 `multi-agent supervision`、任务分工和共享上下文的抽象是否稳定。
+  来源：https://github.com/trending/typescript?since=weekly ; https://github.com/Yeachan-Heo/oh-my-claudecode
+
+- 项目：`code-yeongyu/oh-my-openagent`
+  方向：`agent harness`
+  热度：`4,031 stars this week`
+  为什么重要：项目自述已从 `oh-my-opencode` 演进到更通用的 `openagent`，说明社区抽象层正在从单产品教程转向通用 harness。
+  建议动作：重点拆它的默认工作流边界，而不是只看 UI 或 DX。
+  来源：https://github.com/trending/typescript?since=weekly ; https://github.com/code-yeongyu/oh-my-openagent
+
+- 项目：`EveryInc/compound-engineering-plugin`
+  方向：`plugin / skills distribution`
+  热度：`1,529 stars this week`
+  为什么重要：官方和半官方生态外，第三方已经开始做跨 `Claude Code / Codex` 的工程插件层，说明能力分发正在跨平台化。
+  建议动作：把 `plugin portability` 加入长期观察，不要只盯单平台原生技能。
+  来源：https://github.com/trending/typescript?since=weekly ; https://github.com/EveryInc/compound-engineering-plugin
+
+- 项目：`plastic-labs/honcho`
+  方向：`memory library`
+  热度：`398 stars this week`
+  为什么重要：虽然绝对热度不算最高，但“为 stateful agent 提供 memory library”这个定位非常贴近真实基础设施缺口。
+  建议动作：把它纳入和 `claude-mem`、`OpenViking` 不同层次的 memory 对照样本。
+  来源：https://github.com/trending/python?since=weekly ; https://github.com/plastic-labs/honcho
+
+- 项目：`microsoft/agent-framework`
+  方向：`orchestration / deployment`
+  热度：`608 stars this week`
+  为什么重要：微软把 `build + orchestrate + deploy` 打包进统一框架，说明大厂也在强化 workflow 层，而不只是模型接入。
+  建议动作：持续对比它与 `deepagents`、`hermes-agent` 在抽象层上的差异。
+  来源：https://github.com/trending/python?since=weekly ; https://github.com/microsoft/agent-framework
+
+### 状态变化
+
+- 项目：`memory` 相关热点
+  之前判断：热点主要集中在 `context database` 和 `cross-session memory`。
+  当前判断：本周开始出现更轻量、更基础设施化的 `memory library` 路线，说明社区正在往可嵌入底座收敛。
+  变化原因：`honcho` 这类项目更像组件，而不是完整产品。
+
+- 项目：`harness / orchestration`
+  之前判断：社区在学习 harness engineering。
+  当前判断：热点已经从“教程和示例”扩展到 `team orchestration`、`openagent harness` 和 `deployment framework`。
+  变化原因：`oh-my-claudecode`、`oh-my-openagent`、`agent-framework` 同周出现，方向较一致。
+
+### 新信号 / 新风险
+
+- 信号：`plugin` 和 `memory` 都开始从单平台附属物变成独立生态层。
+  对我们的影响：后续做能力封装时，更应考虑可迁移性，而不是把实现绑定在单一 agent 客户端。

@@ -1,6 +1,6 @@
 # Agent / LLM 每周跟踪
 
-最后更新：2026-03-25
+最后更新：2026-04-06
 
 跟踪范围：近期与 `agent`、`LLM`、`memory`、`RAG 安全`、`评测` 相关的论文与趋势
 
@@ -114,3 +114,63 @@
 
 - 直接有 arXiv 或 OpenReview 论文页面支撑的条目，置信度更高。
 - 来自 `2026-03-25` arXiv recent 列表、但尚未完整阅读的论文，统一标记为 `待读`，应视为趋势信号，而不是最终结论。
+
+## 2026-04-06 当周补充
+
+### 新增论文
+
+- 论文：`MemoryCD: Benchmarking Long-Context User Memory of LLM Agents for Lifelong Cross-Domain Personalization`
+  为什么重要：把长期记忆 benchmark 从“合成 persona 对话”推进到“跨年、跨域、真实用户行为”，更接近真实个性化助手。
+  建议动作：如果我们做 persistent agent，优先吸收它的 `cross-domain` 和 `life-long` 设计。
+  状态：`可执行`
+  来源：https://openreview.net/forum?id=Lpq4aEqvmg
+
+- 论文：`Benchmarking Continual Agent Memory for Online Learning, Transfer, and Forgetting` `AgentMemoryBench`
+  为什么重要：把 `system memory` 和 `personal memory` 放在同一框架下评估，并显式覆盖 `improvement / retention / forgetting / conflict resolution`。
+  建议动作：把“系统经验记忆”和“用户偏好记忆”拆成两条内部指标，不再混着评。
+  状态：`可执行`
+  来源：https://openreview.net/forum?id=MSXbrNExax
+
+- 论文：`Streaming Memory Benchmark: Stage-level Diagnosis with Evidence Dependency Control`
+  为什么重要：它不只看最终答对没答对，而是把 memory pipeline 拆成 `formation / management / retrieval / application` 四段诊断。
+  建议动作：内部 memory eval 里加入阶段级指标，否则很难知道失败是存储、检索还是应用问题。
+  状态：`可执行`
+  来源：https://openreview.net/forum?id=i1gkKNMX0K
+
+- 论文：`ScenDroid: A Scenario-Level Benchmark for Long-Horizon, Time-Evolving GUI Agents`
+  为什么重要：GUI agent benchmark 开始从 `atomic reset` 走向 `persistent scenario`，并显式纳入长期偏好和连续工作流。
+  建议动作：把 GUI agent 评测从单步成功率升级到 `scenario continuity` 和 `clarification behavior`。
+  状态：`跟踪中`
+  来源：https://openreview.net/forum?id=hBTsLjjw48
+
+- 论文：`Mem2ActBench: A Benchmark for Evaluating Long-Term Memory Utilization in Task-Oriented Autonomous Agents`
+  为什么重要：把 memory 评测从“能不能答出旧信息”推进到“能不能用记忆补全工具调用参数并执行动作”。
+  建议动作：后续内部 benchmark 应单独测 `memory -> tool parameter grounding`，不要只测 QA 回忆。
+  状态：`跟踪中`
+  来源：https://openreview.net/forum?id=hiRJ90xzJY
+
+- 论文：`RAGPart & RAGMask: Retrieval-Stage Defenses Against Corpus Poisoning in Retrieval-Augmented Generation` `补录`
+  为什么重要：把 RAG 防御明确前移到 `retriever` 阶段，而且不需要改生成模型，更接近真实渐进式落地路径。
+  建议动作：如果要做最小 PoC，优先从 `retrieval-stage defense` 入手，而不是直接改生成链路。
+  状态：`跟踪中`
+  来源：https://openreview.net/forum?id=66iLCQVIoP
+
+### 状态变化
+
+- 主题：`Memory`
+  之前判断：memory 是一等能力，但评测维度还偏静态。
+  当前判断：memory 评测已经快速细分到 `cross-domain personalization`、`continual forgetting`、`stage-level diagnosis`、`memory-to-action` 四条子线。
+  变化原因：最近一个月的新 benchmark 基本都在补“长期、连续、可执行”这三个缺口。
+
+- 主题：`Long-horizon agent eval`
+  之前判断：需要从 pass/fail 转向长流程。
+  当前判断：长流程 benchmark 已开始把 `persistent GUI environment`、`user clarification`、`time-evolving scenario` 做成默认要素。
+  变化原因：`ScenDroid` 这类 benchmark 已经不再满足于短任务成功率。
+
+### 新风险 / 新信号
+
+- 信号：`memory retrieval` 和 `memory application` 正被明确区分。
+  对我们的影响：如果只看最终回答准确率，我们可能会误判 memory 系统已经够好。
+
+- 信号：RAG 防御开始从“检测异常回答”转向“在检索阶段削弱污染影响”。
+  对我们的影响：这更适合作为现有 RAG 系统的渐进式安全加固路径。

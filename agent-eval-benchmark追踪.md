@@ -1,6 +1,6 @@
 # Agent Eval / Benchmark 追踪
 
-最后更新：2026-03-25
+最后更新：2026-04-06
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`、`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`
 
@@ -113,3 +113,58 @@
 - 优先使用论文主页、官方工程博客和模型发布页
 - 对尚未完整阅读的条目，统一视为趋势信号，不直接当作最终结论
 
+## 2026-04-06 当周补充
+
+### 新增 benchmark / 方法
+
+- 条目：`Model Spec Evals`
+  类型：`behavior eval / scenario-based eval`
+  核心信号：OpenAI 已开始用场景化 eval 覆盖 `Model Spec` 中的大量行为断言，而不是只靠安全红队或单点 benchmark。
+  为什么重要：这为 `模型行为规范如何落到可测项` 提供了一个更完整的范式。
+  建议动作：内部评测也应把“规范条款”翻译成小批量、高代表性的场景集。
+  来源：https://openai.com/index/our-approach-to-the-model-spec/
+
+- 条目：`Internal coding-agent monitoring`
+  类型：`production eval / online monitoring`
+  核心信号：OpenAI 已在真实内部部署中，用模型监控模型行为，并通过严重等级和人工复核处理异常。
+  为什么重要：这说明 `online eval` 和 `incident monitoring` 已经是 agent 评测体系的一部分。
+  建议动作：不要把评测只放在离线 benchmark；需要单独设计线上异常检测。
+  来源：https://openai.com/index/how-we-monitor-internal-coding-agents-misalignment/
+
+- 条目：`Protecting people from harmful manipulation`
+  类型：`safety eval / human study toolkit`
+  核心信号：Google DeepMind 发布了面向 `harmful manipulation` 的实证评测工具包，并公开研究材料。
+  为什么重要：这补上了对话型 agent 中“说服、诱导、误导”风险的可测框架。
+  建议动作：如后续做语音或高拟真助手，应把这类评测纳入红队体系。
+  来源：https://deepmind.google/blog/protecting-people-from-harmful-manipulation/
+
+- 条目：`MemoryCD / AgentMemoryBench / StreamMemBench`
+  类型：`memory eval`
+  核心信号：memory benchmark 正快速从静态 QA 扩展到 `cross-domain personalization`、`continual forgetting`、`stage-level diagnosis`。
+  为什么重要：这说明“记住了没有”已经不够，真正重要的是“是否持续、可迁移、可诊断”。
+  建议动作：内部 memory rubric 需要显式拆出 `transfer`、`forgetting`、`application`。
+  来源：https://openreview.net/forum?id=Lpq4aEqvmg ; https://openreview.net/forum?id=MSXbrNExax ; https://openreview.net/forum?id=i1gkKNMX0K
+
+- 条目：`ScenDroid`
+  类型：`long-horizon GUI benchmark`
+  核心信号：GUI agent 评测开始从独立原子任务转向持续场景、长期偏好与澄清行为。
+  为什么重要：这更接近真实业务系统，而不是 demo 式 browser task。
+  建议动作：如果后续评测 GUI agent，应优先引入 `persistent scenario` 而不是只做单回合网页操作。
+  来源：https://openreview.net/forum?id=hBTsLjjw48
+
+### 状态变化
+
+- 主题：`Memory eval`
+  之前判断：应覆盖检索准确率、更新正确性、长程一致性、遗忘行为。
+  当前判断：还必须增加 `跨域迁移`、`系统记忆 vs 用户记忆分离`、`阶段级故障归因`。
+  变化原因：最新 benchmark 已把这些缺口单独显式化。
+
+- 主题：`Long-horizon eval`
+  之前判断：必须覆盖计划、执行、恢复、交接。
+  当前判断：还应覆盖 `澄清行为`、`连续环境演化`、`用户偏好稳定性`。
+  变化原因：GUI agent benchmark 已开始把这些作为默认组成部分。
+
+### 内部评测启发
+
+- 启发：`offline benchmark`、`online monitoring`、`human study safety eval` 正在合流。
+  对我们的影响：内部评测体系最好从一开始就按三层设计，而不是事后补监控。

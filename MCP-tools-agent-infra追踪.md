@@ -1,6 +1,6 @@
 # MCP / Tools / Agent Infra 追踪
 
-最后更新：2026-03-25
+最后更新：2026-04-06
 
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/agent-llm周GitHub热点追踪.md`
 
@@ -120,3 +120,51 @@
 - 优先使用官方博客、官方文档和高信号开源项目主页
 - 这份文档关注的是 `工程基础设施信号`，不是模型效果榜单
 
+## 2026-04-06 当周补充
+
+### 新增条目
+
+- 条目：`OpenAI Model Spec + Model Spec Evals`
+  方向：`behavior spec / eval infrastructure`
+  核心信号：OpenAI 已把模型行为规范和场景化 eval 绑定发布，明确要用它们发现 `model behavior` 与 `spec` 的偏差。
+  为什么重要：这意味着 agent infra 的一部分已经变成“如何把行为边界写成可测规范”。
+  建议动作：后续内部 infra 设计不要只做 tool/runtime，也要给 `spec -> eval -> incident` 留接口。
+  来源：https://openai.com/index/our-approach-to-the-model-spec/
+
+- 条目：`How we monitor internal coding agents for misalignment`
+  方向：`production monitoring / governance`
+  核心信号：OpenAI 把对内部 coding agent 的 `full-trajectory monitoring`、分级告警和人工复核做成常态化流程。
+  为什么重要：真实的长时 agent 平台，最终都会碰到 `observability + policy enforcement + incident response`。
+  建议动作：把 `trajectory logging`、`severity levels`、`human escalation` 补入内部最小 infra 清单。
+  来源：https://openai.com/index/how-we-monitor-internal-coding-agents-misalignment/
+
+- 条目：`Claude Sonnet 4.6 product updates` `补录`
+  方向：`context compaction / tool search / code execution / MCP surface`
+  核心信号：Anthropic 已在公开产品说明里把 `context compaction beta`、`memory`、`tool search`、`code execution` 和 `Excel MCP connectors` 放到同一层说明。
+  为什么重要：这说明 `MCP` 和 `memory` 已开始进入更普通用户可感知的产品层，而不是只在工程博客里存在。
+  建议动作：把 `connector portability` 和 `compaction` 一起纳入长期 infra 维度。
+  来源：https://www.anthropic.com/news/claude-sonnet-4-6
+
+- 条目：`GitHub 周榜：hermes-agent / oh-my-claudecode / oh-my-openagent / compound-engineering-plugin / honcho / agent-framework`
+  方向：`open-source infra signal`
+  核心信号：本周热点把 `stateful agent`、`multi-agent orchestration`、`plugin portability`、`memory library`、`deploy framework` 同时推上来。
+  为什么重要：开源侧正在把 infra 抽象从单一 product wrapper 升级为更清楚的分层组件。
+  建议动作：后续优先比较它们的分层方式，而不是只比较 stars。
+  来源：https://github.com/trending/python?since=weekly ; https://github.com/trending/typescript?since=weekly
+
+### 状态变化
+
+- 主题：`MCP`
+  之前判断：MCP 正在成为连接层主线。
+  当前判断：MCP 不只在协议层推进，也开始渗透到具体产品入口和插件生态兼容层。
+  变化原因：Anthropic 在产品说明中已直接把 `MCP connectors` 暴露给 Excel 等工作流场景。
+
+- 主题：`runtime`
+  之前判断：`shell / container / sandbox / state` 是默认能力边界。
+  当前判断：还需要显式补上 `monitoring / triage / policy enforcement`，否则长时运行不可控。
+  变化原因：OpenAI 的内部监控文章把这块直接公开化了。
+
+### 工程启发
+
+- 启发：`spec`、`runtime`、`monitoring` 三者正在收敛成一套系统，而不是各自独立。
+  对我们的影响：后续如果只做工具层，不做行为规范和异常处置，会留下明显缺口。
