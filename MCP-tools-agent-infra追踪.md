@@ -15,6 +15,16 @@
 - 记录 `runtime`、`sandbox`、`state`、`skills`、`handoff` 的公开最佳实践
 - 帮助我们判断哪些基础设施已经进入产品主线，哪些还只是概念包装
 
+## 相关页面
+
+详见 `wiki/` 中的长期基础设施与对比页：
+
+- [wiki/companies/openai-agent-stack.md](/home/ifnodoraemon/myreport/wiki/companies/openai-agent-stack.md)
+- [wiki/companies/anthropic-agent-stack.md](/home/ifnodoraemon/myreport/wiki/companies/anthropic-agent-stack.md)
+- [wiki/companies/google-agent-stack.md](/home/ifnodoraemon/myreport/wiki/companies/google-agent-stack.md)
+- [wiki/concepts/context-engineering.md](/home/ifnodoraemon/myreport/wiki/concepts/context-engineering.md)
+- [wiki/comparisons/openai-vs-anthropic-agent-stack.md](/home/ifnodoraemon/myreport/wiki/comparisons/openai-vs-anthropic-agent-stack.md)
+
 ## 当前判断
 
 当前最值得关注的高信号主题：

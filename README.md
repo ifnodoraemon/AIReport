@@ -9,6 +9,7 @@
 - `模型发布` 追踪
 - `MCP / tools / agent infra` 追踪
 - `Agent eval / benchmark` 追踪
+- `Wiki` 形式的长期知识沉淀
 
 目标不是做资讯堆积，而是保留高信号内容，并把每周变化整理成可持续维护的判断文档。
 
@@ -98,6 +99,30 @@
 - `tool use eval`
 - `主观质量 rubric`
 
+### 8. Wiki MVP
+
+目录：[wiki](./wiki)
+
+当前种子页：
+
+- [wiki/people/karpathy.md](./wiki/people/karpathy.md)
+- [wiki/people/andrew-ng.md](./wiki/people/andrew-ng.md)
+- [wiki/people/sam-altman.md](./wiki/people/sam-altman.md)
+- [wiki/people/dario-amodei.md](./wiki/people/dario-amodei.md)
+- [wiki/people/demis-hassabis.md](./wiki/people/demis-hassabis.md)
+- [wiki/people/fei-fei-li.md](./wiki/people/fei-fei-li.md)
+- [wiki/models/gpt-5-4.md](./wiki/models/gpt-5-4.md)
+- [wiki/models/gemma-4.md](./wiki/models/gemma-4.md)
+- [wiki/concepts/memory.md](./wiki/concepts/memory.md)
+- [wiki/concepts/context-engineering.md](./wiki/concepts/context-engineering.md)
+- [wiki/concepts/llm-wiki.md](./wiki/concepts/llm-wiki.md)
+- [wiki/companies/openai-agent-stack.md](./wiki/companies/openai-agent-stack.md)
+- [wiki/companies/anthropic-agent-stack.md](./wiki/companies/anthropic-agent-stack.md)
+- [wiki/companies/google-agent-stack.md](./wiki/companies/google-agent-stack.md)
+- [wiki/comparisons/openai-vs-anthropic-agent-stack.md](./wiki/comparisons/openai-vs-anthropic-agent-stack.md)
+- [wiki/comparisons/gpt-5-4-vs-gemma-4.md](./wiki/comparisons/gpt-5-4-vs-gemma-4.md)
+- [wiki/comparisons/memory-vs-context-engineering.md](./wiki/comparisons/memory-vs-context-engineering.md)
+
 ## 仓库结构
 
 ```text
@@ -110,6 +135,16 @@
 ├── MCP-tools-agent-infra追踪.md
 ├── agent-llm周GitHub热点追踪.md
 ├── agent-llm周论文追踪.md
+├── wiki
+│   ├── README.md
+│   ├── companies
+│   ├── comparisons
+│   ├── concepts
+│   ├── index.md
+│   ├── log.md
+│   ├── models
+│   ├── people
+│   └── templates
 └── 模型发布追踪.md
 ```
 
@@ -124,6 +159,7 @@
 5. 然后看 `agent-eval-benchmark追踪`，收口评测和 benchmark 方法学
 6. 再看 `agent-llm周论文追踪`，补研究侧趋势和长期主题
 7. 最后看 `agent-llm周GitHub热点追踪`，判断哪些方向已经开始工程化
+8. 如果要沉淀长期知识，再进入 `wiki/`
 
 ## 更新原则
 
@@ -133,6 +169,7 @@
   - 发生了什么
   - 为什么重要
   - 对我们的实际影响是什么
+- 根目录文档负责 `周更和判断`，`wiki/` 负责 `长期沉淀和复用`
 
 ## 后续可扩展方向
 
@@ -142,4 +179,4 @@
 
 ## 最近一次补充
 
-- `2026-04-06`：已为 `AI三巨头博客追踪`、`AI关键人物追踪`、`模型发布追踪`、`MCP-tools-agent-infra追踪`、`agent-eval-benchmark追踪`、`agent-llm周论文追踪`、`agent-llm周GitHub热点追踪` 追加最新条目与补录，不删除旧内容。
+- `2026-04-06`：已为 `AI三巨头博客追踪`、`AI关键人物追踪`、`模型发布追踪`、`MCP-tools-agent-infra追踪`、`agent-eval-benchmark追踪`、`agent-llm周论文追踪`、`agent-llm周GitHub热点追踪` 追加最新条目与补录，并新增 `wiki/` 最小结构，不删除旧内容。

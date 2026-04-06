@@ -15,6 +15,17 @@
 - 把 `X` 纳入快信号层，但不让它替代官网确认
 - 建立一份适合长期维护的关键人物名单
 
+## 相关页面
+
+详见 `wiki/` 中的长期人物页：
+
+- [wiki/people/sam-altman.md](/home/ifnodoraemon/myreport/wiki/people/sam-altman.md)
+- [wiki/people/dario-amodei.md](/home/ifnodoraemon/myreport/wiki/people/dario-amodei.md)
+- [wiki/people/demis-hassabis.md](/home/ifnodoraemon/myreport/wiki/people/demis-hassabis.md)
+- [wiki/people/andrew-ng.md](/home/ifnodoraemon/myreport/wiki/people/andrew-ng.md)
+- [wiki/people/fei-fei-li.md](/home/ifnodoraemon/myreport/wiki/people/fei-fei-li.md)
+- [wiki/people/karpathy.md](/home/ifnodoraemon/myreport/wiki/people/karpathy.md)
+
 ## 来源分层
 
 ### 一级来源
