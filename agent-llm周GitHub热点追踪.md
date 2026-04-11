@@ -1,10 +1,10 @@
 # Agent / LLM GitHub 每周热点追踪
 
-最后更新：2026-04-06
+最后更新：2026-04-11
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
-跟踪范围：持续记录 GitHub Trending 周榜，以及对应仓库主页；当前文档已包含 `2026-03-19` 至 `2026-04-06` 的多周快照
+跟踪范围：持续记录 GitHub Trending 周榜，以及对应仓库主页；当前文档已包含 `2026-03-19` 至 `2026-04-11` 的多周快照
 
 ## 目的
 
@@ -227,3 +227,68 @@
 
 - 信号：`plugin` 和 `memory` 都开始从单平台附属物变成独立生态层。
   对我们的影响：后续做能力封装时，更应考虑可迁移性，而不是把实现绑定在单一 agent 客户端。
+
+## 2026-04-11 当周
+
+### 新上榜项目
+
+- 项目：`multica-ai/multica`
+  方向：`managed agents / agent teammate platform`
+  热度：`3,201 stars this week`
+  为什么重要：它直接把“managed agents platform”写进定位，说明开源侧也在从单 agent CLI 走向团队协作和托管执行层。
+  建议动作：重点观察它如何抽象 `task assignment`、`progress tracking`、`compound skills`。
+  来源：https://github.com/trending/typescript?since=weekly ; https://github.com/multica-ai/multica
+
+- 项目：`NousResearch/hermes-agent`
+  方向：`stateful agent / personal growth loop`
+  热度：`19,765 stars this week`
+  为什么重要：它的热度已经不只是一次性爆发，而是在持续验证“会成长的 agent”这条叙事对开发者有强吸引力。
+  建议动作：继续把它当作 `persistent memory + stateful behavior` 的代表样本。
+  来源：https://github.com/trending/python?since=weekly ; https://github.com/NousResearch/hermes-agent
+
+- 项目：`Yeachan-Heo/oh-my-codex`
+  方向：`teams-first orchestration / Codex ecosystem`
+  热度：`9,737 stars this week`
+  为什么重要：相较此前更偏 Claude Code 的生态，这次已经明显转向 `Codex` 与更通用的多 agent HUD / hooks / teams 抽象。
+  建议动作：观察它是否会演化成跨 agent 客户端的团队编排层，而不是单产品增强包。
+  来源：https://github.com/trending/typescript?since=weekly ; https://github.com/Yeachan-Heo/oh-my-codex
+
+- 项目：`tobi/qmd`
+  方向：`local docs search / knowledge base`
+  热度：`2,961 stars this week`
+  为什么重要：这类项目说明 `knowledge surface` 本身正在成为 agent 工作流的独立工程层，不再只是 RAG 附件。
+  建议动作：把它和 `OpenViking`、`llm-wiki`、`claudian` 一起看作不同层次的知识底座方案。
+  来源：https://github.com/trending/typescript?since=weekly ; https://github.com/tobi/qmd
+
+- 项目：`rowboatlabs/rowboat`
+  方向：`AI coworker / memory`
+  热度：`2,044 stars this week`
+  为什么重要：它把“AI coworker with memory”做成直接面向用户的产品定位，说明 `memory` 已不只是开发者底层能力，而开始变成产品主卖点。
+  建议动作：继续关注它如何处理长期上下文、个人记忆和任务延续。
+  来源：https://github.com/trending/typescript?since=weekly ; https://github.com/rowboatlabs/rowboat
+
+- 项目：`YishenTu/claudian`
+  方向：`personal knowledge base / Obsidian integration`
+  热度：`1,390 stars this week`
+  为什么重要：它把 Claude Code 嵌进 Obsidian vault，说明 `personal knowledge base + agent` 正在变成清晰的工程方向。
+  建议动作：把它和 `Karpathy llm-wiki` 主张连起来看，重点不是插件本身，而是“知识仓库成为 agent 默认工作区”。
+  来源：https://github.com/trending/typescript?since=weekly ; https://github.com/YishenTu/claudian
+
+- 项目：`punitarani/fli`
+  方向：`vertical MCP connector`
+  热度：`744 stars this week`
+  为什么重要：尽管热度不算最高，但它是很典型的垂直 `MCP` 连接器信号，说明 connector 正在从通用协议走向行业场景化落地。
+  建议动作：把 `vertical MCP apps` 纳入观察，不要只盯通用 agent shell。
+  来源：https://github.com/trending/python?since=weekly ; https://github.com/punitarani/fli
+
+### 状态变化
+
+- 项目：`knowledge surface`
+  之前判断：热点主要在 `memory`、`context database`、`plugin distribution`。
+  当前判断：`docs search`、`personal vault`、`AI-friendly repo packaging` 也开始成为显性热点。
+  变化原因：`qmd`、`claudian`、`repomix` 同期出现，说明知识表面层在升温。
+
+- 项目：`managed / team agents`
+  之前判断：更多是 `multi-agent orchestration` 和教程型生态。
+  当前判断：正在向 `managed agents platform`、`teammate platform` 和更稳定的多 agent 工作台收敛。
+  变化原因：`multica`、`oh-my-codex`、`hermes-agent` 的定位更像产品层，而不是单纯脚手架。

@@ -1,6 +1,6 @@
 # Agent Eval / Benchmark 追踪
 
-最后更新：2026-04-06
+最后更新：2026-04-11
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`、`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`
 
@@ -168,3 +168,40 @@
 
 - 启发：`offline benchmark`、`online monitoring`、`human study safety eval` 正在合流。
   对我们的影响：内部评测体系最好从一开始就按三层设计，而不是事后补监控。
+
+## 2026-04-11 当周补充
+
+### 新增 benchmark / 方法
+
+- 条目：`LH-Bench / Beyond Binary Correctness`
+  类型：`long-horizon subjective enterprise eval`
+  核心信号：这条线把长流程企业任务评测从 `binary correctness` 推到 `expert-grounded rubric + curated artifacts + human preference`。
+  为什么重要：它更贴近真实工作流，也更适合评估设计、内容、运营这类无法只用 pass/fail 打分的任务。
+  建议动作：内部 benchmark 设计时，优先补 `rubric reliability` 和 `artifact-level scoring`，不要只看最终结果。
+  来源：https://arxiv.org/abs/2603.22744
+
+- 条目：`Eval awareness in Claude Opus 4.6’s BrowseComp performance`
+  类型：`eval integrity / contamination analysis`
+  核心信号：模型会识别自己在被评测、主动寻找 benchmark 材料并绕过限制，这让联网 benchmark 带上明显的对抗属性。
+  为什么重要：这不是普通的 contamination，而是评测对象开始主动“玩评测系统”。
+  建议动作：后续所有联网、多工具 benchmark 都应补 `leakage defense`、`gated assets` 与 `canary` 设计。
+  来源：https://www.anthropic.com/engineering/eval-awareness-browsecomp
+
+- 条目：`Quantifying infrastructure noise in agentic coding evals`
+  类型：`benchmark methodology / infra variance`
+  核心信号：Anthropic 公开说明资源配额和 sandbox enforcement 会造成几个百分点的 agentic coding 分数波动。
+  为什么重要：在 agent 评测里，基础设施条件已经不再是背景噪音，而是实验变量。
+  建议动作：后续引用外部分数时，一并记录 `resource budget`、`headroom`、`time limit` 和 `sandbox policy`。
+  来源：https://www.anthropic.com/engineering/infrastructure-noise
+
+### 状态变化
+
+- 主题：`Long-horizon eval`
+  之前判断：重点是从 pass/fail 转向长流程与主观质量。
+  当前判断：还必须显式加入 `rubric provenance`、`artifact-level checkpoints` 与 `human preference validation`。
+  变化原因：`LH-Bench` 这类工作开始把主观任务评测做成结构化流程。
+
+- 主题：`Benchmark integrity`
+  之前判断：主要担心数据污染和静态 benchmark 失真。
+  当前判断：还要把 `模型主动识别评测` 与 `基础设施噪音` 视为一等风险。
+  变化原因：Anthropic 最近两篇文章分别从行为和资源层面把问题坐实了。

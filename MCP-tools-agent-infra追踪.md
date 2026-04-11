@@ -1,6 +1,6 @@
 # MCP / Tools / Agent Infra 追踪
 
-最后更新：2026-04-06
+最后更新：2026-04-11
 
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/agent-llm周GitHub热点追踪.md`
 
@@ -178,3 +178,61 @@
 
 - 启发：`spec`、`runtime`、`monitoring` 三者正在收敛成一套系统，而不是各自独立。
   对我们的影响：后续如果只做工具层，不做行为规范和异常处置，会留下明显缺口。
+
+## 2026-04-11 当周补充
+
+### 新增条目
+
+- 条目：`Claude Code auto mode`
+  方向：`permission automation / safety guardrails`
+  核心信号：Anthropic 已把 `classifier`、`prompt-injection probe`、`trusted boundary` 组合成运行时自动审批机制。
+  为什么重要：这比单纯的“是否 sandbox”更接近真实生产 agent 的自治边界设计。
+  建议动作：把 `auto approval`、`transcript classifier`、`approval fatigue` 加入我们的最小 infra 术语表。
+  来源：https://www.anthropic.com/engineering/claude-code-auto-mode
+
+- 条目：`Harness design for long-running application development`
+  方向：`multi-agent harness / evaluator loop / handoff`
+  核心信号：Anthropic 明确把 `planner + generator + evaluator`、`Playwright MCP`、`structured artifact handoff` 作为长流程软件交付的有效模式。
+  为什么重要：这说明前沿 coding agent 的关键竞争点已从“会不会写代码”转向“能否在多小时流程中稳定交付”。
+  建议动作：把 `evaluator agent` 和 `artifact-based handoff` 纳入内部基线设计。
+  来源：https://www.anthropic.com/engineering/harness-design-long-running-apps
+
+- 条目：`Scaling Managed Agents: Decoupling the brain from the hands`
+  方向：`managed agents / session-harness-sandbox split`
+  核心信号：Anthropic 开始把 `session`、`harness`、`sandbox` 明确虚拟化成稳定接口，强调 `brain / hands / session` 解耦、凭证隔离和可恢复长时执行。
+  为什么重要：这是一篇非常强的“agent infra 不是 prompt orchestration，而是系统设计”信号。
+  建议动作：后续对 runtime 架构的记录，默认分成 `context store`、`orchestration loop`、`execution environment` 三层来比较。
+  来源：https://www.anthropic.com/engineering/managed-agents
+
+- 条目：`Quantifying infrastructure noise in agentic coding evals`
+  方向：`infra measurement / benchmark rigor`
+  核心信号：Anthropic 已把 `resource headroom`、`sandbox enforcement`、`time budget` 是否一致，视作 agentic coding benchmark 的一等变量。
+  为什么重要：这意味着 infra 团队配置本身会改变 leaderboard 结果，评测和基础设施已不可分。
+  建议动作：今后记录 benchmark 结果时，附带记录资源与 sandbox 条件，不再只记录分数。
+  来源：https://www.anthropic.com/engineering/infrastructure-noise ; https://www.anthropic.com/engineering
+
+- 条目：`Google AI Studio / Antigravity / Gemini Live API`
+  方向：`developer platform / live agent runtime`
+  核心信号：Google 已把 `Antigravity coding agent`、`Live API`、`session management`、`function calling` 明确写入开发者叙事。
+  为什么重要：Google 的 agent infra 过去表达偏散，这轮开始出现更完整的平台化入口。
+  建议动作：把 `Google developer agent stack` 从观察项上调到正式比较对象。
+  来源：https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-march-2026/ ; https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-3-1-flash-live/
+
+- 条目：`OpenAI enterprise operating layer`
+  方向：`enterprise agent deployment / unified agent stack`
+  核心信号：OpenAI 已把 `Frontier`、`stateful runtime`、`unified AI superapp`、`company-wide agents` 写成同一企业平台叙事。
+  为什么重要：这说明 `runtime` 在 OpenAI 这边已经不只是开发者能力，而是企业级操作层。
+  建议动作：后续比较平台路线时，把 `developer runtime` 和 `enterprise runtime` 分开记，但放在同一架构图里。
+  来源：https://openai.com/index/next-phase-of-enterprise-ai/
+
+### 状态变化
+
+- 主题：`runtime`
+  之前判断：`shell / container / sandbox / state` 是默认能力边界。
+  当前判断：还必须显式补上 `permission automation` 和 `session-harness-sandbox` 的架构拆分。
+  变化原因：Anthropic 最近两篇工程文章把这两点都公开化了。
+
+- 主题：`评测与基础设施的关系`
+  之前判断：评测是 runtime 的旁路能力。
+  当前判断：在 agentic coding 里，评测、资源配额、sandbox enforcement 已变成同一系统的不同切面。
+  变化原因：`infrastructure noise` 文章直接证明了 infra 配置会改变 benchmark 结果。

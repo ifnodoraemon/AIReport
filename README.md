@@ -179,4 +179,5 @@
 
 ## 最近一次补充
 
+- `2026-04-11`：已全面更新根目录追踪文档，补入 `OpenAI GPT-5.4 mini/nano` 与 `enterprise AI operating layer`、`Anthropic Mythos preview / Project Glasswing / compute partnership` 与最新 `managed agents / auto mode / harness / eval` 信号、`Google Gemini 3.1 Pro / Flash Live / Gemma 4 / Antigravity`，并刷新论文、评测、GitHub 热点和人物判断。
 - `2026-04-06`：已为 `AI三巨头博客追踪`、`AI关键人物追踪`、`模型发布追踪`、`MCP-tools-agent-infra追踪`、`agent-eval-benchmark追踪`、`agent-llm周论文追踪`、`agent-llm周GitHub热点追踪` 追加最新条目与补录，并新增 `wiki/` 最小结构，不删除旧内容。

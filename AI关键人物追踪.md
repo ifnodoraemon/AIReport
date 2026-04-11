@@ -1,10 +1,10 @@
 # AI 关键人物追踪
 
-最后更新：2026-04-06
+最后更新：2026-04-11
 
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/模型发布追踪.md`、`/home/ifnodoraemon/myreport/MCP-tools-agent-infra追踪.md`
 
-跟踪范围：截至 `2026-04-06` 检索到的 AI 关键人物 `个人官网 / 官方博客 / 公司新闻页 / X`；优先选择能持续释放 `模型路线`、`agent infra`、`开发者生态`、`安全治理`、`world model` 高信号的人
+跟踪范围：截至 `2026-04-11` 检索到的 AI 关键人物 `个人官网 / 官方博客 / 公司新闻页 / X`；优先选择能持续释放 `模型路线`、`agent infra`、`开发者生态`、`安全治理`、`world model` 高信号的人
 
 ## 目的
 
@@ -371,3 +371,64 @@
 - `Dario Amodei`：截至 `2026-04-06`，仍以 `2026-03-31` 澳大利亚 MOU 和 `2026-03-11` Anthropic Institute 为最近高信号条目。
 - `Fei-Fei Li / World Labs`：截至 `2026-04-06`，仍以 `2026-03-03` `3D as code` 为最近博客高信号更新，未见比它更晚的同级别公开动作。
 - `Ilya Sutskever / SSI`：截至 `2026-04-06`，`SSI` 官网仍未出现更具体的新产品化或研究更新。
+
+## 2026-04-11 当周补充
+
+### 新增动态
+
+- 人物：`Sam Altman`
+  动作：OpenAI 在 `2026-03-17` 同步发布 `GPT-5.4 mini and nano`
+  来源级别：`官网已确认`
+  方向：`model tiering / subagents / distribution`
+  为什么重要：这让 Sam 这条线的重点更像“平台分层和分发”，而不是单一旗舰模型。
+  对我们的影响：跟 Sam 时，应把 `旗舰 + mini / nano + Codex subagents` 视作同一套产品战略。
+  来源：https://openai.com/index/introducing-gpt-5-4-mini-and-nano/
+
+- 人物：`Dario Amodei`
+  动作：截至 `2026-04-11`，Anthropic 在 `2026-03` 下旬连续公开 `auto mode`、`harness design`、`managed agents`、`eval integrity` 等工程文章
+  来源级别：`官网已确认`
+  方向：`managed agents / eval discipline / runtime governance`
+  为什么重要：这说明 Dario 线下的 Anthropic 已从“安全公司”进一步变成“会把安全、infra、agent 一起产品化的公司”。
+  对我们的影响：后续跟 Dario，不应只看政策合作和 Institute，还要看工程博客如何落产品接口。
+  来源：https://www.anthropic.com/engineering ; https://www.anthropic.com/news/australia-MOU
+
+- 人物：`Dario Amodei`
+  动作：`2026-04-07` 上线 `Project Glasswing`，以 `Claude Mythos Preview` 先服务关键基础设施防御；`2026-04-06` 宣布与 `Google + Broadcom` 的下一阶段算力合作
+  来源级别：`官网已确认`
+  方向：`gated frontier deployment / compute scaling / security-first rollout`
+  为什么重要：这两条动作合起来说明 Dario 线下的 Anthropic 已经在同时处理“更强模型如何受控释放”和“如何获得足够算力继续推进前沿”。
+  对我们的影响：后续跟 Dario，要把 `安全发布机制` 和 `算力供给` 视作同等重要信号，而不只是看模型名。
+  来源：https://www.anthropic.com/project/glasswing ; https://www.anthropic.com/news/google-broadcom-partnership-compute
+
+- 人物：`Demis Hassabis`
+  动作：`2026-04-02` Google DeepMind 推出 `Gemma 4`；`2026-03-26` 发布 `Protecting people from harmful manipulation`
+  来源级别：`官网已确认`
+  方向：`open models / safety evaluation`
+  为什么重要：Demis 线下的 Google DeepMind 现在同时在推进 `开放模型` 与 `高风险安全评测`，而不是二选一。
+  对我们的影响：跟 Demis 时，应把 `open-weight strategy` 和 `frontier safety methodology` 一起看。
+  来源：https://blog.google/innovation-and-ai/technology/developers-tools/gemma-4/ ; https://deepmind.google/blog/protecting-people-from-harmful-manipulation/
+
+- 人物：`Andrew Ng`
+  动作：`2026-04-03` The Batch 继续强调 `voice UI` 的普及速度，并延续对开发者工作流与工具扩散的聚焦
+  来源级别：`官网已确认`
+  方向：`developer diffusion / voice-first UI`
+  为什么重要：Andrew Ng 的信号越来越像“哪些主题会最快进入普通开发者和课程体系”。
+  对我们的影响：如果一个方向同时出现在 The Batch 和开发者工具层，说明它已接近普及临界点。
+  来源：https://www.deeplearning.ai/the-batch/
+
+### 状态变化
+
+- 人物：`Sam Altman`
+  之前判断：更偏 `compute + distribution + Codex + agent platform`。
+  当前判断：这套判断保持不变，但 `mini / nano` 与 `enterprise AI` 文章一起，把其中的 `distribution`、`subagent economics`、`company-wide agent layer` 都进一步坐实。
+  变化原因：OpenAI 已明确把小模型写进 Codex，也把 `Frontier` 写进企业 operating layer 叙事。
+
+- 人物：`Dario Amodei`
+  之前判断：更偏 `安全 + agent + 政策接口`。
+  当前判断：应上调 `runtime / managed agents / eval methodology` 权重，Anthropic 的公开工程输出已形成连续主线。
+  变化原因：3 月下旬工程博客连续更新，且彼此之间高度连贯。
+
+- 人物：`Fei-Fei Li / World Labs`
+  之前判断：更像长期 `world model` 信号源。
+  当前判断：仍然是长期高信号，但现在也要把 `World API` 和融资动作一起看，World Labs 已不只是理念表达。
+  变化原因：`World API`、`3D as code` 与融资公告已形成“概念 -> API -> 公司化推进”的完整链条。

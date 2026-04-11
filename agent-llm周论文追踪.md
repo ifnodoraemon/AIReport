@@ -1,6 +1,6 @@
 # Agent / LLM 每周跟踪
 
-最后更新：2026-04-06
+最后更新：2026-04-11
 
 跟踪范围：近期与 `agent`、`LLM`、`memory`、`RAG 安全`、`评测` 相关的论文与趋势
 
@@ -174,3 +174,31 @@
 
 - 信号：RAG 防御开始从“检测异常回答”转向“在检索阶段削弱污染影响”。
   对我们的影响：这更适合作为现有 RAG 系统的渐进式安全加固路径。
+
+## 2026-04-11 当周补充
+
+### 新增论文
+
+- 论文：`Beyond Binary Correctness: Scaling Evaluation of Long-Horizon Agents on Subjective Enterprise Tasks`
+  为什么重要：它把长流程 agent 评测从 `pass/fail` 推向 `expert-grounded rubric + artifact checkpoints + human preference`，更接近真实企业工作。
+  建议动作：如果我们继续做内容、设计、运营类 agent，应补一套 `subjective enterprise tasks` 评测框架。
+  状态：`跟踪中`
+  来源：https://arxiv.org/abs/2603.22744
+
+- 论文：`Describe-Then-Act: Proactive Agent Steering via Distilled Language-Action World Models`
+  为什么重要：这条线不靠慢速视觉模拟，而是用蒸馏出的语言-动作世界模型做主动 steering，说明 `world model -> control` 可能开始进入更实用的工程阶段。
+  建议动作：如果后续要做 agent control / action drift / proactive recovery，可把它当作 world-model steering 的前沿样本。
+  状态：`待读`
+  来源：https://arxiv.org/abs/2603.23149
+
+### 状态变化
+
+- 主题：`Long-horizon agent eval`
+  之前判断：需要从 `binary correctness` 转向更真实的长流程任务。
+  当前判断：这条线已经开始进入 `enterprise subjective work`，并且强依赖专家 rubric 与中间工件。
+  变化原因：`LH-Bench` 明显不再满足于传统 benchmark 范式。
+
+- 主题：`Agent control / steering`
+  之前判断：更像一个值得观察的研究方向。
+  当前判断：随着 `Describe-Then-Act` 这类工作出现，主动 steering 已经值得进入中优先级观察列表。
+  变化原因：该类方法开始把“先预判后执行”做成可落地、可加速的结构，而不是纯概念。

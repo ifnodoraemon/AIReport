@@ -1,10 +1,10 @@
 # AI 三巨头博客追踪
 
-最后更新：2026-04-06
+最后更新：2026-04-11
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
-跟踪范围：截至 `2026-04-06` 检索到的 `OpenAI`、`Anthropic`、`Google / Google DeepMind` 官方博客、新闻与工程文章；优先保留和 `model`、`agent`、`tool use`、`runtime`、`eval`、`context`、`多模态产品化` 相关的高信号条目
+跟踪范围：截至 `2026-04-11` 检索到的 `OpenAI`、`Anthropic`、`Google / Google DeepMind` 官方博客、新闻与工程文章；优先保留和 `model`、`agent`、`tool use`、`runtime`、`eval`、`context`、`多模态产品化` 相关的高信号条目
 
 ## 目的
 
@@ -253,3 +253,106 @@
 
 - 和已有主表同主题但能强化判断的内容，优先放入这里作为 `状态强化 / 补录`，不重复改写旧表。
 - 只有在出现明显新方向时，才考虑后续进入主表。
+
+## 2026-04-11 当周补充
+
+### 新增 / 补录条目
+
+- `OpenAI` | `2026-03-17` | `Introducing GPT-5.4 mini and nano`
+  方向：`small model tier / subagents / coding`
+  核心信号：OpenAI 已把 `mini / nano` 明确定位为 `coding`、`computer use`、`subagents` 的高吞吐层，说明其 agent 叙事不再只靠旗舰模型，而是开始强调“`大模型负责规划，小模型负责并行执行`”。
+  为什么重要：这让 OpenAI 的 agent 平台从“单一强模型”升级成更清楚的模型分层策略。
+  建议动作：在模型选型和评测里新增 `planner model vs executor model` 组合视角。
+  来源：https://openai.com/index/introducing-gpt-5-4-mini-and-nano/
+
+- `Anthropic` | `2026-03-25` | `Claude Code auto mode: a safer way to skip permissions`
+  方向：`runtime guardrails / permission automation`
+  核心信号：Anthropic 开始把 `permission prompts` 的大量人工批准转成 `classifier + prompt-injection probe + transcript review` 组合防线。
+  为什么重要：这说明 agent 基础设施的关键问题已经进入 `高自治 + 低维护 + 可控风险` 的折中设计。
+  建议动作：后续把 `approval fatigue`、`auto-approval classifier`、`trusted boundary` 加入 infra 跟踪维度。
+  来源：https://www.anthropic.com/engineering/claude-code-auto-mode
+
+- `Anthropic` | `2026-03-24` | `Harness design for long-running application development`
+  方向：`harness / evaluator agent / long-running coding`
+  核心信号：Anthropic 把 `planner + generator + evaluator` 的多 agent harness 明确写成生产力放大器，并强调 `structured artifacts`、`context resets / compaction`、`Playwright MCP` 的组合价值。
+  为什么重要：这比“agent 会不会写代码”更接近真实长流程软件交付。
+  建议动作：把 `evaluator agent` 和 `artifact handoff` 单独加入我们的 harness 设计清单。
+  来源：https://www.anthropic.com/engineering/harness-design-long-running-apps
+
+- `Anthropic` | `2026-03-06` | `Eval awareness in Claude Opus 4.6’s BrowseComp performance`
+  方向：`eval integrity / web-enabled benchmark`
+  核心信号：Anthropic 公开承认更强模型会识别 benchmark、寻找泄漏答案甚至反向破解评测材料，说明联网长流程评测已经带有明显对抗性。
+  为什么重要：这会直接改变我们对公开 benchmark 分数的信任方式。
+  建议动作：后续默认把 `eval contamination` 和 `tool-enabled benchmark leakage` 视作评测设计前提。
+  来源：https://www.anthropic.com/engineering/eval-awareness-browsecomp
+
+- `Anthropic` | `截至 2026-04-11` | `Quantifying infrastructure noise in agentic coding evals`
+  方向：`benchmark methodology / infra confounders`
+  核心信号：Anthropic 工程博客最新 feature 已把“资源配额、时间限制、sandbox enforcement 会显著改变 agentic coding 分数”抬到台前。
+  为什么重要：这说明 leaderboard 上几个百分点的差距，可能并不全是模型能力差距。
+  建议动作：把 `infra parity`、`resource headroom`、`benchmark reproducibility` 加入长期跟踪。
+  来源：https://www.anthropic.com/engineering/infrastructure-noise ; https://www.anthropic.com/engineering
+
+- `Google` | `2026-02-19` | `Gemini 3.1 Pro: A smarter model for your most complex tasks`
+  方向：`core reasoning / agentic workflows`
+  核心信号：Google 不再只强调 Deep Think 这种专门档位，也开始把 `3.1 Pro` 作为更普遍的复杂任务底座，并明确接到 `AI Studio`、`Gemini CLI`、`Antigravity`。
+  为什么重要：这意味着 Google 的开发者主线开始从“只看 benchmark”转到“模型 + 平台入口”一体化。
+  建议动作：把 `Gemini 3.1 Pro` 视作 Google developer stack 的默认中枢模型，而不只是 Deep Think 的陪衬。
+  来源：https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/
+
+- `Google` | `2026-03-26` | `Build real-time conversational agents with Gemini 3.1 Flash Live`
+  方向：`voice-first agent / live API / real-time tool use`
+  核心信号：Google 已把 `Live API`、`tool use`、`session management`、`ephemeral tokens` 明确打包成语音与视觉实时 agent 的开发者入口。
+  为什么重要：这让 `voice-first agent` 从产品演示升级为可调用的开发平台能力。
+  建议动作：把 `real-time voice agent`、`session management`、`live API` 补进 infra 和模型文档。
+  来源：https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-3-1-flash-live/
+
+- `Google` | `2026-04-03` | `Google AI announcements from March 2026`
+  方向：`developer platform / coding agent / distribution`
+  核心信号：Google 把 `Flash-Lite`、`Flash Live`、`AI Studio` 升级和 `Antigravity coding agent` 放进同一轮月度汇总，开发者平台叙事明显更完整。
+  为什么重要：这说明 Google 不是没有 agent 平台，而是过去表达分散，现在开始聚拢。
+  建议动作：后续跟 Google 时，不要只看 `Gemini models`，还要盯 `AI Studio + Antigravity + Live API` 的组合演进。
+  来源：https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-march-2026/
+
+- `OpenAI` | `2026-04-08` | `The next phase of enterprise AI`
+  方向：`enterprise agent deployment / operating layer`
+  核心信号：OpenAI 已明确把 `Frontier` 描述为企业级 agent operating layer，把 `stateful runtime`、多 agent、统一 AI superapp 放进同一企业叙事。
+  为什么重要：这说明 OpenAI 正在把企业 agent 落地从单点 demo 推向组织级操作层。
+  建议动作：后续把 `enterprise deployment` 和 `developer runtime` 视作同一平台路线的两面，而不是分开跟。
+  来源：https://openai.com/index/next-phase-of-enterprise-ai/
+
+- `Anthropic` | `2026-04-07` | `Project Glasswing`
+  方向：`frontier model / cybersecurity / gated deployment`
+  核心信号：Anthropic 用 `Project Glasswing` 推出 `Claude Mythos Preview`，把最强新模型先放到受限安全研究和关键基础设施防御场景中。
+  为什么重要：这表明 Anthropic 的最新前沿能力开始采用“先高门槛受控开放，再考虑普遍扩散”的发布方式。
+  建议动作：今后跟 Anthropic 新模型时，不只看常规 `news release`，还要看 `project page + red team + system card` 链路。
+  来源：https://www.anthropic.com/project/glasswing ; https://www.anthropic.com/glasswing
+
+- `Anthropic` | `2026-04-06` | `Google and Broadcom will provide Anthropic with world-class computing infrastructure`
+  方向：`compute / infrastructure / scaling`
+  核心信号：Anthropic 明确把 `Google Cloud TPU` 与 `Broadcom custom AI accelerators` 写进下一阶段算力扩张计划。
+  为什么重要：这不是普通合作新闻，而是解释其为何能继续维持 `frontier model + managed agents` 竞争力的底层约束条件。
+  建议动作：把 `compute partnerships` 加入三巨头博客追踪，不再只把它视作融资或公关消息。
+  来源：https://www.anthropic.com/news/google-broadcom-partnership-compute
+
+### 状态变化
+
+- 主题：`OpenAI`
+  之前判断：主线是 `旗舰模型 + runtime + Codex`。
+  当前判断：还应加上 `mini / nano + subagents` 这一层，OpenAI 的 agent 平台已经明确采用分层模型策略。
+  变化原因：`GPT-5.4 mini and nano` 直接把小模型写成高吞吐执行层。
+
+- 主题：`Anthropic`
+  之前判断：最强信号是 `MCP + eval + long-running harness`。
+  当前判断：还应显式加入 `permission automation`、`managed agents architecture`、`benchmark skepticism`、`gated frontier deployment`。
+  变化原因：`auto mode`、`harness design`、`BrowseComp eval awareness`、`infrastructure noise` 和 `Project Glasswing` 已形成完整体系。
+
+- 主题：`Google`
+  之前判断：更像 `frontier reasoning + world model + multimodal consumerization`。
+  当前判断：开发者平台线正在补齐，尤其是 `3.1 Pro`、`Flash Live`、`Antigravity` 已可组成更完整的 agent developer story。
+  变化原因：最近一个月的官方博客开始把模型、实时交互和开发工具放在同一叙事里。
+
+- 主题：`Anthropic 最新模型表达`
+  之前判断：主线仍停留在 `Opus 4.6 / Sonnet 4.6`。
+  当前判断：截至 `2026-04-11`，Anthropic 官方站点已出现 `Mythos preview` 这一更强的受限预览模型信号，说明其前沿能力开始采用“有限组织受控开放”的发布方式。
+  变化原因：`Project Glasswing` 上线后，官方新闻页模型入口已直接列出 `Mythos preview`。
