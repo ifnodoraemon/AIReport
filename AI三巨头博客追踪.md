@@ -1,10 +1,10 @@
 # AI 三巨头博客追踪
 
-最后更新：2026-04-11
+最后更新：2026-04-28
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
-跟踪范围：截至 `2026-04-11` 检索到的 `OpenAI`、`Anthropic`、`Google / Google DeepMind` 官方博客、新闻与工程文章；优先保留和 `model`、`agent`、`tool use`、`runtime`、`eval`、`context`、`多模态产品化` 相关的高信号条目
+跟踪范围：截至 `2026-04-28` 检索到的 `OpenAI`、`Anthropic`、`Google / Google DeepMind` 官方博客、新闻与工程文章；优先保留和 `model`、`agent`、`tool use`、`runtime`、`eval`、`context`、`多模态产品化` 相关的高信号条目
 
 ## 目的
 
@@ -21,10 +21,10 @@
 当前最值得关注的高信号主题：
 
 1. 三家都已经从“单模型能力”转向“`agent + tool + workflow`”叙事，但落点不同。
-2. `OpenAI` 最近最强信号不是单点模型参数，而是 `agent runtime`、`computer environment`、`tool search`、`Codex / agent harness`。
-3. `Anthropic` 最近最强信号是 `coding agent`、`MCP 标准化`、`长时任务 harness`、`agent eval 方法学`。
-4. `Google` 最近最强信号是 `frontier reasoning + 成本分层 + world model + 多模态创作产品化`，技术面更宽，开发者工作流集中度稍低于 OpenAI / Anthropic。
-5. 如果只看工程现实，`OpenAI / Anthropic` 更像在竞争“开发者 agent 操作系统”；`Google` 更像在同时推进“研究前沿 + 平台分发 + 消费级多模态入口”。
+2. `OpenAI` 最近最强信号是 `GPT-5.5 + Codex workspace + agent runtime + privacy/security infra` 的组合。
+3. `Anthropic` 最近最强信号是 `Claude Opus 4.7`、`coding/design workflow agent`、`MCP / harness`、`eval discipline` 与多云算力扩张。
+4. `Google` 最近最强信号是 `Gemini Enterprise Agent Platform`、`Decoupled DiLoCo`、`frontier reasoning`、`world model / robotics / audio` 多线并进。
+5. 如果只看工程现实，三家都已经进入“模型 + runtime + eval + governance + compute”全栈竞争；差异在于 OpenAI 更像 agent workspace，Anthropic 更像 long-running workflow agent，Google 更像 cloud-native enterprise agent platform。
 
 ## 跟踪表
 
@@ -194,7 +194,7 @@
 ## 来源说明
 
 - 仅使用三家官方站点页面：`openai.com`、`anthropic.com`、`blog.google / deepmind.google`
-- 日期以对应文章页展示日期为准，当前文档已补充至 `2026-04-06`
+- 日期以对应文章页展示日期为准，当前文档已补充至 `2026-04-28`
 - `OpenAI` 官方站点存在 locale 跳转与首页推荐变化，因此应优先以文章直链而不是首页块位为准
 
 ## 2026-04-06 当周补充
@@ -356,3 +356,116 @@
   之前判断：主线仍停留在 `Opus 4.6 / Sonnet 4.6`。
   当前判断：截至 `2026-04-11`，Anthropic 官方站点已出现 `Mythos preview` 这一更强的受限预览模型信号，说明其前沿能力开始采用“有限组织受控开放”的发布方式。
   变化原因：`Project Glasswing` 上线后，官方新闻页模型入口已直接列出 `Mythos preview`。
+
+## 2026-04-17 当周补充
+
+### 新增 / 补录条目
+
+- `OpenAI` | `2026-04-15` | `The next evolution of the Agents SDK`
+  方向：`agent sdk / harness / sandbox / MCP`
+  核心信号：OpenAI 已把 `model-native harness`、`native sandbox execution`、`MCP`、`skills`、`AGENTS.md`、`snapshotting + rehydration` 明确打包成标准 agent 基础设施。
+  为什么重要：这说明 OpenAI 正在把 “agent 怎么安全跑起来” 变成官方平台默认答案，而不是让开发者自己拼装。
+  建议动作：把 `harness / compute split`、`manifest`、`durable execution` 单独记入 infra 基线。
+  来源：https://openai.com/index/the-next-evolution-of-the-agents-sdk/
+
+- `OpenAI` | `2026-04-16` | `Codex for (almost) everything`
+  方向：`desktop agent / memory / plugin ecosystem`
+  核心信号：Codex 已从 coding assistant 扩到 `background computer use`、`in-app browser`、`memory`、`scheduled automations`、`90+ plugins`。
+  为什么重要：这说明 OpenAI 的主线已经不只是“更强 coding”，而是把 agent 工作台向完整开发工作流中心推进。
+  建议动作：后续跟 OpenAI 时，把 `desktop workflow + memory + plugin distribution` 和 `API/runtime` 放在同一条平台路线里看。
+  来源：https://openai.com/index/codex-for-almost-everything/
+
+- `Google` | `2026-04-14` | `Gemini Robotics-ER 1.6`
+  方向：`embodied reasoning / physical agents / tool use`
+  核心信号：Google DeepMind 把 `spatial reasoning`、`success detection`、`instrument reading`、`agentic vision + code execution`、`third-party tools` 组合成面向 physical agent 的新模型。
+  为什么重要：这说明 Google 的 agent 叙事正在从浏览器、语音继续扩展到实体世界执行层。
+  建议动作：把 `embodied agent` 纳入 Google 主线观察，不再只看 `Gemini app / AI Studio`。
+  来源：https://deepmind.google/blog/gemini-robotics-er-1-6/
+
+- `Google` | `2026-04-15` | `Gemini 3.1 Flash TTS`
+  方向：`audio model / expressive speech / distribution`
+  核心信号：Google 推出新一代 `Flash TTS`，强调 `granular audio tags`、`70+ languages`、`SynthID watermarking`，并同步分发到 `Gemini API`、`Vertex AI`、`Google Vids`。
+  为什么重要：这意味着 Google 正在把“高可控语音生成”做成标准开发者和企业入口，而不是产品附属功能。
+  建议动作：把 `voice controllability`、`audio watermarking`、`speech UX` 加入模型和评测观察维度。
+  来源：https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-tts/
+
+- `Anthropic` | `2026-04-22` | `Anthropic at Google Cloud Next 2026` `预告`
+  方向：`enterprise agents / multi-agent patterns`
+  核心信号：Anthropic 在官方活动页里已公开给出多 agent 真正适用的三类场景：`context isolation`、`parallel execution`、`specialization`，并强调长期复杂任务在 `Vertex AI` 上的生产落地。
+  为什么重要：这比“多 agent 很热”更有工程判断价值，说明 Anthropic 开始公开收缩多 agent 的适用边界。
+  建议动作：后续内部讨论多 agent 时，默认先问是否满足这三类收益条件。
+  来源：https://www.anthropic.com/events/anthropic-at-google-cloud-next-2026
+
+### 状态变化
+
+- `OpenAI` 的最新公开信号已经从 `runtime` 延伸到 `desktop workflow`，说明其平台路线正在从开发者 API 向完整 agent workspace 收敛。
+
+- `Google` 的本周新增信号非常一致：一条是 `语音可控性`，一条是 `实体世界 reasoning`，说明它在 agent 入口上同时押注 `audio` 和 `robotics`。
+
+- `Anthropic` 本周没有同量级新产品或工程博客，但官方活动页已更明确地定义多 agent 的适用边界；这本身就是高信号收敛，而不是缺席。
+
+## 2026-04-28 当周补充
+
+### 新增 / 补录条目
+
+- `OpenAI` | `2026-04-23` | `Introducing GPT-5.5`
+  方向：`frontier model / agentic coding / knowledge work / cyber safeguards`
+  核心信号：OpenAI 的公司主线从 `GPT-5.4 + runtime` 推进到 `GPT-5.5 + Codex workspace + trusted access` 的组合。
+  为什么重要：这是路线信号；模型能力、上下文和评测细节归入 `模型发布追踪` 与 `agent-eval-benchmark追踪`。
+  建议动作：这里只保留 OpenAI 的平台方向判断；模型细节以后不在博客文档重复展开。
+  来源：https://openai.com/index/introducing-gpt-5-5/
+
+- `OpenAI` | `2026-04-22` | `Introducing OpenAI Privacy Filter`
+  方向：`privacy infra / open-weight safety model`
+  核心信号：OpenAI 正把隐私过滤做成可部署基础设施，而不是只作为政策声明。
+  为什么重要：这是 `privacy-by-design` 进入 agent / data pipeline 的路线信号；工程细节归入 `MCP-tools-agent-infra追踪`。
+  建议动作：博客文档仅记录治理方向，infra 文档承载具体基线。
+  来源：https://openai.com/index/introducing-openai-privacy-filter/
+
+- `Anthropic` | `2026-04-16` | `Introducing Claude Opus 4.7`
+  方向：`frontier coding / long-running agents / vision / safeguards`
+  核心信号：Anthropic 把最新 Opus 发布继续锚定到 coding、长流程 agent 和运行控制。
+  为什么重要：这是 Anthropic “frontier model + workflow harness” 路线的强化；模型和预算控制细节分别归入模型与 infra 文档。
+  建议动作：博客文档只保留 Anthropic 路线判断，避免和模型发布追踪重复。
+  来源：https://www.anthropic.com/news/claude-opus-4-7
+
+- `Anthropic` | `2026-04-17` | `Introducing Claude Design by Anthropic Labs`
+  方向：`creative workflow agent / design-to-code handoff`
+  核心信号：Claude Design 把品牌设计系统、文档导入、web capture、PPTX/PDF/HTML 导出和 `handoff to Claude Code` 串成设计工作流。
+  为什么重要：这说明 Anthropic 正把 agent 从 coding 继续扩展到“设计资产生成 -> 可编辑协作 -> 代码交付”的工作流层。
+  建议动作：把 `design artifact handoff` 与 `Claude Code` 结合视作新的 agent workflow 样本。
+  来源：https://www.anthropic.com/news/claude-design-anthropic-labs
+
+- `Anthropic` | `2026-04-20` | `Anthropic and Amazon expand collaboration for up to 5 gigawatts of new compute`
+  方向：`compute / cloud distribution / enterprise platform`
+  核心信号：Anthropic 与 Amazon 扩展至最高 `5GW` 新算力，并计划把完整 Claude Platform 直接放进 AWS 账户、控制和计费体系。
+  为什么重要：这说明模型竞争已经被算力、云分发和企业治理深度约束；Claude 的多云可得性也在变成商业护城河。
+  建议动作：后续三巨头比较里把 `compute capacity + cloud-native distribution` 单独列为一等维度。
+  来源：https://www.anthropic.com/news/anthropic-amazon-compute
+
+- `Google` | `2026-04-23` | `Gemini Enterprise Agent Platform`
+  方向：`enterprise agent platform / runtime / governance / observability`
+  核心信号：Google 的 agent 叙事从模型和 AI Studio 扩展到企业级 agent 平台。
+  为什么重要：这是 Google 进入 runtime / governance / observability 横向竞争的公司路线信号；组件细节归入 infra 文档。
+  建议动作：把 Google agent stack 从观察项上调为正式横向对比对象。
+  来源：https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-agent-platform
+
+- `Google DeepMind` | `2026-04-23` | `Decoupled DiLoCo: A new frontier for resilient, distributed AI training`
+  方向：`training infra / distributed pretraining / resilience`
+  核心信号：Google DeepMind 把 frontier scaling 的公开叙事推进到底层训练系统弹性。
+  为什么重要：这补上了 Google 在模型发布之外的训练基础设施信号；论文/训练细节归入论文与 infra 文档。
+  建议动作：横向比较三家时加入 `training resilience`，不只看推理侧成本。
+  来源：https://deepmind.google/blog/decoupled-diloco/
+
+### 横向变化
+
+- `OpenAI` 本周主线是 `GPT-5.5 + 隐私/可信访问基础设施`，从能力和治理两端一起推进。
+- `Anthropic` 本周主线是 `Opus 4.7 + Claude Design + AWS compute`，模型、工作流产品和算力底座同步补强。
+- `Google` 本周主线是 `Cloud Next 26` 的企业 agent 平台化，以及 `Decoupled DiLoCo` 代表的训练系统路线。
+
+### 状态变化
+
+- 主题：`三家竞争焦点`
+  之前判断：重点是 `agent runtime / MCP / eval / context`。
+  当前判断：还要显式加入 `model release governance`、`enterprise agent platform`、`training/inference infrastructure` 三个维度。
+  变化原因：本周新增内容已经覆盖模型、runtime、评测、安全过滤、算力和分布式训练系统。

@@ -1,6 +1,6 @@
 # Agent Eval / Benchmark 追踪
 
-最后更新：2026-04-11
+最后更新：2026-04-28
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`、`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`
 
@@ -21,7 +21,8 @@
 
 1. `agent eval` 已经不能停留在单轮问答正确率，必须覆盖 `multi-step`、`tool use`、`memory`、`handoff`。
 2. 纯 benchmark 分数已经不够，`自动 grader + 人审校准 + 生产监控` 正在成为更现实的组合。
-3. 对我们最有价值的评测，不是最知名的 benchmark，而是最接近真实工作流的 benchmark。
+3. 模型发布页本身正在变成 eval 趋势入口，尤其是 `agentic coding`、`computer use`、`domain workflow`、`long context` 与 `safety capability`。
+4. 对我们最有价值的评测，不是最知名的 benchmark，而是最接近真实工作流的 benchmark。
 
 ## 跟踪表
 
@@ -205,3 +206,72 @@
   之前判断：主要担心数据污染和静态 benchmark 失真。
   当前判断：还要把 `模型主动识别评测` 与 `基础设施噪音` 视为一等风险。
   变化原因：Anthropic 最近两篇文章分别从行为和资源层面把问题坐实了。
+
+## 2026-04-17 当周补充
+
+### 新增 benchmark / 方法
+
+- 条目：`AMA-Bench: Evaluating Long-Horizon Memory for Agentic Applications`
+  类型：`memory eval / agent trajectories`
+  核心信号：它把 memory 评测从“对话记忆”推进到 `real-world agentic trajectories + synthetic arbitrary-length trajectories`，并直接指出相似度检索会丢失因果和目标信息。
+  为什么重要：这比传统 persona 对话 benchmark 更接近真实 agent 工作流。
+  建议动作：内部 memory eval 里补 `causality preservation` 和 `objective-state retention` 两项。
+  来源：https://openreview.net/forum?id=GoSVL7mLcM
+
+- 条目：`StructMemEval / Evaluating Memory Structure in LLM Agents`
+  类型：`memory organization eval`
+  核心信号：它不只测有没有记住事实，而是测 agent 是否能把长期记忆组织成 `ledger`、`to-do list`、`tree` 这类结构化形式。
+  为什么重要：这补上了当前 memory benchmark 很少触及的“记忆组织质量”问题。
+  建议动作：如果后续做长期工作区 agent，应单独测 `memory structure`，不要只测 recall。
+  来源：https://openreview.net/forum?id=a9vY2sJkf4
+
+### 状态变化
+
+- 主题：`Memory eval`
+  之前判断：重点在 `retrieval / transfer / forgetting / application`。
+  当前判断：还必须把 `causality preservation` 和 `memory organization` 纳入，否则会高估相似度检索式 memory 的实用性。
+  变化原因：`AMA-Bench` 和 `StructMemEval` 分别补上了这两个关键缺口。
+
+## 2026-04-28 当周补充
+
+### 新增 benchmark / 方法
+
+- 条目：`GPT-5.5 evaluation suite`
+  类型：`frontier model / agentic work eval`
+  核心信号：GPT-5.5 发布页把 coding、computer use、tool use、长上下文、科学研究和 cyber 放进同一套 release-time eval schema。
+  为什么重要：模型发布页本身已经变成评测趋势入口；真正值得跟的是评测组合，而不是单个 leaderboard 数字。
+  建议动作：这里记录 eval schema；具体模型能力结论回到 `模型发布追踪`。
+  来源：https://openai.com/index/introducing-gpt-5-5/
+
+- 条目：`Claude Opus 4.7 agentic eval notes`
+  类型：`model release eval / harness caveats`
+  核心信号：Anthropic 把 Opus 4.7 的评测解释和 `harness / effort / budget / contamination` 条件绑定在一起。
+  为什么重要：这说明同样是模型发布，Anthropic 更强调 `harness / effort / budget / contamination` 这些评测条件。
+  建议动作：这里记录评测条件；模型能力细节回到 `模型发布追踪`。
+  来源：https://www.anthropic.com/news/claude-opus-4-7
+
+- 条目：`BixBench`
+  类型：`scientific agent benchmark / bioinformatics workflow`
+  核心信号：BixBench 评估 LLM-based agents 是否能完成真实生物信息学数据分析任务，近期被 GPT-5.5 发布作为科学研究能力参考。
+  为什么重要：它代表 agent eval 从网页/代码/办公任务进一步扩展到科学数据分析，失败模式会更偏依赖管理、数据解释、工具选择和实验判断。
+  建议动作：如果后续跟科研 agent，应单独维护 `scientific workflow eval`，不要混进普通知识问答。
+  来源：https://arxiv.org/abs/2503.00096 ; https://www.futurehouse.org/research-announcements/bixbench
+
+- 条目：`Decoupled DiLoCo resilience metrics`
+  类型：`training infrastructure eval`
+  核心信号：Google DeepMind 用 `goodput`、带宽需求、故障恢复和最终 ML 性能来评估训练系统，而不只看模型最终分数。
+  为什么重要：未来 frontier model 的速度、成本和稳定性会受训练系统评测影响；这类 infra eval 会间接改变模型竞争。
+  建议动作：在模型追踪中补 `training goodput / failure tolerance / bandwidth` 三个基础设施指标。
+  来源：https://deepmind.google/blog/decoupled-diloco/
+
+### 状态变化
+
+- 主题：`Release-time eval`
+  之前判断：模型发布通常给出 benchmark 分数作为能力证明。
+  当前判断：发布页正在变成完整 eval schema：包含 agentic coding、真实办公、长上下文、工具使用、科学研究、安全风险和 harness caveat。
+  变化原因：GPT-5.5 与 Opus 4.7 的发布都把评测细节和部署约束放到了前台。
+
+- 主题：`Domain workflow eval`
+  之前判断：重点是 memory、long-horizon、subjective enterprise tasks。
+  当前判断：`science / bioinformatics / finance / office work` 这类领域工作流正在成为 frontier model 评测主战场。
+  变化原因：GPT-5.5、GPT-Rosalind 和 Opus 4.7 都把模型价值锚定到真实专业工作，而不是通用问答。

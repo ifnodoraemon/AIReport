@@ -171,6 +171,20 @@
   - 对我们的实际影响是什么
 - 根目录文档负责 `周更和判断`，`wiki/` 负责 `长期沉淀和复用`
 
+## 追踪分工与去重规则
+
+为避免同一事件在多份文档里重复展开，后续按下面规则记录：
+
+- `AI三巨头博客追踪`：只记录三家公司官方发布的路线信号和横向判断，不重复写完整模型参数、论文细节或 GitHub 项目拆解。
+- `模型发布追踪`：只维护模型层基线，包括模型名、定位、能力变化、适用场景和来源；同一模型相关的 runtime、eval、人物动态只保留短链接。
+- `agent-llm周论文追踪`：作为论文主入口，负责新论文筛选、主题判断和建议动作；评测文档只引用论文结论，不重复全文展开。
+- `agent-eval-benchmark追踪`：只维护评测方法、benchmark schema、grader/rubric/observability 设计，不重复记录普通模型发布。
+- `MCP-tools-agent-infra追踪`：只维护 runtime、MCP、tool use、sandbox、memory、privacy、observability 等工程基础设施。
+- `agent-llm周GitHub热点追踪`：只记录开源项目热度和工程信号，不把官方博客或论文内容复制进来。
+- `AI关键人物追踪`：只记录人物路线变化和来源入口，不重复公司发布内容；公司正式发布回链到对应专题文档。
+
+默认做法：一条高信号事件只在一个主文档展开，其他文档只写一句“影响判断 + 交叉链接”。历史周更可以保留，但新周更按这个规则收敛。
+
 ## 后续可扩展方向
 
 - 新增 `eval / benchmark` 专题
@@ -179,5 +193,7 @@
 
 ## 最近一次补充
 
+- `2026-04-28`：更新至最新一周高信号，补入 `OpenAI GPT-5.5 / Privacy Filter / GPT-Rosalind`、`Anthropic Claude Opus 4.7 / Claude Design / Amazon 5GW compute`、`Google Gemini Enterprise Agent Platform / Decoupled DiLoCo`，补充 `HORIZON / AgenticQwen / SkillGraph / Tool-Overuse` 等论文漏项，并新增追踪分工与去重规则。
+- `2026-04-17`：已继续更新根目录追踪文档，新增 `OpenAI Agents SDK` 与 `Codex for (almost) everything`、`Google Gemini Robotics-ER 1.6 / Flash TTS`、`AMA-Bench / StructMemEval / self-evolving agent` 等论文补录，并刷新 GitHub 热点与关键人物判断。
 - `2026-04-11`：已全面更新根目录追踪文档，补入 `OpenAI GPT-5.4 mini/nano` 与 `enterprise AI operating layer`、`Anthropic Mythos preview / Project Glasswing / compute partnership` 与最新 `managed agents / auto mode / harness / eval` 信号、`Google Gemini 3.1 Pro / Flash Live / Gemma 4 / Antigravity`，并刷新论文、评测、GitHub 热点和人物判断。
 - `2026-04-06`：已为 `AI三巨头博客追踪`、`AI关键人物追踪`、`模型发布追踪`、`MCP-tools-agent-infra追踪`、`agent-eval-benchmark追踪`、`agent-llm周论文追踪`、`agent-llm周GitHub热点追踪` 追加最新条目与补录，并新增 `wiki/` 最小结构，不删除旧内容。

@@ -1,10 +1,10 @@
 # AI 关键人物追踪
 
-最后更新：2026-04-11
+最后更新：2026-04-28
 
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/模型发布追踪.md`、`/home/ifnodoraemon/myreport/MCP-tools-agent-infra追踪.md`
 
-跟踪范围：截至 `2026-04-11` 检索到的 AI 关键人物 `个人官网 / 官方博客 / 公司新闻页 / X`；优先选择能持续释放 `模型路线`、`agent infra`、`开发者生态`、`安全治理`、`world model` 高信号的人
+跟踪范围：截至 `2026-04-28` 检索到的 AI 关键人物 `个人官网 / 官方博客 / 公司新闻页 / X`；优先选择能持续释放 `模型路线`、`agent infra`、`开发者生态`、`安全治理`、`world model` 高信号的人
 
 ## 目的
 
@@ -72,9 +72,9 @@
 
 | 人物 | 当前角色 | 为什么值得跟 | 最近公开动态 | X 是否值得盯 | 核心信号 | 主要来源 |
 |---|---|---|---|---|---|---|
-| Sam Altman | OpenAI CEO | 看 `OpenAI` 的顶层路线：模型、平台、算力、商业化如何一起推进 | `2026-03-31` OpenAI 宣布新一轮 `1220 亿美元` 融资；`2026-03-05` 发布 `GPT-5.4` | 值得；`X` 上的信号常比官网更早，但必须回到官网核实 | 当前最强信号不是单模型升级，而是 `compute + distribution + Codex + agent platform` 联动 | https://openai.com/index/accelerating-the-next-phase-ai/ ; https://openai.com/index/introducing-gpt-5-4/ ; https://x.com/sama |
-| Dario Amodei | Anthropic CEO | 看 `Anthropic` 如何把 `安全 + agent + 政策接口` 绑成一条线 | `2026-03-31` 与澳大利亚政府签署 AI 安全与研究 MOU；`2026-03-11` 推出 `Anthropic Institute` | 值得，但更适合跟 `Anthropic` 官方渠道，因为正式动作多在官网先落地 | Anthropic 仍在把 `frontier capability`、`safety research`、`policy interface` 一起推进 | https://www.anthropic.com/news/australia-MOU?id=19234 ; https://www.anthropic.com/news/the-anthropic-institute?s=09 ; https://www.anthropic.com/news |
-| Demis Hassabis | Google DeepMind CEO | 看 `Google DeepMind` 的研究顶层叙事，尤其是 `AGI -> science -> world models` | 截至 `2026-04-06`，`DeepMind` 平台侧最新高信号已推进到 `2026-04` 的 `Gemma 4`；可稳定确认的个人署名高信号仍以 `2026-03-10` 的 `AlphaGo impact` 为主 | 值得；他的 `X` 往往会提前给出产品方向和个人判断，但当前仍应优先看官方页 | Google 正在持续把 `AGI / science / open models` 三条线并行推进 | https://deepmind.google/blog/10-years-of-alphago/ ; https://deepmind.google/blog/ ; https://deepmind.google/models/gemma/gemma-4/ ; https://x.com/demishassabis |
+| Sam Altman | OpenAI CEO | 看 `OpenAI` 的顶层路线：模型、平台、算力、商业化如何一起推进 | `2026-04-23` 发布 `GPT-5.5`；`2026-04-22` 发布 `OpenAI Privacy Filter`；`2026-04-16` 发布 `Codex for (almost) everything` | 值得；`X` 上的信号常比官网更早，但必须回到官网核实 | 当前最强信号是 `frontier model + Codex workspace + privacy/security infra + enterprise agent platform` 联动 | https://openai.com/index/introducing-gpt-5-5/ ; https://openai.com/index/introducing-openai-privacy-filter/ ; https://openai.com/index/codex-for-almost-everything/ ; https://x.com/sama |
+| Dario Amodei | Anthropic CEO | 看 `Anthropic` 如何把 `安全 + agent + 政策接口` 绑成一条线 | `2026-04-20` 与 Amazon 扩展最高 `5GW` 算力合作；`2026-04-17` 发布 `Claude Design`；`2026-04-16` 发布 `Claude Opus 4.7` | 值得，但更适合跟 `Anthropic` 官方渠道，因为正式动作多在官网先落地 | Anthropic 正把 `frontier model`、`workflow product`、`compute scaling`、`安全发布机制` 一起推进 | https://www.anthropic.com/news/anthropic-amazon-compute ; https://www.anthropic.com/news/claude-design-anthropic-labs ; https://www.anthropic.com/news/claude-opus-4-7 ; https://www.anthropic.com/news |
+| Demis Hassabis | Google DeepMind CEO | 看 `Google DeepMind` 的研究顶层叙事，尤其是 `AGI -> science -> world models` | `2026-04-23` Google DeepMind 发布 `Decoupled DiLoCo`；Google Cloud 同期发布 `Gemini Enterprise Agent Platform`；`2026-04` 仍有 `Gemma 4 / Robotics-ER / Flash TTS` 多线推进 | 值得；他的 `X` 往往会提前给出产品方向和个人判断，但当前仍应优先看官方页 | Google 正在同时推进 `AGI / science / open models / embodied agent / enterprise agent platform / training infra` | https://deepmind.google/blog/decoupled-diloco/ ; https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-agent-platform ; https://deepmind.google/blog/ ; https://x.com/demishassabis |
 | Andrew Ng | DeepLearning.AI Founder | 看 `开发者生态`、`课程扩散`、`工程范式普及`，这条线对实际落地很重要 | `2026-04-03` The Batch 明确强调 `voice UI` 将快速普及；`2026-04-28` 至 `2026-04-29` 将主持 `AI Dev 26 x SF`；`2026-03-06` The Batch 推出 `Context Hub` | 值得；更适合盯 `课程 / 会议 / 开发者工具` 线索 | 面向开发者的主线已经明显收敛到 `agentic AI`、`memory/context engineering`、`reliability/observability/security`，并开始更重视 `voice UI` | https://www.deeplearning.ai/the-batch/tag/the-batch/ ; https://ai-dev.deeplearning.ai/ ; https://x.com/AndrewYNg |
 | Fei-Fei Li | World Labs Co-founder | 看 `spatial intelligence / world models / 3D interface`，这是容易被忽视但很关键的长期线 | `2026-03-03` World Labs 发布 `3D as code`；`2026-02-18` 宣布新融资；`2026-01-21` 推出 `World API` | 值得，但优先还是看 `World Labs` 官方博客，因为正式技术信号都在那边 | `world model` 正在从研究话题走向 API、接口和工作流 | https://www.worldlabs.ai/blog/3d-as-code ; https://www.worldlabs.ai/blog/funding-2026 ; https://www.worldlabs.ai/blog/announcing-the-world-api ; https://www.worldlabs.ai/blog |
 
@@ -432,3 +432,88 @@
   之前判断：更像长期 `world model` 信号源。
   当前判断：仍然是长期高信号，但现在也要把 `World API` 和融资动作一起看，World Labs 已不只是理念表达。
   变化原因：`World API`、`3D as code` 与融资公告已形成“概念 -> API -> 公司化推进”的完整链条。
+
+## 2026-04-17 当周补充
+
+### 新增动态
+
+- 人物：`Sam Altman`
+  动作：OpenAI 于 `2026-04-15` 发布新版 `Agents SDK`，并于 `2026-04-16` 发布 `Codex for (almost) everything`
+  来源级别：`官网已确认`
+  方向：`agent platform / desktop workflow / memory`
+  为什么重要：这两篇连在一起，说明 Sam 线下的 OpenAI 已把主线从“强模型”推进到“从 API 到桌面工作台的一体化 agent 平台”。
+  对我们的影响：后续跟 Sam 时，要把 `runtime + Codex app + memory + plugins` 一起看，不再拆成彼此独立产品。
+  来源：https://openai.com/index/the-next-evolution-of-the-agents-sdk/ ; https://openai.com/index/codex-for-almost-everything/
+
+- 人物：`Demis Hassabis`
+  动作：Google DeepMind 于 `2026-04-14` 发布 `Gemini Robotics-ER 1.6`，并于 `2026-04-15` 发布 `Gemini 3.1 Flash TTS`
+  来源级别：`官网已确认`
+  方向：`embodied agents / speech models / multimodal platform`
+  为什么重要：Demis 线下的 Google DeepMind 这周不是继续讲抽象 AGI，而是把 `实体推理` 和 `高可控语音` 两条模型线都推到了开发者可用层。
+  对我们的影响：跟 Demis 时，应把 `开放模型 / 安全评测 / embodied agent / audio model` 看成并行推进的组合。
+  来源：https://deepmind.google/blog/gemini-robotics-er-1-6/ ; https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-tts/
+
+- 人物：`Dario Amodei`
+  动作：截至 `2026-04-17`，未出现比 `Project Glasswing`、`compute partnership` 更高信号的新公开发布；但官方 `Google Cloud Next 2026` 页面开始明确多 agent 的适用边界
+  来源级别：`官网已确认`
+  方向：`multi-agent discipline / enterprise deployment`
+  为什么重要：这说明 Dario 线下的 Anthropic 本周新增不是“更多概念”，而是更明确地收缩多 agent 的真正适用场景。
+  对我们的影响：后续跟 Dario 时，应把 `多 agent 何时不用` 也视作高信号，而不是只追新名词。
+  来源：https://www.anthropic.com/events/anthropic-at-google-cloud-next-2026
+
+### 状态变化
+
+- 人物：`Sam Altman`
+  之前判断：更偏 `compute + distribution + Codex + agent platform`。
+  当前判断：还应再显式补上 `desktop workflow` 和 `persistent memory`，因为 OpenAI 这周已经把两者做成了正式产品面。
+  变化原因：`Agents SDK` 与 `Codex for (almost) everything` 前后相连，路线非常一致。
+
+- 人物：`Demis Hassabis`
+  之前判断：应同时看 `open models` 与 `safety evaluation`。
+  当前判断：还要上调 `embodied reasoning` 和 `audio generation` 的权重，Google DeepMind 正在把多模态入口拓到更完整的 agent 形态。
+  变化原因：`Robotics-ER 1.6` 与 `Flash TTS` 都是本周正式新发布。
+
+## 2026-04-28 当周补充
+
+### 新增动态
+
+- 人物：`Sam Altman`
+  动作：OpenAI 于 `2026-04-23` 发布 `GPT-5.5`，并于 `2026-04-22` 发布 `OpenAI Privacy Filter`
+  来源级别：`官网已确认`
+  方向：`frontier model / agentic work / privacy infra`
+  为什么重要：人物文档只记录路线变化：OpenAI 同时推进能力和安全基础设施。
+  对我们的影响：具体模型与 infra 细节分别回到 `模型发布追踪` 和 `MCP-tools-agent-infra追踪`。
+  来源：https://openai.com/index/introducing-gpt-5-5/ ; https://openai.com/index/introducing-openai-privacy-filter/
+
+- 人物：`Dario Amodei`
+  动作：Anthropic 于 `2026-04-16` 发布 `Claude Opus 4.7`，`2026-04-17` 发布 `Claude Design`，`2026-04-20` 宣布与 Amazon 扩展最高 `5GW` 新算力合作
+  来源级别：`官网已确认`
+  方向：`frontier model / workflow product / compute scaling`
+  为什么重要：人物文档只记录路线变化：Anthropic 正把模型、工作流产品和算力底座连在一起。
+  对我们的影响：模型细节回到 `模型发布追踪`，工作流/算力影响回到博客和 infra 文档。
+  来源：https://www.anthropic.com/news/claude-opus-4-7 ; https://www.anthropic.com/news/claude-design-anthropic-labs ; https://www.anthropic.com/news/anthropic-amazon-compute
+
+- 人物：`Demis Hassabis`
+  动作：Google DeepMind 于 `2026-04-23` 发布 `Decoupled DiLoCo`，同日 Google Cloud 发布 `Gemini Enterprise Agent Platform`
+  来源级别：`官网已确认`
+  方向：`distributed training / enterprise agent platform`
+  为什么重要：人物文档只记录路线变化：Google 体系的公开主线已扩展到训练系统和企业 agent 平台。
+  对我们的影响：训练论文细节回到论文追踪，平台组件回到 infra 文档。
+  来源：https://deepmind.google/blog/decoupled-diloco/ ; https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-agent-platform
+
+### 状态变化
+
+- 人物：`Sam Altman`
+  之前判断：重点是 `runtime + Codex app + memory + plugins`。
+  当前判断：还应加入 `GPT-5.5` 代表的最新 frontier baseline，以及 `Privacy Filter` 代表的安全基础设施。
+  变化原因：OpenAI 本周同时发布模型与隐私组件，方向互补。
+
+- 人物：`Dario Amodei`
+  之前判断：应上调 `runtime / managed agents / eval methodology` 权重。
+  当前判断：还应上调 `workflow productization` 和 `compute scaling` 权重。
+  变化原因：`Claude Design` 与 Amazon compute agreement 分别补上产品层和底层供给层。
+
+- 人物：`Demis Hassabis`
+  之前判断：Google DeepMind 正在并行推进 `open models / safety / embodied / audio`。
+  当前判断：还应显式加入 `training systems resilience`，因为 Decoupled DiLoCo 是直接影响 frontier scaling 的底层信号。
+  变化原因：Google DeepMind 已把分布式训练架构作为独立研究发布。

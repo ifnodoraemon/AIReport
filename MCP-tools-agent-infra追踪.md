@@ -1,6 +1,6 @@
 # MCP / Tools / Agent Infra 追踪
 
-最后更新：2026-04-11
+最后更新：2026-04-28
 
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/agent-llm周GitHub热点追踪.md`
 
@@ -29,10 +29,11 @@
 
 当前最值得关注的高信号主题：
 
-1. `MCP` 已经不再只是 Anthropic 生态内的话题，而是在走向跨平台标准。
-2. `shell + container + code execution + sandbox` 正在变成 agent 平台的默认能力边界。
-3. `skills`、`compaction`、`progress notes`、`handoff artifacts` 说明长时任务的核心问题已经转向上下文管理和任务接力。
-4. 近期工程优先级应继续偏 `harness-first + context-first + observability-first`。
+1. `MCP` 已经不再只是 Anthropic 生态内的话题，而是在走向跨平台标准和插件分发层。
+2. `shell + container + code execution + sandbox + state + budget` 正在变成 agent 平台的默认能力边界。
+3. `skills`、`compaction`、`progress notes`、`handoff artifacts`、`semantic code context`、`persistent memory` 说明长时任务的核心问题已经转向上下文管理和任务接力。
+4. `Gemini Enterprise Agent Platform` 说明 Google 也已把 enterprise agent runtime、identity、registry、gateway、evaluation、observability 放到公开主线。
+5. 近期工程优先级应继续偏 `harness-first + context-first + privacy-first + observability-first`。
 
 ## 跟踪表
 
@@ -236,3 +237,103 @@
   之前判断：评测是 runtime 的旁路能力。
   当前判断：在 agentic coding 里，评测、资源配额、sandbox enforcement 已变成同一系统的不同切面。
   变化原因：`infrastructure noise` 文章直接证明了 infra 配置会改变 benchmark 结果。
+
+## 2026-04-17 当周补充
+
+### 新增条目
+
+- 条目：`The next evolution of the Agents SDK`
+  方向：`official harness / sandbox / durable execution`
+  核心信号：OpenAI 已把 `model-native harness`、`native sandbox`、`manifest workspace`、`snapshotting + rehydration` 做成 SDK 默认能力。
+  为什么重要：这让 `long-running agent runtime` 从“最佳实践”变成“官方标准实现”。
+  建议动作：把 `manifest`、`checkpointing`、`harness/compute split` 纳入内部 runtime 术语表。
+  来源：https://openai.com/index/the-next-evolution-of-the-agents-sdk/
+
+- 条目：`Codex for (almost) everything`
+  方向：`desktop runtime / plugin layer / memory`
+  核心信号：OpenAI 已把 `computer use`、`browser`、`memory`、`automations`、`90+ plugins` 和远程 devbox 连接放进同一 app 工作流。
+  为什么重要：这说明 agent infra 已从 API 层延伸到最终用户工作台层，插件和记忆不再只是开发者附属概念。
+  建议动作：比较平台时，新增 `app-layer runtime` 和 `desktop orchestration` 两个维度。
+  来源：https://openai.com/index/codex-for-almost-everything/
+
+- 条目：`Anthropic at Google Cloud Next 2026`
+  方向：`multi-agent decomposition / enterprise deployment`
+  核心信号：Anthropic 公开把多 agent 真正适用的三类场景收敛到 `context isolation`、`parallel execution`、`specialization`，并强调 `verification subagents`。
+  为什么重要：这是一条反 hype 的高信号，说明多 agent 正在从概念堆砌回到适用边界管理。
+  建议动作：内部若讨论多 agent，默认先验证是否满足这三类收益和验证链要求。
+  来源：https://www.anthropic.com/events/anthropic-at-google-cloud-next-2026
+
+- 条目：`Gemini Robotics-ER 1.6`
+  方向：`agentic vision / embodied runtime / code execution`
+  核心信号：Google 在实体环境里把 `visual reasoning`、`pointing`、`code execution`、`external tools` 组合成完整 agentic pipeline。
+  为什么重要：这说明 `tool use` 已不只发生在浏览器和 shell，Google 正把它扩到 physical agent runtime。
+  建议动作：后续比较 Google stack 时，把 `embodied runtime` 单独拆层，不要只和 `Live API` 放一起。
+  来源：https://deepmind.google/blog/gemini-robotics-er-1-6/
+
+### 状态变化
+
+- 主题：`runtime`
+  之前判断：重点是 `shell / container / sandbox / state`。
+  当前判断：还应补上 `manifested workspace`、`checkpointing`、`desktop workflow`，因为平台方已经开始把这些做成官方产品面。
+  变化原因：OpenAI 过去一周连续两篇文章把这些能力公开打包。
+
+- 主题：`multi-agent`
+  之前判断：需要谨慎，避免被编排热度带偏。
+  当前判断：现在可以更明确地用 `context isolation / parallel execution / specialization` 三条件过滤多 agent 方案。
+  变化原因：Anthropic 官方活动页已把适用边界写得很具体。
+
+## 2026-04-28 当周补充
+
+### 新增条目
+
+- 条目：`Gemini Enterprise Agent Platform`
+  方向：`enterprise agent runtime / governance / observability`
+  核心信号：Google Cloud 把 Vertex AI 演进为 Agent Platform，明确提供 `Agent Runtime`、`Memory Bank`、`Agent Identity`、`Agent Registry`、`Agent Gateway`、`Agent Simulation / Evaluation / Observability`。
+  为什么重要：Google 已把 agent 平台能力从开发工具提升到企业治理与运行层，正式进入 OpenAI / Anthropic 的同一横向比较维度。
+  建议动作：后续平台对比按 `runtime / memory / identity / registry / gateway / eval / observability` 七项记录。
+  来源：https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-agent-platform
+
+- 条目：`OpenAI Privacy Filter`
+  方向：`privacy infrastructure / local redaction / safety pre-processing`
+  核心信号：OpenAI 发布小型开源权重模型，用于本地检测和遮蔽 PII、账号信息、API key 等敏感 span，并强调训练、索引、日志和审查 pipeline。
+  为什么重要：agent infra 不只需要 runtime 和 tool use，还需要在上下文进入模型、日志和索引前做隐私过滤。
+  建议动作：把 `privacy filter before memory/index/logging` 加入内部最小安全清单。
+  来源：https://openai.com/index/introducing-openai-privacy-filter/
+
+- 条目：`Claude Opus 4.7 task budgets / xhigh / ultrareview`
+  方向：`runtime controls / review subflow`
+  核心信号：Anthropic 在模型发布中同步强化 `effort`、`task budget`、review command 和 auto mode，说明运行控制已经成为模型发布的一部分。
+  为什么重要：agent 运行时不能只靠模型变强，需要可调预算、专门 review 流程和更低摩擦的权限自动化。
+  建议动作：这里记录 runtime 控制点；模型能力细节回到 `模型发布追踪`。
+  来源：https://www.anthropic.com/news/claude-opus-4-7
+
+- 条目：`Claude Context / context-mode / memsearch`
+  方向：`context management / MCP / persistent memory`
+  核心信号：GitHub 周榜同时出现 `claude-context`、`context-mode`、`memsearch`：分别代表 codebase 语义检索 MCP、工具输出沙箱与会话延续、跨平台持久 memory。
+  为什么重要：开源侧已经把 `context quality` 明确拆成检索、压缩、工具输出隔离、事件索引、跨 agent memory，而不是笼统说“长上下文”。
+  建议动作：优先做一个最小对照：`semantic code context`、`tool-output sandbox`、`persistent memory` 分别适合解决什么问题。
+  来源：https://github.com/zilliztech/claude-context ; https://github.com/mksglu/context-mode ; https://github.com/zilliztech/memsearch
+
+- 条目：`GenericAgent`
+  方向：`self-evolving agent / hierarchical memory / minimal tools`
+  核心信号：GenericAgent 技术报告与 GitHub 热度共同指向 `context information density`、分层 memory、任务经验固化成 SOP/代码、极简工具集。
+  为什么重要：它给出了和“无限扩 context”相反的工程路线：少加载、按需找、把验证过的流程沉淀成可复用能力。
+  建议动作：把 `experience -> SOP -> executable tool` 纳入 self-improving agent 观察维度。
+  来源：https://arxiv.org/abs/2604.17091 ; https://github.com/lsdefine/GenericAgent
+
+### 状态变化
+
+- 主题：`Context engineering`
+  之前判断：重点在 compaction、progress notes、skills、handoff artifacts。
+  当前判断：还要加入 `tool-output sandbox`、`event index`、`semantic code context` 和 `cross-client memory`。
+  变化原因：本周 GitHub 周榜的高信号项目几乎都在解决“如何不把无效上下文塞进窗口”。
+
+- 主题：`Enterprise agent platform`
+  之前判断：OpenAI / Anthropic 更像 developer agent platform，Google 更偏模型和多模态。
+  当前判断：Google 已通过 `Gemini Enterprise Agent Platform` 正式把企业 agent runtime、治理和 observability 放到台前。
+  变化原因：Cloud Next 26 明确把 Vertex AI roadmap 收束进 Agent Platform。
+
+### 工程启发
+
+- 启发：`runtime`、`memory`、`privacy`、`identity`、`budget`、`observability` 已经构成同一个 agent infra 面。
+  对我们的影响：后续如果做 agent 平台，不应把 memory 和 privacy 当插件，把 eval 和 observability 当上线后补丁。

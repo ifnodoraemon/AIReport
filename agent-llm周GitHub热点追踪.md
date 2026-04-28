@@ -1,10 +1,10 @@
 # Agent / LLM GitHub 每周热点追踪
 
-最后更新：2026-04-11
+最后更新：2026-04-28
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
-跟踪范围：持续记录 GitHub Trending 周榜，以及对应仓库主页；当前文档已包含 `2026-03-19` 至 `2026-04-11` 的多周快照
+跟踪范围：持续记录 GitHub Trending 周榜，以及对应仓库主页；当前文档已包含 `2026-03-19` 至 `2026-04-28` 的多周快照
 
 ## 目的
 
@@ -20,11 +20,11 @@
 当前最值得关注的高信号主题：
 
 1. `Agent harness` 正在标准化，默认能力已经收敛到：`planning`、`filesystem`、`subagents`、`context management`、`sandbox`、`memory`。
-2. `Memory / context` 正在从论文 benchmark 走向产品化能力，GitHub 热点里已经出现 `跨 session 记忆`、`context database`、`code graph RAG` 三条实现路线。
+2. `Memory / context` 正在从论文 benchmark 走向产品化能力，GitHub 热点里已经出现 `跨 session 记忆`、`context database`、`code graph RAG`、`tool-output sandbox`、`semantic code context` 多条实现路线。
 3. `Plugin / marketplace` 正在成为 agent 能力分发层，说明生态竞争不只是模型和框架，也包括能力封装与安装体验。
 4. `GUI / browser agent` 开始从 headless 自动化转向 `in-page` 原生交互，这更接近真实业务系统落地。
 5. 和论文追踪相比，`RAG 安全` 与 `评测` 在 GitHub 热榜上的显性热度还不够高，说明这两块更像“必要但不性感”的基础建设，反而值得逆向重视。
-6. 综合本周信号，近期默认建议仍然是：`memory-first + harness-first`，而不是优先押注训练范式或复杂多 agent 编排。
+6. 综合本周信号，近期默认建议仍然是：`memory-first + harness-first + context-budget-first`，而不是优先押注训练范式或复杂多 agent 编排。
 
 ## 热点跟踪表
 
@@ -163,7 +163,7 @@
 - `Python`：https://github.com/trending/python?since=weekly
 - `TypeScript`：https://github.com/trending/typescript?since=weekly
 - 仓库细节以各项目 GitHub 主页为准。
-- 这份文档目前包含 `2026-03-25` 与 `2026-04-06` 两个周榜快照，后续 stars 数和 release 信息可能继续变化。
+- 这份文档目前包含 `2026-03-25` 至 `2026-04-28` 的多周榜单快照，后续 stars 数和 release 信息可能继续变化。
 
 ## 2026-04-06 当周
 
@@ -292,3 +292,117 @@
   之前判断：更多是 `multi-agent orchestration` 和教程型生态。
   当前判断：正在向 `managed agents platform`、`teammate platform` 和更稳定的多 agent 工作台收敛。
   变化原因：`multica`、`oh-my-codex`、`hermes-agent` 的定位更像产品层，而不是单纯脚手架。
+
+## 2026-04-17 当周
+
+### 新上榜项目
+
+- 项目：`anomalyco/opencode`
+  方向：`open-source coding agent`
+  热度：`69,073 stars`；`2,345 stars today`
+  为什么重要：它仍然是当前最明确的“开源 coding agent 主战场”之一，说明社区对可替代闭源 coding agent 的需求非常强。
+  建议动作：持续对比它在 `tool use`、`memory`、`workspace UX` 上和 `Codex / Claude Code` 周边生态的差距。
+  来源：https://github.com/trending/typescript ; https://github.com/anomalyco/opencode
+
+- 项目：`iOfficeAI/AionUi`
+  方向：`cowork layer / multi-client agent shell`
+  热度：`3,574 stars`；`78 stars today`
+  为什么重要：它直接把 `Gemini CLI / Claude Code / Codex / Qwen Code` 等多客户端并列支持，说明“统一 agent 外壳层”正在升温。
+  建议动作：把 `cross-agent client compatibility` 纳入 plugin / shell 观察维度。
+  来源：https://github.com/trending/typescript ; https://github.com/iOfficeAI/AionUi
+
+- 项目：`badlogic/pi-mono`
+  方向：`agent toolkit / unified LLM API`
+  热度：`1,728 stars`；`87 stars today`
+  为什么重要：它把 `coding agent CLI`、`unified LLM API`、`Slack bot`、`TUI/web UI` 放到同一套工具箱里，说明社区仍在寻找“单套底座跑多表面”的方案。
+  建议动作：重点看它如何处理多入口共享状态和能力封装。
+  来源：https://github.com/trending/typescript ; https://github.com/badlogic/pi-mono
+
+- 项目：`HKUDS/DeepCode`
+  方向：`open agentic coding / paper-to-code`
+  热度：`12,327 stars`；`246 stars today`
+  为什么重要：它把 `Paper2Code / Text2Web / Text2Backend` 直接写进定位，说明开源热点开始更明确地把 agent 输出绑定到交付物，而不是聊天体验。
+  建议动作：把它当作 `artifact-oriented agent` 样本，观察其从任务到产物的链路设计。
+  来源：https://github.com/trending/python ; https://github.com/HKUDS/DeepCode
+
+### 状态变化
+
+- 项目：`coding agent`
+  之前判断：热点集中在 `managed agents`、`team orchestration`、`memory`。
+  当前判断：`open coding agent` 仍然是最强公共流量入口，但周边正在快速长出 `统一外壳层` 和 `多入口共享底座`。
+  变化原因：`opencode`、`AionUi`、`pi-mono` 在同一时点形成了明显分层。
+
+- 项目：`knowledge / artifact surface`
+  之前判断：`knowledge surface` 在升温。
+  当前判断：这条线正进一步向“直接生成和维护交付物”靠近，而不是只做检索或文档侧边栏。
+  变化原因：`DeepCode` 这类项目开始把最终产物写进主定位。
+
+## 2026-04-28 当周
+
+### 新上榜项目
+
+- 项目：`zilliztech/claude-context`
+  方向：`semantic code context / MCP`
+  热度：`3,725 stars this week`
+  为什么重要：它把整个 codebase 做成 Claude Code 与其他 coding agent 可用的语义上下文 MCP，说明代码上下文不再只是 grep / read 文件，而是独立的检索层。
+  建议动作：把它和 `GitNexus`、`OpenViking` 一起比较，关注大仓库里 `context retrieval` 的质量、成本和延迟。
+  来源：https://github.com/trending/typescript?since=weekly ; https://github.com/zilliztech/claude-context
+
+- 项目：`mksglu/context-mode`
+  方向：`context window optimization / tool-output sandbox`
+  热度：`2,346 stars this week`
+  为什么重要：它直接处理 agent 工具输出污染 context 的问题，通过 sandbox、事件索引、FTS/BM25 检索和压缩来保持会话可恢复。
+  建议动作：把 `tool output should not enter context by default` 作为内部 agent harness 的设计原则候选。
+  来源：https://github.com/trending/typescript?since=weekly ; https://github.com/mksglu/context-mode
+
+- 项目：`lsdefine/GenericAgent`
+  方向：`self-evolving agent / minimal tools / hierarchical memory`
+  热度：`2,832 stars this week`
+  为什么重要：项目与同名技术报告一起强化了 `context information density` 这条线：少量工具、按需 memory、把执行轨迹固化成 SOP/代码。
+  建议动作：重点验证其 `experience -> SOP -> executable code` 是否真的能降低后续任务 token 和工具调用次数。
+  来源：https://github.com/trending/python?since=weekly ; https://github.com/lsdefine/GenericAgent
+
+- 项目：`openai/openai-agents-python`
+  方向：`official agent SDK / multi-agent workflows`
+  热度：`1,628 stars this week`
+  为什么重要：OpenAI 官方 SDK 上榜说明 agent 基础设施的社区入口不只在博客和产品发布，也在真实开发包里持续聚集。
+  建议动作：继续跟它的 `agents / handoffs / MCP tools / guardrails / human-in-the-loop / sessions / tracing` 能力边界。
+  来源：https://github.com/trending/python?since=weekly ; https://github.com/openai/openai-agents-python
+
+- 项目：`zilliztech/memsearch`
+  方向：`cross-platform persistent memory`
+  热度：`218 stars this week`
+  为什么重要：绝对热度不高，但它把 `Claude Code / OpenClaw / OpenCode / Codex CLI` 的记忆打通，代表 memory 从单客户端插件转向跨 agent 层。
+  建议动作：把它作为 `cross-client memory` 样本，重点看 Markdown + 向量库是否适合内部知识沉淀。
+  来源：https://github.com/trending/python?since=weekly ; https://github.com/zilliztech/memsearch
+
+- 项目：`HKUDS/RAG-Anything`
+  方向：`multimodal RAG`
+  热度：`2,622 stars this week`
+  为什么重要：RAG 热点仍在，但关注点从纯文本检索扩展到图片、表格、公式与上下文配置，说明知识系统在向多模态文档处理扩展。
+  建议动作：如果后续评估 RAG，不要只测文本 chunk 检索，要补表格、图像和公式场景。
+  来源：https://github.com/trending/python?since=weekly ; https://github.com/HKUDS/RAG-Anything
+
+- 项目：`langfuse/langfuse`
+  方向：`LLM observability / evals`
+  热度：`987 stars this week`
+  为什么重要：observability 项目进入周榜，说明 agent / LLM 工程化正在反向推高 traces、evals、prompt management 和 datasets 的需求。
+  建议动作：把 `observability-first` 从建议动作上升为 agent 平台默认要求。
+  来源：https://github.com/trending/typescript?since=weekly ; https://github.com/langfuse/langfuse
+
+### 状态变化
+
+- 项目：`context engineering`
+  之前判断：热点在 memory、knowledge surface、artifact surface。
+  当前判断：本周更清楚地分成 `semantic code context`、`tool-output sandbox`、`persistent memory`、`observability` 四层。
+  变化原因：`claude-context`、`context-mode`、`memsearch`、`langfuse` 同周出现，主题高度一致。
+
+- 项目：`official SDK vs community plugin`
+  之前判断：官方平台和开源插件分别推进。
+  当前判断：两者正在同周共振：OpenAI 官方 SDK 继续吸开发者，社区则补 `context / memory / compression` 这些官方 SDK 未必优先解决的局部痛点。
+  变化原因：`openai-agents-python` 与 Zilliz / context-mode 生态同时进入周榜。
+
+### 新信号 / 新风险
+
+- 信号：`context` 竞争正在从“能放多少”转向“默认不放什么、如何按需恢复什么”。
+  对我们的影响：后续内部 agent 设计不应把长上下文当万能答案，应先定义上下文预算、输出隔离和 memory 检索策略。

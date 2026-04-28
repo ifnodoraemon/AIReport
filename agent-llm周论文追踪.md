@@ -1,6 +1,6 @@
 # Agent / LLM 每周跟踪
 
-最后更新：2026-04-11
+最后更新：2026-04-28
 
 跟踪范围：近期与 `agent`、`LLM`、`memory`、`RAG 安全`、`评测` 相关的论文与趋势
 
@@ -18,9 +18,9 @@
 当前最值得关注的高信号主题：
 
 1. `Agentic RL` 正在从 prompt orchestration 转向训练与基础设施问题。
-2. `Memory` 正在成为 agent 的一等能力，而不只是外挂向量库。
+2. `Memory / context density` 正在成为 agent 的一等能力，而不只是外挂向量库或更长上下文窗口。
 3. `RAG / agent 安全` 需要覆盖语料投毒和 reranking 层风险，不能只盯 prompt injection。
-4. `评测` 正在从二元成功率转向长流程、主观质量和真实企业任务。
+4. `评测` 正在从二元成功率转向长流程、主观质量、真实企业任务和科学研究工作流。
 
 ## 跟踪表
 
@@ -202,3 +202,102 @@
   之前判断：更像一个值得观察的研究方向。
   当前判断：随着 `Describe-Then-Act` 这类工作出现，主动 steering 已经值得进入中优先级观察列表。
   变化原因：该类方法开始把“先预判后执行”做成可落地、可加速的结构，而不是纯概念。
+
+## 2026-04-17 当周补充
+
+### 新增论文
+
+- 论文：`AMA-Bench: Evaluating Long-Horizon Memory for Agentic Applications`
+  为什么重要：它把 memory benchmark 从对话中心转向 `agent-environment trajectories`，并明确指出许多 memory 系统输在 `causality` 和 `objective information retention`。
+  建议动作：后续内部长期记忆评测里，增加 `因果链保持` 和 `任务目标状态保持` 两项。
+  状态：`可执行`
+  来源：https://openreview.net/forum?id=GoSVL7mLcM
+
+- 论文：`Evaluating Memory Structure in LLM Agents`
+  为什么重要：它开始测 agent 是否会把记忆组织成合适结构，而不只是“能检索到事实”；这更接近真实长期工作区。
+  建议动作：如果做 persistent workspace agent，补一组 `memory structure` 样例，如任务清单、分层目录、账本和树形知识。
+  状态：`跟踪中`
+  来源：https://openreview.net/forum?id=a9vY2sJkf4
+
+- 论文：`Learning on the Job: An Experience-Driven Self-Evolving Agent for Long-Horizon Tasks`
+  为什么重要：这条线把 `experience-driven self-evolution`、长期任务、持续改进绑在一起，比纯 prompt orchestration 更接近“会积累经验的 agent”。
+  建议动作：把它和 `system memory` 主题一起跟，重点看经验反思到底沉淀成什么可复用结构。
+  状态：`待读`
+  来源：https://openreview.net/forum?id=qTpFp3ixnv
+
+### 状态变化
+
+- 主题：`Memory`
+  之前判断：memory 正在细分到 personalization、forgetting、diagnosis、memory-to-action。
+  当前判断：还应显式加入 `causality preservation` 与 `memory structure`，因为真实 agent 失败经常不是“没记住”，而是“记忆被错误组织或失去因果链”。
+  变化原因：`AMA-Bench` 与 `StructMemEval` 都在补这个缺口。
+
+## 2026-04-28 当周补充
+
+### 新增论文
+
+- 论文：`GenericAgent: A Token-Efficient Self-Evolving LLM Agent via Contextual Information Density Maximization`
+  为什么重要：这篇把长时 agent 的瓶颈重新表述为 `context information density`，并用 `hierarchical on-demand memory`、`SOP / executable code reuse`、`context truncation / compression` 解释为什么更长上下文不等于更强 agent。
+  建议动作：把它和 `context-mode`、`Claude Context`、`memsearch` 这类 GitHub 热点一起看，优先研究“少放但放对”的上下文架构。
+  状态：`跟踪中`
+  来源：https://arxiv.org/abs/2604.17091 ; https://github.com/lsdefine/GenericAgent
+
+- 论文：`Decoupled DiLoCo for Resilient Distributed Pre-training`
+  为什么重要：它把 frontier model 训练的关键问题从“更多 GPU/TPU”推进到 `低通信、异步、跨数据中心、故障隔离`，并用 Gemma 4 训练实验说明训练 goodput 可以显著改善。
+  建议动作：虽然它不是 agent 论文，但应纳入 LLM 基础设施跟踪，因为未来模型发布速度和成本会受这类训练架构影响。
+  状态：`跟踪中`
+  来源：https://arxiv.org/abs/2604.21428 ; https://deepmind.google/blog/decoupled-diloco/
+
+- 论文：`BixBench: a Comprehensive Benchmark for LLM-based Agents in Computational Biology` `补录`
+  为什么重要：BixBench 面向真实 bioinformatics 多步分析任务，近期又被 `GPT-5.5` 发布页作为科学研究能力评测信号引用，说明科研 agent 评测正在从知识问答转向真实数据分析工作流。
+  建议动作：把 `scientific agent eval` 从通用 long-horizon eval 中拆出来，单独关注数据、工具、实验解释和失败归因。
+  状态：`可执行`
+  来源：https://arxiv.org/abs/2503.00096 ; https://www.futurehouse.org/research-announcements/bixbench
+
+- 论文：`The Long-Horizon Task Mirage? Diagnosing Where and Why Agentic Systems Break`
+  为什么重要：这篇提出 `HORIZON`，收集 `3100+` 条跨四类 agentic domain 的轨迹，并用 trajectory-grounded LLM-as-a-Judge 做失败归因。它比单纯成功率更适合解释“为什么长任务一长就崩”。
+  建议动作：把它作为长流程 agent 评测的 P0 漏项，和 `LH-Bench`、`AMA-Bench` 一起放进内部 eval 设计。
+  状态：`可执行`
+  来源：https://arxiv.org/abs/2604.11978
+
+- 论文：`AgenticQwen: Training Small Agentic Language Models with Dual Data Flywheels for Industrial-Scale Tool Use`
+  为什么重要：它把小模型、agentic RL、synthetic data flywheel 和工业级 tool use 绑定起来，说明 `agentic small model` 已经不是成本优化小分支，而可能成为高频执行层。
+  建议动作：把它放进 `small executor model / agentic RL` 主题，后续和 `GPT-5.4 mini/nano`、`Gemini Flash-Lite` 做系统层对比。
+  状态：`跟踪中`
+  来源：https://arxiv.org/abs/2604.21590
+
+- 论文：`SkillGraph: Graph Foundation Priors for LLM Agent Tool Sequence Recommendation`
+  为什么重要：它把工具选择拆成 `retrieval` 和 `ordering` 两个问题，用近 `49,831` 条成功轨迹构建工具执行图，直指真实 agent 中“工具选到了但顺序错了”的失败模式。
+  建议动作：把 `tool sequence prior` 加入 tool-use eval，不要只评估工具召回率。
+  状态：`跟踪中`
+  来源：https://arxiv.org/abs/2604.19793
+
+- 论文：`Your Agent Is Mine: Measuring Malicious Intermediary Attacks on the LLM Supply Chain`
+  为什么重要：这篇把第三方 LLM API router 定义成 agent 供应链攻击面，实测发现恶意注入、secret exfiltration 和 YOLO-mode 风险；它比传统 prompt injection 更贴近生产 agent 的真实边界。
+  建议动作：把 `router integrity / tool-call signing / transparency logging` 加入 RAG/agent 安全主题，不再只盯语料投毒。
+  状态：`可执行`
+  来源：https://arxiv.org/abs/2604.08407
+
+- 论文：`The Tool-Overuse Illusion: Why Does LLM Prefer External Tools over Internal Knowledge?`
+  为什么重要：它指出工具增强模型会系统性过度调用工具，并把原因拆成 `knowledge epistemic illusion` 和 reward design；这直接影响 agent 成本、延迟和错误传播。
+  建议动作：内部 tool-use eval 应加入 `unnecessary tool call rate`，否则 agent 看似更可靠，实际可能只是更贵、更慢。
+  状态：`跟踪中`
+  来源：https://arxiv.org/abs/2604.19749
+
+- 论文：`AgentGL: Towards Agentic Graph Learning with LLMs via Reinforcement Learning`
+  为什么重要：它把 graph learning 重新表述为 agentic navigation + inference，并用 graph-native tools 与 curriculum RL 提升图任务效果，和 `Graph RAG / code graph context` 主线同向。
+  建议动作：作为 P1 观察项，重点看图结构能否用于 codebase / enterprise knowledge context，而不是只看图学习 benchmark。
+  状态：`跟踪中`
+  来源：https://arxiv.org/abs/2604.05846
+
+### 状态变化
+
+- 主题：`Context / memory`
+  之前判断：memory 重点在检索、组织、因果和任务目标保持。
+  当前判断：还应加入 `context density`、`tool sequence prior` 与 `tool overuse control`，即有限上下文里保留什么、工具如何排序、何时不该调用工具。
+  变化原因：GenericAgent、SkillGraph、Tool-Overuse、context-mode、Claude Context、memsearch 共同指向“上下文质量和工具调用质量”。
+
+- 主题：`Agent eval`
+  之前判断：长流程、主观质量、memory-to-action 是关键。
+  当前判断：还要加入 `long-horizon failure attribution`、`scientific workflow` 与 `agent supply-chain security`。
+  变化原因：HORIZON、BixBench、Your Agent Is Mine 分别补上长任务诊断、科学工作流和 router 供应链风险。
