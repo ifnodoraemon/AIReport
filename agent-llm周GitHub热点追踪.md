@@ -1,6 +1,6 @@
 # Agent / LLM GitHub 每周热点追踪
 
-最后更新：2026-04-28
+最后更新：2026-04-30
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 

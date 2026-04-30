@@ -1,6 +1,6 @@
 # AI 三巨头博客追踪
 
-最后更新：2026-04-28
+最后更新：2026-04-30
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
@@ -469,3 +469,19 @@
   之前判断：重点是 `agent runtime / MCP / eval / context`。
   当前判断：还要显式加入 `model release governance`、`enterprise agent platform`、`training/inference infrastructure` 三个维度。
   变化原因：本周新增内容已经覆盖模型、runtime、评测、安全过滤、算力和分布式训练系统。
+
+## 2026-04-30 当周补充
+
+### 新增 / 补录条目
+
+- `OpenAI` | `2026-04-29` | [Building the compute infrastructure for the Intelligence Age](https://openai.com/index/building-the-compute-infrastructure-for-the-intelligence-age)
+  方向：`compute infrastructure`
+  核心信号：OpenAI 推进 Stargate 数据中心扩建以满足 AGI 训练需求，强调算力池正在进入新规模。
+
+- `OpenAI` | `2026-04-28` | [OpenAI models, Codex, and Managed Agents come to AWS](https://openai.com/index/openai-models-codex-and-managed-agents-come-to-aws)
+  方向：`agent infrastructure / developer platform`
+  核心信号：OpenAI 全面登陆 AWS，标志着 Codex 和 Managed Agents 等高阶运行时产品的多云部署开始，也是首次打破对 Azure 的单一依赖。
+
+- `OpenAI` | `2026-04-27` | [An open-source spec for orchestration: Symphony](https://openai.com/index/an-open-source-spec-for-orchestration-symphony)
+  方向：`agentic workflows / orchestration`
+  核心信号：OpenAI 推出开源的 Agent 编排规范 Symphony，尝试在 MCP 之外建立一套更专注于任务分解与状态流转的标准。

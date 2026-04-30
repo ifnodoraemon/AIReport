@@ -1,6 +1,6 @@
 # MCP / Tools / Agent Infra 追踪
 
-最后更新：2026-04-28
+最后更新：2026-04-30
 
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/agent-llm周GitHub热点追踪.md`
 
@@ -337,3 +337,18 @@
 
 - 启发：`runtime`、`memory`、`privacy`、`identity`、`budget`、`observability` 已经构成同一个 agent infra 面。
   对我们的影响：后续如果做 agent 平台，不应把 memory 和 privacy 当插件，把 eval 和 observability 当上线后补丁。
+
+## 2026-04-30 当周补充
+
+### 新增条目
+
+- `OpenAI Symphony` | `2026-04-27` | [An open-source spec for orchestration: Symphony](https://openai.com/index/an-open-source-spec-for-orchestration-symphony)
+  状态：`Spec Draft`
+  方向：`Agent Orchestration`
+  核心说明：OpenAI 推出的开源编排规范，旨在标准化多个 agent 之间的交接、状态管理和子任务分解。相比于关注 context/tool 暴露的 MCP，Symphony 更关注 execution runtime 中的拓扑结构和路由。
+  启示：Agent 基础设施的分层越来越清晰，从底层 protocol (MCP) 到上层 orchestration (Symphony) 都开始出现巨头推动的标准。
+
+- `OpenAI Managed Agents on AWS` | `2026-04-28` | [OpenAI models, Codex, and Managed Agents come to AWS](https://openai.com/index/openai-models-codex-and-managed-agents-come-to-aws)
+  状态：`Developer Preview`
+  方向：`Cloud Deployment / Runtime`
+  核心说明：OpenAI 的托管 Agent 运行时（包括 Codex 等环境）进入 AWS 生态，使得开发者可以在更接近企业自有数据的地方运行高特权 agent，降低了数据出域的摩擦。

@@ -1,6 +1,6 @@
 # AI 关键人物追踪
 
-最后更新：2026-04-28
+最后更新：2026-04-30
 
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/模型发布追踪.md`、`/home/ifnodoraemon/myreport/MCP-tools-agent-infra追踪.md`
 
