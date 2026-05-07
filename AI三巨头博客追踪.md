@@ -1,10 +1,10 @@
 # AI 三巨头博客追踪
 
-最后更新：2026-04-30
+最后更新：2026-05-07
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
-跟踪范围：截至 `2026-04-28` 检索到的 `OpenAI`、`Anthropic`、`Google / Google DeepMind` 官方博客、新闻与工程文章；优先保留和 `model`、`agent`、`tool use`、`runtime`、`eval`、`context`、`多模态产品化` 相关的高信号条目
+跟踪范围：截至 `2026-05-07` 检索到的 `OpenAI`、`Anthropic`、`Google / Google DeepMind` 官方博客、新闻与工程文章；优先保留和 `model`、`agent`、`tool use`、`runtime`、`eval`、`context`、`多模态产品化` 相关的高信号条目
 
 ## 目的
 
@@ -485,3 +485,69 @@
 - `OpenAI` | `2026-04-27` | [An open-source spec for orchestration: Symphony](https://openai.com/index/an-open-source-spec-for-orchestration-symphony)
   方向：`agentic workflows / orchestration`
   核心信号：OpenAI 推出开源的 Agent 编排规范 Symphony，尝试在 MCP 之外建立一套更专注于任务分解与状态流转的标准。
+
+## 2026-05-07 当周补充
+
+### 新增 / 补录条目
+
+- `OpenAI` | `2026-05-06` | `How frontier enterprises are building an AI advantage`
+  方向：`enterprise adoption / agentic workflows`
+  核心信号：OpenAI 用 `B2B Signals` 把企业 AI 采用从“席位和消息量”推进到“深度使用与委托式 agent workflow”，并明确指出前沿企业在 `Codex` 等 agentic tools 上的使用差距最大。
+  为什么重要：这说明 OpenAI 现在不只发布 agent 工具，也开始用企业使用数据定义“成熟度”。
+  建议动作：后续企业 agent 评估加入 `depth of use`、`agentic tool intensity` 和 `production governance`。
+  来源：https://openai.com/index/introducing-b2b-signals/
+
+- `OpenAI` | `2026-05-05` | `GPT-5.5 Instant`
+  方向：`default model / personalization / safety release`
+  核心信号：GPT-5.5 Instant 替代 GPT-5.3 Instant 成为 ChatGPT 默认模型，强调更强事实性、更少冗余、更好利用历史聊天、文件和 Gmail 上下文；系统卡同时把它列入 cyber 与 bio/chem 高能力类别并加 safeguards。
+  为什么重要：`Instant` 是高频入口模型，默认模型的记忆来源和安全分级会直接影响普通用户的 agent 使用体验。
+  建议动作：把 `memory sources` 与 `default-model safety card` 同时纳入模型发布和评测追踪。
+  来源：https://openai.com/index/gpt-5-5-instant/ ; https://openai.com/index/gpt-5-5-instant-system-card/
+
+- `OpenAI` | `2026-05-05` | `Supercomputer networking to accelerate large scale AI training`
+  方向：`training infrastructure / open networking spec`
+  核心信号：OpenAI 与 AMD、Broadcom、Intel、Microsoft、NVIDIA 推出 `MRC`，并通过 OCP 公开，用多平面网络和多路径 packet spraying 提升大规模训练集群韧性。
+  为什么重要：这延续了 `Stargate` 之后的底层算力叙事，说明 frontier model 竞争正在公开进入网络协议与训练 goodput 层。
+  建议动作：在三巨头横向比较中加入 `training network / failure recovery / open infra spec`。
+  来源：https://openai.com/index/mrc-supercomputer-networking/
+
+- `Anthropic` | `2026-05-06` | `Higher usage limits for Claude and a compute deal with SpaceX`
+  方向：`compute capacity / developer availability`
+  核心信号：Anthropic 宣布与 SpaceX 的算力合作，并同步提高 Claude Code 与 Opus API 限额，把算力增量直接转成开发者可感知的使用能力。
+  为什么重要：这说明 Claude 的 agent 可用性瓶颈正在从模型本身转向算力供给、限额和地域基础设施。
+  建议动作：跟踪模型发布时同步记录 `rate limit / capacity / region`，否则会误判真实可用性。
+  来源：https://www.anthropic.com/news/higher-limits-spacex
+
+- `Anthropic` | `2026-05-05` | `Agents for financial services`
+  方向：`vertical agents / plugins / MCP apps`
+  核心信号：Anthropic 发布 10 个金融服务 ready-to-run agent templates，并把 `skills + connectors + subagents` 打包进 Claude Cowork、Claude Code 和 Managed Agents，同时扩展 Microsoft 365 add-ins 与 MCP app。
+  为什么重要：这是从通用 agent 平台走向受监管垂直工作流的强信号。
+  建议动作：把 `vertical agent templates`、`connector governance` 和 `domain benchmark` 纳入长期跟踪。
+  来源：https://www.anthropic.com/news/finance-agents
+
+- `Google` | `2026-05-05` | `Gemini API File Search is now multimodal`
+  方向：`multimodal RAG / verifiable retrieval`
+  核心信号：Gemini API File Search 增加图文混合检索、metadata filtering 和 page-level citations，明确把 RAG 从文本 chunk 检索推向多模态、可追溯的 agent context layer。
+  为什么重要：这和近期 GitHub 热点里的 `semantic code context`、`multimodal RAG` 同向，说明 context engineering 正在产品化。
+  建议动作：后续评估 RAG 时加入 `image/table/document page citation`，不要只测纯文本检索。
+  来源：https://blog.google/innovation-and-ai/technology/developers-tools/expanded-gemini-api-file-search-multimodal-rag/
+
+- `Google` | `2026-05-05` | `Accelerating Gemma 4: faster inference with multi-token prediction drafters`
+  方向：`open model inference / latency`
+  核心信号：Google 为 Gemma 4 发布 `MTP drafters`，用 speculative decoding 方式改善开放模型推理延迟。
+  为什么重要：开放模型的竞争开始从“参数/能力”扩展到“是否足够快地跑在开发者和端侧环境”。
+  建议动作：把 `draft model / speculative decoding / latency-quality tradeoff` 加入开放模型追踪字段。
+  来源：https://blog.google/innovation-and-ai/technology/developers-tools/multi-token-prediction-gemma-4/
+
+### 横向变化
+
+- `OpenAI` 本周主线是 `默认模型 + 企业成熟度 + 训练/语音基础设施`，从产品入口、企业采用和底层系统三层同步推进。
+- `Anthropic` 本周主线是 `垂直 agent templates + 算力/限额 + 交付生态`，说明 Claude 正在把 agent 从平台能力推到行业解决方案。
+- `Google` 本周主线是 `multimodal retrieval + Gemma inference`，说明它在 developer stack 上更重视 context layer 与开放模型效率。
+
+### 状态变化
+
+- 主题：`Context / memory`
+  之前判断：context engineering 主要来自 agent runtime 和 GitHub 热点。
+  当前判断：现在三家都开始把 context 做成产品面：OpenAI 的 memory sources、Anthropic 的跨 Microsoft 365 context handoff、Google 的 multimodal File Search。
+  变化原因：本周新增内容都把“上下文如何被带入、解释、过滤和引用”放到前台。

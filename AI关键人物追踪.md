@@ -1,10 +1,10 @@
 # AI 关键人物追踪
 
-最后更新：2026-04-30
+最后更新：2026-05-07
 
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/模型发布追踪.md`、`/home/ifnodoraemon/myreport/MCP-tools-agent-infra追踪.md`
 
-跟踪范围：截至 `2026-04-28` 检索到的 AI 关键人物 `个人官网 / 官方博客 / 公司新闻页 / X`；优先选择能持续释放 `模型路线`、`agent infra`、`开发者生态`、`安全治理`、`world model` 高信号的人
+跟踪范围：截至 `2026-05-07` 检索到的 AI 关键人物 `个人官网 / 官方博客 / 公司新闻页 / X`；优先选择能持续释放 `模型路线`、`agent infra`、`开发者生态`、`安全治理`、`world model` 高信号的人
 
 ## 目的
 
@@ -517,3 +517,43 @@
   之前判断：Google DeepMind 正在并行推进 `open models / safety / embodied / audio`。
   当前判断：还应显式加入 `training systems resilience`，因为 Decoupled DiLoCo 是直接影响 frontier scaling 的底层信号。
   变化原因：Google DeepMind 已把分布式训练架构作为独立研究发布。
+
+## 2026-05-07 当周补充
+
+### 新增动态
+
+- 人物：`Sam Altman`
+  动作：OpenAI 于 `2026-05-05` 发布 `GPT-5.5 Instant` 与系统卡，并于 `2026-05-06` 发布 `B2B Signals` 企业采用分析。
+  来源级别：`官网已确认`
+  方向：`default model / personalization / enterprise agent adoption`
+  为什么重要：Sam 线下的 OpenAI 本周信号不是单纯“更强模型”，而是把默认模型、记忆来源、企业 agent 使用深度和安全分级合在一起推进。
+  对我们的影响：跟 Sam 时应继续把 `consumer default model` 与 `enterprise delegated work` 放在同一平台路线里看。
+  来源：https://openai.com/index/gpt-5-5-instant/ ; https://openai.com/index/gpt-5-5-instant-system-card/ ; https://openai.com/index/introducing-b2b-signals/
+
+- 人物：`Dario Amodei`
+  动作：Anthropic 于 `2026-05-04` 宣布与 Blackstone、Hellman & Friedman、Goldman Sachs 建立企业 AI 服务公司，`2026-05-05` 发布金融服务 agents，`2026-05-06` 宣布 SpaceX 算力合作与更高 Claude 使用限额。
+  来源级别：`官网已确认`
+  方向：`enterprise delivery / vertical agents / compute capacity`
+  为什么重要：Dario 线下的 Anthropic 本周把 `agent 模板`、`服务交付` 和 `算力供给` 三件事绑定，路线更偏“把 Claude 放进行业核心流程”。
+  对我们的影响：跟 Dario 时要上调 `domain template marketplace` 与 `implementation services` 权重。
+  来源：https://www.anthropic.com/news/enterprise-ai-services-company ; https://www.anthropic.com/news/finance-agents ; https://www.anthropic.com/news/higher-limits-spacex
+
+- 人物：`Demis Hassabis`
+  动作：Google 于 `2026-05-05` 发布 Gemini API File Search 多模态更新，并发布 Gemma 4 MTP drafters。
+  来源级别：`官网已确认`
+  方向：`multimodal RAG / open model efficiency`
+  为什么重要：Demis/Google 体系本周的高信号在开发者底座：让 agent 有更好的多模态检索上下文，同时让 Gemma 4 更快。
+  对我们的影响：跟 Google DeepMind 时，除了 frontier reasoning，也要继续盯 `context layer` 与 `open model serving efficiency`。
+  来源：https://blog.google/innovation-and-ai/technology/developers-tools/expanded-gemini-api-file-search-multimodal-rag/ ; https://blog.google/innovation-and-ai/technology/developers-tools/multi-token-prediction-gemma-4/
+
+### 状态变化
+
+- 人物：`Sam Altman`
+  之前判断：重点是 `GPT-5.5 + privacy/security infra`。
+  当前判断：还应补上 `Instant default model + memory sources + B2B Signals`，因为默认入口和企业成熟度指标会决定 OpenAI agent 平台的真实扩散速度。
+  变化原因：`2026-05-05` 和 `2026-05-06` 两天内 OpenAI 连续发布默认模型、系统卡和企业采用分析。
+
+- 人物：`Dario Amodei`
+  之前判断：应上调 `workflow productization` 和 `compute scaling` 权重。
+  当前判断：还应加入 `industry-specific packaged agents` 与 `partner-led delivery`。
+  变化原因：金融服务 agent templates 与新企业 AI 服务公司分别补上了产品模板和交付体系。

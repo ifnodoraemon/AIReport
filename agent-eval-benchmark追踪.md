@@ -1,6 +1,6 @@
 # Agent Eval / Benchmark 追踪
 
-最后更新：2026-04-30
+最后更新：2026-05-07
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`、`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`
 
@@ -275,3 +275,59 @@
   之前判断：重点是 memory、long-horizon、subjective enterprise tasks。
   当前判断：`science / bioinformatics / finance / office work` 这类领域工作流正在成为 frontier model 评测主战场。
   变化原因：GPT-5.5、GPT-Rosalind 和 Opus 4.7 都把模型价值锚定到真实专业工作，而不是通用问答。
+
+## 2026-05-07 当周补充
+
+### 新增 benchmark / 方法
+
+- 条目：`GPT-5.5 Instant release-time eval + system card`
+  类型：`default model eval / safety capability classification`
+  核心信号：OpenAI 在 GPT-5.5 Instant 发布中强调高风险领域事实性、视觉/STEM、web search 决策和个性化上下文使用，并在系统卡中把它列为 cyber 与 bio/chem `High capability`。
+  为什么重要：默认模型也进入更严格的发布时评测和安全分级，不再只有 thinking/frontier 模型才需要完整系统卡关注。
+  建议动作：后续模型评测中把 `default model` 和 `thinking model` 分开记录，但都保留 safety card 与 context-use eval。
+  来源日期：`2026-05-05`
+  来源：https://openai.com/index/gpt-5-5-instant/ ; https://openai.com/index/gpt-5-5-instant-system-card/
+
+- 条目：`Vals AI Finance Agent benchmark`
+  类型：`vertical agent benchmark / financial workflow`
+  核心信号：Anthropic 在金融服务 agents 发布中引用 `Vals AI's Finance Agent benchmark`，并把 Claude Opus 4.7 的金融任务表现与可运行 agent templates 同时放到发布叙事里。
+  为什么重要：垂直行业 agent 开始用专门 benchmark 与模板能力绑定，而不是只用通用 coding/browser 榜单。
+  建议动作：如果做金融、运营、合规类 agent，应维护领域工作流 benchmark，而不是套用通用 agent eval。
+  来源日期：`2026-05-05`
+  来源：https://www.anthropic.com/news/finance-agents
+
+- 条目：`Gemini API File Search citations`
+  类型：`RAG grounding / source verification`
+  核心信号：Google File Search 将 page-level citations 做成 API 能力，配合 metadata filtering 和多模态检索，用于提高 grounding 与透明度。
+  为什么重要：RAG eval 应该测“是否能引用到正确页/正确证据”，而不只是最终答案是否看起来合理。
+  建议动作：在内部 RAG eval 中新增 `citation precision`、`page-level evidence`、`metadata-filter correctness`。
+  来源日期：`2026-05-05`
+  来源：https://blog.google/innovation-and-ai/technology/developers-tools/expanded-gemini-api-file-search-multimodal-rag/
+
+- 条目：`DecodingTrust-Agent Platform (DTap)`
+  类型：`agent red-teaming / security benchmark`
+  核心信号：DTap 将 agent red-teaming 放进 `50+` 沙箱环境与 `15+` 领域，覆盖间接注入、工具、skills 和直接 prompt injection，并以 ASR/BSR 等指标呈现安全-能力权衡。
+  为什么重要：agent 安全评测正在从单任务 prompt injection 扩展到真实应用环境与跨工具攻击面。
+  建议动作：安全 eval 不应停留在文本层，应覆盖工具调用、环境状态和跨应用任务。
+  来源日期：`2026-05-07` `本周检索`
+  来源：https://decodingtrust-agent.com/ ; https://arxiv.org/abs/2605.04808
+
+- 条目：`AgentTrust: Runtime Safety Evaluation and Interception for AI Agent Tool Use`
+  类型：`runtime safety / tool-use interception`
+  核心信号：arXiv recent 显示该工作把 agent tool use 的安全评测和运行时拦截放在一起，方向上正好补足“离线 benchmark 之后如何在线阻断”。
+  为什么重要：真实 agent 风险经常发生在工具执行前后，评测需要变成 runtime guardrail，而不是只输出一个分数。
+  建议动作：把 `tool-call interception` 与 `policy evaluation` 纳入线上 agent 安全清单。
+  来源日期：`2026-05-07`
+  来源：https://arxiv.org/abs/2605.04785 ; https://arxiv.org/list/cs.AI/recent
+
+### 状态变化
+
+- 主题：`Agent security eval`
+  之前判断：重点是数据污染、eval awareness、供应链和长流程攻击。
+  当前判断：还要显式加入 `runtime interception`、`memory exfiltration` 和 `multi-environment red teaming`。
+  变化原因：DTap、AgentTrust、Trojan Hippo 本周都指向 agent 安全评测系统化。
+
+- 主题：`RAG eval`
+  之前判断：重点在检索质量和多模态文档场景。
+  当前判断：应把 `page-level citations` 和 `metadata filtering` 视为生产级 RAG 的默认评测项。
+  变化原因：Google 已把这些做成 Gemini API File Search 的产品能力。

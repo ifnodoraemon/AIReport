@@ -1,6 +1,6 @@
 # Agent / LLM 每周跟踪
 
-最后更新：2026-04-30
+最后更新：2026-05-07
 
 跟踪范围：近期与 `agent`、`LLM`、`memory`、`RAG 安全`、`评测` 相关的论文与趋势
 
@@ -301,3 +301,66 @@
   之前判断：长流程、主观质量、memory-to-action 是关键。
   当前判断：还要加入 `long-horizon failure attribution`、`scientific workflow` 与 `agent supply-chain security`。
   变化原因：HORIZON、BixBench、Your Agent Is Mine 分别补上长任务诊断、科学工作流和 router 供应链风险。
+
+## 2026-05-07 当周补充
+
+### 新增论文
+
+- 论文：`LongSeeker: Elastic Context Orchestration for Long-Horizon Search Agents`
+  为什么重要：arXiv recent 显示该工作把长流程搜索 agent 的核心问题表述为 `elastic context orchestration`，与近期 GitHub `context-mode`、Google File Search 多模态检索、GenericAgent 的 `context density` 主线一致。
+  建议动作：将其加入 `context orchestration / long-horizon search` 主题，优先看它如何决定哪些历史证据保留、压缩、检索和恢复。
+  状态：`待读`
+  来源日期：`2026-05-07`
+  来源：https://arxiv.org/abs/2605.05191 ; https://arxiv.org/list/cs.AI/recent
+
+- 论文：`DecodingTrust-Agent Platform (DTap): A Controllable and Interactive Red-Teaming Platform for AI Agents`
+  为什么重要：DTap 把 agent red-teaming 扩展到多应用、多工具、多环境的交互式平台，并公开强调间接注入、tools、skills 和直接 prompt injection。
+  建议动作：把它放进 `agent security eval` P0 观察项，用于补足当前安全评测中过度依赖文本 prompt 的缺口。
+  状态：`可执行`
+  来源日期：`2026-05-07`
+  来源：https://arxiv.org/abs/2605.04808 ; https://decodingtrust-agent.com/
+
+- 论文：`AgentTrust: Runtime Safety Evaluation and Interception for AI Agent Tool Use`
+  为什么重要：从标题与 arXiv recent 信息看，它把 agent tool use 的安全评测与运行时拦截放在一起，说明安全不再只是在离线 benchmark 打分，而要进入 agent loop。
+  建议动作：跟进其 runtime policy / interception 设计，判断是否能映射到内部 tool-call guardrail。
+  状态：`待读`
+  来源日期：`2026-05-07`
+  来源：https://arxiv.org/abs/2605.04785 ; https://arxiv.org/list/cs.AI/recent
+
+- 论文：`Trojan Hippo: Weaponizing Agent Memory for Data Exfiltration`
+  为什么重要：它把持久记忆本身定义成数据外泄攻击面，攻击可通过一次不可信工具调用植入休眠 payload，并在后续敏感话题中激活；报告中还给出跨 memory backend 的防御/效用权衡。
+  建议动作：内部 memory 设计必须加入 `untrusted write path`、`sensitive-topic activation`、`memory quarantine` 和 `write-time provenance`。
+  状态：`可执行`
+  来源日期：`2026-05-03`
+  来源：https://arxiv.org/abs/2605.01970
+
+- 论文：`AuditRepairBench: A Paired-Execution Trace Corpus for Evaluator-Channel Ranking Instability in Agent Repair`
+  为什么重要：该题目直接指向 agent repair 评测中的 evaluator-channel ranking instability，说明修复类 agent 不仅要看是否修好，还要看评估器和执行轨迹是否稳定。
+  建议动作：在 coding agent eval 中增加 `paired trace` 和 `evaluator instability` 维度，避免只看单次 pass/fail。
+  状态：`待读`
+  来源日期：`2026-05-07`
+  来源：https://arxiv.org/abs/2605.04624 ; https://arxiv.org/list/cs.AI/recent
+
+- 论文：`LCM: Lossless Context Management`
+  为什么重要：该题目与本周 `context-mode`、LongSeeker 和 Gemini File Search 共同指向“上下文不应只靠截断/摘要”的方向。
+  建议动作：作为 `lossless / recoverable context` 主题观察项，重点确认它是否提供可执行的上下文恢复机制。
+  状态：`待读`
+  来源日期：`2026-05-07`
+  来源：https://arxiv.org/abs/2605.04050 ; https://arxiv.org/list/cs.AI/recent
+
+### 状态变化
+
+- 主题：`Memory security`
+  之前判断：memory 是能力与评测主线。
+  当前判断：memory 也已经成为高优先级安全主线，尤其是跨 session 持久 payload、敏感话题触发和数据外泄。
+  变化原因：`Trojan Hippo` 直接把长期记忆攻击从概念演示推进到系统化评估。
+
+- 主题：`Context engineering`
+  之前判断：重点是 context density、tool sequence prior、tool overuse control。
+  当前判断：还要加入 `elastic / lossless / recoverable context orchestration`。
+  变化原因：LongSeeker 与 LCM 同周出现在 arXiv recent，和 GitHub / Google API 信号一致。
+
+- 主题：`Agent安全评测`
+  之前判断：供应链、router integrity、长流程攻击是新增重点。
+  当前判断：还必须覆盖 `runtime interception` 与 `multi-environment red teaming`。
+  变化原因：AgentTrust 与 DTap 都把安全评测推向运行时和多环境平台。

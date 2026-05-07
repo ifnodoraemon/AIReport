@@ -1,6 +1,6 @@
 # MCP / Tools / Agent Infra 追踪
 
-最后更新：2026-04-30
+最后更新：2026-05-07
 
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/agent-llm周GitHub热点追踪.md`
 
@@ -352,3 +352,67 @@
   状态：`Developer Preview`
   方向：`Cloud Deployment / Runtime`
   核心说明：OpenAI 的托管 Agent 运行时（包括 Codex 等环境）进入 AWS 生态，使得开发者可以在更接近企业自有数据的地方运行高特权 agent，降低了数据出域的摩擦。
+
+## 2026-05-07 当周补充
+
+### 新增条目
+
+- 条目：`GPT-5.5 Instant memory sources`
+  方向：`memory transparency / personalization controls`
+  核心信号：OpenAI 为 ChatGPT 默认模型强化过去对话、文件和 Gmail 上下文使用，并推出 `memory sources` 让用户看到个性化响应引用了哪些记忆、聊天或文件上下文。
+  为什么重要：长期记忆终于开始有可解释入口，agent infra 不能只做检索，还要做来源可见、可删除、可纠错。
+  建议动作：把 `memory provenance` 加入内部 memory / context 基线。
+  来源日期：`2026-05-05`
+  来源：https://openai.com/index/gpt-5-5-instant/
+
+- 条目：`OpenAI MRC`
+  方向：`training network / resilient compute infra`
+  核心信号：OpenAI 发布 `MRC` 多路径可靠连接协议，并通过 OCP 公开，用多平面网络、packet spraying、快速失效绕行支撑大规模同步训练。
+  为什么重要：agent 能力上限受模型训练基础设施影响；训练网络的可靠性和成本已经成为公开竞争维度。
+  建议动作：把 `network goodput`、`failure recovery`、`OCP/open spec` 纳入 infra 观察项。
+  来源日期：`2026-05-05`
+  来源：https://openai.com/index/mrc-supercomputer-networking/
+
+- 条目：`OpenAI low-latency voice AI at scale`
+  方向：`real-time runtime / WebRTC architecture`
+  核心信号：OpenAI 公开了低延迟语音 AI 的 WebRTC 架构，把 relay 和 transceiver 拆开，以更小 UDP 暴露面支撑实时语音、Realtime API 和交互式 agent workflow。
+  为什么重要：voice agent 的体验瓶颈不是模型回答质量一个点，而是网络、会话路由、ICE/DTLS 状态和全球延迟的系统问题。
+  建议动作：若后续做实时 agent，应单独记录 `media path / session routing / jitter / barge-in` 指标。
+  来源日期：`2026-05-04`
+  来源：https://openai.com/index/delivering-low-latency-voice-ai-at-scale/
+
+- 条目：`Claude financial services agent templates`
+  方向：`vertical agent templates / plugins / connectors / MCP apps`
+  核心信号：Anthropic 把金融 agent 模板拆成 `skills + connectors + subagents`，并同时以 Claude Cowork / Claude Code plugin、Managed Agents cookbook 和 MCP app 分发。
+  为什么重要：这是 agent infra 产品化的一个清晰样本：能力不再只是 SDK，而是可安装、可治理、可接入行业数据的模板包。
+  建议动作：把 `template packaging`、`connector governance`、`subagent review` 加入内部插件生态对照。
+  来源日期：`2026-05-05`
+  来源：https://www.anthropic.com/news/finance-agents
+
+- 条目：`Claude limits + SpaceX compute`
+  方向：`capacity / rate limits / availability`
+  核心信号：Anthropic 把 SpaceX 新算力合作直接转化为 Claude Code 五小时限额翻倍、去除高峰限额下调和 Opus API rate limit 提升。
+  为什么重要：实际可用 agent 平台不仅由能力决定，还由限额、排队和地域基础设施决定。
+  建议动作：后续选型记录 `rate limits` 与 `capacity announcements`，不只记录模型名。
+  来源日期：`2026-05-06`
+  来源：https://www.anthropic.com/news/higher-limits-spacex
+
+- 条目：`Gemini API File Search multimodal`
+  方向：`multimodal RAG / metadata / citations`
+  核心信号：Google 将 Gemini API File Search 扩展到图文混合检索、metadata filtering 和 page-level citations，底层由 Gemini Embedding 2 支撑。
+  为什么重要：这让 agent context layer 更接近生产可验证 RAG：能处理视觉资料，也能给出页级来源。
+  建议动作：内部 RAG/agent 设计中加入 `page citation` 和 `metadata-scoped retrieval`，降低不可验证回答风险。
+  来源日期：`2026-05-05`
+  来源：https://blog.google/innovation-and-ai/technology/developers-tools/expanded-gemini-api-file-search-multimodal-rag/
+
+### 状态变化
+
+- 主题：`Context provenance`
+  之前判断：context engineering 重点在压缩、检索、隔离和 memory。
+  当前判断：还必须加入 `source visibility` 与 `citation granularity`，否则用户无法审计 agent 为什么这么答。
+  变化原因：OpenAI memory sources 与 Google page-level citations 同周出现。
+
+- 主题：`Infra capacity`
+  之前判断：runtime 能力决定 agent 平台边界。
+  当前判断：`capacity -> rate limit -> workflow feasibility` 也应成为一等变量。
+  变化原因：Anthropic 直接把新增算力与 Claude Code/API 限额挂钩。

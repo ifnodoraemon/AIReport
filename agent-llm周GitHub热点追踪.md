@@ -1,6 +1,6 @@
 # Agent / LLM GitHub 每周热点追踪
 
-最后更新：2026-04-30
+最后更新：2026-05-07
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
@@ -406,3 +406,88 @@
 
 - 信号：`context` 竞争正在从“能放多少”转向“默认不放什么、如何按需恢复什么”。
   对我们的影响：后续内部 agent 设计不应把长上下文当万能答案，应先定义上下文预算、输出隔离和 memory 检索策略。
+
+## 2026-05-07 当周
+
+### 新上榜项目
+
+- 项目：`ruvnet/ruflo`
+  方向：`agent orchestration / Claude + Codex integration`
+  热度：`9,159 stars this week`
+  为什么重要：项目直接定位为 Claude 的 agent orchestration platform，并强调 multi-agent swarms、RAG、Claude Code / Codex integration，说明跨客户端编排仍是社区强热点。
+  建议动作：观察它是否只是 swarms 包装，还是有稳定的任务路由、状态管理和验证机制。
+  来源日期：`2026-05-07`
+  来源：https://github.com/trending/typescript?since=weekly ; https://github.com/ruvnet/ruflo
+
+- 项目：`virattt/dexter`
+  方向：`deep financial research agent`
+  热度：`2,050 stars this week`
+  为什么重要：与 Anthropic 同周发布金融服务 agents 呼应，说明金融 research / analysis agent 正在成为垂直 agent 的显性热点。
+  建议动作：把它和 `anthropics/financial-services` 一起看，比较开源研究 agent 与官方模板的边界。
+  来源日期：`2026-05-07`
+  来源：https://github.com/trending/typescript?since=weekly ; https://github.com/virattt/dexter
+
+- 项目：`ComposioHQ/awesome-codex-skills`
+  方向：`Codex skills catalog / capability distribution`
+  热度：`3,370 stars this week`
+  为什么重要：Codex skills 开始出现第三方 curated catalog，说明 `skills` 已从官方概念进入社区分发层。
+  建议动作：跟踪 skills 是否形成可复用规范，包括安装、权限、版本和适用场景说明。
+  来源日期：`2026-05-07`
+  来源：https://github.com/trending/python?since=weekly ; https://github.com/ComposioHQ/awesome-codex-skills
+
+- 项目：`openai/skills`
+  方向：`official skills catalog`
+  热度：`579 stars this week`
+  为什么重要：OpenAI 官方 skills catalog 同周上榜，说明官方与社区都在围绕 Codex 能力包分发聚集。
+  建议动作：把 `skills catalog` 放进 MCP / plugin / marketplace 的同一生态对照。
+  来源日期：`2026-05-07`
+  来源：https://github.com/trending/python?since=weekly ; https://github.com/openai/skills
+
+- 项目：`anthropics/financial-services`
+  方向：`vertical agent templates / finance`
+  热度：`634 stars this week`
+  为什么重要：这是 Anthropic 金融服务 agents 的开源入口，代表官方把行业 agent 模板直接落到 GitHub 交付物。
+  建议动作：重点拆它的 `skills / connectors / subagents / review` 结构，判断是否可迁移到其他行业模板。
+  来源日期：`2026-05-07`
+  来源：https://github.com/trending/python?since=weekly ; https://github.com/anthropics/financial-services
+
+- 项目：`mksglu/context-mode`
+  方向：`context window optimization / tool-output sandbox`
+  热度：`2,002 stars this week`
+  为什么重要：连续两周上榜，说明“工具输出默认不进上下文、按需恢复”不是短期噪音，而是 agent harness 的真实痛点。
+  建议动作：继续作为 context isolation / session recovery 样本跟踪。
+  来源日期：`2026-05-07`
+  来源：https://github.com/trending/typescript?since=weekly ; https://github.com/mksglu/context-mode
+
+- 项目：`czlonkowski/n8n-mcp`
+  方向：`workflow automation MCP`
+  热度：`1,269 stars this week`
+  为什么重要：它把 n8n 工作流暴露给 Claude Desktop / Claude Code / Windsurf / Cursor，说明 MCP 正在向低代码自动化和运营工作流扩散。
+  建议动作：把 `workflow MCP` 作为 vertical connector 的一类单独记录。
+  来源日期：`2026-05-07`
+  来源：https://github.com/trending/typescript?since=weekly ; https://github.com/czlonkowski/n8n-mcp
+
+- 项目：`cocoindex-io/cocoindex`
+  方向：`incremental index / long-horizon agents`
+  热度：`1,148 stars this week`
+  为什么重要：项目直接把增量索引定位到 long horizon agents，和 Google File Search 的 metadata / citation 方向同向。
+  建议动作：关注它如何处理增量更新、失效、索引可观测性和 agent 查询接口。
+  来源日期：`2026-05-07`
+  来源：https://github.com/trending/python?since=weekly ; https://github.com/cocoindex-io/cocoindex
+
+### 状态变化
+
+- 项目：`skills / marketplace`
+  之前判断：plugin 和 skills 正在成为能力分发层。
+  当前判断：本周 OpenAI 官方 skills 与第三方 `awesome-codex-skills` 同时上榜，说明 Codex 生态开始出现“官方目录 + 社区精选”的双层分发。
+  变化原因：`openai/skills` 与 `ComposioHQ/awesome-codex-skills` 同周进入 Python 周榜。
+
+- 项目：`vertical agents`
+  之前判断：多 agent 热点更像通用编排或开发工具。
+  当前判断：金融 agent 正在成为最清晰的垂直落地样本。
+  变化原因：`TradingAgents`、`dexter`、`anthropics/financial-services` 同周形成金融主线。
+
+### 新信号 / 新风险
+
+- 信号：`MCP` 与 `skills` 正在分别占据“连接外部系统”和“封装可复用能力”两个层次。
+  对我们的影响：后续做 agent 能力封装时，不应把 connector、skill、workflow template 混为一类。
