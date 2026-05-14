@@ -1,6 +1,6 @@
 # Agent / LLM 每周跟踪
 
-最后更新：2026-05-07
+最后更新：2026-05-14
 
 跟踪范围：近期与 `agent`、`LLM`、`memory`、`RAG 安全`、`评测` 相关的论文与趋势
 
@@ -364,3 +364,66 @@
   之前判断：供应链、router integrity、长流程攻击是新增重点。
   当前判断：还必须覆盖 `runtime interception` 与 `multi-environment red teaming`。
   变化原因：AgentTrust 与 DTap 都把安全评测推向运行时和多环境平台。
+
+## 2026-05-14 当周补充
+
+### 新增论文
+
+- 论文：`WildClawBench: A Benchmark for Real-World, Long-Horizon Agent Evaluation`
+  为什么重要：它用真实 CLI harness、Docker、真实工具和双语多模态任务评估 agent，显示模型能力和 harness 条件会共同决定长任务表现。
+  建议动作：加入 `native-runtime agent eval` 主题，重点看任务资产、环境状态审计、side effect grading 和 harness variance。
+  状态：`跟踪中`
+  来源日期：`2026-05-11`
+  来源：https://arxiv.org/abs/2605.10912 ; https://huggingface.co/datasets/internlm/WildClawBench
+
+- 论文：`From Storage to Experience: A Survey of Memory in LLM-based Agents`
+  为什么重要：这篇把 agent memory 从存储、检索扩展到经验组织和复用，和近期 `agentmemory`、`memsearch`、`Trojan Hippo` 共同说明 memory 已经同时是能力层和风险层。
+  建议动作：重写内部 memory rubric 时增加 `experience formation`、`experience reuse`、`write-time provenance`。
+  状态：`可执行`
+  来源日期：`2026-05-07`
+  来源：https://arxiv.org/abs/2605.06716
+
+- 论文：`Execution Lineage for AI-Native Work`
+  为什么重要：它把 AI-native work 表示成带显式依赖和可重放身份的 artifact DAG，目标是让 AI 生成工作在变更中可维护。
+  建议动作：把它放进 `artifact-based handoff / reproducible agent work` 主题，和 harness engineering、progress notes、checkpointing 一起看。
+  状态：`跟踪中`
+  来源日期：`2026-05-07`
+  来源：https://arxiv.org/abs/2605.06365
+
+- 论文：`Improving the Efficiency of Language Agent Teams with Adaptive Task Graphs`
+  为什么重要：LATTE 用共享、动态演化的协调图降低多 agent 团队的 token、耗时、通信和冲突，说明多 agent 价值更可能来自任务图和状态一致性，而不是角色数量。
+  建议动作：多 agent 观察优先看 `coordination graph`、`assignment state`、`conflict reduction`，不要只看 swarm 包装。
+  状态：`跟踪中`
+  来源日期：`2026-05-07`
+  来源：https://arxiv.org/abs/2605.06320
+
+- 论文：`MANTRA: Machine-Checkable Compliance Benchmarks from Natural-Language Manuals`
+  为什么重要：它把自然语言流程手册和 tool schema 转成可机器检查的合规 benchmark，直接对应受监管工具型 agent 的评测缺口。
+  建议动作：把 `manual -> executable compliance check` 加入 regulated agent eval 观察项。
+  状态：`待读`
+  来源日期：`2026-05-07`
+  来源：https://arxiv.org/abs/2605.06334
+
+- 论文：`LeakDojo: A Configurable Framework for Controlled Evaluation of RAG Leakage`
+  为什么重要：它系统评估 RAG 数据库泄露风险，并指出更强指令遵循和更高 faithfulness 可能带来更高泄露风险。
+  建议动作：RAG 安全评测新增 `leakage attack suite`，同时记录 faithfulness 与 privacy 的 tradeoff。
+  状态：`可执行`
+  来源日期：`2026-05-07`
+  来源：https://arxiv.org/abs/2605.05818
+
+### 状态变化
+
+- 主题：`Workplace / browser agent eval`
+  之前判断：长流程 eval 要覆盖 GUI、工具调用和持续场景。
+  当前判断：还需要真实 CLI harness、文件/代码/网页混合资产、side effect grading，以及用户审计。
+  变化原因：`WildClawBench` 从 native runtime 方向补上了这些缺口，Google 也在 Chrome 中推进自动浏览。
+
+- 主题：`Memory`
+  之前判断：memory 同时是能力、评测和安全主线。
+  当前判断：还要补 `experience` 视角，即 agent 如何把执行经历变成可复用策略，而不是只存 facts。
+  变化原因：`From Storage to Experience` 直接把 memory 从存储层提升到经验层。
+
+- 主题：`Regulated agent`
+  之前判断：金融 agent 是垂直落地样本。
+  当前判断：合规 agent 应单独成线，因为这类场景要求手册规则、tool trace、citation、approval 和 audit 同时成立。
+  变化原因：`MANTRA` 与 Anthropic 金融服务 agents 的产业信号同向。

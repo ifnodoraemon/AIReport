@@ -1,6 +1,6 @@
 # MCP / Tools / Agent Infra 追踪
 
-最后更新：2026-05-07
+最后更新：2026-05-14
 
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/agent-llm周GitHub热点追踪.md`
 
@@ -416,3 +416,64 @@
   之前判断：runtime 能力决定 agent 平台边界。
   当前判断：`capacity -> rate limit -> workflow feasibility` 也应成为一等变量。
   变化原因：Anthropic 直接把新增算力与 Claude Code/API 限额挂钩。
+
+## 2026-05-14 当周补充
+
+### 新增条目
+
+- 条目：`Running Codex safely`
+  方向：`coding agent safety / sandbox / monitoring`
+  核心信号：OpenAI 公开 Codex 的安全运行设计，覆盖受控环境、权限提示、网络边界、代码审查、轨迹监控与异常处置。
+  为什么重要：coding agent infra 的核心正在从“能调用 shell”升级到“能在高权限环境中被约束、被审计、被复盘”。
+  建议动作：内部 agent runtime 基线补上 `permission prompt`、`network policy`、`trajectory review`、`human escalation` 四项。
+  来源日期：`2026-05-08`
+  来源：https://openai.com/index/running-codex-safely/
+
+- 条目：`Codex Windows sandbox`
+  方向：`OS sandbox / desktop execution / enterprise runtime`
+  核心信号：OpenAI 单独发布 Windows sandbox 工程文章，说明 Codex 执行环境正在覆盖 Windows 终端与桌面开发场景。
+  为什么重要：企业 agent 落地经常发生在 Windows 和混合权限环境，OS 级隔离会直接影响可部署性。
+  建议动作：后续比较 runtime 时，按 `Linux container`、`browser sandbox`、`Windows sandbox` 分开记录。
+  来源日期：`2026-05-13`
+  来源：https://openai.com/index/building-codex-windows-sandbox/
+
+- 条目：`MCP and A2A for enterprise agent workloads`
+  方向：`agent protocol / enterprise integration`
+  核心信号：AWS 和 Cisco 本周分别发布围绕 MCP/A2A 的企业集成文章，说明连接层标准正在从开发者 demo 进入云和企业网络场景。
+  为什么重要：`MCP` 现在需要和身份、网络、审计、跨 agent 通信一起看，而不是只看本地工具连接。
+  建议动作：把 `MCP server governance`、`A2A routing`、`enterprise network boundary` 纳入连接层观察。
+  来源日期：`2026-05-09`、`2026-05-12`
+  来源：https://aws.amazon.com/blogs/machine-learning/unlocking-enterprise-agentic-ai-building-scalable-applications-with-mcp-and-a2a-protocols/ ; https://blogs.cisco.com/ai/model-context-protocol-deployments
+
+- 条目：`Claude for Small Business`
+  方向：`packaged agent product / admin controls / team workflow`
+  核心信号：Anthropic 把 Claude 打包到小企业团队场景，重点不只是模型访问，而是权限、团队协作和管理入口。
+  为什么重要：agent infra 的产品化正在从 SDK 和企业平台扩展到更低门槛的团队管理层。
+  建议动作：对照记录 `SMB admin controls` 是否会沉淀成更通用的 agent governance 模式。
+  来源日期：`2026-05-13`
+  来源：https://www.anthropic.com/news/claude-for-small-business
+
+- 条目：`Chrome Auto Browse`
+  方向：`browser runtime / user delegated web tasks`
+  核心信号：Google 在 Chrome 中推进自动浏览任务，说明 browser 本身正在成为 agent runtime，而不是只作为被 Playwright 驱动的外部工具。
+  为什么重要：这会改变权限确认、网页状态、cookie/session 和用户审计的默认边界。
+  建议动作：把 `browser-native agent runtime` 单独列为 infra 分类。
+  来源日期：`2026-05-12`
+  来源：https://blog.google/innovation-and-ai/products/chrome/chrome-auto-browse/
+
+### 状态变化
+
+- 主题：`Sandbox`
+  之前判断：重点是 `shell / container / sandbox / state`。
+  当前判断：还要区分不同 OS 和产品入口的 sandbox，因为 Linux devbox、Windows desktop、browser-native runtime 的风险边界不同。
+  变化原因：OpenAI 本周单独发布 Codex Windows sandbox，Google 同周推进 Chrome 原生自动浏览。
+
+- 主题：`Protocol layer`
+  之前判断：MCP 正在成为连接层主线。
+  当前判断：MCP 正在和 A2A、企业身份、网络边界、审计部署一起进入云厂商和企业网络语境。
+  变化原因：AWS 与 Cisco 本周都把 MCP 放进企业级 agent deployment 讨论。
+
+### 工程启发
+
+- 启发：agent infra 正在分化为 `execution sandbox`、`protocol governance`、`product admin controls`、`browser-native runtime` 四条并行线。
+  对我们的影响：后续设计内部 agent 平台时，不能只抽象工具协议，还要明确执行面、身份面、审计面分别由谁负责。

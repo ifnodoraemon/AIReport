@@ -1,10 +1,10 @@
 # AI 关键人物追踪
 
-最后更新：2026-05-07
+最后更新：2026-05-14
 
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/模型发布追踪.md`、`/home/ifnodoraemon/myreport/MCP-tools-agent-infra追踪.md`
 
-跟踪范围：截至 `2026-05-07` 检索到的 AI 关键人物 `个人官网 / 官方博客 / 公司新闻页 / X`；优先选择能持续释放 `模型路线`、`agent infra`、`开发者生态`、`安全治理`、`world model` 高信号的人
+跟踪范围：截至 `2026-05-14` 检索到的 AI 关键人物 `个人官网 / 官方博客 / 公司新闻页 / X`；优先选择能持续释放 `模型路线`、`agent infra`、`开发者生态`、`安全治理`、`world model` 高信号的人
 
 ## 目的
 
@@ -557,3 +557,60 @@
   之前判断：应上调 `workflow productization` 和 `compute scaling` 权重。
   当前判断：还应加入 `industry-specific packaged agents` 与 `partner-led delivery`。
   变化原因：金融服务 agent templates 与新企业 AI 服务公司分别补上了产品模板和交付体系。
+
+## 2026-05-14 当周补充
+
+### 新增动态
+
+- 人物：`Sam Altman`
+  动作：OpenAI 于 `2026-05-08` 发布 `Running Codex safely`，于 `2026-05-13` 发布 `Building a safe and effective Windows sandbox for Codex`，并于 `2026-05-12` 发布 `Parameter Golf` 研究复盘。
+  来源级别：`官网已确认`
+  方向：`coding agent safety / sandbox / AI-assisted research`
+  为什么重要：Sam 线下的 OpenAI 本周没有只讲模型能力，而是在公开补 Codex 的安全运行边界和 AI 参与科研循环的实践。
+  对我们的影响：跟 Sam 时，应把 `Codex sandbox + agent monitoring + research workflow` 视作 OpenAI 平台路线的一部分。
+  来源日期：`2026-05-08`、`2026-05-13`、`2026-05-12`
+  来源：https://openai.com/index/running-codex-safely/ ; https://openai.com/index/building-codex-windows-sandbox/ ; https://openai.com/index/how-openai-researchers-won-gold-in-parameter-golf/
+
+- 人物：`Dario Amodei`
+  动作：Anthropic 于 `2026-05-13` 发布 `Claude for Small Business`。
+  来源级别：`官网已确认`
+  方向：`SMB productization / team workflow / admin controls`
+  为什么重要：Dario 线下的 Anthropic 正把 Claude 从高端开发者、金融服务和大企业工作流扩展到小企业团队。
+  对我们的影响：跟 Dario 时，要继续上调 `packaged agent products` 和 `market-segment-specific workflow` 权重。
+  来源日期：`2026-05-13`
+  来源：https://www.anthropic.com/news/claude-for-small-business
+
+- 人物：`Demis Hassabis`
+  动作：Google 于 `2026-05-12` 发布 `Gemini Intelligence`，并把 Gemini 更深地放入 Android 入口；同日 Chrome 发布 `Auto Browse`。
+  来源级别：`官网已确认`
+  方向：`OS-level assistant / browser agent / consumer distribution`
+  为什么重要：Demis/Google 体系的 agent 信号本周更偏产品入口：Android 和 Chrome 正在成为 Gemini 的默认执行表面。
+  对我们的影响：跟 Google DeepMind 时，不能只看 frontier reasoning 和 Cloud Agent Platform，还要看 OS/browser 级分发如何改变 agent 使用习惯。
+  来源日期：`2026-05-12`
+  来源：https://blog.google/innovation-and-ai/products/android/gemini-intelligence/ ; https://blog.google/innovation-and-ai/products/chrome/chrome-auto-browse/
+
+- 人物：`Andrew Ng`
+  动作：DeepLearning.AI 于 `2026-05-08` 的 The Batch 继续跟进 agent、开发者工具与实际部署议题。
+  来源级别：`官网已确认`
+  方向：`developer diffusion / applied AI education`
+  为什么重要：Andrew Ng 线的价值仍在于判断哪些工程主题正在进入普通开发者教育和课程扩散层。
+  对我们的影响：把 The Batch 当作二级扩散信号，不替代官方产品发布，但用于判断主题普及速度。
+  来源日期：`2026-05-08`
+  来源：https://www.deeplearning.ai/the-batch/
+
+### 状态变化
+
+- 人物：`Sam Altman`
+  之前判断：重点是 `Instant default model + memory sources + B2B Signals`。
+  当前判断：还应加入 `Codex safety and sandbox`，因为 OpenAI 本周连续公开运行安全和 Windows 隔离设计。
+  变化原因：Codex 已从产品能力叙事进入安全工程叙事。
+
+- 人物：`Dario Amodei`
+  之前判断：重点是行业 agent、服务交付和算力供给。
+  当前判断：还应加入 `SMB packaging`，说明 Anthropic 正在按不同市场层级重打包 Claude。
+  变化原因：`Claude for Small Business` 把权限、团队工作流和可负担部署推到前台。
+
+- 人物：`Demis Hassabis`
+  之前判断：Google 侧要关注 `context layer` 与 `open model serving efficiency`。
+  当前判断：还要加入 `Android / Chrome distribution`，因为 Gemini 的 agent 入口正在深入默认操作系统和浏览器体验。
+  变化原因：`Gemini Intelligence` 和 `Chrome Auto Browse` 同周出现。

@@ -1,10 +1,10 @@
 # AI 三巨头博客追踪
 
-最后更新：2026-05-07
+最后更新：2026-05-14
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
-跟踪范围：截至 `2026-05-07` 检索到的 `OpenAI`、`Anthropic`、`Google / Google DeepMind` 官方博客、新闻与工程文章；优先保留和 `model`、`agent`、`tool use`、`runtime`、`eval`、`context`、`多模态产品化` 相关的高信号条目
+跟踪范围：截至 `2026-05-14` 检索到的 `OpenAI`、`Anthropic`、`Google / Google DeepMind` 官方博客、新闻与工程文章；优先保留和 `model`、`agent`、`tool use`、`runtime`、`eval`、`context`、`多模态产品化` 相关的高信号条目
 
 ## 目的
 
@@ -551,3 +551,68 @@
   之前判断：context engineering 主要来自 agent runtime 和 GitHub 热点。
   当前判断：现在三家都开始把 context 做成产品面：OpenAI 的 memory sources、Anthropic 的跨 Microsoft 365 context handoff、Google 的 multimodal File Search。
   变化原因：本周新增内容都把“上下文如何被带入、解释、过滤和引用”放到前台。
+
+## 2026-05-14 当周补充
+
+### 新增 / 补录条目
+
+- `OpenAI` | `2026-05-08` | `Running Codex safely`
+  方向：`coding agent safety / sandbox / policy enforcement`
+  核心信号：OpenAI 把 Codex 的安全边界公开拆成环境隔离、网络控制、权限提示、代码审查与监控闭环。
+  为什么重要：这说明 Codex 叙事已经从“能写代码”推进到“如何让高权限 coding agent 可控运行”。
+  建议动作：具体 sandbox 和监控细节归入 `MCP-tools-agent-infra追踪`；博客文档保留 OpenAI 正在把 safety 变成 agent 产品默认层的判断。
+  来源日期：`2026-05-08`
+  来源：https://openai.com/index/running-codex-safely/
+
+- `OpenAI` | `2026-05-13` | `Building a safe and effective Windows sandbox for Codex`
+  方向：`sandbox engineering / Windows runtime`
+  核心信号：OpenAI 单独解释 Codex Windows sandbox，说明 coding agent 的执行环境正在从 Linux/devbox 扩展到更复杂的桌面与企业终端场景。
+  为什么重要：Windows sandbox 是企业开发环境覆盖面的关键补位，也说明 agent runtime 竞争会深入 OS 级隔离。
+  建议动作：后续 infra 文档把 `OS-specific sandbox` 单独列为维度。
+  来源日期：`2026-05-13`
+  来源：https://openai.com/index/building-codex-windows-sandbox/
+
+- `OpenAI` | `2026-05-12` | `How OpenAI researchers won gold in Parameter Golf`
+  方向：`AI-assisted research workflow / model compression`
+  核心信号：OpenAI 把研究竞赛复盘写成“人类研究者 + AI 工具 + 实验循环”的协作样本，而不是单纯展示模型输出。
+  为什么重要：这类文章比普通 benchmark 更能反映 AI 如何进入研究流程本身。
+  建议动作：在论文追踪中把 `AI-assisted research loop` 作为轻量观察项。
+  来源日期：`2026-05-12`
+  来源：https://openai.com/index/how-openai-researchers-won-gold-in-parameter-golf/
+
+- `Anthropic` | `2026-05-13` | `Introducing Claude for Small Business`
+  方向：`SMB agent product / team workflow / enterprise packaging`
+  核心信号：Anthropic 把 Claude 从金融、企业服务继续下沉到小企业工作流，强调团队协作、管理控制和可负担的部署形态。
+  为什么重要：Claude 的 agent 路线正在覆盖 `enterprise -> vertical -> SMB` 多层市场，而不只是高端开发者。
+  建议动作：观察小企业版本是否带来更低门槛的 connector、模板与权限模型。
+  来源日期：`2026-05-13`
+  来源：https://www.anthropic.com/news/claude-for-small-business
+
+- `Google` | `2026-05-12` | `Gemini Intelligence`
+  方向：`consumer assistant / Android surface / on-device context`
+  核心信号：Google 在 Android 入口引入 `Gemini Intelligence`，把跨应用上下文、设备能力与 Gemini 助手体验继续合并。
+  为什么重要：Google 的 agent 主线不只在 Cloud/Vertex，也在 OS 与手机入口上扩张。
+  建议动作：后续跟 Google 时，把 `enterprise agent platform` 与 `consumer OS agent surface` 并列记录。
+  来源日期：`2026-05-12`
+  来源：https://blog.google/innovation-and-ai/products/android/gemini-intelligence/
+
+- `Google` | `2026-05-12` | `Chrome Auto Browse`
+  方向：`browser agent / autonomy / web task execution`
+  核心信号：Chrome 开始让用户交给浏览器自动完成更长网页任务，说明 browser agent 正从开发者 demo 进入主流产品入口。
+  为什么重要：浏览器是通用 agent 的关键执行表面，Chrome 级别集成会影响用户对自动化权限和审计的默认预期。
+  建议动作：把 `browser autonomy / user confirmation / web task audit` 加入 agent 产品追踪。
+  来源日期：`2026-05-12`
+  来源：https://blog.google/innovation-and-ai/products/chrome/chrome-auto-browse/
+
+### 横向变化
+
+- `OpenAI` 本周主线偏 `Codex safety + sandbox engineering + research workflow`，说明其 agent 平台开始公开补齐可控执行细节。
+- `Anthropic` 本周主线是把 Claude 的行业/企业打法继续下沉到小企业，关注点从模型能力转向包装、权限和团队采用。
+- `Google` 本周主线是把 Gemini agent surface 直接嵌进 Android 与 Chrome，和 Cloud 侧企业 agent platform 形成双入口。
+
+### 状态变化
+
+- 主题：`Agent surface`
+  之前判断：三家主要在 `runtime / context / enterprise platform` 上竞争。
+  当前判断：还要显式加入 `OS / browser / SMB package` 三类入口，因为 agent 正在从开发者工具扩展到默认消费和小企业工作界面。
+  变化原因：Google 同周更新 Android 与 Chrome 入口，Anthropic 发布小企业版本，OpenAI 则补 Codex 运行环境安全边界。

@@ -1,10 +1,10 @@
 # Agent / LLM GitHub 每周热点追踪
 
-最后更新：2026-05-07
+最后更新：2026-05-14
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
-跟踪范围：持续记录 GitHub Trending 周榜，以及对应仓库主页；当前文档已包含 `2026-03-19` 至 `2026-04-28` 的多周快照
+跟踪范围：持续记录 GitHub Trending 周榜，以及对应仓库主页；当前文档已包含 `2026-03-19` 至 `2026-05-14` 的多周快照
 
 ## 目的
 
@@ -491,3 +491,88 @@
 
 - 信号：`MCP` 与 `skills` 正在分别占据“连接外部系统”和“封装可复用能力”两个层次。
   对我们的影响：后续做 agent 能力封装时，不应把 connector、skill、workflow template 混为一类。
+
+## 2026-05-14 当周
+
+### 新上榜项目
+
+- 项目：`anthropics/financial-services`
+  方向：`vertical agent templates / finance`
+  热度：`13,555 stars this week`
+  为什么重要：连续跟随 Anthropic 金融服务 agents 的官方开源入口，说明垂直 agent 模板仍是本周最强 GitHub 信号之一。
+  建议动作：继续拆它的 `skills / connectors / subagents / review` 结构，判断是否能迁移到其他受监管行业。
+  来源日期：`2026-05-14`
+  来源：https://github.com/trending/python?since=weekly ; https://github.com/anthropics/financial-services
+
+- 项目：`rohitg00/agentmemory`
+  方向：`persistent memory / coding agents`
+  热度：`4,450 stars this week`
+  为什么重要：项目直接定位为 AI coding agents 的持久记忆层，并强调 benchmark 支撑，说明 `memory` 热点已经更具体地落到 coding workflow。
+  建议动作：把它和 `claude-mem`、`memsearch`、`context-mode` 放在同一组，对比写入路径、召回策略和安全隔离。
+  来源日期：`2026-05-14`
+  来源：https://github.com/trending/typescript?since=weekly ; https://github.com/rohitg00/agentmemory
+
+- 项目：`bytedance/UI-TARS-desktop`
+  方向：`multimodal desktop agent stack`
+  热度：`4,096 stars this week`
+  为什么重要：桌面 GUI agent 重新上升，和 Google Chrome Auto Browse、Android Gemini Intelligence 同向，说明 agent 执行面正在从代码/浏览器扩展到桌面级交互。
+  建议动作：观察其环境感知、点击执行、错误恢复和人类接管机制。
+  来源日期：`2026-05-14`
+  来源：https://github.com/trending/typescript?since=weekly ; https://github.com/bytedance/UI-TARS-desktop
+
+- 项目：`VectifyAI/PageIndex`
+  方向：`document index / vectorless RAG`
+  热度：`2,805 stars this week`
+  为什么重要：RAG 热点开始出现 `vectorless, reasoning-based RAG` 路线，和 Google File Search 的 page-level citation 方向形成互补。
+  建议动作：跟踪它是否能在长文档、表格和页级证据上降低向量库依赖。
+  来源日期：`2026-05-14`
+  来源：https://github.com/trending/python?since=weekly ; https://github.com/VectifyAI/PageIndex
+
+- 项目：`HKUDS/AI-Trader`
+  方向：`agent-native trading / vertical financial agent`
+  热度：`2,962 stars this week`
+  为什么重要：金融 agent 热点继续从研究分析扩展到自动交易，垂直 agent 的风险边界也更高。
+  建议动作：只作为 `vertical agent risk` 样本跟踪，重点看模拟、回测、权限和人类审批，而不是直接采用。
+  来源日期：`2026-05-14`
+  来源：https://github.com/trending/python?since=weekly ; https://github.com/HKUDS/AI-Trader
+
+- 项目：`cocoindex-io/cocoindex`
+  方向：`incremental index / long-horizon agents`
+  热度：`1,114 stars this week`
+  为什么重要：连续上榜说明增量索引与 long-horizon agents 的结合不是一次性热度。
+  建议动作：继续关注其增量更新、失效处理、索引可观测性和 agent 查询接口。
+  来源日期：`2026-05-14`
+  来源：https://github.com/trending/python?since=weekly ; https://github.com/cocoindex-io/cocoindex
+
+- 项目：`awslabs/aidlc-workflows`
+  方向：`AI coding agent workflow rules`
+  热度：`468 stars this week`
+  为什么重要：AWS 把 AI-DLC adaptive workflow steering rules 开源，说明大厂也在把 coding agent 的流程规则显式化。
+  建议动作：把它和 OpenAI harness / Anthropic managed agents 对照，看规则层是否能形成跨工具复用。
+  来源日期：`2026-05-14`
+  来源：https://github.com/trending/python?since=weekly ; https://github.com/awslabs/aidlc-workflows
+
+- 项目：`colbymchenry/codegraph`
+  方向：`pre-indexed code knowledge graph`
+  热度：`510 stars this week`
+  为什么重要：项目强调本地预索引代码知识图，目标是减少 tokens 和工具调用，和 `context density` 主线高度一致。
+  建议动作：纳入 `semantic code context` 对照，比较它与 `claude-context / GitNexus` 的图结构和检索成本。
+  来源日期：`2026-05-14`
+  来源：https://github.com/trending/typescript?since=weekly ; https://github.com/colbymchenry/codegraph
+
+### 状态变化
+
+- 项目：`memory / context`
+  之前判断：重点在 `skills / marketplace`、`vertical agents`、`workflow MCP`。
+  当前判断：本周 `agentmemory`、`PageIndex`、`cocoindex`、`codegraph` 同时上榜，说明热点重新回到更底层的 memory、index 和 code context。
+  变化原因：多条项目都在减少无效上下文、补持久记忆或构建更可审计的检索层。
+
+- 项目：`vertical finance agents`
+  之前判断：金融 agent 是最清晰的垂直落地样本。
+  当前判断：金融线继续增强，但风险边界也更高，应区分 `research template`、`analysis assistant` 和 `automated trading`。
+  变化原因：`anthropics/financial-services` 与 `HKUDS/AI-Trader` 同周上榜，但权限和风险等级完全不同。
+
+### 新信号 / 新风险
+
+- 信号：桌面和浏览器执行面正在升温，GitHub 的 `UI-TARS-desktop` 与 Google 的 Chrome/Android 更新同向。
+  对我们的影响：后续 agent 评估要覆盖桌面/浏览器状态恢复和人类接管，不再只看 CLI coding agent。

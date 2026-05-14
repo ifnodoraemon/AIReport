@@ -1,6 +1,6 @@
 # Agent Eval / Benchmark 追踪
 
-最后更新：2026-05-07
+最后更新：2026-05-14
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`、`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`
 
@@ -331,3 +331,64 @@
   之前判断：重点在检索质量和多模态文档场景。
   当前判断：应把 `page-level citations` 和 `metadata filtering` 视为生产级 RAG 的默认评测项。
   变化原因：Google 已把这些做成 Gemini API File Search 的产品能力。
+
+## 2026-05-14 当周补充
+
+### 新增 benchmark / 方法
+
+- 条目：`Parameter Golf`
+  类型：`AI-assisted research eval / model compression contest`
+  核心信号：OpenAI 复盘研究者如何用 AI 工具赢得 Parameter Golf 金牌，把模型压缩竞赛呈现为可迭代、可审查的研究工作流。
+  为什么重要：这类案例更接近“AI 是否能提高研究循环效率”，不是传统单点模型 benchmark。
+  建议动作：内部评测可补一个 `research-loop eval` 样例，记录假设生成、实验脚本、错误修正和最终 artifact 质量。
+  来源日期：`2026-05-12`
+  来源：https://openai.com/index/how-openai-researchers-won-gold-in-parameter-golf/
+
+- 条目：`Codex safety monitoring`
+  类型：`production safety eval / coding agent oversight`
+  核心信号：OpenAI 在 Codex 安全文章中把轨迹审查、权限边界和可疑行为监控放进运行体系。
+  为什么重要：coding agent 的评测不能只看任务通过率，还要看执行过程是否越权、是否泄露、是否引入不可接受风险。
+  建议动作：coding agent eval 增加 `unsafe action rate`、`permission escalation`、`reviewability` 三类过程指标。
+  来源日期：`2026-05-08`
+  来源：https://openai.com/index/running-codex-safely/
+
+- 条目：`Chrome Auto Browse review surface`
+  类型：`browser agent eval / user-delegated task review`
+  核心信号：Google 将自动网页任务放进 Chrome 产品面，评测重点将从 Playwright 式任务成功率扩展到用户授权、可撤销性、网页状态和结果解释。
+  为什么重要：browser agent 一旦进入默认浏览器，用户安全和审计体验本身就是评测对象。
+  建议动作：后续 GUI/browser eval 新增 `confirmation quality`、`state recovery`、`audit trail`。
+  来源日期：`2026-05-12`
+  来源：https://blog.google/innovation-and-ai/products/chrome/chrome-auto-browse/
+
+- 条目：`WildClawBench`
+  类型：`native-runtime long-horizon agent benchmark`
+  核心信号：WildClawBench 使用真实 CLI harness、Docker 环境、真实工具、双语多模态任务和混合 grader，明确指出同一模型换 harness 可产生显著分数差异。
+  为什么重要：它把 agent eval 从 synthetic sandbox 推到更接近部署环境的 runtime benchmark。
+  建议动作：作为 `native-runtime eval` P0 样本，重点记录 harness、工具、环境状态审计和 side effect grading。
+  来源日期：`2026-05-11`
+  来源：https://arxiv.org/abs/2605.10912 ; https://huggingface.co/datasets/internlm/WildClawBench
+
+- 条目：`From Storage to Experience`
+  类型：`memory mechanism / agent experience eval`
+  核心信号：该工作把 agent memory 从“存储和检索”推进到“经验如何被组织、更新和用于后续决策”。
+  为什么重要：它和前几周的 memory security / memory structure 形成互补，提醒评测不能只测 recall。
+  建议动作：memory eval 新增 `experience reuse quality` 和 `decision impact` 两项。
+  来源日期：`2026-05-07`
+  来源：https://arxiv.org/abs/2605.06716
+
+### 状态变化
+
+- 主题：`Coding agent eval`
+  之前判断：重点是 long-horizon task、harness 条件和 evaluator instability。
+  当前判断：还必须加入运行安全过程指标，尤其是权限、网络、文件系统和审查链路。
+  变化原因：Codex 安全文章把运行时安全机制放到了正式产品叙事中。
+
+- 主题：`Runtime / workplace eval`
+  之前判断：GUI/browser eval 关注任务完成和持续场景。
+  当前判断：还要覆盖用户授权、审计、状态恢复、真实 CLI harness 和工具 side effect。
+  变化原因：Chrome Auto Browse 与 WildClawBench 分别从产品入口和 benchmark 方向补上了这些场景。
+
+### 内部评测启发
+
+- 启发：本周新增信号把 eval 从“答对/完成”继续推向“过程是否安全、用户是否能审计、经验是否可复用”。
+  对我们的影响：内部 agent eval 最小集应同时包含 `task success`、`process safety`、`evidence/audit`、`memory impact`。
