@@ -1,6 +1,6 @@
 # Agent Eval / Benchmark 追踪
 
-最后更新：2026-05-14
+最后更新：2026-05-21
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`、`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`
 
@@ -392,3 +392,64 @@
 
 - 启发：本周新增信号把 eval 从“答对/完成”继续推向“过程是否安全、用户是否能审计、经验是否可复用”。
   对我们的影响：内部 agent eval 最小集应同时包含 `task success`、`process safety`、`evidence/audit`、`memory impact`。
+
+## 2026-05-21 当周补充
+
+### 新增 benchmark / 方法
+
+- 条目：`MCP Atlas`
+  类型：`agentic tool-use / MCP benchmark signal`
+  核心信号：Google 在 Gemini 3.5 发布中把 `MCP Atlas (83.6%)` 与 Terminal-Bench、GDPval-AA 一起列为 agentic/coding 能力信号。
+  为什么重要：这说明 MCP 相关能力正在从协议生态进入旗舰模型发布页的评测叙事。
+  建议动作：把 `MCP tool-use benchmark` 单独列为待追踪方向，优先确认任务构成、server 类型、tool trace 和评分方式。
+  来源日期：`2026-05-19`
+  来源：https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/
+
+- 条目：`Terminal-Bench 2.1 / GDPval-AA in Gemini 3.5 release`
+  类型：`coding agent / workplace task benchmark`
+  核心信号：Gemini 3.5 Flash 在发布页中以 Terminal-Bench 2.1、GDPval-AA 和 MCP Atlas 作为核心能力支撑，说明 flagship model eval 正在同时覆盖 terminal coding、专业工作流和 tool protocol。
+  为什么重要：模型发布的 benchmark 组合本身就是方向信号：agent eval 正从单一 SWE bench 转向 `terminal + workplace + protocol` 组合。
+  建议动作：内部评测矩阵按这三类拆分：`CLI/runtime`、`enterprise/workplace quality`、`tool protocol correctness`。
+  来源日期：`2026-05-19`
+  来源：https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/
+
+- 条目：`Co-Scientist idea tournament`
+  类型：`scientific agent eval / hypothesis ranking`
+  核心信号：Co-Scientist 使用 reflection、ranking、evolution、meta-review agents 和 Elo-style tournament，对科学假设进行生成、辩论、排序、验证和演化。
+  为什么重要：这提供了一个不同于 coding/GUI 的 agent eval 范式：评估对象不是答案，而是可测试假设、证据 grounding、专家复核和实验后续价值。
+  建议动作：如后续做 research agent，应增加 `hypothesis novelty`、`testability`、`evidence grounding`、`expert review` 四类指标。
+  来源日期：`2026-05-19`
+  来源：https://deepmind.google/blog/co-scientist-a-multi-agent-ai-partner-to-accelerate-research/
+
+- 条目：`What Twelve LLM Agent Benchmark Papers Disclose About Themselves`
+  类型：`benchmark audit / reproducibility schema`
+  核心信号：该论文提出 agent benchmark 披露审计 schema，字段包括 benchmark identity、harness specification、inference settings、cost reporting、failure breakdown，并指出 agent benchmark 论文平均披露分低。
+  为什么重要：这直接补上 agent eval 的可复现性缺口，尤其是 harness、采样、成本、失败分类这些常被忽略的运行细节。
+  建议动作：内部 benchmark 报告强制记录 `harness spec`、`model/inference params`、`cost`、`failure taxonomy`。
+  来源日期：`2026-05-20`
+  来源：https://arxiv.org/abs/2605.21404
+
+- 条目：`Insights Generator`
+  类型：`trace diagnostics / production eval`
+  核心信号：该论文将 agent 执行 trace 诊断从人工抽样扩展到语料级假设生成和证据化报告，并用 report quality 与下游 scaffold improvement 验证价值。
+  为什么重要：生产环境 agent 很难只靠最终分数定位问题，trace corpus diagnostics 是长期运行 agent 的必要 eval/observability 层。
+  建议动作：内部日志设计要支持按 trace population 做失败归因，而不是只保存单条 transcript。
+  来源日期：`2026-05-20`
+  来源：https://arxiv.org/abs/2605.21347
+
+### 状态变化
+
+- 主题：`Benchmark disclosure`
+  之前判断：agent eval 要覆盖 harness、tool use、memory 和 long-horizon。
+  当前判断：还必须强制披露 harness、成本、inference settings 和失败分布，否则不同报告不可比。
+  变化原因：`What Twelve LLM Agent Benchmark Papers Disclose About Themselves` 把 disclosure gap 明确量化。
+
+- 主题：`Scientific agent eval`
+  之前判断：science 更常作为 frontier reasoning benchmark 出现。
+  当前判断：Co-Scientist 显示 science agent eval 需要看 hypothesis lifecycle，而不是只看题目正确率。
+  变化原因：Google DeepMind 把多 agent 科研假设系统作为正式产品/研究工具发布。
+
+### 内部评测启发
+
+- 启发：本周新增信号要求 eval 同时覆盖 `benchmark disclosure`、`trace diagnostics`、`protocol/tool correctness`、`scientific hypothesis quality`。
+  对我们的影响：后续不要只扩 benchmark 数量，应先补报告规范和 trace 可观测性。

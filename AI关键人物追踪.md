@@ -1,10 +1,10 @@
 # AI 关键人物追踪
 
-最后更新：2026-05-14
+最后更新：2026-05-21
 
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/模型发布追踪.md`、`/home/ifnodoraemon/myreport/MCP-tools-agent-infra追踪.md`
 
-跟踪范围：截至 `2026-05-14` 检索到的 AI 关键人物 `个人官网 / 官方博客 / 公司新闻页 / X`；优先选择能持续释放 `模型路线`、`agent infra`、`开发者生态`、`安全治理`、`world model` 高信号的人
+跟踪范围：截至 `2026-05-21` 检索到的 AI 关键人物 `个人官网 / 官方博客 / 公司新闻页 / X`；优先选择能持续释放 `模型路线`、`agent infra`、`开发者生态`、`安全治理`、`world model` 高信号的人
 
 ## 目的
 
@@ -614,3 +614,78 @@
   之前判断：Google 侧要关注 `context layer` 与 `open model serving efficiency`。
   当前判断：还要加入 `Android / Chrome distribution`，因为 Gemini 的 agent 入口正在深入默认操作系统和浏览器体验。
   变化原因：`Gemini Intelligence` 和 `Chrome Auto Browse` 同周出现。
+
+## 2026-05-21 当周补充
+
+### 新增人物信号
+
+- 人物：`Sam Altman / OpenAI leadership`
+  动作：OpenAI 于 `2026-05-18` 宣布与 Dell Technologies 合作，把 Codex 带入 hybrid 与 on-premises 企业环境。
+  来源级别：`公司官网已确认`
+  方向：`enterprise deployment / Codex / on-prem data`
+  为什么重要：Sam/OpenAI 顶层路线继续从模型发布转向 agent 进入企业生产系统，尤其是靠近本地数据、系统和工作流的部署。
+  对我们的影响：跟 OpenAI 时应把 `enterprise deployment partner` 和 `Codex adoption` 纳入人物路线判断，而不是只看模型发布和 X 预告。
+  来源日期：`2026-05-18`
+  来源：https://openai.com/index/dell-codex-enterprise-partnership/
+
+- 人物：`Dario Amodei / Anthropic leadership`
+  动作：Anthropic 于 `2026-05-18` 收购 Stainless，并于 `2026-05-19` 宣布 KPMG 将 Claude 集成到核心业务和全球员工工作流。
+  来源级别：`公司官网已确认`
+  方向：`MCP connectivity / enterprise adoption / professional services`
+  为什么重要：Dario/Anthropic 路线本周清晰落到“连接层 + 大型企业采用”：Stainless 强化 SDK/MCP tooling，KPMG 则验证 Claude 进入审计、税务、法律、私募股权等高价值工作流。
+  对我们的影响：Anthropic 人物追踪要从 `safety + model` 扩展到 `connectors + regulated services deployment`。
+  来源日期：`2026-05-18`、`2026-05-19`
+  来源：https://www.anthropic.com/news/anthropic-acquires-stainless ; https://www.anthropic.com/news/anthropic-kpmg
+
+- 人物：`Sundar Pichai`
+  动作：Google I/O 2026 于 `2026-05-19` 以 `agentic Gemini era` 为主线，发布 Gemini 3.5、Gemini Omni、Gemini Spark、Information agents、Universal Cart 等 agentic 产品面。
+  来源级别：`公司官网已确认`
+  方向：`agentic product strategy / Gemini distribution`
+  为什么重要：Sundar 的信号表明 Google 正在把 Gemini 从模型品牌推进到跨 Search、Gemini app、Shopping、Workspace、Android、Chrome 的 agentic 产品层。
+  对我们的影响：关键人物名单建议把 `Sundar Pichai` 从候选扩展提升为 P1 观察，因为 Google 的产品分发路线对 agent 普及速度影响很大。
+  来源日期：`2026-05-19`
+  来源：https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-collection/
+
+- 人物：`Koray Kavukcuoglu / Jeff Dean / Oriol Vinyals / Noam Shazeer`
+  动作：联合发布 `Gemini 3.5: frontier intelligence with action`，把 Gemini 3.5 Flash 定位为 agentic coding 与 long-horizon task 的新基线。
+  来源级别：`公司官网已确认`
+  方向：`frontier model / agentic coding / Antigravity`
+  为什么重要：这几位共同署名说明 Google 模型线正在把 DeepMind、Research 与产品化 agent harness 合流。
+  对我们的影响：跟 Google 技术人物时，除了 Demis，还应关注具体模型负责人和 Research 负责人如何共同定义 `action-oriented frontier model`。
+  来源日期：`2026-05-19`
+  来源：https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/
+
+- 人物：`Koray Kavukcuoglu`
+  动作：发布 `Gemini Omni`，把 Gemini 的多模态能力推进到从任意输入生成和对话式编辑视频。
+  来源级别：`公司官网已确认`
+  方向：`multimodal model / video generation / content provenance`
+  为什么重要：Koray 线本周同时覆盖 Gemini 3.5 与 Gemini Omni，说明 Google 模型路线不是单一推理模型，而是 agentic action 与 multimodal world generation 并行。
+  对我们的影响：人物追踪里对 Google 模型负责人应同时看 `agentic coding` 与 `world/multimodal generation`。
+  来源日期：`2026-05-19`
+  来源：https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni/
+
+- 人物：`Demis Hassabis / Google DeepMind leadership`
+  动作：Google DeepMind 于 `2026-05-19` 发布 Co-Scientist，并在致谢中列出 Demis Hassabis 对该工作的支持。
+  来源级别：`Google DeepMind 官方博客已确认`
+  方向：`AI for science / multi-agent research partner`
+  为什么重要：Demis 线继续把 `AGI -> science` 作为核心叙事，Co-Scientist 是多 agent 系统进入真实科研假设生成的高信号样本。
+  对我们的影响：跟 Demis 时应把 `AI scientist / hypothesis generation / scientific eval` 单独列为主线。
+  来源日期：`2026-05-19`
+  来源：https://deepmind.google/blog/co-scientist-a-multi-agent-ai-partner-to-accelerate-research/
+
+### 状态变化
+
+- 人物：`Sam Altman`
+  之前判断：重点是 `Codex safety / sandbox / default model`。
+  当前判断：还应加入 `Codex enterprise deployment`，尤其是 hybrid/on-prem 数据环境。
+  变化原因：OpenAI 与 Dell 的合作把 Codex 明确推向企业生产数据和工作流。
+
+- 人物：`Dario Amodei`
+  之前判断：重点是行业 agent、服务交付和算力供给。
+  当前判断：本周应把 `MCP/SDK tooling` 与 `large professional services adoption` 提升到同等重要。
+  变化原因：Stainless 与 KPMG 分别补上连接基础设施和核心业务落地。
+
+- 人物：`Demis Hassabis / Google leadership`
+  之前判断：Google 侧要同时看 reasoning、world model、OS/browser distribution。
+  当前判断：I/O 2026 后还要加入 `agentic Gemini era` 的产品分发叙事和 `Co-Scientist` 科学 agent。
+  变化原因：Google 在同一周集中发布模型、agent harness、多模态生成、科学 agent 和多个产品入口。

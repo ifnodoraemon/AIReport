@@ -1,6 +1,6 @@
 # Agent / LLM 每周跟踪
 
-最后更新：2026-05-14
+最后更新：2026-05-21
 
 跟踪范围：近期与 `agent`、`LLM`、`memory`、`RAG 安全`、`评测` 相关的论文与趋势
 
@@ -427,3 +427,73 @@
   之前判断：金融 agent 是垂直落地样本。
   当前判断：合规 agent 应单独成线，因为这类场景要求手册规则、tool trace、citation、approval 和 audit 同时成立。
   变化原因：`MANTRA` 与 Anthropic 金融服务 agents 的产业信号同向。
+
+## 2026-05-21 当周补充
+
+### 新增论文
+
+- 论文：`Mem-π: Adaptive Memory through Learning When and What to Generate`
+  为什么重要：它把 agent memory 从检索静态记忆推进到“按当前上下文决定何时生成、生成什么 guidance”，并用 RL 学习是否 abstain；覆盖 web navigation、terminal tool use、text embodied interaction。
+  建议动作：memory 设计里新增 `generate vs retrieve` 分支，不要默认所有经验都靠相似度检索。
+  状态：`跟踪中`
+  来源日期：`2026-05-20`
+  来源：https://arxiv.org/abs/2605.21463
+
+- 论文：`Agentic Model Checking`
+  为什么重要：提出 agents propose, solvers verify，把 LLM agent 与 bounded model checking 后端结合，用于验证 LLM 生成的 C/Rust 系统代码。
+  建议动作：coding agent 评测中加入 `formal/backend verifier` 作为高风险代码的补充验证层。
+  状态：`待读`
+  来源日期：`2026-05-20`
+  来源：https://arxiv.org/abs/2605.21434
+
+- 论文：`What Twelve LLM Agent Benchmark Papers Disclose About Themselves`
+  为什么重要：它审计 agent benchmark 论文披露质量，指出 harness、inference settings、cost reporting、failure breakdown 普遍不足。
+  建议动作：内部 benchmark 文档强制披露运行环境、采样设置、成本、失败分类，避免不可复现的分数比较。
+  状态：`可执行`
+  来源日期：`2026-05-20`
+  来源：https://arxiv.org/abs/2605.21404
+
+- 论文：`VIPER-MCP: Detecting and Exploiting Taint-Style Vulnerabilities in Model Context Protocol Servers`
+  为什么重要：它大规模扫描开源 MCP server，并动态确认 taint-style 漏洞，说明 MCP server 安全风险已经从理论进入供应链/工具层现实问题。
+  建议动作：MCP server 上线前增加 taint-style audit、prompt-to-sink 测试和动态 exploit validation。
+  状态：`可执行`
+  来源日期：`2026-05-20`
+  来源：https://arxiv.org/abs/2605.21392
+
+- 论文：`Insights Generator: Systematic Corpus-Level Trace Diagnostics for LLM Agents`
+  为什么重要：把 agent trace 诊断从人工抽样推进到 corpus-level hypothesis testing 和证据报告，适合生产 agent 的系统性失败归因。
+  建议动作：统一 agent trace schema，保证后续能按任务族、工具、失败类型做语料级诊断。
+  状态：`跟踪中`
+  来源日期：`2026-05-20`
+  来源：https://arxiv.org/abs/2605.21347
+
+- 论文：`APEX: Autonomous Policy Exploration for Self-Evolving LLM Agents`
+  为什么重要：针对 self-evolving agents 的 exploration collapse，提出 strategy map、Fork Discovery 和 Policy Selection，在 Jericho 与 WebArena 上验证。
+  建议动作：如果内部做跨 episode learning，必须评估 memory 是否导致过早收敛到熟悉策略。
+  状态：`待读`
+  来源日期：`2026-05-20`
+  来源：https://arxiv.org/abs/2605.21240
+
+- 论文：`Causal Past Logic for Runtime Verification of Distributed LLM Agent Workflows`
+  为什么重要：把异步分布式 agent workflow 的 runtime verification 放入协调语言，强调因果可见性而不是简单顺序日志。
+  建议动作：多 agent 系统如进入分布式执行，应记录 vector-clock/causal visibility，而不是只保存线性 transcript。
+  状态：`待读`
+  来源日期：`2026-05-20`
+  来源：https://arxiv.org/abs/2605.20923
+
+### 状态变化
+
+- 主题：`Memory`
+  之前判断：memory 是能力、评测和安全主线。
+  当前判断：新增 `adaptive generated memory`，即记忆层不只是取回 past facts，也可以按当前任务生成 guidance 并选择 abstain。
+  变化原因：`Mem-π` 把 memory mechanism 推向可训练策略层。
+
+- 主题：`MCP security`
+  之前判断：RAG/agent 安全重点在语料投毒、泄露和 reranking 防御。
+  当前判断：MCP server 本身必须作为高风险供应链资产审计，尤其是自然语言输入到 shell/network/filesystem sink 的路径。
+  变化原因：`VIPER-MCP` 把 MCP server 漏洞扫描和动态 exploit confirmation 做成系统性研究。
+
+- 主题：`Agent observability`
+  之前判断：需要 step-level logs 和 long-horizon eval。
+  当前判断：还要支持 corpus-level trace diagnostics 与 benchmark disclosure，否则难以定位系统性失败或复现实验结果。
+  变化原因：`Insights Generator` 与 benchmark audit paper 同周出现。

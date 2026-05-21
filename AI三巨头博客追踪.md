@@ -1,10 +1,10 @@
 # AI 三巨头博客追踪
 
-最后更新：2026-05-14
+最后更新：2026-05-21
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
-跟踪范围：截至 `2026-05-14` 检索到的 `OpenAI`、`Anthropic`、`Google / Google DeepMind` 官方博客、新闻与工程文章；优先保留和 `model`、`agent`、`tool use`、`runtime`、`eval`、`context`、`多模态产品化` 相关的高信号条目
+跟踪范围：截至 `2026-05-21` 检索到的 `OpenAI`、`Anthropic`、`Google / Google DeepMind` 官方博客、新闻与工程文章；优先保留和 `model`、`agent`、`tool use`、`runtime`、`eval`、`context`、`多模态产品化` 相关的高信号条目
 
 ## 目的
 
@@ -616,3 +616,68 @@
   之前判断：三家主要在 `runtime / context / enterprise platform` 上竞争。
   当前判断：还要显式加入 `OS / browser / SMB package` 三类入口，因为 agent 正在从开发者工具扩展到默认消费和小企业工作界面。
   变化原因：Google 同周更新 Android 与 Chrome 入口，Anthropic 发布小企业版本，OpenAI 则补 Codex 运行环境安全边界。
+
+## 2026-05-21 当周补充
+
+### 新增 / 补录条目
+
+- `OpenAI` | `2026-05-18` | `OpenAI and Dell Technologies partner to bring Codex to hybrid and on-premises enterprise environments`
+  方向：`enterprise agent deployment / on-prem context / Codex`
+  核心信号：OpenAI 把 Codex 和 Dell AI Data Platform、Dell AI Factory 绑定，强调让 Codex 更靠近企业本地数据、代码库、文档、业务系统和工作流。
+  为什么重要：Codex 正从个人/云端 coding agent 扩展为可进入 hybrid/on-prem 环境的企业 agent 层，真正的竞争点变成数据治理、部署位置和企业系统连接。
+  建议动作：在 OpenAI 路线中把 `hybrid/on-prem agent deployment` 单独列为观察项，和云端 Codex app、Responses runtime 区分。
+  来源日期：`2026-05-18`
+  来源：https://openai.com/index/dell-codex-enterprise-partnership/
+
+- `Anthropic` | `2026-05-18` | `Anthropic acquires Stainless`
+  方向：`SDK / MCP server tooling / agent connectivity`
+  核心信号：Anthropic 收购 Stainless，明确把 SDK、CLI、MCP server tooling 视为 Claude 平台连接外部系统的关键能力。
+  为什么重要：这不是普通生态并购，而是把 agent 能“连接到什么”上升为平台核心能力，强化了 `MCP + developer experience` 的长期路线。
+  建议动作：在 Anthropic 追踪里把 `API spec -> SDK/CLI/MCP server` 作为连接层生产链路记录。
+  来源日期：`2026-05-18`
+  来源：https://www.anthropic.com/news/anthropic-acquires-stainless
+
+- `Anthropic` | `2026-05-19` | `KPMG integrates Claude across its core business`
+  方向：`enterprise adoption / professional services / regulated workflow`
+  核心信号：KPMG 将 Claude 嵌入 Digital Gateway，并向全球 `276,000+` 员工开放，同时把 Claude 用于税务、法律、私募股权和漏洞修复工作流。
+  为什么重要：Anthropic 的企业落地正在进入大型专业服务公司的核心业务系统，而不仅是通用聊天或开发者工具。
+  建议动作：把 `professional services agent` 与 `金融/法律/审计` 合并观察，重点看权限、审计、合规和客户数据边界。
+  来源日期：`2026-05-19`
+  来源：https://www.anthropic.com/news/anthropic-kpmg
+
+- `Google` | `2026-05-19` | `Gemini 3.5: frontier intelligence with action`
+  方向：`frontier model / agentic coding / managed subagents`
+  核心信号：Google 发布 `Gemini 3.5 Flash`，直接把 `frontier intelligence with action` 作为主叙事，并强调 Antigravity harness、long-horizon tasks、coding、MCP Atlas、Terminal-Bench 和企业 subagents。
+  为什么重要：Google 这次不是只发模型，而是把模型、agent harness、Gemini API、AI Studio、Search/Gemini app 和企业平台同步打通。
+  建议动作：把 `Gemini 3.5 Flash + Antigravity + Managed Agents` 作为 Google 侧最新 agent baseline。
+  来源日期：`2026-05-19`
+  来源：https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/
+
+- `Google` | `2026-05-19` | `Introducing Gemini Omni`
+  方向：`multimodal generation / video editing / world understanding`
+  核心信号：Google 发布 `Gemini Omni Flash`，从视频开始支持多输入生成和对话式编辑，并强调物理直觉、知识 grounding、SynthID 水印和内容验证。
+  为什么重要：这把 Gemini 的多模态能力从图像/音频扩展到更复杂的视频编辑和世界知识生成，且同步进入 Gemini app、Google Flow 与 YouTube Shorts。
+  建议动作：多模态产品追踪里新增 `video as editable context` 与 `SynthID verification` 两项。
+  来源日期：`2026-05-19`
+  来源：https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni/
+
+- `Google DeepMind` | `2026-05-19` | `Co-Scientist: A multi-agent AI partner to accelerate research`
+  方向：`scientific agent / multi-agent hypothesis generation / eval`
+  核心信号：Google DeepMind 发布基于 Gemini 的 Co-Scientist，多 agent 生成、辩论、排序和演化科学假设，并通过 Gemini for Science 向研究者开放实验工具。
+  为什么重要：这把 agent 从 coding/office workflow 推向科学发现工作流，且明确使用专家代理、tournament、外部数据库和安全评估。
+  建议动作：在 agent eval 与论文追踪中加入 `scientific hypothesis workflow`，不要只用 SWE/GUI benchmark 衡量 agent。
+  来源日期：`2026-05-19`
+  来源：https://deepmind.google/blog/co-scientist-a-multi-agent-ai-partner-to-accelerate-research/
+
+### 横向变化
+
+- `OpenAI` 本周主线是 `Codex enterprise deployment`，把 agent 执行面推进到 hybrid/on-prem 企业数据环境。
+- `Anthropic` 本周主线是 `connectivity + professional services adoption`，通过 Stainless 和 KPMG 同时补开发者连接层与大型业务落地。
+- `Google` 本周主线最强，I/O 2026 同时发布 `Gemini 3.5`、`Gemini Omni`、`Antigravity / Managed Agents`、`Co-Scientist`，说明它正在把模型、agent harness、多模态和科学工具打成一套全栈叙事。
+
+### 状态变化
+
+- 主题：`Agent platform`
+  之前判断：三家都在围绕 runtime、context、enterprise platform 竞争。
+  当前判断：本周竞争进一步分化为 `OpenAI on-prem enterprise Codex`、`Anthropic MCP/SDK connectivity`、`Google model+harness+product surface`。
+  变化原因：三家本周公开动作分别落在部署位置、连接工具链、模型与产品联动三条不同路线。

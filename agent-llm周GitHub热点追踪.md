@@ -1,10 +1,10 @@
 # Agent / LLM GitHub 每周热点追踪
 
-最后更新：2026-05-14
+最后更新：2026-05-21
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
-跟踪范围：持续记录 GitHub Trending 周榜，以及对应仓库主页；当前文档已包含 `2026-03-19` 至 `2026-05-14` 的多周快照
+跟踪范围：持续记录 GitHub Trending 周榜，以及对应仓库主页；当前文档已包含 `2026-03-19` 至 `2026-05-21` 的多周快照
 
 ## 目的
 
@@ -576,3 +576,88 @@
 
 - 信号：桌面和浏览器执行面正在升温，GitHub 的 `UI-TARS-desktop` 与 Google 的 Chrome/Android 更新同向。
   对我们的影响：后续 agent 评估要覆盖桌面/浏览器状态恢复和人类接管，不再只看 CLI coding agent。
+
+## 2026-05-21 当周
+
+### 新上榜项目
+
+- 项目：`tinyhumansai/openhuman`
+  方向：`personal AI / local-first assistant`
+  热度：`19,177 stars this week`；仓库 `23,793 stars`
+  为什么重要：个人 AI 助手继续上榜，说明开发者对“私有、简单、强能力”的本地/个人 agent 入口仍有强需求。
+  建议动作：作为 `personal AI workspace` 观察项，不直接等同于 enterprise agent infra。
+  来源日期：`2026-05-21`
+  来源：https://github.com/trending?since=weekly ; https://github.com/tinyhumansai/openhuman
+
+- 项目：`rohitg00/agentmemory`
+  方向：`persistent memory for coding agents`
+  热度：`7,976 stars this week`；仓库 `15,206 stars`
+  为什么重要：项目直接以 “Persistent memory for AI coding agents” 定位，和本周论文里的 adaptive memory、experience memory 同向。
+  建议动作：重点看它如何定义 memory benchmark、capture/retrieve/update，以及如何避免把错误经验固化。
+  来源日期：`2026-05-21`
+  来源：https://github.com/trending?since=weekly ; https://github.com/rohitg00/agentmemory
+
+- 项目：`colbymchenry/codegraph`
+  方向：`code knowledge graph / local context index`
+  热度：`6,731 stars this week`；仓库 `9,998 stars`
+  为什么重要：项目强调为 Claude Code、Codex、Cursor、OpenCode 提供预索引本地代码知识图，以减少 token 和 tool call，说明 code context layer 继续升温。
+  建议动作：与上一周记录的 `codegraph` 状态合并跟踪，优先比较它对大仓库探索成本的实际下降幅度。
+  来源日期：`2026-05-21`
+  来源：https://github.com/trending?since=weekly ; https://github.com/colbymchenry/codegraph
+
+- 项目：`Imbad0202/academic-research-skills`
+  方向：`Claude Code skills / research workflow`
+  热度：`8,737 stars this week`；仓库 `16,408 stars`
+  为什么重要：研究工作流被拆成 `research -> write -> review -> revise -> finalize` 的 skills，和 Google Co-Scientist 的 scientific workflow 信号同向，但更偏开发者可安装能力包。
+  建议动作：把它作为 `skills-as-workflow` 样本，观察 skill 文件是否比传统 prompt template 更易复用。
+  来源日期：`2026-05-21`
+  来源：https://github.com/trending?since=weekly ; https://github.com/Imbad0202/academic-research-skills
+
+- 项目：`mattpocock/skills`
+  方向：`Claude skills / engineering workflow packaging`
+  热度：`18,368 stars this week`；仓库 `97,111 stars`
+  为什么重要：通用工程 skills 高热，说明“把专家工作方式封装为 agent 可读技能”的需求不只存在于 Anthropic 官方生态。
+  建议动作：内部如沉淀 agent playbook，优先考虑 `skill` 格式而不是散落在 README 或 prompt 文档中。
+  来源日期：`2026-05-21`
+  来源：https://github.com/trending?since=weekly ; https://github.com/mattpocock/skills
+
+- 项目：`obra/superpowers`
+  方向：`agentic skills framework / software development methodology`
+  热度：`10,851 stars this week`；仓库 `200,186 stars`
+  为什么重要：它把 skills 和软件开发方法论绑定，说明社区正在从“给 agent 加工具”走向“给 agent 加可复用工作方法”。
+  建议动作：观察其方法论是否能映射到内部 code review、debug、test、release 流程。
+  来源日期：`2026-05-21`
+  来源：https://github.com/trending?since=weekly ; https://github.com/obra/superpowers
+
+- 项目：`millionco/react-doctor`
+  方向：`agent output QA / frontend code review`
+  热度：`1,345 stars this week`；仓库 `10,479 stars`
+  为什么重要：项目口号是 “Your agent writes bad React. This catches it”，说明 AI 生成代码的后验质量检查正在成为独立工具层。
+  建议动作：把 `agent-generated code QA` 加入 GitHub 追踪主题，尤其适合前端 UI 和框架约束检查。
+  来源日期：`2026-05-21`
+  来源：https://github.com/trending?since=weekly ; https://github.com/millionco/react-doctor
+
+- 项目：`anthropics/skills`
+  方向：`official agent skills repository`
+  热度：`4,749 stars this week`；仓库 `138,312 stars`
+  为什么重要：Anthropic 官方 skills 仓库持续上榜，和本周 Stainless 收购共同说明 Anthropic 正在强化“能力包 + 连接器 + MCP”的分发层。
+  建议动作：继续把官方 skills 当作能力封装规范样本，而不是普通示例仓库。
+  来源日期：`2026-05-21`
+  来源：https://github.com/trending?since=weekly ; https://github.com/anthropics/skills
+
+### 状态变化
+
+- 项目：`memory / code context`
+  之前判断：memory 和 code context 是底层热点。
+  当前判断：本周 `agentmemory` 与 `codegraph` 同时高热，说明 coding agent 的竞争点继续集中在跨会话记忆和低成本代码理解。
+  变化原因：开发者正在用可安装项目补模型上下文不足，而不是等待模型窗口无限变长。
+
+- 项目：`skills ecosystem`
+  之前判断：skills / plugins 是 agent 能力分发层。
+  当前判断：本周 `academic-research-skills`、`mattpocock/skills`、`obra/superpowers`、`anthropics/skills` 同时上榜，skills 已从官方样例变成社区方法论封装格式。
+  变化原因：Google I/O 的 Science Skills、Anthropic 官方 skills 与社区 skills 热度同周共振。
+
+### 新信号 / 新风险
+
+- 信号：`agent-generated code QA` 开始成为独立工具方向。
+  对我们的影响：如果内部大量使用 coding agent，应单独建设输出审查/静态检查/框架约束层，而不是只依赖 agent 自测。

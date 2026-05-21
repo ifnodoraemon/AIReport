@@ -1,6 +1,6 @@
 # MCP / Tools / Agent Infra 追踪
 
-最后更新：2026-05-14
+最后更新：2026-05-21
 
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/agent-llm周GitHub热点追踪.md`
 
@@ -477,3 +477,64 @@
 
 - 启发：agent infra 正在分化为 `execution sandbox`、`protocol governance`、`product admin controls`、`browser-native runtime` 四条并行线。
   对我们的影响：后续设计内部 agent 平台时，不能只抽象工具协议，还要明确执行面、身份面、审计面分别由谁负责。
+
+## 2026-05-21 当周补充
+
+### 新增条目
+
+- 条目：`OpenAI Codex + Dell hybrid/on-prem deployment`
+  方向：`enterprise deployment / governed data / agent proximity`
+  核心信号：Codex 将连接 Dell AI Data Platform，并探索与 Dell AI Factory 对接，让 agent 更靠近企业本地数据、系统记录、测试、部署和业务流程。
+  为什么重要：agent infra 的关键问题从“有没有工具”推进到“agent 在哪里运行、如何接触受治理数据、如何接入企业系统”。
+  建议动作：内部 infra 清单新增 `deployment topology`：cloud、hybrid、on-prem、edge/browser 分开记录。
+  来源日期：`2026-05-18`
+  来源：https://openai.com/index/dell-codex-enterprise-partnership/
+
+- 条目：`Anthropic acquires Stainless`
+  方向：`SDK generation / MCP server tooling / developer connectivity`
+  核心信号：Stainless 将 API spec 生成 SDK、CLI 和 MCP server 的能力带入 Anthropic，补齐 agent 连接工具链的生产化环节。
+  为什么重要：MCP 要成为事实标准，不能只靠协议文档，还需要从 API 描述到 SDK、CLI、connector/server 的稳定生成链路。
+  建议动作：评估内部 API 是否需要 `spec-first`，以便后续自动生成 agent-facing tool connectors。
+  来源日期：`2026-05-18`
+  来源：https://www.anthropic.com/news/anthropic-acquires-stainless
+
+- 条目：`Managed Agents in the Gemini API`
+  方向：`managed runtime / persistent isolated environment / code execution`
+  核心信号：Google 在 I/O 2026 发布 Gemini API Managed Agents，单次 API call 即可启动能推理、用工具、执行代码的 agent，并提供可恢复的隔离 Linux 环境、文件和状态。
+  为什么重要：这与 OpenAI Responses computer environment、Anthropic API agent capabilities 形成直接对标，说明 managed agent runtime 正在成为平台默认能力。
+  建议动作：把 `managed agent API` 维度拆成 `environment persistence`、`custom instructions/skills`、`code execution`、`state resume`、`audit`。
+  来源日期：`2026-05-19`
+  来源：https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/
+
+- 条目：`Google Antigravity 2.0 + Gemini 3.5 Flash`
+  方向：`agent harness / subagents / long-horizon workflows`
+  核心信号：Google 将 Antigravity harness 与 Gemini 3.5 Flash 联动，强调 collaborative subagents、复杂工作流、coding 和可监督执行。
+  为什么重要：Google 正把 agent harness 作为模型能力的一部分来发布，而不是只提供一个独立 IDE 或 API。
+  建议动作：对照 OpenAI Codex、Claude Code，记录各家如何定义 `subagent`、`state`、`review`、`tooling`。
+  来源日期：`2026-05-19`
+  来源：https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/ ; https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-developer-highlights/
+
+- 条目：`Co-Scientist multi-agent system`
+  方向：`specialized agent coalition / scientific workflow / tool use`
+  核心信号：Co-Scientist 使用 generation、proximity、reflection、ranking、evolution、meta-review 和 supervisor agents 组成科研假设生成系统，并接入 web search、ChEMBL、UniProt、AlphaFold 等工具。
+  为什么重要：这是一个高信号的专业领域 multi-agent infra 样本，强调 agent 角色、知识源、辩论/排序机制和安全评估。
+  建议动作：把 `role-specialized agent coalition` 作为垂直工作流设计参考，但只在任务天然需要多视角审查时采用。
+  来源日期：`2026-05-19`
+  来源：https://deepmind.google/blog/co-scientist-a-multi-agent-ai-partner-to-accelerate-research/
+
+### 状态变化
+
+- 主题：`Runtime`
+  之前判断：runtime 重点是 `shell / container / sandbox / state`。
+  当前判断：还要加入 `managed agent API` 和 `deployment topology`，因为 Google 提供托管可恢复环境，OpenAI 推 Codex 到 hybrid/on-prem。
+  变化原因：本周 OpenAI 和 Google 的动作都把 runtime 从单机工具扩展到企业部署与 API 产品面。
+
+- 主题：`MCP / connector`
+  之前判断：MCP 正在成为连接层主线。
+  当前判断：MCP 进入 `tooling industrialization` 阶段，SDK、CLI、server generation 和 connector directory 比协议本身更决定落地速度。
+  变化原因：Anthropic 收购 Stainless，直接补强 API-to-MCP tooling。
+
+### 工程启发
+
+- 启发：agent infra 的最小分层应更新为 `model`、`harness/runtime`、`connectors/MCP`、`deployment topology`、`governance/audit`。
+  对我们的影响：后续内部设计不应把 MCP connector、sandbox 和部署环境混成一个“工具层”，否则无法判断谁负责权限、状态和审计。
