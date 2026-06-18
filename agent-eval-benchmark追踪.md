@@ -1,6 +1,6 @@
 # Agent Eval / Benchmark 追踪
 
-最后更新：2026-05-21
+最后更新：2026-06-18
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`、`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`
 
@@ -453,3 +453,72 @@
 
 - 启发：本周新增信号要求 eval 同时覆盖 `benchmark disclosure`、`trace diagnostics`、`protocol/tool correctness`、`scientific hypothesis quality`。
   对我们的影响：后续不要只扩 benchmark 数量，应先补报告规范和 trace 可观测性。
+
+## 2026-06-18 当周补充
+
+### 新增 benchmark / 方法
+
+- 条目：`LifeSciBench`
+  类型：`scientific agent / experimental workflow eval`
+  核心信号：OpenAI 在 `Benchmarking AI scientists` 中使用生命科学研究任务评估 AI scientist，覆盖实验选择、设计、错误修复、数据解释和工具使用。
+  为什么重要：它把 agent eval 从 coding/browser 任务推进到科学实验流程，要求模型输出可以被专家和实验结果验证。
+  建议动作：内部 eval 矩阵新增 `science workflow`，至少记录 `hypothesis`、`protocol`、`tool use`、`analysis`、`expert review`。
+  来源日期：`2026-06-17`
+  来源：https://openai.com/index/benchmarking-ai-scientists/
+
+- 条目：`SkillVetBench`
+  类型：`agent skills security benchmark / LLM-as-judge`
+  核心信号：论文提出面向开源 agent skills 的多维安全风险评测，使用 SARS agentic-risk score、CVSS v4.0 向量和 marketplace verdict 对照。
+  为什么重要：skills 已经成为能力分发层，eval 不能只测 task success，还要测 instruction-layer 风险、数据外泄、memory poisoning 和多 agent 链式伤害。
+  建议动作：内部 skill 引入流程增加 `semantic risk judge`，和静态扫描互补。
+  来源日期：`2026-06-14`
+  来源：https://arxiv.org/abs/2606.15899
+
+- 条目：`EComAgentBench`
+  类型：`shopping agent / long-horizon web task / hidden intent`
+  核心信号：论文构造长流程购物任务，强调分散隐藏意图、真实商品目录、类型化失败诊断和可复现 judge。
+  为什么重要：电商 agent 是真实用户任务的代表，能同时暴露搜索、偏好理解、约束记忆、计划恢复和最终选择质量问题。
+  建议动作：如评估 consumer/workplace web agent，应加入 `hidden distributed constraints`，避免只测显性指令完成率。
+  来源日期：`2026-06-16`
+  来源：https://arxiv.org/abs/2606.17698
+
+- 条目：`LoHoSearch`
+  类型：`long-horizon search / knowledge graph generated tasks`
+  核心信号：论文提出超越人类难度上限的长程搜索 benchmark，通过知识图生成更长推理链和更复杂证据查找任务，并在 `2026-06-17` 更新 v2。
+  为什么重要：检索型 agent 的瓶颈不只是 search API，而是跨多跳证据、上下文管理和早停判断。
+  建议动作：内部 search agent eval 记录 `query decomposition`、`evidence coverage`、`early stopping` 和 `context drift`。
+  来源日期：`2026-06-11`；更新日期：`2026-06-17`
+  来源：https://arxiv.org/abs/2606.12837
+
+- 条目：`SMSR: Certified Defence Against Runtime Memory Poisoning`
+  类型：`persistent memory safety / runtime defense`
+  核心信号：论文关注 persistent LLM agent 中 runtime memory poisoning 的认证防御，明确把长期记忆作为安全边界。
+  为什么重要：memory eval 不能只看检索准确率，还要测试恶意记忆注入、错误经验固化和运行时防御。
+  建议动作：内部 memory benchmark 增加 `poisoned memory` 与 `recovery/forgetting` 场景。
+  来源日期：`2026-06-10`
+  来源：https://arxiv.org/abs/2606.12703
+
+- 条目：`Claude Opus 4.8 TAU3 scores`
+  类型：`agent workflow benchmark / release-page eval signal`
+  核心信号：Anthropic 在 Opus 4.8 发布页用 TAU3 telecom、airline、retail 任务报告复杂 agent 表现，显示模型发布页继续成为 agent eval 趋势入口。
+  为什么重要：这些分数应视为供应商自报 benchmark 信号，而不是独立可复现实验；但任务类型对内部 eval 分类有参考价值。
+  建议动作：把供应商发布页 benchmark 标注为 `vendor-reported`，同时追踪是否有第三方复现。
+  来源日期：`2026-06-10`
+  来源：https://www.anthropic.com/news/claude-opus-4-8
+
+### 状态变化
+
+- 主题：`Scientific agent eval`
+  之前判断：Co-Scientist 显示 science agent eval 需要看 hypothesis lifecycle。
+  当前判断：OpenAI LifeSciBench 进一步说明科学 agent 评测要覆盖实验执行前后的完整工作流。
+  变化原因：OpenAI 本周发布 LifeSciBench 和 AI chemist 相关内容。
+
+- 主题：`Skills safety`
+  之前判断：MCP/server 安全是 agent 工具链的关键风险。
+  当前判断：skills 自身也必须评测，尤其是自然语言指令层风险，因为传统静态扫描会漏掉 prompt injection、memory poisoning 和 side-channel exfiltration。
+  变化原因：SkillVetBench 与 SkillSpector 同周形成论文和开源工具共振。
+
+- 主题：`Long-horizon web/search eval`
+  之前判断：GUI/browser eval 要覆盖 side effect 和审计。
+  当前判断：还要重点覆盖隐藏约束、跨证据搜索、早停和上下文漂移。
+  变化原因：EComAgentBench 与 LoHoSearch 分别从购物和搜索任务补上长流程难点。

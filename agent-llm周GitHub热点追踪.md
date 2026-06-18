@@ -1,10 +1,10 @@
 # Agent / LLM GitHub 每周热点追踪
 
-最后更新：2026-05-21
+最后更新：2026-06-18
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
-跟踪范围：持续记录 GitHub Trending 周榜，以及对应仓库主页；当前文档已包含 `2026-03-19` 至 `2026-05-21` 的多周快照
+跟踪范围：持续记录 GitHub Trending 周榜，以及对应仓库主页；当前文档已包含 `2026-03-19` 至 `2026-06-18` 的多周快照
 
 ## 目的
 
@@ -661,3 +661,80 @@
 
 - 信号：`agent-generated code QA` 开始成为独立工具方向。
   对我们的影响：如果内部大量使用 coding agent，应单独建设输出审查/静态检查/框架约束层，而不是只依赖 agent 自测。
+
+## 2026-06-18 当周
+
+### 新上榜项目
+
+- 项目：`addyosmani/agent-skills`
+  方向：`production-grade skills / coding agent workflow`
+  热度：`11,684 stars this week`
+  为什么重要：skills 继续从 Anthropic 官方生态扩散到通用工程方法封装，开发者正在把可复用工作流沉淀为 agent 可读能力包。
+  建议动作：内部如沉淀 coding/review/debug 流程，优先用 skill 结构表达依赖、步骤、验证和失败处理。
+  来源日期：`2026-06-18`
+  来源：https://github.com/trending?since=weekly ; https://github.com/addyosmani/agent-skills
+
+- 项目：`NVIDIA/SkillSpector`
+  方向：`agent skill security / supply-chain scanning`
+  热度：`5,257 stars this week`
+  为什么重要：agent skills 高速扩散后，安全扫描成为独立热点；这和本周 SkillVetBench 论文形成强对应。
+  建议动作：把 skills 视为供应链资产，安装前做 manifest、instruction 和 runtime sink 审查。
+  来源日期：`2026-06-18`
+  来源：https://github.com/trending?since=weekly ; https://github.com/NVIDIA/SkillSpector
+
+- 项目：`chopratejas/headroom`
+  方向：`context compression / MCP server / tool output budget`
+  热度：`9,475 stars this week`
+  为什么重要：项目直接处理工具输出、日志、文件和 RAG chunks 进入 LLM 前的压缩，说明 context-budget-first 已经有开源基础设施承接。
+  建议动作：评估是否能作为 tool-output compaction 对照样本，同时检查压缩后证据可审计性。
+  来源日期：`2026-06-18`
+  来源：https://github.com/trending?since=weekly ; https://github.com/chopratejas/headroom
+
+- 项目：`Panniantong/Agent-Reach`
+  方向：`web/social research agent / multi-source search`
+  热度：`6,855 stars this week`
+  为什么重要：agent 访问 Twitter、Reddit、YouTube、GitHub、Bilibili、小红书等公开信息源的需求很强，说明 research agent 正在从单一 web search 走向多平台读取。
+  建议动作：如内部做 research agent，需要优先定义来源可信度、引用留存和站点访问合规，而不是只扩数据源。
+  来源日期：`2026-06-18`
+  来源：https://github.com/trending?since=weekly ; https://github.com/Panniantong/Agent-Reach
+
+- 项目：`phuryn/pm-skills`
+  方向：`PM skills marketplace / product workflow`
+  热度：`5,333 stars this week`
+  为什么重要：skills 热度不再局限于工程任务，产品发现、策略、执行、发布和增长也被封装为 agentic skills。
+  建议动作：观察非工程 skills 是否能稳定降低知识工作流程成本，重点看输入约束、输出质量和复用边界。
+  来源日期：`2026-06-18`
+  来源：https://github.com/trending?since=weekly ; https://github.com/phuryn/pm-skills
+
+- 项目：`mvanhorn/last30days-skill`
+  方向：`research skill / recent web synthesis`
+  热度：`5,235 stars this week`
+  为什么重要：把 Reddit、X、YouTube、HN、Polymarket 和 web 汇总为“最近 30 天”研究 skill，说明时间敏感研究正在被产品化为可安装能力。
+  建议动作：内部趋势追踪可借鉴其时间窗口概念，但要强制保留来源日期和 URL，避免只输出无证据摘要。
+  来源日期：`2026-06-18`
+  来源：https://github.com/trending?since=weekly ; https://github.com/mvanhorn/last30days-skill
+
+- 项目：`DeusData/codebase-memory-mcp`
+  方向：`codebase memory / MCP / knowledge graph`
+  热度：`1,097 stars this week`
+  为什么重要：代码上下文继续向持久 memory 和知识图迁移，并通过 MCP 暴露给 agent，和上一期 codegraph/context layer 方向一致。
+  建议动作：与现有 code context 项目对比，重点看索引速度、增量更新、查询延迟和 token 节省。
+  来源日期：`2026-06-18`
+  来源：https://github.com/trending?since=weekly ; https://github.com/DeusData/codebase-memory-mcp
+
+### 状态变化
+
+- 项目：`skills ecosystem`
+  之前判断：skills 已从官方样例变成社区方法论封装格式。
+  当前判断：本周 skills 同时出现工程、产品、研究和安全扫描四条线，说明 skills 正在成为跨岗位 agent 能力分发层。
+  变化原因：`agent-skills`、`pm-skills`、`last30days-skill`、`SkillSpector` 同周上榜。
+
+- 项目：`context / memory`
+  之前判断：memory 和 code context 是 coding agent 的底层热点。
+  当前判断：本周新增重点是 `context compression before LLM` 与 `codebase memory MCP`，分别解决 token 成本和长期代码知识接入。
+  变化原因：`headroom` 与 `codebase-memory-mcp` 同周上榜。
+
+- 项目：`research agent`
+  之前判断：research workflow skills 有热度，但更偏学术写作和技能包。
+  当前判断：本周 research agent 更偏实时多源信息抓取与近期趋势合成，质量瓶颈会转向来源可信度和引用管理。
+  变化原因：`Agent-Reach` 与 `last30days-skill` 同周上榜。
