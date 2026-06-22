@@ -1,6 +1,6 @@
 # Agent / LLM 每周跟踪
 
-最后更新：2026-05-21
+最后更新：2026-06-22
 
 跟踪范围：近期与 `agent`、`LLM`、`memory`、`RAG 安全`、`评测` 相关的论文与趋势
 
@@ -497,3 +497,43 @@
   之前判断：需要 step-level logs 和 long-horizon eval。
   当前判断：还要支持 corpus-level trace diagnostics 与 benchmark disclosure，否则难以定位系统性失败或复现实验结果。
   变化原因：`Insights Generator` 与 benchmark audit paper 同周出现。
+
+## 2026-06-22 综合补充 (涵盖 5.22 - 06.22)
+
+### 新增论文
+
+- 论文：`Organizational Control Layer: Governance Infrastructure at the Execution Boundary of LLM Agent Systems`
+  为什么重要：随着多智能体系统的扩张，研究重心从单个 Agent 的逻辑转向整个系统的组织和治理边界（Execution Boundary）。
+  建议动作：把 `Governance Infrastructure` 加入多智能体设计的考核范围，区分 Agent 的内在逻辑和外部治理。
+  状态：`跟踪中`
+  来源日期：`2026-06-15`
+
+- 论文：`Agents' Last Exam (ALE)`
+  为什么重要：ALE 包含 1,490 个长流程、高商业价值的任务，旨在弥合实验室评测和工业界采用之间的鸿沟。
+  建议动作：在 Agent Eval 评测维度中引入工业长流程任务测试集。
+  状态：`可执行`
+  来源日期：`2026-06-08`
+
+- 论文：`Human-on-the-Bridge: Scalable Evaluation for AI Agents`
+  为什么重要：提出了评估 Agent 为“行为系统”（Behavioral Systems）的框架，关注多轮交互和复杂策略遵守情况，而不是单轮回复质量。
+  建议动作：引入 `Human-in-the-Loop` 及动态行为审查（Human-on-the-Bridge）来校准内部 Agent 评测。
+  状态：`待读`
+  来源日期：`2026-06-12`
+
+- 论文：`Self-Revising Discovery Systems`
+  为什么重要：展示了 Agent 能够改变其自身的“游戏规则”（搜索空间）来促进科学发现，这是自我进化（Self-Evolving）的又一重要里程碑。
+  建议动作：在科学发现 Agent（如 Co-Scientist）的基准中，考察其自我修正搜索空间的能力。
+  状态：`待读`
+  来源日期：`2026-06-05`
+
+### 状态变化
+
+- 主题：`Evaluation & Benchmarking`
+  之前判断：Agent Eval 覆盖真实 CLI 与多模态测试。
+  当前判断：评测正向长周期、高经济价值（ALE）以及系统级行为评估（Human-on-the-Bridge）转移。
+  变化原因：学术界开始把单轮 Benchmark 淘汰，转向工业界真实的复杂工作流测试。
+
+- 主题：`Agent Security`
+  之前判断：供应链攻击和持久记忆投毒是关键。
+  当前判断：增加“后渗透利用”（Post-Exploitation）阶段的 Agent 安全风险。攻击者正利用 Agent 来自动化渗透后的利用链路。
+  变化原因：网络安全研究报告开始追踪自动化攻击 Agent。

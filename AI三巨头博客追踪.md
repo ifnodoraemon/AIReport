@@ -1,6 +1,6 @@
 # AI 三巨头博客追踪
 
-最后更新：2026-05-21
+最后更新：2026-06-22
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
@@ -681,3 +681,42 @@
   之前判断：三家都在围绕 runtime、context、enterprise platform 竞争。
   当前判断：本周竞争进一步分化为 `OpenAI on-prem enterprise Codex`、`Anthropic MCP/SDK connectivity`、`Google model+harness+product surface`。
   变化原因：三家本周公开动作分别落在部署位置、连接工具链、模型与产品联动三条不同路线。
+
+## 2026-06-22 综合补充 (涵盖 5.22 - 06.22)
+
+### OpenAI
+
+- 新文章：`GPT-5.6 rumors & Enterprise updates`
+  方向：`frontier model / enterprise tools / product updates`
+  核心信号：传闻 GPT-5.6 将于 6 月底发布。与此同时，OpenAI 集中补齐企业侧生态，包括推出 OpenAI Partner Network（1.5亿美元投入）、新的 ChatGPT Enterprise 支出与使用管控，以及与 Getty Images 达成数据集成合作。
+  建议动作：记录 OpenAI 在企业服务生态和模型上下文宽度（1.5M token 预期）的双向拓展。
+
+### Anthropic
+
+- 新文章：`Claude Opus 4.8 & Suspension of Fable 5 and Mythos 5`
+  方向：`model availability / export control / Claude Design`
+  核心信号：Anthropic 5 月底发布 Claude Opus 4.8 并在 6月9日推出更强大的 Claude Fable 5 和 Mythos 5。然而，受美国出口管制指令（涉及潜在越狱风险）影响，Anthropic 在 6月12日全球暂停了这两款最新模型的访问，至 6月18日才恢复 Fable 5 的定向访问。
+  建议动作：在模型可用性追踪中补充因合规和出口管制导致的中断事件；不再把发布日等同于稳定可用日。
+
+### Google / DeepMind
+
+- 新文章：`AI Control Roadmap, TRAIT&R & Agentic Resource Discovery`
+  方向：`AI safety / multi-agent security / protocol`
+  核心信号：DeepMind 提出将高级 AI 智能体视为“内部威胁”，并引入 TRAIT&R 框架用于监控风险。同时，Google 联合推出 ARD（Agentic Resource Discovery）开放规范，用于在 Web 上发布和发现 AI 能力。
+  建议动作：将 TRAIT&R 纳入内部评测防线；将 ARD 协议与 MCP 做对标追踪。
+
+### 横向变化
+
+- 共同主题：`企业合规安全与基础设施化`
+  对我们的影响：OpenAI 强化 Partner Network，Anthropic 面临出口管制，Google 转向 Defense-in-depth 安全框架。三家的重点从“秀能力”集体转向了如何安全、合规地在企业内部落地和相互发现。
+
+### 状态变化
+
+- 主题：`Model release`
+  之前判断：模型发布主要看能力和 benchmark。
+  当前判断：必须同步记录发布暂停、访问限制、验证 harness 和恢复时间，因为这些决定模型能否稳定进入生产。
+  变化原因：Anthropic 紧急暂停 Fable/Mythos 访问。
+
+### 备注
+
+- AlphaFold 联创、诺奖得主 John Jumper 于 6 月中旬宣布从 Google DeepMind 离职并加入 Anthropic，标志三巨头顶尖人才流动的持续。

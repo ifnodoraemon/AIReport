@@ -1,6 +1,6 @@
 # Agent / LLM GitHub 每周热点追踪
 
-最后更新：2026-05-21
+最后更新：2026-06-22
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
@@ -661,3 +661,43 @@
 
 - 信号：`agent-generated code QA` 开始成为独立工具方向。
   对我们的影响：如果内部大量使用 coding agent，应单独建设输出审查/静态检查/框架约束层，而不是只依赖 agent 自测。
+
+## 2026-06-22 综合补充 (涵盖 5.22 - 06.22)
+
+### 新上榜项目
+
+- 项目：`openclaw/openclaw`
+  方向：`local-first personal AI assistant / skills integration`
+  热度：`持续霸榜`
+  为什么重要：作为本地优先、私密且支持 50+ 集成和自我编写技能的 AI 助手，它代表了个人 Agent 框架的最高开源标准。
+  建议动作：作为 Local-first Personal Agent 架构的对标对象，研究其技能自我生成机制。
+
+- 项目：`Panniantong/Agent-Reach`
+  方向：`CLI agent automation / platform integrations`
+  热度：`快速上升`
+  为什么重要：让 CLI Agent 无缝且免 API 费用地接入 Twitter、Reddit、GitHub 等平台，显示了社区对跨平台操作工具的极大需求。
+  建议动作：关注这种绕过标准 API 计费的爬虫/自动化混合 Agent 实现方案及其合规性。
+
+- 项目：`langchain-ai/langgraph` & `crewAIInc/crewAI`
+  方向：`stateful workflow / multi-agent orchestration`
+  热度：`稳定高居榜首`
+  为什么重要：Agent 框架基本盘稳固。开发者已经从探索单 Agent 转向用 LangGraph 编排复杂状态图，或用 CrewAI 组建特定职能的多智能体团队。
+  建议动作：确认内部工作流在编排引擎上是否向这些标准化框架靠拢。
+
+- 项目：`ARUNAGIRINATHAN-K/awesome-ai-agents-2026` (Ontheia)
+  方向：`visual workflow / MCP integration`
+  热度：`新星热点`
+  为什么重要：强调“Chain Engine”可视化工作流和原生 MCP（Model Context Protocol）集成。
+  建议动作：MCP 已经成为开源平台标准件，不支持 MCP 的工具链将被边缘化。
+
+### 状态变化
+
+- 项目：`Agent Infrastructure & Observability`
+  之前判断：observability 正在进入平台默认要求。
+  当前判断：像 Langfuse、promptfoo 这样的可观测性与评测工具与 Agent 框架的结合变得异常紧密。
+  变化原因：生产环境对 Agent 的审查需求激增。
+
+- 项目：`Protocol Standardization`
+  之前判断：MCP 与 skills 双线并行。
+  当前判断：大量开源热点项目原生集成 MCP（Model Context Protocol），它已经成为跨平台代理连接的数据交互事实标准。
+  变化原因：开源社区对统一外壳的诉求倒逼了协议层的统一。
