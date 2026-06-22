@@ -720,3 +720,10 @@
 ### 备注
 
 - AlphaFold 联创、诺奖得主 John Jumper 于 6 月中旬宣布从 Google DeepMind 离职并加入 Anthropic，标志三巨头顶尖人才流动的持续。
+
+## 2026-06-22 定时任务追踪补充
+
+### 最新动态追踪
+- **OpenAI**: 宣布向三星电子韩国及全球 DX 部门全员提供 ChatGPT Enterprise 和 Codex；并在日本与 Dentsu Digital 合作开启免费版和 Go plan 的广告展示测试。
+- **Anthropic**: 宣布启动 1.5 亿美元的“Claude Corps”公益资助计划，将向非营利组织输送 1000 名 Claude 专家，并提供资金和额度支持；同时在韩国首尔开设新办公室并扩展亚太合作。
+- **Google**: 针对初创企业的 Google for Startups 活动将集中展示基于 Gemini 新模型的架构实践。
