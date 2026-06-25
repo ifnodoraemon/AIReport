@@ -1,10 +1,10 @@
 # AI 关键人物追踪
 
-最后更新：2026-05-21
+最后更新：2026-06-25
 
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/模型发布追踪.md`、`/home/ifnodoraemon/myreport/MCP-tools-agent-infra追踪.md`
 
-跟踪范围：截至 `2026-05-21` 检索到的 AI 关键人物 `个人官网 / 官方博客 / 公司新闻页 / X`；优先选择能持续释放 `模型路线`、`agent infra`、`开发者生态`、`安全治理`、`world model` 高信号的人
+跟踪范围：截至 `2026-06-25` 检索到的 AI 关键人物 `个人官网 / 官方博客 / 公司新闻页 / X`；优先选择能持续释放 `模型路线`、`agent infra`、`开发者生态`、`安全治理`、`world model` 高信号的人
 
 ## 目的
 
@@ -689,3 +689,51 @@
   之前判断：Google 侧要同时看 reasoning、world model、OS/browser distribution。
   当前判断：I/O 2026 后还要加入 `agentic Gemini era` 的产品分发叙事和 `Co-Scientist` 科学 agent。
   变化原因：Google 在同一周集中发布模型、agent harness、多模态生成、科学 agent 和多个产品入口。
+
+## 2026-06-25 当周补充
+
+### 新增人物信号
+
+- 人物：`Sam Altman / Greg Brockman / OpenAI leadership`
+  动作：OpenAI 于 `2026-06-24` 与 Broadcom 发布首个自研 `Jalapeño` Intelligence Processor；同周还发布 `Codex-Maxxing for Long-Running Work` 与 GPT-5 辅助免疫学科研案例。
+  来源级别：`公司官网已确认`
+  方向：`full-stack compute / Codex workspace / AI for science`
+  为什么重要：Sam/OpenAI 路线本周从模型和 Codex 产品继续下沉到推理芯片、kernel、serving、网络与部署系统，同时把 Codex 表达为长任务 persistent workspace。
+  对我们的影响：跟 OpenAI 人物线时，需要把 `compute supply chain`、`long-running workspace` 与 `scientific expert workflow` 放进同一条路线，而不是只看模型名。
+  来源日期：`2026-06-24`、`2026-06-22`、`2026-06-23`
+  来源：https://openai.com/index/openai-broadcom-jalapeno-inference-chip/ ; https://openai.com/index/codex-maxxing-long-running-work/ ; https://openai.com/index/gpt-5-immunology-mystery/
+
+- 人物：`Dario Amodei / Anthropic leadership`
+  动作：Anthropic 于 `2026-06-23` 发布 `Claude Tag`，让团队在 Slack 中通过 `@Claude` 委托任务；Claude 可基于授权 channel、工具、数据和代码库建立上下文，并支持频道级记忆、异步执行、主动提醒、spend limits 与操作日志。
+  来源级别：`公司官网已确认`
+  方向：`team agent / scoped memory / collaborative workflow`
+  为什么重要：Dario/Anthropic 路线本周把 Claude 从个人 coding/cowork 入口推进到多人协作系统，重点是可授权、可审计、可长期跟随频道上下文的 team agent。
+  对我们的影响：跟 Anthropic 人物线时，要把 `channel-scoped memory`、`admin-controlled tools`、`spend governance` 与 `action logs` 作为产品路线信号。
+  来源日期：`2026-06-23`
+  来源：https://www.anthropic.com/news/introducing-claude-tag
+
+- 人物：`Demis Hassabis / Google DeepMind leadership`
+  动作：Google 于 `2026-06-24` 将 computer use 内建进 `Gemini 3.5 Flash`，并在 `2026-06-25` 将 `Interactions API` 定位为 Gemini 模型和 agents 的主接口。
+  来源级别：`公司官网已确认`
+  方向：`computer-use model / agent API / managed runtime`
+  为什么重要：Demis/Google 线本周的核心不是单点 benchmark，而是把 GUI/desktop/mobile 操作能力和 server-side state、background execution、Managed Agents、skills 注入统一到 Gemini 开发者平台。
+  对我们的影响：跟 Google 人物线时，要把 `frontier reasoning` 和 `agent execution API` 一起看，尤其关注 API 层是否成为后续 Gemini 新能力默认落点。
+  来源日期：`2026-06-24`、`2026-06-25`
+  来源：https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash/ ; https://blog.google/innovation-and-ai/technology/developers-tools/interactions-api-general-availability/
+
+### 状态变化
+
+- 人物：`Sam Altman`
+  之前判断：重点是 `Codex enterprise deployment`、安全沙箱和默认模型入口。
+  当前判断：还必须加入 `inference hardware / serving stack`，因为 OpenAI 已把推理成本、延迟和可用性作为顶层战略公开表达。
+  变化原因：Jalapeño 发布把 OpenAI 竞争层从模型/产品扩展到芯片、kernel、networking 和 deployment。
+
+- 人物：`Dario Amodei`
+  之前判断：重点是行业 agent、服务交付、MCP/SDK tooling 和大型企业采用。
+  当前判断：新增 `team-embedded Claude`，尤其是 Slack-native 协作入口、频道级权限和共享记忆。
+  变化原因：Claude Tag 直接把 Claude 做成多人频道中的异步 team member。
+
+- 人物：`Demis Hassabis / Google leadership`
+  之前判断：I/O 2026 后要看 `agentic Gemini era` 和科学 agent。
+  当前判断：还要上调 `computer use + Interactions API` 权重，因为 Google 正把 agent runtime 做成 Gemini 主接口。
+  变化原因：computer use 进入 Gemini 3.5 Flash，Interactions API 进入 GA 并成为默认开发接口。

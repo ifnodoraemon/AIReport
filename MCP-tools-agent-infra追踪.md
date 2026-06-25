@@ -1,6 +1,6 @@
 # MCP / Tools / Agent Infra 追踪
 
-最后更新：2026-05-21
+最后更新：2026-06-25
 
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/agent-llm周GitHub热点追踪.md`
 
@@ -538,3 +538,67 @@
 
 - 启发：agent infra 的最小分层应更新为 `model`、`harness/runtime`、`connectors/MCP`、`deployment topology`、`governance/audit`。
   对我们的影响：后续内部设计不应把 MCP connector、sandbox 和部署环境混成一个“工具层”，否则无法判断谁负责权限、状态和审计。
+
+## 2026-06-25 当周补充
+
+### 新增条目
+
+- 条目：`OpenAI Daybreak / Codex Security`
+  方向：`security agent / patch automation / trusted cyber model`
+  核心信号：OpenAI 将 Daybreak 扩展为从漏洞发现走向端到端 patch automation 的安全工具链，发布 Codex Security plugin 更新，并把 `GPT-5.5-Cyber` full version 通过 trusted access 提供给防御者。
+  为什么重要：agent infra 的安全线不再只是检测和报告，而是进入 `scan -> validate -> patch -> verify -> evidence` 的闭环。
+  建议动作：内部安全 agent 设计应把 `finding validation`、`reachable evidence`、`patch generation`、`human review` 和 `deployment proof` 拆成独立可观测阶段。
+  来源日期：`2026-06-22`
+  来源：https://openai.com/index/daybreak-securing-the-world/
+
+- 条目：`Patch the Planet`
+  方向：`AI-assisted OSS security workflow / maintainer support`
+  核心信号：OpenAI 与 Trail of Bits 等合作，为 cURL、NATS、pyca/cryptography、Sigstore、Go、Python 等开源项目提供 AI 辅助漏洞验证、patch 开发、CI/CD 改进、fuzzing harness 和 disclosure 支持。
+  为什么重要：这说明 AI security agent 的可交付形态正在从“单次发现漏洞”变成“帮维护者完成可落地补丁与测试”的服务流程。
+  建议动作：如后续做内部漏洞修复 agent，优先复用 `human-reviewed finding`、`project-specific threat model`、`patch test` 和 `coordinated disclosure` 四段式。
+  来源日期：`2026-06-22`
+  来源：https://openai.com/index/patch-the-planet/
+
+- 条目：`Claude Tag`
+  方向：`team agent / Slack runtime / scoped memory`
+  核心信号：Claude Tag 允许管理员为不同 Slack channel 配置 Claude 可访问的工具、数据和代码库，记忆隔离在频道范围内，并支持异步任务、主动提醒、token spend limits 与 action logs。
+  为什么重要：team agent 的基础设施重点从单机工具调用扩展到 `channel identity`、`scoped memory`、`admin policy` 和 `audit trail`。
+  建议动作：内部协作型 agent 应显式设计 `workspace/channel/session` 三层作用域，不要把团队上下文混进单一长期记忆。
+  来源日期：`2026-06-23`
+  来源：https://www.anthropic.com/news/introducing-claude-tag
+
+- 条目：`Gemini 3.5 Flash computer use`
+  方向：`computer use / browser-mobile-desktop agent / safeguards`
+  核心信号：Google 将 computer use 内建到 Gemini 3.5 Flash，支持 agent 在 browser、mobile、desktop 环境中观察、推理和行动，并提供敏感操作确认与间接 prompt injection 自动停止机制。
+  为什么重要：GUI/computer-use 不再是独立 demo 模型，而是主力 Gemini Flash 的内建工具能力；安全护栏也被放到发布核心。
+  建议动作：GUI agent baseline 增加 `explicit confirmation`、`indirect injection stop`、`sandboxing`、`human-in-the-loop` 四项。
+  来源日期：`2026-06-24`
+  来源：https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash/
+
+- 条目：`Gemini Interactions API GA`
+  方向：`agent API / managed sandbox / background execution`
+  核心信号：Google 将 Interactions API 设为 Gemini 模型和 agents 的主接口，支持 server-side state、background execution、Managed Agents、remote Linux sandbox、tool combination、skills 和 55 天 paid-tier interaction retention。
+  为什么重要：agent runtime 正在被平台化成默认 API，而不是外挂 orchestrator；这会影响后续模型能力、工具组合和长任务执行的接入方式。
+  建议动作：对照 OpenAI Responses 和 Anthropic Claude 平台，建立 `state retention`、`background mode`、`managed sandbox`、`skill injection`、`migration path` 表。
+  来源日期：`2026-06-25`
+  来源：https://blog.google/innovation-and-ai/technology/developers-tools/interactions-api-general-availability/
+
+- 条目：`OpenAI Jalapeño inference platform`
+  方向：`inference chip / kernels / networking / serving economics`
+  核心信号：OpenAI 与 Broadcom 发布 Jalapeño，把芯片架构、kernels、memory movement、networking、scheduling、deployment systems 与 ChatGPT/Codex/API 推理需求绑定。
+  为什么重要：agent infra 的成本和可用性最终受推理供给影响；长任务、多 agent 并行和实时产品体验都会被硬件/serving stack 约束。
+  建议动作：agent 平台选型中新增 `serving economics` 和 `capacity reliability`，不要只比较模型能力。
+  来源日期：`2026-06-24`
+  来源：https://openai.com/index/openai-broadcom-jalapeno-inference-chip/
+
+### 状态变化
+
+- 主题：`Agent runtime`
+  之前判断：核心分层是 `model`、`harness/runtime`、`connectors/MCP`、`deployment topology`、`governance/audit`。
+  当前判断：还要加入 `collaboration surface` 与 `compute substrate`，因为 Claude Tag 把 agent 放进团队频道，Jalapeño 把推理基础设施变成公开竞争层。
+  变化原因：本周 Anthropic、Google、OpenAI 分别从协作入口、统一 agent API、推理硬件三个方向扩展 runtime 边界。
+
+- 主题：`Security workflow`
+  之前判断：security eval 和 MCP/tool 风险是重点。
+  当前判断：还必须看 `patch automation` 和 `maintainer workflow`，因为可防御价值来自修复闭环而不只是发现漏洞。
+  变化原因：OpenAI Daybreak 与 Patch the Planet 把 AI security agent 明确推进到补丁、测试、disclosure 和人审流程。

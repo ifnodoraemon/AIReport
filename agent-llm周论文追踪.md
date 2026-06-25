@@ -1,6 +1,6 @@
 # Agent / LLM 每周跟踪
 
-最后更新：2026-06-22
+最后更新：2026-06-25
 
 跟踪范围：近期与 `agent`、`LLM`、`memory`、`RAG 安全`、`评测` 相关的论文与趋势
 
@@ -537,3 +537,59 @@
   之前判断：供应链攻击和持久记忆投毒是关键。
   当前判断：增加“后渗透利用”（Post-Exploitation）阶段的 Agent 安全风险。攻击者正利用 Agent 来自动化渗透后的利用链路。
   变化原因：网络安全研究报告开始追踪自动化攻击 Agent。
+
+## 2026-06-25 当周补充
+
+### 新增论文
+
+- 论文：`OpenThoughts-Agent: Data Recipes for Agentic Models`
+  为什么重要：该工作把开放 agentic model 训练的核心从单 benchmark 数据集推进到可复用 data curation pipeline，做了 100+ ablation，并发布 100K examples、pipeline、实验数据和模型；Qwen3-32B 微调后在 7 个 agentic benchmarks 上达到 44.8% 平均准确率。
+  建议动作：把它作为 `open agentic training data` P0 追踪对象，重点看数据源多样性、任务过滤、ablation 设计和跨 benchmark 泛化。
+  状态：`可执行`
+  来源日期：`2026-06-23`
+  来源：https://arxiv.org/abs/2606.24855
+
+- 论文：`Governed Shared Memory for Multi-Agent LLM Systems`
+  为什么重要：论文把 multi-agent shared memory 的失败模式拆成 unauthorized leakage、stale propagation、contradiction persistence、provenance collapse，并用 MemClaw/ArgusFleet 做 live production service 评测。
+  建议动作：内部 memory 设计必须显式支持 `scoped retrieval`、`temporal supersession`、`provenance tracking`、`policy-governed propagation`。
+  状态：`可执行`
+  来源日期：`2026-06-23`
+  来源：https://arxiv.org/abs/2606.24535
+
+- 论文：`ReM-MoA: Reasoning Memory Sustains Mixture-of-Agents Scaling`
+  为什么重要：该工作指出 MoA 深度扩展会 plateau 或退化，并用 ranked reasoning memory 与 diversified memory routing 让多 agent 推理在深度和宽度上保持收益。
+  建议动作：多 agent 设计不要只增加 agent 数量，应记录成功/失败 reasoning traces，并显式控制 memory routing 和 reviewer quality。
+  状态：`跟踪中`
+  来源日期：`2026-06-23`
+  来源：https://arxiv.org/abs/2606.24437
+
+- 论文：`Bayesian control for coding agents`
+  为什么重要：把 coding agent orchestration 表述为 cost-sensitive sequential hypothesis testing，用 Bayesian controller 在 gather evidence、refine、verify、stop 之间做动态决策，并输出可解释 correctness score。
+  建议动作：内部 coding agent harness 可引入 `belief state` 和 `verification cost`，避免固定规则决定何时调用 expensive verifier。
+  状态：`跟踪中`
+  来源日期：`2026-06-23`
+  来源：https://arxiv.org/abs/2606.24453
+
+- 论文：`GUI vs. CLI: Execution Bottlenecks in Screen-Only and Skill-Mediated Computer-Use Agents`
+  为什么重要：通过 matched desktop benchmark 区分 GUI 和 CLI 执行瓶颈，说明 GUI 受长流程 grounded interaction 约束，CLI 则受 skill coverage 和可扩展性约束。
+  建议动作：computer-use agent 研究应分开记录 `visual grounding`、`skill completeness`、`verifier augmentation` 和 `state transition`。
+  状态：`可执行`
+  来源日期：`2026-06-22`
+  来源：https://arxiv.org/abs/2606.24551
+
+### 状态变化
+
+- 主题：`Agentic training data`
+  之前判断：agent 研究重点集中在 eval、memory、security 和 runtime。
+  当前判断：开放训练数据 pipeline 正成为新重点，尤其是如何跨 benchmark 泛化，而不是针对单榜调优。
+  变化原因：OpenThoughts-Agent 直接公开 data recipe、ablation 和训练集。
+
+- 主题：`Memory`
+  之前判断：memory 同时是能力、评测和安全主线。
+  当前判断：还要拆成 `governed shared memory` 与 `reasoning memory` 两条：前者解决权限/provenance/一致性，后者支撑多 agent 推理扩展。
+  变化原因：Governed Shared Memory 与 ReM-MoA 同周出现，分别从生产服务和 inference-time scaling 两侧推进 memory。
+
+- 主题：`Coding / computer-use control`
+  之前判断：agent runtime 关注 sandbox、tool use、long-horizon 和 trace。
+  当前判断：还需要 `cost-aware controller` 与 `execution modality diagnosis`，否则很难判断失败来自模型、工具、技能还是 verifier 成本。
+  变化原因：Bayesian control 和 GUI vs CLI 都把 orchestration 决策拆得更可测。

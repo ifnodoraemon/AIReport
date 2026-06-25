@@ -1,6 +1,6 @@
 # Agent Eval / Benchmark 追踪
 
-最后更新：2026-05-21
+最后更新：2026-06-25
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`、`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`
 
@@ -453,3 +453,67 @@
 
 - 启发：本周新增信号要求 eval 同时覆盖 `benchmark disclosure`、`trace diagnostics`、`protocol/tool correctness`、`scientific hypothesis quality`。
   对我们的影响：后续不要只扩 benchmark 数量，应先补报告规范和 trace 可观测性。
+
+## 2026-06-25 当周补充
+
+### 新增 benchmark / 方法
+
+- 条目：`SAFARI: Scaling Long Horizon Agentic Fault Attribution via Active Investigation`
+  类型：`long-horizon fault attribution / trace diagnostics`
+  核心信号：SAFARI 用 tool-augmented diagnostic loop 和短期记忆替代把完整 trajectory 直接塞进上下文，在 Who&When 与 TRAIL GAIA 子集上提升 fault attribution，并能处理超出原生上下文窗口 5 倍的目标 fault。
+  为什么重要：生产 agent 的失败分析不能依赖完整 transcript 一次性读入；需要可搜索 trace、诊断工具和跨 turn 的诊断记忆。
+  建议动作：内部 trace schema 设计应支持 `segment search`、`fault localization`、`short-term diagnostic memory` 和 `evidence-backed report`。
+  来源日期：`2026-06-23`
+  来源：https://arxiv.org/abs/2606.24626
+
+- 条目：`Grading the Grader`
+  类型：`agentic data analysis grading / human-AI cascade`
+  核心信号：该研究评估 agentic data analysis 系统时，将 strict regex、LLM lenient grading 和 snippet-based human inspection 组合成三层 grading cascade，并区分真实输出分歧和 grader artifact。
+  为什么重要：agent 产物包含代码、数值和解释，单一 LLM judge 很容易把 grader 缺陷误当成 agent 缺陷。
+  建议动作：内部数据分析 agent eval 应拆出 `strict extractor`、`lenient judge`、`human inspection` 三层，并记录 grader recall/precision。
+  来源日期：`2026-06-23`
+  来源：https://arxiv.org/abs/2606.24839
+
+- 条目：`GUI vs. CLI execution-layer benchmark`
+  类型：`computer-use eval / execution bottleneck`
+  核心信号：论文构建 440 个桌面任务、18 个应用、12 类工作流的 matched benchmark，对比 screen-only GUI agents 与 skill-mediated CLI agents；GUI 最强 full pass 为 59.1%，原始 skill CLI 为 48.2%，经 verifier-guided skill augmentation 后 CLI 到 69.3%。
+  为什么重要：GUI/CLI 差异不是单纯模型能力差异，而是执行层、skill 覆盖和 verifier 设计共同决定结果。
+  建议动作：computer-use eval 必须单独记录 `interaction modality`、`initial state`、`verifier`、`allowed actions` 和 `skill coverage`。
+  来源日期：`2026-06-22`
+  来源：https://arxiv.org/abs/2606.24551
+
+- 条目：`Reinforcement Learning for Computer-Use Agents with Autonomous Evaluation`
+  类型：`GUI agent RL / autonomous evaluator reward`
+  核心信号：论文用 vision-language evaluator 基于最终截图和原始指令给 GUI agent 终端反馈，并把 evaluator 噪音建模进 PPO reward；在 macOSWorld、Windows Agent Arena 和 OSWorld 上优于 zero-shot 与 raw evaluator reward。
+  为什么重要：GUI agent 训练的瓶颈之一是缺少可扩展 reward；但 evaluator 噪音必须被显式校正，否则会把错误反馈固化进策略。
+  建议动作：如使用自动 judge 生成训练信号，必须记录 `evaluator noise model`、`failure calibration` 和 `reward correction`。
+  来源日期：`2026-06-23`
+  来源：https://arxiv.org/abs/2606.24515
+
+- 条目：`AdversaBench`
+  类型：`automated red teaming / multi-judge confirmation`
+  核心信号：AdversaBench 用结构化 prompt mutation、三 judge panel 和 meta-judge tiebreaker 自动确认 reasoning、instruction-following 与 tool use 失败，并观察到对不同模型的 zero-shot transfer。
+  为什么重要：红队 eval 不应只生成攻击样本，还要确认失败真实性和跨模型迁移性。
+  建议动作：内部安全 eval 采用 `attack generation` 与 `failure confirmation` 分离设计，记录 judge agreement 和 category-level disagreement。
+  来源日期：`2026-06-23`
+  来源：https://arxiv.org/abs/2606.24589
+
+- 条目：`OpenAI Daybreak CyberGym release signal`
+  类型：`cyber model eval / defensive patch workflow`
+  核心信号：OpenAI 在 Daybreak 中报告 `GPT-5.5-Cyber` 在 CyberGym 达到 85.6%，高于 GPT-5.5 的 81.8%，并把模型能力与 Codex Security patch workflow 绑定。
+  为什么重要：安全模型评测正在从“能否找漏洞”升级为“是否能生成可验证证据、补丁和修复流程”。
+  建议动作：cyber agent eval 增加 `patch success`、`evidence sufficiency`、`human-review burden` 和 `false-positive triage cost`。
+  来源日期：`2026-06-22`
+  来源：https://openai.com/index/daybreak-securing-the-world/
+
+### 状态变化
+
+- 主题：`Trace diagnostics`
+  之前判断：需要 corpus-level trace diagnostics 与 benchmark disclosure。
+  当前判断：还要支持主动读取/搜索 trajectory 的诊断工具，因为长任务 trace 已经超过上下文窗口。
+  变化原因：SAFARI 将 fault attribution 做成 tool-augmented investigation，而不是单轮 transcript grading。
+
+- 主题：`Computer-use eval`
+  之前判断：browser/GUI eval 要覆盖用户授权、审计、状态恢复和 side effect。
+  当前判断：还要把 GUI 与 CLI 执行层拆开评估，并单独测 skill coverage 与 verifier augmentation。
+  变化原因：GUI vs CLI benchmark 和 autonomous-evaluation RL 同周把 computer-use eval 推向更细粒度的执行层分析。

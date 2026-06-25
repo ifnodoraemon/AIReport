@@ -1,10 +1,10 @@
 # Agent / LLM GitHub 每周热点追踪
 
-最后更新：2026-06-22
+最后更新：2026-06-25
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
-跟踪范围：持续记录 GitHub Trending 周榜，以及对应仓库主页；当前文档已包含 `2026-03-19` 至 `2026-05-21` 的多周快照
+跟踪范围：持续记录 GitHub Trending 周榜，以及对应仓库主页；当前文档已包含 `2026-03-19` 至 `2026-06-25` 的多周快照
 
 ## 目的
 
@@ -701,3 +701,75 @@
   之前判断：MCP 与 skills 双线并行。
   当前判断：大量开源热点项目原生集成 MCP（Model Context Protocol），它已经成为跨平台代理连接的数据交互事实标准。
   变化原因：开源社区对统一外壳的诉求倒逼了协议层的统一。
+
+## 2026-06-25 当周
+
+### 新上榜项目
+
+- 项目：`Panniantong/Agent-Reach`
+  方向：`CLI agent web reach / cross-platform scraping`
+  热度：`约 6,915 stars this week`
+  为什么重要：项目强调让 AI agent 读取和搜索 Twitter、Reddit、YouTube、GitHub、Bilibili、小红书等平台，说明社区仍在补 agent 对公共互联网的“眼睛”。
+  建议动作：作为 `agent web reach` 样本跟踪，但重点评估 ToS、反爬、授权和数据合规风险。
+  来源日期：`2026-06-25`
+  来源：https://github.com/trending?since=weekly ; https://github.com/Panniantong/Agent-Reach
+
+- 项目：`NVIDIA/SkillSpector`
+  方向：`agent skills security scanner`
+  热度：`约 2,980 stars this week`
+  为什么重要：skills 成为 agent 能力分发格式后，针对 skills 的恶意模式、漏洞和安全风险扫描也开始成为独立工具方向。
+  建议动作：内部 skills 生态需要引入 `skill lint/security scan`，尤其检查 prompt injection、memory poisoning、exfiltration 和高权限 tool sink。
+  来源日期：`2026-06-25`
+  来源：https://github.com/trending/python?since=weekly ; https://github.com/NVIDIA/SkillSpector
+
+- 项目：`mukul975/Anthropic-Cybersecurity-Skills`
+  方向：`cybersecurity skills pack / agent skill marketplace`
+  热度：`约 4,304 stars this week`
+  为什么重要：817 个结构化 cyber skills 与 MITRE ATT&CK、NIST CSF、ATLAS、D3FEND 等框架映射，说明安全能力正在被打包成 agent 可安装技能。
+  建议动作：不要直接信任大规模 skill pack；先评估 provenance、权限、更新机制和与内部安全流程的适配。
+  来源日期：`2026-06-25`
+  来源：https://github.com/trending/python?since=weekly ; https://github.com/mukul975/Anthropic-Cybersecurity-Skills
+
+- 项目：`withastro/flue`
+  方向：`sandbox agent framework`
+  热度：`约 1,489 stars this week`
+  为什么重要：sandbox agent framework 上榜，和 OpenAI Codex sandbox、Google Managed Agents、computer-use safety 方向一致。
+  建议动作：重点看它如何定义 sandbox 生命周期、文件/网络边界、状态持久化和 agent 审计。
+  来源日期：`2026-06-25`
+  来源：https://github.com/trending?since=weekly ; https://github.com/withastro/flue
+
+- 项目：`stablyai/orca`
+  方向：`parallel coding agents / agent development environment`
+  热度：`约 1,216 stars this week`
+  为什么重要：Orca 定位为管理 parallel agents 的 ADE，反映开发者开始需要统一调度多个 coding agent 与订阅来源。
+  建议动作：作为 `multi-agent supervision UI` 样本，评估任务队列、日志归并、成本控制和人工接管能力。
+  来源日期：`2026-06-25`
+  来源：https://github.com/trending?since=weekly ; https://github.com/stablyai/orca
+
+- 项目：`google/agents-cli`
+  方向：`Google Cloud agent building skills / CLI`
+  热度：`约 150 stars this week`
+  为什么重要：Google 将 “CLI + skills” 打包给 coding assistant，用于创建、评估和部署 AI agents on Google Cloud，和 Interactions API GA 的 agent-first ecosystem 叙事同向。
+  建议动作：后续把 Google agent tooling 分为 `API`、`skills`、`CLI`、`Cloud deployment` 四层观察。
+  来源日期：`2026-06-25`
+  来源：https://github.com/trending/python?since=weekly ; https://github.com/google/agents-cli
+
+- 项目：`alibaba/page-agent`
+  方向：`in-page GUI agent / web control`
+  热度：`约 884 stars this week`
+  为什么重要：web 页面内 GUI agent 与 Google Gemini computer use 同周升温，说明浏览器/网页操作继续是 agent 落地热点。
+  建议动作：评估它的 DOM/视觉/动作模型边界，并关注用户确认、权限隔离和失败恢复。
+  来源日期：`2026-06-25`
+  来源：https://github.com/trending/typescript?since=weekly ; https://github.com/alibaba/page-agent
+
+### 状态变化
+
+- 项目：`skills security`
+  之前判断：skills 生态从官方样例变成社区方法论封装格式。
+  当前判断：skills 已进入安全扫描和垂直能力包阶段，质量控制比数量增长更重要。
+  变化原因：`SkillSpector` 与 `Anthropic-Cybersecurity-Skills` 同周上榜。
+
+- 项目：`computer-use / sandbox`
+  之前判断：agent 执行面正在从 CLI 扩展到 browser/desktop。
+  当前判断：本周热点同时覆盖 `page-agent`、`flue`、`orca` 与 `Agent-Reach`，说明执行面、沙箱和多 agent 管理正在同步升温。
+  变化原因：Google computer use、Interactions API 与 GitHub 周榜项目形成共振。

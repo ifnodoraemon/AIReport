@@ -1,10 +1,10 @@
 # AI 三巨头博客追踪
 
-最后更新：2026-06-22
+最后更新：2026-06-25
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
-跟踪范围：截至 `2026-05-21` 检索到的 `OpenAI`、`Anthropic`、`Google / Google DeepMind` 官方博客、新闻与工程文章；优先保留和 `model`、`agent`、`tool use`、`runtime`、`eval`、`context`、`多模态产品化` 相关的高信号条目
+跟踪范围：截至 `2026-06-25` 检索到的 `OpenAI`、`Anthropic`、`Google / Google DeepMind` 官方博客、新闻与工程文章；优先保留和 `model`、`agent`、`tool use`、`runtime`、`eval`、`context`、`多模态产品化` 相关的高信号条目
 
 ## 目的
 
@@ -727,3 +727,72 @@
 - **OpenAI**: 宣布向三星电子韩国及全球 DX 部门全员提供 ChatGPT Enterprise 和 Codex；并在日本与 Dentsu Digital 合作开启免费版和 Go plan 的广告展示测试。
 - **Anthropic**: 宣布启动 1.5 亿美元的“Claude Corps”公益资助计划，将向非营利组织输送 1000 名 Claude 专家，并提供资金和额度支持；同时在韩国首尔开设新办公室并扩展亚太合作。
 - **Google**: 针对初创企业的 Google for Startups 活动将集中展示基于 Gemini 新模型的架构实践。
+
+## 2026-06-25 当周补充
+
+### OpenAI
+
+- `OpenAI` | `2026-06-24` | `OpenAI and Broadcom unveil LLM-optimized inference chip`
+  方向：`inference infrastructure / full-stack compute / Codex serving`
+  核心信号：OpenAI 发布首个自研 `Jalapeño` Intelligence Processor，把 `ChatGPT`、`Codex`、API 与未来 agent 产品的推理成本、延迟和可用性纳入自有硬件平台。
+  为什么重要：这说明 OpenAI 的竞争层已经从模型和 agent workspace 下沉到 `chip / kernel / serving / networking / deployment`，推理基础设施会直接影响 Codex 长任务和企业 API 价格。
+  建议动作：后续跟 OpenAI 时，把 `model capability` 和 `inference supply chain` 合并观察，不再只看模型发布页。
+  来源日期：`2026-06-24`
+  来源：https://openai.com/index/openai-broadcom-jalapeno-inference-chip/
+
+- `OpenAI` | `2026-06-23` | `How GPT-5 helped immunologist Derya Unutmaz solve a 3-year-old mystery`
+  方向：`AI for science / expert workflow / biological risk governance`
+  核心信号：OpenAI 用免疫学案例强调 `GPT-5 Pro` 已进入科研假设分析、实验结果解释和实验优先级排序，同时提醒生物和化学 misuse 风险需要 Preparedness Framework 约束。
+  为什么重要：这把 OpenAI 的科学 agent 叙事从 benchmark 推到真实专家工作流，且再次验证高能力模型需要同步治理。
+  建议动作：在科学工作流评测中加入 `expert plausibility check`，不要只看模型是否给出新假设。
+  来源日期：`2026-06-23`
+  来源：https://openai.com/index/gpt-5-immunology-mystery/
+
+- `OpenAI` | `2026-06-22` | `Codex-maxxing for long-running work`
+  方向：`long-running work / persistent workspace / Codex adoption`
+  核心信号：OpenAI 将 Codex 作为可持续保留上下文、拆分可验证步骤、跨工作流推进的 persistent workspace 来讲，而不是单次代码生成工具。
+  为什么重要：这与我们关注的 `harness / memory / handoff` 完全同向，说明长任务能力正在从模型能力转成工作空间组织能力。
+  建议动作：继续把 `task decomposition`、`context continuity`、`human oversight checkpoint` 放入内部 agent 运行规范。
+  来源日期：`2026-06-22`
+  来源：https://openai.com/index/codex-maxxing-long-running-work/
+
+### Anthropic
+
+- `Anthropic` | `2026-06-23` | `Introducing Claude Tag`
+  方向：`team agent / Slack-native workflow / scoped memory`
+  核心信号：Anthropic 发布 `Claude Tag`，允许团队在 Slack 频道中 `@Claude` 委托任务；Claude 可基于获授权频道、工具、数据和代码库建立上下文，按频道隔离记忆，并支持异步执行与主动提醒。
+  为什么重要：Anthropic 正把 Claude Code / Cowork 的模式推向多人协作入口，agent 不再只是个人 IDE 或网页聊天，而是进入团队协作系统。
+  建议动作：在 agent 产品设计中单独评估 `channel-scoped memory`、`admin-controlled tools`、`spend limits` 与 `action logs`。
+  来源日期：`2026-06-23`
+  来源：https://www.anthropic.com/news/introducing-claude-tag
+
+### Google / DeepMind
+
+- `Google / Google DeepMind` | `2026-06-24` | `Introducing computer use in Gemini 3.5 Flash`
+  方向：`computer use / browser-mobile-desktop agent / enterprise safeguards`
+  核心信号：Google 把 computer use 从独立模型能力并入 `Gemini 3.5 Flash`，支持 agent 看见、推理并操作浏览器、移动和桌面环境，并提供企业侧敏感操作确认与间接 prompt injection 拦截。
+  为什么重要：computer use 正成为主力模型的内建能力，而不是特殊 demo；同时安全边界被直接做进产品发布。
+  建议动作：评估 Google 的 `explicit confirmation` 和 `prompt injection stop` 是否能作为内部 GUI agent 安全要求参考。
+  来源日期：`2026-06-24`
+  来源：https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash/
+
+- `Google / Google DeepMind` | `2026-06-25` | `Interactions API: our primary interface for Gemini models and agents`
+  方向：`agent API / server-side state / background execution / managed agents`
+  核心信号：Google 将 `Interactions API` 定位为 Gemini 模型和 agent 的统一接口，覆盖 server-side state、后台执行、Managed Agents、工具组合和多模态生成。
+  为什么重要：Google 正把 agent runtime 抽象成平台主接口，和 OpenAI Responses / Anthropic Claude 平台形成正面竞争。
+  建议动作：把 `background=True`、remote sandbox、agent ID 与 tool combination 纳入 agent API 对照表。
+  来源日期：`2026-06-25`
+  来源：https://blog.google/innovation-and-ai/technology/developers-tools/interactions-api-general-availability/
+
+### 横向变化
+
+- `OpenAI` 本周最强信号是 `full-stack compute + long-running Codex workspace + AI for science`。
+- `Anthropic` 本周最强信号是 `team-embedded Claude`，重点在多人协作入口、授权边界、频道级记忆和审计。
+- `Google` 本周最强信号是把 `computer use` 和 `agent API` 变成 Gemini 平台默认能力，且同步强调企业安全护栏。
+
+### 状态变化
+
+- 主题：`Agent runtime`
+  之前判断：竞争重点是模型、工具调用、workspace 和企业部署。
+  当前判断：还要加入 `inference hardware`、`team collaboration surface`、`unified agent API` 三个新层级。
+  变化原因：OpenAI 发布 Jalapeño，Anthropic 发布 Claude Tag，Google 发布 Gemini computer use 与 Interactions API GA。
