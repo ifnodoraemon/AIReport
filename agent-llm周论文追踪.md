@@ -1,7 +1,6 @@
 # Agent / LLM 每周跟踪
 
 最后更新：2026-06-25
-
 跟踪范围：近期与 `agent`、`LLM`、`memory`、`RAG 安全`、`评测` 相关的论文与趋势
 
 ## 目的
@@ -498,6 +497,68 @@
   当前判断：还要支持 corpus-level trace diagnostics 与 benchmark disclosure，否则难以定位系统性失败或复现实验结果。
   变化原因：`Insights Generator` 与 benchmark audit paper 同周出现。
 
+## 2026-06-18 当周补充
+
+### 新增论文 / 研究信号
+
+- 论文：`SkillVetBench: LLM-as-Judge for Multi-Dimensional Security Risk Evaluation in Open-Source LLM Agent Skills`
+  为什么重要：skills 已经成为 agent 能力分发层，论文提出 SARS agentic-risk score、CVSS v4.0 向量和 marketplace verdict 对照，用于评估 instruction-layer 与多 agent 风险。
+  建议动作：把 `skill vetting` 纳入 agent 安全主线，和 MCP server 漏洞、RAG 投毒并列。
+  状态：`可执行`
+  来源日期：`2026-06-14`
+  来源：https://arxiv.org/abs/2606.15899
+
+- 论文：`EComAgentBench: Benchmarking Shopping Agents on Long-Horizon Tasks with Distributed Hidden Intent`
+  为什么重要：该 benchmark 针对购物 agent 的长流程任务和分散隐藏意图，能更好暴露偏好约束遗忘、跨证据决策和 final answer 质量问题。
+  建议动作：长流程 web agent 评测中加入 `hidden constraints` 和 `source-tagged rubrics`。
+  状态：`跟踪中`
+  来源日期：`2026-06-16`
+  来源：https://arxiv.org/abs/2606.17698
+
+- 论文：`LoHoSearch: Benchmarking Long-Horizon Search Agents Beyond the Human Difficulty Ceiling`
+  为什么重要：该论文用知识图构造长程搜索任务，并在 `2026-06-17` 更新 v2；方向上补足了 search agent 的多跳证据、早停和上下文管理评测。
+  建议动作：内部 search/research agent 评测不要只看最终答案，应记录检索路径、证据覆盖和停止条件。
+  状态：`跟踪中`
+  来源日期：`2026-06-11`；更新日期：`2026-06-17`
+  来源：https://arxiv.org/abs/2606.12837
+
+- 论文：`SMSR: Certified Defence Against Runtime Memory Poisoning in Persistent LLM Agent Systems`
+  为什么重要：persistent memory 进入 agent 基础设施后，运行时记忆投毒会直接影响后续决策；该论文把 memory poisoning 作为可认证防御问题处理。
+  建议动作：memory 系统上线前加入 poisoned-memory scenario，评估 agent 是否能拒绝、隔离或遗忘恶意记忆。
+  状态：`可执行`
+  来源日期：`2026-06-10`
+  来源：https://arxiv.org/abs/2606.12703
+
+- 论文：`TrustedARI: Towards Trust-Native Agentic Routing Infrastructure for LLM Agent Ecosystems`
+  为什么重要：agent ecosystem 越来越依赖工具、skills、MCP server 和外部服务路由，trust-native routing 可以把信任、权限和路由决策放在基础设施层处理。
+  建议动作：如内部做多工具 agent router，应记录 capability selection 的信任来源、权限边界和失败回退。
+  状态：`待读`
+  来源日期：`2026-06-14`
+  来源：https://arxiv.org/abs/2606.15822
+
+- 研究信号：`Google DeepMind - Investing in multi-agent AI safety research`
+  为什么重要：虽然不是普通论文条目，但它把 multi-agent risk 明确拆到串通、欺骗、监控和协调，说明后续论文与 benchmark 会沿此方向增多。
+  建议动作：为多 agent 系统补一组风险标签：`collusion`、`deception`、`coordination failure`、`monitoring gap`。
+  状态：`跟踪中`
+  来源日期：`2026-06-17`
+  来源：https://deepmind.google/blog/investing-in-multi-agent-ai-safety-research/
+
+### 状态变化
+
+- 主题：`Agent skills`
+  之前判断：skills 主要是工程封装和开源热点。
+  当前判断：skills 已成为研究与安全评测对象，重点从“是否有用”扩展到“是否安全、是否可审计、是否会污染 memory”。
+  变化原因：SkillVetBench 与 GitHub 热榜中的 SkillSpector 同周出现。
+
+- 主题：`Long-horizon eval`
+  之前判断：长流程 eval 重点是企业任务、trace diagnostics 和 benchmark disclosure。
+  当前判断：新增两条高信号子类：`shopping with hidden intent` 和 `knowledge-graph generated search`。
+  变化原因：EComAgentBench 与 LoHoSearch 分别补上真实购物和复杂搜索评测。
+
+- 主题：`Memory safety`
+  之前判断：memory 是能力、评测和安全主线。
+  当前判断：runtime memory poisoning 需要独立成为安全测试项，不能只通过普通 memory retrieval score 间接观察。
+  变化原因：SMSR 把 persistent agent memory 的投毒防御作为核心问题。
 ## 2026-06-22 综合补充 (涵盖 5.22 - 06.22)
 
 ### 新增论文

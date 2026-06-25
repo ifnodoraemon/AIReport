@@ -5,7 +5,6 @@
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/模型发布追踪.md`、`/home/ifnodoraemon/myreport/MCP-tools-agent-infra追踪.md`
 
 跟踪范围：截至 `2026-06-25` 检索到的 AI 关键人物 `个人官网 / 官方博客 / 公司新闻页 / X`；优先选择能持续释放 `模型路线`、`agent infra`、`开发者生态`、`安全治理`、`world model` 高信号的人
-
 ## 目的
 
 这份文件用于：
@@ -690,6 +689,54 @@
   当前判断：I/O 2026 后还要加入 `agentic Gemini era` 的产品分发叙事和 `Co-Scientist` 科学 agent。
   变化原因：Google 在同一周集中发布模型、agent harness、多模态生成、科学 agent 和多个产品入口。
 
+## 2026-06-18 当周补充
+
+### 新增人物信号
+
+- 人物：`Sam Altman / OpenAI leadership`
+  动作：OpenAI 于 `2026-06-16` 至 `2026-06-17` 连续发布 `A new AI chemist` 与 `Benchmarking AI scientists`，把 GPT-Rosalind、LifeSciBench 和生命科学研究任务放入公开主线。
+  来源级别：`公司官网已确认`
+  方向：`AI for science / domain model / scientific eval`
+  为什么重要：OpenAI 人物路线应从通用 GPT/Codex 扩展到 `AI scientist`，尤其是实验设计、协议生成和可验证科学发现。
+  对我们的影响：跟 Sam/OpenAI 时，把 `scientific workflow benchmark` 与 `trusted researcher model access` 作为高优先级观察项。
+  来源日期：`2026-06-16`、`2026-06-17`
+  来源：https://openai.com/index/a-new-ai-chemist/ ; https://openai.com/index/benchmarking-ai-scientists/
+
+- 人物：`Dario Amodei / Anthropic leadership`
+  动作：Anthropic 于 `2026-06-10` 发布 `Claude Opus 4.8`，并于 `2026-06-17` 暂停 `Claude Fable 5` 与 `Claude Mythos 5` 访问以修复 release harness 问题。
+  来源级别：`公司官网已确认`
+  方向：`frontier model / agent baseline / release governance`
+  为什么重要：Dario/Anthropic 路线本周同时体现能力推进和发布治理；Opus 4.8 是最新 agent/coding baseline，Fable/Mythos 暂停显示模型发布流程本身也需要跟踪。
+  对我们的影响：Anthropic 人物追踪应把 `availability / validation / rollback` 纳入模型路线判断。
+  来源日期：`2026-06-10`、`2026-06-17`
+  来源：https://www.anthropic.com/news/claude-opus-4-8 ; https://www.anthropic.com/news/fable-mythos-access
+
+- 人物：`Dario Amodei / Anthropic leadership`
+  动作：Anthropic 于 `2026-06-17` 发布 `Claude Corps`，将候选人和员工如何使用 Claude 工作纳入招聘与组织设计信号。
+  来源级别：`公司官网已确认`
+  方向：`AI-native organization / Claude adoption / hiring`
+  为什么重要：这说明 Anthropic 不只在卖模型，也在把 Claude 定义为组织工作方式的一部分。
+  对我们的影响：人物追踪中把 `AI-native operating model` 作为 Anthropic 独立主线，和模型发布分开记录。
+  来源日期：`2026-06-17`
+  来源：https://www.anthropic.com/news/claude-corps
+
+- 人物：`Demis Hassabis / Google DeepMind leadership`
+  动作：Google DeepMind 于 `2026-06-17` 宣布资助 multi-agent AI safety 研究，并发布 frontier AI safety case 相关研究页面。
+  来源级别：`Google DeepMind 官方页面已确认`
+  方向：`multi-agent safety / frontier governance / safety cases`
+  为什么重要：Demis 线继续把 AGI 研究和安全治理绑定；本周重点不只是模型能力，而是多 agent 风险与 frontier AI 安全论证框架。
+  对我们的影响：跟 Demis 时要同时看 `AI for science` 与 `multi-agent safety`，避免只跟 Gemini 产品面。
+  来源日期：`2026-06-17`
+  来源：https://deepmind.google/blog/investing-in-multi-agent-ai-safety-research/ ; https://deepmind.google/research/publications/safety-cases-for-frontier-ai/
+
+- 人物：`Koray Kavukcuoglu / Google model leadership`
+  动作：Google 于 `2026-06-11` 发布 Gemini 3.5 Live Translate，Google DeepMind 于 `2026-06-10` 发布 DiffusionGemma。
+  来源级别：`公司官网已确认`
+  方向：`Gemini product surface / diffusion LLM / multimodal model`
+  为什么重要：Google 模型负责人路线本周呈现两条线：Gemini 3.5 进入实时语音翻译，Gemma 4 衍生出 diffusion-based LLM。
+  对我们的影响：Google 人物追踪应把 `model architecture experiment` 与 `product surface expansion` 分开记录。
+  来源日期：`2026-06-10`、`2026-06-11`
+  来源：https://deepmind.google/blog/diffusiongemma-4x-faster-text-generation/ ; https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-live-3-5-translate/
 ## 2026-06-25 当周补充
 
 ### 新增人物信号
@@ -720,10 +767,22 @@
   对我们的影响：跟 Google 人物线时，要把 `frontier reasoning` 和 `agent execution API` 一起看，尤其关注 API 层是否成为后续 Gemini 新能力默认落点。
   来源日期：`2026-06-24`、`2026-06-25`
   来源：https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-computer-use-gemini-3-5-flash/ ; https://blog.google/innovation-and-ai/technology/developers-tools/interactions-api-general-availability/
-
 ### 状态变化
 
 - 人物：`Sam Altman`
+  之前判断：重点是 Codex enterprise deployment 与 agent workspace。
+  当前判断：还要加入 `AI scientist`，因为 OpenAI 已用 GPT-Rosalind 与 LifeSciBench 把科研 workflow 变成正式公开主线。
+  变化原因：OpenAI 在 `2026-06-16` 和 `2026-06-17` 连续发布科学 agent 相关内容。
+
+- 人物：`Dario Amodei`
+  之前判断：重点是 MCP/SDK tooling、professional services adoption 和 frontier Claude。
+  当前判断：本周新增 `release governance`，因为 Fable/Mythos 暂停访问说明模型发布稳定性本身是路线信号。
+  变化原因：Anthropic 在 Opus 4.8 发布后一周内又处理 Fable/Mythos availability 问题。
+
+- 人物：`Demis Hassabis`
+  之前判断：Google 侧要看 reasoning、world model、science agent 和产品分发。
+  当前判断：还要提升 `multi-agent safety` 与 `safety cases` 权重。
+  变化原因：Google DeepMind 本周把 multi-agent AI safety 做成资助计划，并同步强化 frontier safety case 研究叙事。
   之前判断：重点是 `Codex enterprise deployment`、安全沙箱和默认模型入口。
   当前判断：还必须加入 `inference hardware / serving stack`，因为 OpenAI 已把推理成本、延迟和可用性作为顶层战略公开表达。
   变化原因：Jalapeño 发布把 OpenAI 竞争层从模型/产品扩展到芯片、kernel、networking 和 deployment。

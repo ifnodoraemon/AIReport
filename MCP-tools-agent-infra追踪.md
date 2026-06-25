@@ -1,7 +1,6 @@
 # MCP / Tools / Agent Infra 追踪
 
 最后更新：2026-06-25
-
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/agent-llm周GitHub热点追踪.md`
 
 跟踪范围：近期与 `MCP`、`tool use`、`code execution`、`sandbox`、`agent runtime`、`context compaction`、`skills`、`stateful execution` 相关的高信号工程进展
@@ -539,6 +538,74 @@
 - 启发：agent infra 的最小分层应更新为 `model`、`harness/runtime`、`connectors/MCP`、`deployment topology`、`governance/audit`。
   对我们的影响：后续内部设计不应把 MCP connector、sandbox 和部署环境混成一个“工具层”，否则无法判断谁负责权限、状态和审计。
 
+## 2026-06-18 当周补充
+
+### 新增条目
+
+- 条目：`GitHub Copilot Agent Finder`
+  方向：`agent capability discovery / MCP / skills / context budget`
+  核心信号：GitHub Copilot 发布 Agent Finder，让 Copilot 根据任务自动发现合适的 MCP servers、skills、canvases、agents 和 tools，而不是手工配置并占满上下文窗口。
+  为什么重要：这把 `agent capability discovery` 做成 IDE/开发者平台能力，说明未来工具目录、能力索引和上下文预算会一起竞争。
+  建议动作：内部 agent infra 需要区分 `tool registry`、`capability search` 和 `execution permission`，不要只做静态工具列表。
+  来源日期：`2026-06-17`
+  来源：https://github.blog/changelog/2026-06-17-agent-finder-for-github-copilot-now-available/
+
+- 条目：`NVIDIA/SkillSpector`
+  方向：`agent skill security / pre-install scanner`
+  核心信号：GitHub weekly 热榜显示 `SkillSpector` 本周新增 `5,257 stars`，项目定位是扫描 AI agent skills 中的漏洞、恶意模式和安全风险。
+  为什么重要：skills 正在成为 agent 能力分发层，相应地也形成新的供应链安全面。
+  建议动作：如果内部引入第三方 skills，默认增加 `skill manifest review`、`instruction-layer risk` 和 `runtime sink` 检查。
+  来源日期：`2026-06-18`
+  来源：https://github.com/trending?since=weekly ; https://github.com/NVIDIA/SkillSpector
+
+- 条目：`chopratejas/headroom`
+  方向：`context compression / tool-output compaction / MCP server`
+  核心信号：GitHub weekly 热榜显示 `headroom` 本周新增 `9,475 stars`，项目聚焦在工具输出、日志、文件和 RAG chunk 进入 LLM 前压缩，并提供 library、proxy 与 MCP server。
+  为什么重要：context compaction 已从平台博客概念进入开源基础设施，且直接覆盖 tool output 与 RAG 成本。
+  建议动作：把 `pre-LLM compression` 加入工具层标准流程，优先评估是否损失可审计证据。
+  来源日期：`2026-06-18`
+  来源：https://github.com/trending?since=weekly ; https://github.com/chopratejas/headroom
+
+- 条目：`DeusData/codebase-memory-mcp`
+  方向：`code intelligence MCP / persistent knowledge graph`
+  核心信号：GitHub weekly 热榜显示 `codebase-memory-mcp` 本周新增 `1,097 stars`，项目强调把代码库索引成持久知识图并通过 MCP 暴露给 agent。
+  为什么重要：代码上下文正在从临时 grep/embedding 检索转向持久图谱化 memory，并通过 MCP 标准连接。
+  建议动作：如做 coding agent 长任务，应比较 `semantic graph memory`、`plain file search` 和 `RAG chunks` 三种上下文策略。
+  来源日期：`2026-06-18`
+  来源：https://github.com/trending?since=weekly ; https://github.com/DeusData/codebase-memory-mcp
+
+- 条目：`Anthropic Fable/Mythos release pause`
+  方向：`release harness / model availability / validation`
+  核心信号：Anthropic 暂停 Fable 5 和 Mythos 5 访问，明确原因是 release harness 技术问题，并计划修复和重新验证后恢复。
+  为什么重要：agent infra 不只包含运行工具，也包含模型发布验证链路；高端模型一旦进入 agent runtime，发布异常会影响所有下游 workflow。
+  建议动作：内部选型记录增加 `model availability incident` 字段，区分模型能力、API 可用性和生产稳定性。
+  来源日期：`2026-06-17`
+  来源：https://www.anthropic.com/news/fable-mythos-access
+
+- 条目：`Google DeepMind multi-agent AI safety research program`
+  方向：`multi-agent monitoring / safety infrastructure / academic ecosystem`
+  核心信号：Google DeepMind 与 Google.org 发布 multi-agent safety 研究资助，关注多个 agent 的串通、欺骗、协调、监控与干预。
+  为什么重要：multi-agent infra 的核心风险不只是调度失败，也包括 agent 间策略性互动和不可见协作。
+  建议动作：多 agent 系统设计中新增 `inter-agent audit trail`、`collusion tests`、`coordination limits`。
+  来源日期：`2026-06-17`
+  来源：https://deepmind.google/blog/investing-in-multi-agent-ai-safety-research/
+
+### 状态变化
+
+- 主题：`Skills`
+  之前判断：skills 是 agent 能力封装和分发格式。
+  当前判断：skills 已同时进入 `marketplace`、`security scanner` 和 `LLM-as-judge vetting` 阶段，安全审查要成为默认环节。
+  变化原因：GitHub weekly 中 SkillSpector 高热，arXiv 同周出现 SkillVetBench。
+
+- 主题：`Context budget`
+  之前判断：compaction 主要来自 OpenAI/Anthropic 平台叙事。
+  当前判断：开源侧开始把 tool output、logs、files、RAG chunks 的压缩做成独立代理层和 MCP server。
+  变化原因：`headroom` 本周高热，且明确围绕进入 LLM 前的上下文压缩。
+
+- 主题：`Capability discovery`
+  之前判断：MCP connector 和 skills directory 是连接层重点。
+  当前判断：还要加入 `agent capability discovery`，因为平台开始让 agent 自动选择能力，而不是人手动配置工具集。
+  变化原因：GitHub Copilot Agent Finder 发布。
 ## 2026-06-25 当周补充
 
 ### 新增条目

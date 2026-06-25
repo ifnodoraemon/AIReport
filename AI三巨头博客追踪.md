@@ -5,7 +5,6 @@
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
 跟踪范围：截至 `2026-06-25` 检索到的 `OpenAI`、`Anthropic`、`Google / Google DeepMind` 官方博客、新闻与工程文章；优先保留和 `model`、`agent`、`tool use`、`runtime`、`eval`、`context`、`多模态产品化` 相关的高信号条目
-
 ## 目的
 
 这份文件作为长期维护的博客追踪记录，用于：
@@ -682,6 +681,75 @@
   当前判断：本周竞争进一步分化为 `OpenAI on-prem enterprise Codex`、`Anthropic MCP/SDK connectivity`、`Google model+harness+product surface`。
   变化原因：三家本周公开动作分别落在部署位置、连接工具链、模型与产品联动三条不同路线。
 
+## 2026-06-18 当周补充
+
+### 新增 / 补录条目
+
+- `OpenAI` | `2026-06-17` | `Benchmarking AI scientists`
+  方向：`AI scientist / LifeSciBench / scientific agent eval`
+  核心信号：OpenAI 把生命科学研究任务抽象成 `LifeSciBench`，要求模型在实验设计、工具使用、数据分析和错误修复中表现出接近研究助理的能力。
+  为什么重要：OpenAI 的主线正在从 coding/knowledge work 扩展到科学发现工作流，评测对象也从答题转向实验流程和可验证发现。
+  建议动作：在 agent eval 中新增 `scientific workflow` 类别，记录实验选择、协议设计、结果解释和工具链安全。
+  来源日期：`2026-06-17`
+  来源：https://openai.com/index/benchmarking-ai-scientists/
+
+- `OpenAI` | `2026-06-16` | `A new AI chemist`
+  方向：`GPT-Rosalind / chemistry agent / lab workflow`
+  核心信号：OpenAI 与 Lila Sciences 展示基于 `GPT-Rosalind` 的 AI chemist，在多步化学推理和合成任务中进入真实实验工作流。
+  为什么重要：这说明 OpenAI 正在把 domain model 与实验闭环绑定，而不是只发布通用模型能力。
+  建议动作：模型追踪中把 `GPT-Rosalind` 记录为可信研究者访问的领域模型线，并关注其工具使用和实验验证边界。
+  来源日期：`2026-06-16`
+  来源：https://openai.com/index/a-new-ai-chemist/
+
+- `Anthropic` | `2026-06-10` | `Introducing Claude Opus 4.8`
+  方向：`frontier model / complex agents / coding`
+  核心信号：Anthropic 发布 `Claude Opus 4.8`，将其定位为复杂 agent 和 coding 的最新高端模型，并用 TAU3 telecom、airline、retail 等任务强调长流程执行能力。
+  为什么重要：Claude 侧最新主线继续把模型能力和 agent workflow 绑定，且明确进入多云分发。
+  建议动作：把 `Claude Opus 4.8` 作为 Claude 侧最新公开 baseline，与 GPT-5.5、Gemini 3.5 Flash 做同维度比较。
+  来源日期：`2026-06-10`
+  来源：https://www.anthropic.com/news/claude-opus-4-8
+
+- `Anthropic` | `2026-06-17` | `Update: Pausing access to Claude Fable 5 and Mythos 5`
+  方向：`release governance / model availability / validation harness`
+  核心信号：Anthropic 暂停 `Claude Fable 5` 与 `Claude Mythos 5` 访问，原因是 release harness 中发现技术问题，并说明旧模型不受影响。
+  为什么重要：这不是能力发布，而是模型发布治理信号；高端模型可用性需要和验证流程、回滚机制一起跟踪。
+  建议动作：模型发布追踪中增加 `availability caveat` 字段，不把发布日等同于稳定可用日。
+  来源日期：`2026-06-17`
+  来源：https://www.anthropic.com/news/fable-mythos-access
+
+- `Google DeepMind` | `2026-06-17` | `Investing in multi-agent AI safety research`
+  方向：`multi-agent safety / academic grants / governance`
+  核心信号：Google DeepMind 与 Google.org 设立最高 `2M USD` 的研究资助计划，聚焦多 agent 系统中的串通、欺骗、监控、协调和安全评估。
+  为什么重要：Google 把 multi-agent risk 从概念讨论推到资助和研究议程层，说明多 agent 安全会成为长期评测主线。
+  建议动作：在 agent eval 文档中单列 `multi-agent safety`，覆盖 collusion、deception、monitoring、intervention 四类问题。
+  来源日期：`2026-06-17`
+  来源：https://deepmind.google/blog/investing-in-multi-agent-ai-safety-research/
+
+- `Google` | `2026-06-11` | `Gemini 3.5 makes live speech translation seamless`
+  方向：`Gemini 3.5 / live translation / multimodal productization`
+  核心信号：Google 将 Gemini 3.5 用于实时语音翻译，强调跨 23 种语言保留说话者意图、语气和情绪细节。
+  为什么重要：Gemini 3.5 的能力正在通过实时、多语言、语音产品面扩散，模型追踪要记录 capability surface，而不只看基座模型名。
+  建议动作：多模态追踪新增 `real-time speech translation` 和 `tone preservation` 两个产品化指标。
+  来源日期：`2026-06-11`
+  来源：https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-live-3-5-translate/
+
+### 横向变化
+
+- `OpenAI` 本周最强信号是 `AI for science`：从 GPT-Rosalind 到 LifeSciBench，重点转向真实科研流程和实验验证。
+- `Anthropic` 本周最强信号是 `frontier model + release governance`：Opus 4.8 提升 Claude agent baseline，Fable/Mythos 暂停访问提醒我们要跟踪可用性而非只看发布。
+- `Google` 本周最强信号是 `multi-agent safety + Gemini product surface`：一边资助多 agent 风险研究，一边把 Gemini 3.5 推入实时语音翻译。
+
+### 状态变化
+
+- 主题：`AI scientist`
+  之前判断：科学 agent 主要由 Google Co-Scientist 代表。
+  当前判断：OpenAI 也将 AI scientist 作为正式公开主线，且开始给出实验级 benchmark 与化学场景。
+  变化原因：`Benchmarking AI scientists` 与 `A new AI chemist` 同周出现。
+
+- 主题：`Model release`
+  之前判断：模型发布主要看能力和 benchmark。
+  当前判断：必须同步记录发布暂停、访问限制、验证 harness 和恢复时间，因为这些决定模型能否稳定进入生产。
+  变化原因：Anthropic 暂停 Fable/Mythos 访问并单独发布澄清。
 ## 2026-06-22 综合补充 (涵盖 5.22 - 06.22)
 
 ### OpenAI
