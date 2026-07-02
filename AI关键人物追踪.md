@@ -1,6 +1,6 @@
 # AI 关键人物追踪
 
-最后更新：2026-06-25
+最后更新：2026-07-02
 
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/模型发布追踪.md`、`/home/ifnodoraemon/myreport/MCP-tools-agent-infra追踪.md`
 
@@ -71,6 +71,7 @@
 
 | 人物 | 当前角色 | 为什么值得跟 | 最近公开动态 | X 是否值得盯 | 核心信号 | 主要来源 |
 |---|---|---|---|---|---|---|
+| Sam Altman | OpenAI CEO | 看 OpenAI 顶层路线 | 2026-07-01 讨论了 reasoning time 与 agent 准确率的关系 | 值得，高频信号源 | reasoning scale-up 是接下来的重点 | https://x.com/sama |
 | Sam Altman | OpenAI CEO | 看 `OpenAI` 的顶层路线：模型、平台、算力、商业化如何一起推进 | `2026-04-23` 发布 `GPT-5.5`；`2026-04-22` 发布 `OpenAI Privacy Filter`；`2026-04-16` 发布 `Codex for (almost) everything` | 值得；`X` 上的信号常比官网更早，但必须回到官网核实 | 当前最强信号是 `frontier model + Codex workspace + privacy/security infra + enterprise agent platform` 联动 | https://openai.com/index/introducing-gpt-5-5/ ; https://openai.com/index/introducing-openai-privacy-filter/ ; https://openai.com/index/codex-for-almost-everything/ ; https://x.com/sama |
 | Dario Amodei | Anthropic CEO | 看 `Anthropic` 如何把 `安全 + agent + 政策接口` 绑成一条线 | `2026-04-20` 与 Amazon 扩展最高 `5GW` 算力合作；`2026-04-17` 发布 `Claude Design`；`2026-04-16` 发布 `Claude Opus 4.7` | 值得，但更适合跟 `Anthropic` 官方渠道，因为正式动作多在官网先落地 | Anthropic 正把 `frontier model`、`workflow product`、`compute scaling`、`安全发布机制` 一起推进 | https://www.anthropic.com/news/anthropic-amazon-compute ; https://www.anthropic.com/news/claude-design-anthropic-labs ; https://www.anthropic.com/news/claude-opus-4-7 ; https://www.anthropic.com/news |
 | Demis Hassabis | Google DeepMind CEO | 看 `Google DeepMind` 的研究顶层叙事，尤其是 `AGI -> science -> world models` | `2026-04-23` Google DeepMind 发布 `Decoupled DiLoCo`；Google Cloud 同期发布 `Gemini Enterprise Agent Platform`；`2026-04` 仍有 `Gemma 4 / Robotics-ER / Flash TTS` 多线推进 | 值得；他的 `X` 往往会提前给出产品方向和个人判断，但当前仍应优先看官方页 | Google 正在同时推进 `AGI / science / open models / embodied agent / enterprise agent platform / training infra` | https://deepmind.google/blog/decoupled-diloco/ ; https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-agent-platform ; https://deepmind.google/blog/ ; https://x.com/demishassabis |

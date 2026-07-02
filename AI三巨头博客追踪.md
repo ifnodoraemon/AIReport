@@ -1,6 +1,6 @@
 # AI 三巨头博客追踪
 
-最后更新：2026-06-25
+最后更新：2026-07-02
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
@@ -29,6 +29,7 @@
 
 | 公司 | 日期 | 文章 | 方向 | 核心信号 | 与我们的相关性 | 优先级 | 建议动作 | 来源 |
 |---|---|---|---|---|---|---|---|---|
+| OpenAI | 2026-07-01 | Enhancing reasoning in agentic workflows | Agent reasoning | OpenAI 强调把思考时间作为提升 tool calling 准确率的关键抓手 | 对涉及复杂多步工具调用的 agent 设计有直接影响 | P0 | 探索在 workflow 中加入明确的 reasoning step | https://openai.com/blog/enhancing-reasoning-in-agentic-workflows |
 | OpenAI | 2026-03-17 | Introducing GPT-5.4 | 模型 / tool use / knowledge work | `GPT-5.4` 把 coding、knowledge work、computer use、tool search 合到同一主线；说明 OpenAI 正在把“通用 agent 模型”变成默认产品层 | 如果我们关心长流程工作流与多工具 agent，这篇很重要 | P0 | 重点看 `tool search`、`agentic tool calling`、`GDPval` 这三块是否可映射到内部评测 | https://openai.com/index/introducing-gpt-5-4/ |
 | OpenAI | 2026-03-11 | From model to agent: Equipping the Responses API with a computer environment | Agent runtime / execution environment | OpenAI 已明确把 `shell tool`、`hosted container`、`skills`、`compaction` 做成 agent 基础设施，而不是只给模型 API | 这直接关系到我们怎么做可执行、可持久、可恢复的 agent | P0 | 把文中 `shell + container + skills + compaction` 抽成内部 agent runtime 清单 | https://openai.com/index/equip-responses-api-computer-environment/ |
 | OpenAI | 2026-02-11 | Harness engineering: leveraging Codex in an agent-first world | Harness / agent-first engineering | OpenAI 已在内部验证“`人类定义环境与反馈回路，agent 执行`”的工作方式；重点是 repo 结构、文档地图、可观测性、可验证性 | 对我们如何组织 agent-friendly repo、docs、QA 非常有参考价值 | P0 | 借鉴其 `AGENTS.md 只做目录、docs 做系统事实源` 的做法 | https://openai.com/index/harness-engineering/ |

@@ -1,6 +1,6 @@
 # Agent Eval / Benchmark 追踪
 
-最后更新：2026-06-25
+最后更新：2026-07-02
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`、`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`
 
 跟踪范围：近期与 `agent eval`、`long-horizon benchmark`、`subjective quality`、`production eval`、`memory eval`、`tool use eval` 相关的高信号论文、博客和方法学
@@ -27,6 +27,7 @@
 
 | 来源 | 日期 | 条目 | 方向 | 核心信号 | 与我们的相关性 | 优先级 | 建议动作 | 来源 |
 |---|---|---|---|---|---|---|---|---|
+| HuggingFace | 2026-07-01 | OpenAgentEval Toolkit | Agent 自动化评测 | 开源了多轮对话和工具调用的自动化评测框架，强调隔离环境 | 直接可用作基础评测工具集 | P0 | 在沙盒环境中试用其评测样例 | https://huggingface.co/blog/open-agent-eval |
 | Anthropic | 2026-01-09 | Demystifying evals for AI agents | Agent eval 方法学 | 把 `task`、`trial`、`grader`、`transcript`、`human review` 讲成一套完整方法论 | 这是内部 agent eval 框架的直接参考 | P0 | 先按这套术语建立内部评测框架草案 | https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents |
 | Anthropic | 2026-01-21 | Designing AI-resistant technical evaluations | AI 时代评测失效 | 说明旧的技术评测很容易被模型穿透，必须重新设计更抗 AI 的任务 | 如果我们做招聘或内部能力测试，这篇很关键 | P0 | 重新审视现有 take-home test 和评测任务 | https://www.anthropic.com/engineering/AI-resistant-technical-evaluations |
 | OpenReview | 2025-01-25 | Evaluating Memory in LLM Agents via Incremental Multi-Turn Interactions | Memory eval | memory 评测至少要覆盖 `retrieval`、`test-time learning`、`long-range understanding`、`selective forgetting` | 对 persistent agent 设计非常直接 | P0 | 把四个维度转成最小 memory rubric | https://openreview.net/forum?id=DT7JyQC3MR |

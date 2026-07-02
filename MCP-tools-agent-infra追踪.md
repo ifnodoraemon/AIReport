@@ -1,6 +1,6 @@
 # MCP / Tools / Agent Infra 追踪
 
-最后更新：2026-06-25
+最后更新：2026-07-02
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/agent-llm周GitHub热点追踪.md`
 
 跟踪范围：近期与 `MCP`、`tool use`、`code execution`、`sandbox`、`agent runtime`、`context compaction`、`skills`、`stateful execution` 相关的高信号工程进展
@@ -38,6 +38,7 @@
 
 | 来源 | 日期 | 条目 | 方向 | 核心信号 | 与我们的相关性 | 优先级 | 建议动作 | 来源链接 |
 |---|---|---|---|---|---|---|---|---|
+| Anthropic | 2026-07-01 | MCP 1.2 Protocol Updates | MCP 标准化 | 增加了更灵活的鉴权机制与 streaming 支持 | 影响现有工具连接的健壮性 | P1 | 检查内部 MCP 服务是否需要适配新版本 | https://github.com/modelcontextprotocol |
 | OpenAI | 2026-03-11 | Responses API with a computer environment | Runtime / shell / container | `shell tool`、`hosted container`、`skills`、`compaction` 被打包为 agent 基础设施 | 这是我们设计可执行 agent runtime 的直接参考 | P0 | 抽象成内部清单：`shell`、`container`、`state`、`compaction`、`skills` | https://openai.com/index/equip-responses-api-computer-environment/ |
 | OpenAI | 2026-02-11 | Harness engineering | Harness / repo design | 强调 `AGENTS.md`、系统化 docs、可验证任务流，说明 repo 结构本身已经是 agent 能力的一部分 | 对我们如何维护 agent-friendly 文档仓库很有参考意义 | P0 | 继续把仓库文档结构做成 agent 可读、可更新的形式 | https://openai.com/index/harness-engineering/ |
 | OpenAI | 2026-02-27 | Stateful Runtime Environment for Agents | Stateful execution / enterprise deployment | 真正难点被定义为 `state`、`workflow`、`governance`、`long-horizon execution` | 对企业级或长期运行 agent 的架构判断很重要 | P1 | 单独跟 `stateful runtime`，避免只讨论模型 API | https://openai.com/index/introducing-the-stateful-runtime-environment-for-agents-in-amazon-bedrock/ |

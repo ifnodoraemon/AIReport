@@ -1,6 +1,6 @@
 # Agent / LLM GitHub 每周热点追踪
 
-最后更新：2026-06-25
+最后更新：2026-07-02
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
@@ -29,6 +29,7 @@
 
 | 项目 | 本周热度信号 | 方向 | 核心判断 | 与论文追踪映射 | 优先级 | 建议动作 | 来源 |
 |---|---|---|---|---|---|---|---|
+| `browser-use/browser-use` | `1,200 stars this week` | Web Automation Agent | 基于 LLM 的自动化浏览器控制库持续高热，引入了更稳定的定位机制 | 对应自动化评测与交互环境 | P1 | 评估其作为网页测试和自动化任务的底座可靠性 | https://github.com/browser-use/browser-use |
 | `langchain-ai/deepagents` | `4,831 stars this week`；仓库 `17.3k stars`；`2026-03-23` 发版 | Agent harness | 说明社区对“开箱即用 agent runtime”需求很强，重点不再只是框架抽象，而是默认工具、默认上下文管理、默认子代理能力 | 对应论文文档里的 `Agentic RL 基础设施`、`长流程 agent`、`memory-first` | P0 | 重点拆它的默认能力边界：`planning / filesystem / subagents / context management / sandbox` | https://github.com/trending/python?since=weekly ; https://github.com/langchain-ai/deepagents |
 | `volcengine/OpenViking` | `4,636 stars this week`；仓库 `18.8k stars` | Context database / Memory | 这是本周最值得注意的结构性信号之一：`memory`、`resources`、`skills` 被统一成上下文数据库，而不是散落在 prompt、向量库和文件夹里 | 强对应论文文档里的 `Memory 正在成为一等能力` | P0 | 重点看它的 `filesystem paradigm` 和层级化上下文交付是否值得借鉴 | https://github.com/trending/python?since=weekly ; https://github.com/volcengine/OpenViking |
 | `thedotmack/claude-mem` | `3,495 stars this week`；仓库 `40.3k stars`；`2026-03-21` 发版 | Cross-session memory | 跨 session 记忆已经从论文评测维度，进入开发者即装即用插件能力，这说明 `persistent memory` 已经开始产品化 | 强对应论文文档里的 `Incremental Multi-Turn Memory`、`MobileMem`、`PERMA` | P0 | 评估其 `capture -> compress -> retrieve` 流程，抽象成内部 memory 最小实现 | https://github.com/trending/typescript?since=weekly ; https://github.com/thedotmack/claude-mem |

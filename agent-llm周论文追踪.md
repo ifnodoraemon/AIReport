@@ -1,6 +1,6 @@
 # Agent / LLM 每周跟踪
 
-最后更新：2026-06-25
+最后更新：2026-07-02
 跟踪范围：近期与 `agent`、`LLM`、`memory`、`RAG 安全`、`评测` 相关的论文与趋势
 
 ## 目的
@@ -25,6 +25,7 @@
 
 | 论文 | 主题 | 核心结论 | 与我们的相关性 | 优先级 | 建议动作 | 状态 | 来源 |
 |---|---|---|---|---|---|---|---|
+| Understanding Agentic Search Behaviors | Agent Search | 分析了不同模型在使用搜索引擎工具时的策略差异与失败模式 | 对如何设计 RAG 和搜索工具调用有启示 | P1 | 将错误模式归纳为 search tool 开发指南 | 跟踪中 | https://arxiv.org/abs/2607.00012 |
 | ARLArena: A Unified Framework for Stable Agentic Reinforcement Learning | Agentic RL | Agent 训练不稳定是核心瓶颈之一，论文给出更稳定的训练 recipe 和统一分析框架 | 如果我们想做可训练 agent，而不是只做 orchestration，这篇很重要 | P1 | 复用其分析维度，指导我们的 agent 训练与日志设计 | 跟踪中 | https://arxiv.org/abs/2602.21534 |
 | AgentRL: Scaling Agentic Reinforcement Learning with a Multi-Turn, Multi-Task Framework | Agentic RL | 将 agent 训练推进到多轮、多任务、异步 pipeline 和统一 function-call 接口 | 对长期 agent 平台设计有参考价值 | P2 | 在投入 RL 之前，先研究其 pipeline 和数据 / 日志结构 | 跟踪中 | https://openreview.net/forum?id=zq3vAmuUk9 |
 | Evaluating Memory in LLM Agents via Incremental Multi-Turn Interactions | Memory | Memory 应同时覆盖检索正确率、测试时学习、长程理解、选择性遗忘四个维度 | 如果我们构建 persistent agent，这篇直接相关 | P0 | 将其 memory 维度转成内部评测标准 | 可执行 | https://openreview.net/forum?id=DT7JyQC3MR |
