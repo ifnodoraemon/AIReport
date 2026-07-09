@@ -1,6 +1,6 @@
 # Agent / LLM GitHub 每周热点追踪
 
-最后更新：2026-07-02
+最后更新：2026-07-09
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
@@ -849,3 +849,14 @@
   之前判断：agent 执行面正在从 CLI 扩展到 browser/desktop。
   当前判断：本周热点同时覆盖 `page-agent`、`flue`、`orca` 与 `Agent-Reach`，说明执行面、沙箱和多 agent 管理正在同步升温。
   变化原因：Google computer use、Interactions API 与 GitHub 周榜项目形成共振。
+## 2026-07-09 当周补充
+
+### 新增热点项目
+
+- **项目名称**：`microsoft/flint-chart`
+  **方向**：`agent UI / data visualization`
+  **核心亮点**：微软发布的专为 AI agents 设计的可视化语言库。
+  **为什么重要**：随着 agent 从文本输出走向富文本、交互式输出，专门适配 agent 侧的图形和可视化方案会受到开发者追捧。
+  **建议动作**：在内部数据分析类 agent 的 GUI/Chat 界面集成时评估其可用性。
+  **来源日期**：`2026-07-08`
+  **来源**：https://github.com/microsoft/flint-chart/

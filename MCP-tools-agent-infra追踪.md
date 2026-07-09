@@ -1,6 +1,6 @@
 # MCP / Tools / Agent Infra 追踪
 
-最后更新：2026-07-02
+最后更新：2026-07-09
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/agent-llm周GitHub热点追踪.md`
 
 跟踪范围：近期与 `MCP`、`tool use`、`code execution`、`sandbox`、`agent runtime`、`context compaction`、`skills`、`stateful execution` 相关的高信号工程进展
@@ -670,3 +670,15 @@
   之前判断：security eval 和 MCP/tool 风险是重点。
   当前判断：还必须看 `patch automation` 和 `maintainer workflow`，因为可防御价值来自修复闭环而不只是发现漏洞。
   变化原因：OpenAI Daybreak 与 Patch the Planet 把 AI security agent 明确推进到补丁、测试、disclosure 和人审流程。
+
+## 2026-07-09 当周补充
+
+### 新增条目
+
+- 条目：`Microsoft Flint: A visualization language for AI agents`
+  方向：`agent UI / data visualization`
+  核心信号：微软开源 Flint，专为 AI agent 交互设计的可视化图表语言，支持通过简单的结构化指令生成交互图表。
+  为什么重要：agent 的输出不仅是文本，结构化和可交互的可视化结果（如 Flint chart）能极大提升数据分析 agent 的可用性。
+  建议动作：将 Flint 纳入数据分析 agent 工具箱，观察能否替代传统 Python 绘图库。
+  来源日期：`2026-07-08`
+  来源：https://microsoft.github.io/flint-chart/
