@@ -1,6 +1,6 @@
 # Agent / LLM GitHub 每周热点追踪
 
-最后更新：2026-07-09
+最后更新：2026-07-16
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
@@ -860,3 +860,23 @@
   **建议动作**：在内部数据分析类 agent 的 GUI/Chat 界面集成时评估其可用性。
   **来源日期**：`2026-07-08`
   **来源**：https://github.com/microsoft/flint-chart/
+
+## 2026-07-16 当周
+
+### 1. [vibe-investing](https://github.com/gameworkerkim/vibe-investing)
+- **标签**：`agent / finance`
+- **趋势**：`2026-07-16` 新晋趋势项目
+- **简介**：围绕投资分析与决策辅助的 AI 代理工具流。
+- **为什么值得关注**：展示了 Agent 框架在垂直金融领域的应用扩展。
+
+### 2. [codegen_orchestrator](https://github.com/vladmesh/codegen_orchestrator)
+- **标签**：`agent / codegen / orchestrator`
+- **趋势**：`2026-07-16` 活跃度上升
+- **简介**：用于管理多个代码生成 Agent 协作编排的框架。
+- **为什么值得关注**：符合当前多智能体（Multi-agent）编排趋势，尤其在代码编写和维护场景中。
+
+### 3. [ledgerlens](https://github.com/zzlawlzz/ledgerlens)
+- **标签**：`agent / infra`
+- **趋势**：`2026-07-16` 更新
+- **简介**：专注于账本及日志洞察的轻量级 Agent 工具链。
+- **为什么值得关注**：数据分析与审计的专属工具代理化。

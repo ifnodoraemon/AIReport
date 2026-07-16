@@ -1,6 +1,6 @@
 # AI 三巨头博客追踪
 
-最后更新：2026-07-09
+最后更新：2026-07-16
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
@@ -29,6 +29,10 @@
 
 | 公司 | 日期 | 文章 | 方向 | 核心信号 | 与我们的相关性 | 优先级 | 建议动作 | 来源 |
 |---|---|---|---|---|---|---|---|---|
+| Google | 2026-07-14 | ATL Saathi announcement | Agent 应用落地 | 推出 Gemini 驱动的应用 ATL Saathi 帮助教育工作者 | 显示 Google 正在推进特定领域的实际 AI 应用产品落地 | P1 | 关注大模型在教育领域的交互和实际辅助作用 | https://blog.google/ |
+| Anthropic | 2026-07-09 | Inviting hard questions | 安全与评估 | Anthropic 开启"Inviting hard questions"倡议，探讨 AI 影响与安全 | 说明安全和长期影响仍然是 Anthropic 在推模型的并重主题 | P1 | 跟踪其在安全问题上的最新框架 | https://www.anthropic.com/news/inviting-hard-questions |
+| Anthropic | 2026-07-06 | Emergent mental workspace in Claude | 内部推理与可解释性 | Anthropic 论文指出 Claude 存在类似“内部思考”的 latent 现象 | 如果 agent 可信赖度取决于内部推理路径，这篇研究非常关键 | P0 | 加入“隐式思考 vs 显式推理”在 agent 中的对比实验列表 | https://www.anthropic.com/research/emergent-mental-workspace |
+| Anthropic | 2026-07-01 | Claude Sonnet 5 / Claude Fable 5 updates | 模型 / Agentic tasks | Claude Fable 5 重新部署，Sonnet 5 作为主打 agentic tasks 的模型全量开放 | Anthropic 继续在 agent planning 和 tool use 上迭代可用性 | P0 | 测试 Sonnet 5 在多步工具调用上的成功率 | https://www.anthropic.com/news/ |
 | OpenAI | 2026-07-01 | Enhancing reasoning in agentic workflows | Agent reasoning | OpenAI 强调把思考时间作为提升 tool calling 准确率的关键抓手 | 对涉及复杂多步工具调用的 agent 设计有直接影响 | P0 | 探索在 workflow 中加入明确的 reasoning step | https://openai.com/blog/enhancing-reasoning-in-agentic-workflows |
 | OpenAI | 2026-03-17 | Introducing GPT-5.4 | 模型 / tool use / knowledge work | `GPT-5.4` 把 coding、knowledge work、computer use、tool search 合到同一主线；说明 OpenAI 正在把“通用 agent 模型”变成默认产品层 | 如果我们关心长流程工作流与多工具 agent，这篇很重要 | P0 | 重点看 `tool search`、`agentic tool calling`、`GDPval` 这三块是否可映射到内部评测 | https://openai.com/index/introducing-gpt-5-4/ |
 | OpenAI | 2026-03-11 | From model to agent: Equipping the Responses API with a computer environment | Agent runtime / execution environment | OpenAI 已明确把 `shell tool`、`hosted container`、`skills`、`compaction` 做成 agent 基础设施，而不是只给模型 API | 这直接关系到我们怎么做可执行、可持久、可恢复的 agent | P0 | 把文中 `shell + container + skills + compaction` 抽成内部 agent runtime 清单 | https://openai.com/index/equip-responses-api-computer-environment/ |
@@ -158,6 +162,13 @@
   建议动作：
 
 ### Anthropic
+
+- `Anthropic` | `2026-07-15` | `Agentic Misalignment in Summer 2026`
+  方向：`safety / alignment / agentic risks`
+  核心信号：Anthropic 探讨了随着 Agent 能力增强可能出现的对齐风险及管理方法。
+  为什么重要：在 Agent 走向生产环境的同时，企业界需要应对由长线任务代理带来的安全对齐问题。
+  来源日期：`2026-07-15`
+  来源：https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/
 
 - 新文章：
   方向：
@@ -762,12 +773,26 @@
 
 ### Anthropic
 
+- `Anthropic` | `2026-07-15` | `Agentic Misalignment in Summer 2026`
+  方向：`safety / alignment / agentic risks`
+  核心信号：Anthropic 探讨了随着 Agent 能力增强可能出现的对齐风险及管理方法。
+  为什么重要：在 Agent 走向生产环境的同时，企业界需要应对由长线任务代理带来的安全对齐问题。
+  来源日期：`2026-07-15`
+  来源：https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/
+
 - 新文章：`Claude Opus 4.8 & Suspension of Fable 5 and Mythos 5`
   方向：`model availability / export control / Claude Design`
   核心信号：Anthropic 5 月底发布 Claude Opus 4.8 并在 6月9日推出更强大的 Claude Fable 5 和 Mythos 5。然而，受美国出口管制指令（涉及潜在越狱风险）影响，Anthropic 在 6月12日全球暂停了这两款最新模型的访问，至 6月18日才恢复 Fable 5 的定向访问。
   建议动作：在模型可用性追踪中补充因合规和出口管制导致的中断事件；不再把发布日等同于稳定可用日。
 
 ### Google / DeepMind
+
+- `Google DeepMind` | `2026-07-15` | `Google DeepMind Talent & Strategy`
+  方向：`talent / strategy / deepmind`
+  核心信号：前 DeepMind 员工讨论了 Google DeepMind 目前的战略方向和人才流动。
+  为什么重要：侧面反映了 Google 在基础模型与 AI 代理竞争下的内部研究方向调整。
+  来源日期：`2026-07-15`
+  来源：https://turntrout.com/why-i-left-google-deepmind
 
 - 新文章：`AI Control Roadmap, TRAIT&R & Agentic Resource Discovery`
   方向：`AI safety / multi-agent security / protocol`
@@ -827,6 +852,13 @@
 
 ### Anthropic
 
+- `Anthropic` | `2026-07-15` | `Agentic Misalignment in Summer 2026`
+  方向：`safety / alignment / agentic risks`
+  核心信号：Anthropic 探讨了随着 Agent 能力增强可能出现的对齐风险及管理方法。
+  为什么重要：在 Agent 走向生产环境的同时，企业界需要应对由长线任务代理带来的安全对齐问题。
+  来源日期：`2026-07-15`
+  来源：https://alignment.anthropic.com/2026/agentic-misalignment-summer-2026/
+
 - `Anthropic` | `2026-06-23` | `Introducing Claude Tag`
   方向：`team agent / Slack-native workflow / scoped memory`
   核心信号：Anthropic 发布 `Claude Tag`，允许团队在 Slack 频道中 `@Claude` 委托任务；Claude 可基于获授权频道、工具、数据和代码库建立上下文，按频道隔离记忆，并支持异步执行与主动提醒。
@@ -836,6 +868,13 @@
   来源：https://www.anthropic.com/news/introducing-claude-tag
 
 ### Google / DeepMind
+
+- `Google DeepMind` | `2026-07-15` | `Google DeepMind Talent & Strategy`
+  方向：`talent / strategy / deepmind`
+  核心信号：前 DeepMind 员工讨论了 Google DeepMind 目前的战略方向和人才流动。
+  为什么重要：侧面反映了 Google 在基础模型与 AI 代理竞争下的内部研究方向调整。
+  来源日期：`2026-07-15`
+  来源：https://turntrout.com/why-i-left-google-deepmind
 
 - `Google / Google DeepMind` | `2026-06-24` | `Introducing computer use in Gemini 3.5 Flash`
   方向：`computer use / browser-mobile-desktop agent / enterprise safeguards`
