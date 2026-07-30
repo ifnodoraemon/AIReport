@@ -1,10 +1,10 @@
 # Agent / LLM GitHub 每周热点追踪
 
-最后更新：2026-07-16
+最后更新：2026-07-30
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
-跟踪范围：持续记录 GitHub Trending 周榜，以及对应仓库主页；当前文档已包含 `2026-03-19` 至 `2026-06-25` 的多周快照
+跟踪范围：持续记录 GitHub Trending 周榜，以及对应仓库主页；当前文档已包含 `2026-03-19` 至 `2026-07-30` 的多周快照
 ## 目的
 
 这份文件作为长期维护的 GitHub 周热点记录，用于：
@@ -880,3 +880,62 @@
 - **趋势**：`2026-07-16` 更新
 - **简介**：专注于账本及日志洞察的轻量级 Agent 工具链。
 - **为什么值得关注**：数据分析与审计的专属工具代理化。
+
+## 2026-07-30 当周
+
+### 1. [mattpocock/skills](https://github.com/mattpocock/skills)
+
+- **标签**：`skills / coding agent / engineering workflow`
+- **本周热度**：GitHub Trending 周榜快照约 `12,680 stars this week`
+- **核心信号**：仓库把需求澄清、TDD、诊断、架构、review 和 handoff 封装为小型、可组合、跨模型的 skills。
+- **为什么值得关注**：skills 热点正在从“提示词集合”转向可安装、可复用的工程纪律与工作流分发层。
+- **建议动作**：重点检查 skill 的权限、依赖、回归验证和跨 agent 可移植性，不只统计数量。
+- **来源日期**：`2026-07-30`（Trending 周榜快照）
+- **来源**：https://github.com/trending?since=weekly ; https://github.com/mattpocock/skills
+
+### 2. [citrolabs/ego-lite](https://github.com/citrolabs/ego-lite)
+
+- **标签**：`browser agent / shared session / automation`
+- **本周热度**：GitHub Trending 周榜快照约 `4,863 stars this week`
+- **核心信号**：项目允许 Codex、Claude Code 等 agent 复用用户已登录的浏览器状态，并以旁路方式执行浏览器自动化。
+- **为什么值得关注**：复用真实登录态可降低接入摩擦，但也把 session 权限、数据泄露和不可逆操作风险推到 agent 执行层。
+- **建议动作**：如试用，必须先限制域名、动作和凭据可见范围，并记录每次外部副作用。
+- **来源日期**：`2026-07-30`（Trending 周榜快照）
+- **来源**：https://github.com/trending?since=weekly ; https://github.com/citrolabs/ego-lite
+
+### 3. [tirth8205/code-review-graph](https://github.com/tirth8205/code-review-graph)
+
+- **标签**：`MCP / code intelligence / persistent graph`
+- **本周热度**：GitHub Python Trending 周榜快照约 `3,032 stars this week`
+- **核心信号**：项目通过 MCP 与 CLI 暴露本地优先的持久代码图，目标是让 coding agent 只读取与 review 或大仓任务相关的结构。
+- **为什么值得关注**：代码上下文压缩正在从临时检索走向可持续更新、可被工具协议复用的结构化索引。
+- **建议动作**：对比其上下文削减、索引新鲜度、错误边传播和 plain search 基线。
+- **来源日期**：`2026-07-30`（Trending 周榜快照）
+- **来源**：https://github.com/trending/python?since=weekly ; https://github.com/tirth8205/code-review-graph
+
+### 4. [1jehuang/jcode](https://github.com/1jehuang/jcode)
+
+- **标签**：`agent harness / memory efficiency / coding`
+- **本周热度**：GitHub Trending 周榜快照约 `2,594 stars this week`
+- **核心信号**：项目以低内存占用的 coding-agent harness 为主要定位，反映社区开始把 runtime footprint 当作 agent 工程指标。
+- **为什么值得关注**：当 agent 常驻、并发或运行于开发机时，RAM、启动时间和上下文开销会直接影响可用性。
+- **建议动作**：用同一仓库任务比较内存峰值、完成率、token、工具回合和失败恢复。
+- **来源日期**：`2026-07-30`（Trending 周榜快照）
+- **来源**：https://github.com/trending?since=weekly ; https://github.com/1jehuang/jcode
+
+### 5. [earendil-works/pi](https://github.com/earendil-works/pi)
+
+- **标签**：`unified LLM API / agent loop / TUI / coding CLI`
+- **本周热度**：GitHub Trending 周榜快照约 `4,979 stars this week`
+- **核心信号**：项目把统一模型 API、agent loop、终端界面和 coding CLI 放入一个 toolkit，强调可组合而非单一产品表面。
+- **为什么值得关注**：轻量 agent toolkit 仍有强需求，尤其是希望控制 harness 而不接受重型框架的开发者。
+- **建议动作**：审查它的 provider abstraction、tool schema、context lifecycle、sandbox 和 telemetry 边界。
+- **来源日期**：`2026-07-30`（Trending 周榜快照）
+- **来源**：https://github.com/trending?since=weekly ; https://github.com/earendil-works/pi
+
+### 状态变化
+
+- 本周热点从垂直 demo 回到 agent 工程底座：`skills distribution`、`browser execution`、`persistent code context`、`resource-efficient harness` 与 `unified agent loop` 同时升温。
+- 热度不等于生产成熟度；尤其是共享浏览器登录态与第三方 skills，需要把供应链、权限和审计风险放在试用之前。
+- **依据日期**：`2026-07-30`（Trending 周榜快照）
+- **依据**：https://github.com/trending?since=weekly ; https://github.com/trending/python?since=weekly

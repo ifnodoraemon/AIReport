@@ -1,6 +1,6 @@
 # MCP / Tools / Agent Infra 追踪
 
-最后更新：2026-07-16
+最后更新：2026-07-30
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/agent-llm周GitHub热点追踪.md`
 
 跟踪范围：近期与 `MCP`、`tool use`、`code execution`、`sandbox`、`agent runtime`、`context compaction`、`skills`、`stateful execution` 相关的高信号工程进展
@@ -682,3 +682,40 @@
   建议动作：将 Flint 纳入数据分析 agent 工具箱，观察能否替代传统 Python 绘图库。
   来源日期：`2026-07-08`
   来源：https://microsoft.github.io/flint-chart/
+
+## 2026-07-30 当周补充（覆盖 2026-07-17 至 2026-07-30）
+
+### 新增条目
+
+- 条目：`OpenAI Presence production-agent control plane`
+  方向：`policy / approval / escalation / eval / controlled rollout`
+  核心信号：Presence 将最小权限、标准操作流程、approved actions、模拟评测、guardrails、人工接管和上线后 Codex 改进建议放进同一生产闭环。
+  为什么重要：企业 agent infra 的关键不再只是 connector 和 runtime，而是“谁能做什么、何时停下、怎样验证、如何安全演进”的持续控制面。
+  建议动作：内部 agent 平台补齐 policy version、approval point、escalation reason、production quality signal 和 rollout comparison。
+  来源日期：`2026-07-22`
+  来源：https://openai.com/index/introducing-openai-presence/
+
+- 条目：`Retained reasoning + compaction in ARC-AGI-3 harness`
+  方向：`context continuity / compaction / harness-model alignment`
+  核心信号：OpenAI 使用 Responses API 保留跨工具调用的 reasoning，并用 compaction 替代滚动截断后，GPT-5.6 Sol 在 ARC-AGI-3 公开集得分从 13.3% 提升到 38.3%，同时输出 token 减少约 6 倍。
+  为什么重要：benchmark 和生产性能都可能被 harness 的上下文策略主导；通用 runner 丢弃 reasoning 或旧动作时，测到的不是单纯模型能力。
+  建议动作：agent runtime 评测必须显式记录 reasoning retention、截断/压缩策略、上下文上限和工具回合连续性。
+  来源日期：`2026-07-29`
+  来源：https://openai.com/index/how-two-settings-tripled-our-arc-agi-3-scores/
+
+- 条目：`OpenAI API organization and project spend limits`
+  方向：`budget governance / project isolation`
+  核心信号：OpenAI API 平台新增组织级与项目级月度预算监控和硬限制，达到上限后可直接阻止后续 API 响应。
+  为什么重要：预算已从 agent prompt 约定升级为平台可强制执行的资源边界，适合多租户和长任务 agent。
+  建议动作：内部平台将 soft budget、hard budget、失败语义和人工解锁路径分开设计。
+  来源日期：`2026-07-20`
+  来源：https://openai.com/products/release-notes/
+
+### 状态变化
+
+- 主题：`Production agent infrastructure`
+  之前判断：重点是 runtime、sandbox、state、skills、MCP 与 observability。
+  当前判断：新增 `policy/approval/escalation`、`context continuity` 和 `enforced budget` 三个不可缺失的控制面。
+  变化原因：Presence、ARC-AGI-3 harness 复盘和 API spend limits 分别补齐行为治理、上下文治理和成本治理。
+  来源日期：`2026-07-20` 至 `2026-07-29`
+  来源：https://openai.com/index/introducing-openai-presence/ ; https://openai.com/index/how-two-settings-tripled-our-arc-agi-3-scores/ ; https://openai.com/products/release-notes/

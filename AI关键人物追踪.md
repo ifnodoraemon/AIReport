@@ -1,10 +1,10 @@
 # AI 关键人物追踪
 
-最后更新：2026-07-16
+最后更新：2026-07-30
 
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/模型发布追踪.md`、`/home/ifnodoraemon/myreport/MCP-tools-agent-infra追踪.md`
 
-跟踪范围：截至 `2026-06-25` 检索到的 AI 关键人物 `个人官网 / 官方博客 / 公司新闻页 / X`；优先选择能持续释放 `模型路线`、`agent infra`、`开发者生态`、`安全治理`、`world model` 高信号的人
+跟踪范围：截至 `2026-07-30` 检索到的 AI 关键人物 `个人官网 / 官方博客 / 公司新闻页 / X`；优先选择能持续释放 `模型路线`、`agent infra`、`开发者生态`、`安全治理`、`world model` 高信号的人
 ## 目的
 
 这份文件用于：
@@ -797,3 +797,41 @@
   之前判断：I/O 2026 后要看 `agentic Gemini era` 和科学 agent。
   当前判断：还要上调 `computer use + Interactions API` 权重，因为 Google 正把 agent runtime 做成 Gemini 主接口。
   变化原因：computer use 进入 Gemini 3.5 Flash，Interactions API 进入 GA 并成为默认开发接口。
+
+## 2026-07-30 当周补充（覆盖 2026-07-17 至 2026-07-30）
+
+### 新增人物信号
+
+- 人物：`Sam Altman / OpenAI leadership`
+  动作：OpenAI 于 `2026-07-29` 启动 ChatGPT for Academic Researchers，计划先在 2026 年夏覆盖 1 万名科研人员，并在 2027 年扩展到 10 万人；项目提供 GPT-5.6、Codex、科研 skills 与 connectors。
+  来源级别：`公司官网已确认`
+  方向：`AI for science / distribution / external research feedback`
+  为什么重要：OpenAI 领导层正在把科研路线从少量 frontier demo 扩展为大规模、长期投入的研究者基础设施。
+  对我们的影响：人物追踪不能只看新模型，还要看谁在建立研究者分发、工具生态与外部反馈闭环。
+  来源日期：`2026-07-29`
+  来源：https://openai.com/index/chatgpt-for-academic-researchers/
+
+- 人物：`Tulsee Doshi / Google Gemini product leadership`
+  动作：Tulsee Doshi 代表 Gemini 团队于 `2026-07-21` 发布 3.6 Flash、3.5 Flash-Lite 与 3.5 Flash Cyber，并公开称 3.5 Pro 正在伙伴测试、Gemini 4 已启动迄今最具雄心的预训练。
+  来源级别：`Google 官方博客已确认`
+  方向：`model portfolio / agent efficiency / next-generation training`
+  为什么重要：Google 模型产品路线已清晰拆成通用工作模型、低成本吞吐模型和受限 cyber 模型，同时并行推进下一代预训练。
+  对我们的影响：新增 Tulsee Doshi 为 Google 模型产品化快信号观察对象，并把价格、工具调用效率和访问治理放到人物路线判断中。
+  来源日期：`2026-07-21`
+  来源：https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/
+
+### 状态变化
+
+- 人物：`Sam Altman / OpenAI leadership`
+  之前判断：重点是模型、Codex workspace、企业部署和推理基础设施。
+  当前判断：新增 `research distribution at scale`，即通过免费 workspace、skills 和 connectors 形成科研采用与反馈网络。
+  变化原因：ChatGPT for Academic Researchers 把目标规模明确到 10 万名科研人员。
+  来源日期：`2026-07-29`
+  来源：https://openai.com/index/chatgpt-for-academic-researchers/
+
+- 人物：`Google model leadership`
+  之前判断：重点是 Gemini agent API、computer use 与产品入口。
+  当前判断：还要跟踪 `portfolio economics` 和 Gemini 4 预训练进度。
+  变化原因：3.6 Flash / 3.5 Flash-Lite / 3.5 Flash Cyber 同日发布，并首次明确下一代训练状态。
+  来源日期：`2026-07-21`
+  来源：https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/

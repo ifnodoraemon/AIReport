@@ -1,6 +1,6 @@
 # Agent Eval / Benchmark 追踪
 
-最后更新：2026-07-16
+最后更新：2026-07-30
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`、`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`
 
 跟踪范围：近期与 `agent eval`、`long-horizon benchmark`、`subjective quality`、`production eval`、`memory eval`、`tool use eval` 相关的高信号论文、博客和方法学
@@ -585,3 +585,48 @@
   之前判断：browser/GUI eval 要覆盖用户授权、审计、状态恢复和 side effect。
   当前判断：还要把 GUI 与 CLI 执行层拆开评估，并单独测 skill coverage 与 verifier augmentation。
   变化原因：GUI vs CLI benchmark 和 autonomous-evaluation RL 同周把 computer-use eval 推向更细粒度的执行层分析。
+
+## 2026-07-30 当周补充（覆盖 2026-07-24 至 2026-07-30）
+
+### 新增 benchmark / 方法
+
+- 条目：`OmegaUse-OfficeVal`
+  类型：`long-horizon office-suite / economic grounding`
+  核心信号：benchmark 包含 100 个来自真实从业者请求的办公套件任务，平均对应 2.32 小时人工劳动，并同时记录人工时间、任务价格代理、模型推理成本和基于细粒度 rubric 的代码 verifier。
+  为什么重要：它把“能否完成办公任务”推进到“交付质量是否接近人类、成本是否值得”的价值加权评测。
+  建议动作：内部办公 agent eval 同时报告 deliverable quality、人工时间基线、推理成本和返工成本。
+  来源日期：`2026-07-29`
+  来源：https://arxiv.org/abs/2607.27155
+
+- 条目：`Setoka`
+  类型：`personalized-agent memory / hierarchical user understanding`
+  核心信号：Setoka 将用户理解拆成 semantic memory、episodic memory、behavior pattern 和 personality trait 四层；现有 memory 系统在显式事实检索之外明显退化。
+  为什么重要：个性化 agent 的 memory eval 不能只测“记住一句话”，还要测跨来源、跨时间的抽象与行为模式理解。
+  建议动作：给 persistent assistant 增加分层 memory rubric，并单独检查推断隐私与错误人格归因风险。
+  来源日期：`2026-07-29`
+  来源：https://arxiv.org/abs/2607.27056
+
+- 条目：`MemSecBench`
+  类型：`memory poisoning lifecycle / repair`
+  核心信号：310 个案例使用 Write–Execute–Forget 协议，在 24 种 harness、memory backend 与 LLM 组合中追踪恶意记忆从写入、持久化到后果与选择性修复；摘要报告恶意记忆持久化率 84.2%，完整 Write–Execute 攻击成功率 50.3%。
+  为什么重要：memory 安全终于能按生命周期、后端和修复能力做可比评测，而不是只测一次检索或一次 prompt injection。
+  建议动作：内部 memory eval 建立相同的 write、recall、action、consequence、forget、repair 检查点，并保留确定性 gate。
+  来源日期：`2026-07-29`
+  来源：https://arxiv.org/abs/2607.27080
+
+- 条目：`ARC-AGI-3 harness sensitivity`
+  类型：`agent benchmark methodology / context management`
+  核心信号：OpenAI 报告同一 GPT-5.6 Sol 在官方通用 harness 与启用 retained reasoning、compaction 的 Responses API harness 上，公开集分数分别为 13.3% 和 38.3%，后者输出 token 约少 6 倍。
+  为什么重要：评测分数同时测量模型、API 设置、harness 和 context policy；不披露这些变量会把系统差异误报成模型差异。
+  建议动作：benchmark 报告强制包含 runner 版本、reasoning retention、compaction/truncation、context limit 和 prompt/tool configuration。
+  来源日期：`2026-07-29`
+  来源：https://openai.com/index/how-two-settings-tripled-our-arc-agi-3-scores/
+
+### 状态变化
+
+- 主题：`Agent eval`
+  之前判断：重点是长流程、真实工作流、memory、tool use 与人审校准。
+  当前判断：本周新增三条硬要求：`经济价值基线`、`memory 生命周期安全`、`harness 配置披露`。
+  变化原因：OmegaUse-OfficeVal、MemSecBench 与 ARC-AGI-3 复盘分别暴露价值、持久风险和测量配置问题。
+  来源日期：`2026-07-29`
+  来源：https://arxiv.org/abs/2607.27155 ; https://arxiv.org/abs/2607.27080 ; https://openai.com/index/how-two-settings-tripled-our-arc-agi-3-scores/

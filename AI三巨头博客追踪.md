@@ -1,10 +1,10 @@
 # AI 三巨头博客追踪
 
-最后更新：2026-07-16
+最后更新：2026-07-30
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
-跟踪范围：截至 `2026-06-25` 检索到的 `OpenAI`、`Anthropic`、`Google / Google DeepMind` 官方博客、新闻与工程文章；优先保留和 `model`、`agent`、`tool use`、`runtime`、`eval`、`context`、`多模态产品化` 相关的高信号条目
+跟踪范围：截至 `2026-07-30` 检索到的 `OpenAI`、`Anthropic`、`Google / Google DeepMind` 官方博客、新闻与工程文章；优先保留和 `model`、`agent`、`tool use`、`runtime`、`eval`、`context`、`多模态产品化` 相关的高信号条目
 ## 目的
 
 这份文件作为长期维护的博客追踪记录，用于：
@@ -904,3 +904,56 @@
   之前判断：竞争重点是模型、工具调用、workspace 和企业部署。
   当前判断：还要加入 `inference hardware`、`team collaboration surface`、`unified agent API` 三个新层级。
   变化原因：OpenAI 发布 Jalapeño，Anthropic 发布 Claude Tag，Google 发布 Gemini computer use 与 Interactions API GA。
+
+## 2026-07-30 当周补充（覆盖 2026-07-17 至 2026-07-30）
+
+### OpenAI
+
+- `OpenAI` | `2026-07-22` | `Introducing OpenAI Presence`
+  方向：`production agent / policy / guardrail / continuous improvement`
+  核心信号：OpenAI 将企业 agent 的生产能力打包为 Presence，覆盖最小权限、审批与转人工、模拟评测、上线后质量信号，以及由 Codex 提议并经团队批准的改进闭环。
+  为什么重要：agent 产品竞争已从“模型能否执行”推进到“策略、评测、变更和人工接管能否长期受控”。
+  建议动作：将 `approved actions`、`escalation`、`production-session review` 和 `controlled rollout` 纳入生产 agent 基线。
+  来源日期：`2026-07-22`
+  来源：https://openai.com/index/introducing-openai-presence/
+
+- `OpenAI` | `2026-07-28` | `Scientific computing in the age of agentic AI`
+  方向：`coding agent / scientific software / verification`
+  核心信号：8 个科学计算项目表明 coding agent 已能显著加速维护、迁移、优化和重写，但科学有效性、最后一公里验证与长期维护责任仍由人承担。
+  为什么重要：真实案例再次说明 agent 的主要瓶颈正从实现速度转向可测验收、专家判断和软件 stewardship。
+  建议动作：科学/数据 agent 项目必须预先定义可执行验收目标，并在立项时明确上游合并或长期维护责任。
+  来源日期：`2026-07-28`
+  来源：https://openai.com/index/scientific-computing-agentic-ai/
+
+- `OpenAI` | `2026-07-29` | `Accelerating scientific discovery with ChatGPT for Academic Researchers`
+  方向：`AI for science / research distribution / skills and connectors`
+  核心信号：OpenAI 计划向 10 万名科研人员提供免费 frontier 模型、Codex、skills 和科研 connectors，2026 年夏先覆盖 1 万人，并承诺到 2027 年投入超过 2.5 亿美元支持外部科研。
+  为什么重要：AI for science 正从少量展示案例扩展为大规模研究基础设施和反馈渠道。
+  建议动作：跟踪科研 skills/connectors 的可复现性、数据权限和外部研究者反馈如何回流到模型与 agent 产品。
+  来源日期：`2026-07-29`
+  来源：https://openai.com/index/chatgpt-for-academic-researchers/
+
+### Google / Google DeepMind
+
+- `Google` | `2026-07-21` | `Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber`
+  方向：`agent model portfolio / computer use / cyber agent`
+  核心信号：Google 同时发布通用工作模型、低成本高吞吐模型和受限 cyber 模型；3.6 Flash 与 3.5 Flash-Lite 均把 agentic workflow、computer use 和成本效率放在核心位置，Flash Cyber 则通过 CodeMender 与 trusted access 部署。
+  为什么重要：Google 正以“模型分层 + agent tool + 风险分级访问”统一产品与安全路线。
+  建议动作：模型评测同时记录任务成本、工具调用次数、computer-use 能力和访问约束。
+  来源日期：`2026-07-21`
+  来源：https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/
+
+### Anthropic
+
+- 检索状态：`2026-07-30` 检查 Anthropic 官方 Newsroom，本次窗口内未发现 `2026-07-14` 之后的新官方新闻条目；因此本周不以二手报道补写 Anthropic 动态。
+  来源日期：`2026-07-30`（检索快照）
+  来源：https://www.anthropic.com/news
+
+### 横向变化
+
+- OpenAI 本周重点是 `生产 agent 治理 + 科学工作流规模化`；Google 的重点是 `高效 agent 模型分层 + computer use + trusted cyber deployment`。
+  依据日期：`2026-07-21` 至 `2026-07-29`
+  依据：https://openai.com/index/introducing-openai-presence/ ; https://openai.com/index/scientific-computing-agentic-ai/ ; https://openai.com/index/chatgpt-for-academic-researchers/ ; https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/
+- 本周没有 Anthropic 同期新稿可供对齐，横向判断应保留这一信息不对称，不把沉默误读为路线变化。
+  依据日期：`2026-07-30`（检索快照）
+  依据：https://www.anthropic.com/news

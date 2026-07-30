@@ -1,6 +1,6 @@
 # Agent / LLM 每周跟踪
 
-最后更新：2026-07-16
+最后更新：2026-07-30
 跟踪范围：近期与 `agent`、`LLM`、`memory`、`RAG 安全`、`评测` 相关的论文与趋势
 
 ## 目的
@@ -659,3 +659,48 @@
   之前判断：agent runtime 关注 sandbox、tool use、long-horizon 和 trace。
   当前判断：还需要 `cost-aware controller` 与 `execution modality diagnosis`，否则很难判断失败来自模型、工具、技能还是 verifier 成本。
   变化原因：Bayesian control 和 GUI vs CLI 都把 orchestration 决策拆得更可测。
+
+## 2026-07-30 当周补充（覆盖 2026-07-24 至 2026-07-30）
+
+### 新增论文
+
+- 论文：`Can AI agents conduct open-ended AI research? Early evidence from two case studies`
+  核心结论：作者提出 shadow evaluation，让 agent 处理未公开论文的核心研究问题并由原作者评分；frontier agents 在 6 天和高算力预算下完成了工程工作，却未能对研究问题取得实质进展，主要失败于研究判断、回退、资源意识与指令漂移。
+  为什么重要：它把“自动化 AI 研究”从代码执行能力中拆开，直接测试开放研究的判断与创造环节。
+  建议动作：科研 agent 评测加入 expert-authored hidden problem、长周期日志、资源预算与失败回退质量。
+  状态：`P0 / 精读`
+  来源日期：`2026-07-29`
+  来源：https://arxiv.org/abs/2607.27191
+
+- 论文：`Scores Are Not Decisions: Cost-Aware Stopping for Tool Acquisition in LLM Agents`
+  核心结论：论文把“为任务选多少工具”表述为异构成本下的停止决策；CAM-DF 在保持相近任务成功率时，比全量工具暴露减少 37% 的工具数量。
+  为什么重要：tool ranking 只回答顺序，不回答何时停止；过量工具会增加费用、上下文负担与隐私暴露。
+  建议动作：工具路由评测同时记录边际收益、调用成本、隐私面和停止决策，不再默认暴露全量 catalog。
+  状态：`P0 / 可实验`
+  来源日期：`2026-07-29`
+  来源：https://arxiv.org/abs/2607.27083
+
+- 论文：`Rethinking Self-Evolution: A Constrained Exploration-Exploitation Process for Mitigating Skill Overfitting`
+  核心结论：SkillBoost 将 skill 自演化拆成失败定位、先验引导候选生成和带回归边界的验证接纳，在 23 个模型—benchmark 配置中抑制 trajectory 过拟合。
+  为什么重要：agent skills 如果只针对最近失败优化，容易破坏过去已解决任务；演化必须带可验证的回归约束。
+  建议动作：内部 skill 更新采用候选隔离、旧任务回放和 acceptance bound，禁止未回归验证的自动覆盖。
+  状态：`P0 / 可执行`
+  来源日期：`2026-07-29`
+  来源：https://arxiv.org/abs/2607.26643
+
+- 论文：`Fewer Clarifications, Better Code: Benchmarking Cross-Session Personalized Ambiguity Adaptation in Coding Assistants`
+  核心结论：CAPA 用 600 个 coding sessions 测量 coding assistant 是否能从同一用户的已解决历史中识别重复歧义，并在新 session 中减少澄清同时保持可执行成功。
+  为什么重要：长期 coding memory 的价值不只是回忆事实，而是学习用户特有的含糊表达；同时也引入错误归纳和跨用户污染风险。
+  建议动作：coding memory eval 增加 same-user gating、first-turn success、turns-to-completion 和跨用户隔离测试。
+  状态：`P1 / 跟踪中`
+  来源日期：`2026-07-29`
+  来源：https://arxiv.org/abs/2607.26611
+
+### 状态变化
+
+- 主题：`Long-horizon agent`
+  之前判断：长任务瓶颈主要在 memory、tool use、trace 与 verifier。
+  当前判断：还要单独测 `open-ended judgment`、`cost-aware tool stopping`、`skill regression` 与 `personalized ambiguity adaptation`。
+  变化原因：本周四篇论文分别从科研、工具、演化和跨 session coding 暴露新的系统瓶颈。
+  来源日期：`2026-07-29`
+  来源：https://arxiv.org/abs/2607.27191 ; https://arxiv.org/abs/2607.27083 ; https://arxiv.org/abs/2607.26643 ; https://arxiv.org/abs/2607.26611
