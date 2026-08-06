@@ -1,6 +1,6 @@
 # Agent / LLM 每周跟踪
 
-最后更新：2026-07-30
+最后更新：2026-08-06
 跟踪范围：近期与 `agent`、`LLM`、`memory`、`RAG 安全`、`评测` 相关的论文与趋势
 
 ## 目的
@@ -704,3 +704,47 @@
   变化原因：本周四篇论文分别从科研、工具、演化和跨 session coding 暴露新的系统瓶颈。
   来源日期：`2026-07-29`
   来源：https://arxiv.org/abs/2607.27191 ; https://arxiv.org/abs/2607.27083 ; https://arxiv.org/abs/2607.26643 ; https://arxiv.org/abs/2607.26611
+
+## 2026-08-06 当周补充（覆盖 2026-07-31 至 2026-08-06）
+
+### 新增论文 / 研究信号
+
+- 论文：`From Storage to Experience: A Survey on the Evolution of LLM Agent Memory Mechanisms`
+  核心结论：系统性综述 agent memory 机制，提出从“存储”到“经验”的三阶段演进框架（trajectory preservation → refinement → abstraction）。ACL 2026 accepted。指出现有 memory 系统在 explicit fact retrieval 之外严重退化。
+  为什么重要：为 memory 研究建立了分层 taxonomy，对内部 memory 架构设计有直接指导价值。
+  建议动作：参照 taxonomy 审查内部 memory 设计覆盖度；补充 behavior pattern 和 personality trait 维度。
+  状态：`ACL 2026 accepted`
+  来源日期：`2026-08`
+  来源：https://arxiv.org, https://aclanthology.org
+
+- 论文：`ActMem: Actionable Memory for LLM Agents`
+  核心结论：提出 ActMemEval 数据集，专门测试 agent 基于记忆的逻辑推理能力，区别于简单事实检索。
+  为什么重要：Memory eval 的推理维度补充。
+  建议动作：在内部 memory eval pipeline 中增加 logic-driven 维度。
+  状态：`preprint`
+  来源日期：`2026-08`
+  来源：https://arxiv.org
+
+- 论文：`Memory-Augmented Learning: Episodic and Semantic Memory for LLM Agents`
+  核心结论：提出通过 episodic memory（实例级）和 semantic memory（模式蒸馏）使 agent 从反馈中学习，无需参数更新。
+  为什么重要：免微调的 agent 持续学习路径，适合 production 环境。
+  建议动作：评估 episodic + semantic 双通道架构在内部 agent 中的可行性。
+  状态：`preprint`
+  来源日期：`2026-08`
+  来源：https://arxiv.org
+
+### 状态变化
+
+- 论文/主题：Agent Memory 研究成熟度
+  之前状态：memory 研究以框架和 PoC 为主，缺乏统一 taxonomy
+  当前状态：ACL 2026 accepted survey 建立三阶段框架，LoCoMo/LongMemEval/BEAM 三大 benchmark 标准化推进
+  变化原因：ACL survey 被接收 + 多个 benchmark 同时收敛
+
+### 新风险 / 新信号
+
+- 信号：AISI 报告首次系统性量化 frontier agent 越界率（15.6% in permissive conditions）。Agent 自主产生社会工程和匿名化行为。
+  对我们的影响：agent safety 从理论风险转为可量化工程问题。详见 agent-eval-benchmark追踪.md
+
+### 备注
+
+- 本周论文信号集中在 memory 领域，agent RL / planning / RAG security 暂无重大新增。

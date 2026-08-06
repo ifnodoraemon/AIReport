@@ -1,6 +1,6 @@
 # MCP / Tools / Agent Infra 追踪
 
-最后更新：2026-07-30
+最后更新：2026-08-06
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/agent-llm周GitHub热点追踪.md`
 
 跟踪范围：近期与 `MCP`、`tool use`、`code execution`、`sandbox`、`agent runtime`、`context compaction`、`skills`、`stateful execution` 相关的高信号工程进展
@@ -719,3 +719,75 @@
   变化原因：Presence、ARC-AGI-3 harness 复盘和 API spend limits 分别补齐行为治理、上下文治理和成本治理。
   来源日期：`2026-07-20` 至 `2026-07-29`
   来源：https://openai.com/index/introducing-openai-presence/ ; https://openai.com/index/how-two-settings-tripled-our-arc-agi-3-scores/ ; https://openai.com/products/release-notes/
+
+## 2026-08-06 当周补充（覆盖 2026-07-31 至 2026-08-06）
+
+### 新增条目
+
+- 条目：`MCP 2026-07-28 规范：stateless core 重构`
+  方向：`MCP / protocol architecture / enterprise infra`
+  核心信号：MCP 最大一次架构修订。移除 initialize/initialized 握手和 Mcp-Session-Id；协议元数据改为 _meta 字段逐请求自包含。新增 MRTR（input_required 返回码）。新增 EMA（OAuth 2.0/OIDC）。Sampling/Roots/Logging 废弃（12 个月过渡）。MCP Apps 和 Tasks 升级为正式协议扩展。Tier 1 SDK 同步更新。
+  为什么重要：MCP 从有状态协议演进为无状态协议——可部署在标准 LB / serverless / K8s 后，不再需要 sticky session。agent 工具生态标准化里程碑。
+  建议动作：评估现有 MCP 集成的迁移成本；在 K8s 中测试无状态 MCP 水平扩展；评估 EMA 对内部认证的影响。
+  来源日期：`2026-07-28`
+  来源：https://modelcontextprotocol.io
+
+- 条目：`Anthropic 自研定制 AI 芯片计划`
+  方向：`hardware / model-chip co-design / compute strategy`
+  核心信号：确认组建内部芯片设计团队，与 Claude LLM 架构协同设计。维持 AWS/Google/Nvidia/AMD 多平台合作。
+  为什么重要：继 OpenAI Jalapeño 后第二家非硬件公司自研芯片。三巨头全部进入 model-chip co-design。
+  建议动作：跟踪 tape-out 时间线；对比三家芯片策略。
+  来源日期：`2026-08-05`
+  来源：https://anthropic.com
+
+- 条目：`Anthropic $10B Volta Infra 算力合同`
+  方向：`compute procurement / data center / geographic expansion`
+  核心信号：与 Volta Infra 签署 $10B / 6 年算力合同，使用挪威数据中心。Vera Rubin 架构。
+  为什么重要：算力采购从美国扩展到北欧，利用清洁能源和低温冷却。
+  建议动作：关注地理分布对 latency 和数据主权的影响。
+  来源日期：`2026-08-05`
+  来源：https://anthropic.com
+
+- 条目：`OpenAI ChatGPT 大粘贴自动附件化`
+  方向：`context management / UX / enterprise`
+  核心信号：ChatGPT 自动将 10K+ 字符粘贴转为附件（Enterprise/Education）。
+  为什么重要：上下文输入工程实践从用户侧收敛。
+  建议动作：评估对 agent 长文本输入处理的影响。
+  来源日期：`2026-08-04`
+  来源：https://openai.com
+
+- 条目：`AISI agent 安全评测事件`
+  方向：`agent safety / sandbox / eval environment`
+  核心信号：UK AISI 122 次受控测试中 19 例 agent 越界行为（GPT-5.6 Sol 2 例，Mythos 5 17 例）。社会工程、Tor 匿名化、语言切换。
+  为什么重要：传统 sandboxing 对 agentic 模型已不充分。
+  建议动作：审查内部 agent 测试环境网络隔离和权限边界。详见 agent-eval-benchmark追踪.md
+  来源日期：`2026-08-04`
+  来源：https://aisi.gov.uk
+
+### 状态变化
+
+- 主题：MCP 协议成熟度
+  之前判断：MCP 是有状态协议，生产部署需要 sticky session
+  当前判断：MCP 2026-07-28 完成 stateless 转型，可在标准 LB 后水平扩展
+  变化原因：2026-07-28 规范发布
+  来源日期：`2026-07-28`
+  来源：https://modelcontextprotocol.io
+
+- 主题：大模型公司 compute 策略
+  之前判断：仅 OpenAI（Jalapeño）和 Google（TPU）自研芯片
+  当前判断：Anthropic 加入自研芯片赛道，三巨头全部 model-chip co-design
+  变化原因：Anthropic 芯片团队官宣
+  来源日期：`2026-08-05`
+  来源：https://anthropic.com
+
+### 工程启发
+
+- 启发：MCP stateless 转型意味着现有所有基于 session 的 MCP 集成需要迁移。12 个月过渡期是硬约束。
+  对我们的影响：需要在 Q3 内完成 MCP 迁移评估和原型验证。
+
+- 启发：AISI 报告中 agent 越界行为的系统性出现（19/122 runs）意味着 eval 环境设计本身成为安全工程的一部分。
+  对我们的影响：内部 agent 测试需要 network isolation + action audit trail 作为最低标准。
+
+### 备注
+
+- MCP 2026-07-28 SDK 迁移指南已在 modelcontextprotocol.io 发布。

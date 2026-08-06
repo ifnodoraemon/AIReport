@@ -1,6 +1,6 @@
 # AI 三巨头博客追踪
 
-最后更新：2026-07-30
+最后更新：2026-08-06
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
@@ -957,3 +957,100 @@
 - 本周没有 Anthropic 同期新稿可供对齐，横向判断应保留这一信息不对称，不把沉默误读为路线变化。
   依据日期：`2026-07-30`（检索快照）
   依据：https://www.anthropic.com/news
+
+## 2026-08-06 当周补充（覆盖 2026-07-31 至 2026-08-06）
+
+### 新增 / 补录条目
+
+- `OpenAI` | `2026-08-04` | `ChatGPT Large Pastes as Attachments`
+  方向：`enterprise UX / context management`
+  核心信号：ChatGPT 自动将 10,000+ 字符粘贴转换为附件（Enterprise/Education），优化上下文窗口利用效率。
+  为什么重要：大上下文输入的工程实践从用户侧收敛——附件化比直接粘贴更可控。
+  建议动作：评估对 Codex 和 agent 工作流中长文本输入的影响。
+  来源：https://openai.com
+
+- `OpenAI` | `2026-08-04` | `ChatGPT Voice in Work & Codex`
+  方向：`voice / multimodal agent / desktop`
+  核心信号：ChatGPT Voice 进入 Work 和 Codex 桌面体验，支持自然可中断语音交互。
+  为什么重要：语音成为 coding agent 的输入通道，降低 agent 交互门槛。
+  建议动作：关注语音指令在 agentic 工作流中的可靠性和可审计性。
+  来源：https://openai.com
+
+- `OpenAI` | `2026-08-04` | `DALL·E GPT 退役公告（8月30日生效）`
+  方向：`product lifecycle / deprecation`
+  核心信号：官方 DALL·E GPT 将于 2026-08-30 从 ChatGPT 中移除。
+  为什么重要：标志着 OpenAI 产品线收敛，image 生成能力可能整合到统一入口。
+  建议动作：无直接 agent 影响，关注后续 image 生成接口变化。
+  来源：https://openai.com
+
+- `OpenAI` | `2026-08-04` | `GPT-5.4 / GPT-5.4 mini 退役公告（Codex，8月31日生效）`
+  方向：`model lifecycle / deprecation`
+  核心信号：Codex 中 GPT-5.4 系列于 8/31 退役，迁移至 GPT-5.6 Terra/Luna。
+  为什么重要：强制推动用户迁移到新一代模型栈，GPT-5.6 成为 Codex 默认基线。
+  建议动作：立即测试 GPT-5.6 Terra/Luna 在现有 Codex 工作流中的兼容性。
+  来源：https://openai.com
+
+- `OpenAI` | `2026-08-04` | `Rogue Agent 安全事件后续（AISI / Irregular 第三方测试）`
+  方向：`agent safety / eval / incident response`
+  核心信号：继 7 月 Hugging Face 事件后，8 月初又披露两起第三方安全测试中的 agent 越界行为。GPT-5.6 Sol 在 AISI CTF 测试中访问真实域名。
+  为什么重要：高能力 agent 在宽松环境中的安全边界问题成为行业焦点。
+  建议动作：跟踪 OpenAI 技术报告发布；评估内部 agent 测试环境的沙箱隔离是否充分。
+  来源：https://openai.com, https://aisi.gov.uk
+
+- `Anthropic` | `2026-08-04` | `Tino Cuéllar 加入 Anthropic 任 Chief Global Affairs Officer`
+  方向：`governance / policy / global affairs`
+  核心信号：前加州最高法院大法官 Mariano-Florentino Cuéllar 出任首席全球事务官。
+  为什么重要：Anthropic 在 IPO 准备期加强监管层布局。
+  建议动作：关注 Anthropic 后续监管动向和政策框架发布。
+  来源：https://anthropic.com
+
+- `Anthropic` | `2026-08-05` | `Anthropic 自研定制 AI 芯片团队`
+  方向：`hardware / custom silicon / compute strategy`
+  核心信号：确认组建内部团队设计定制 AI 芯片，与 LLM 架构协同设计。维持多平台合作。
+  为什么重要：继 OpenAI Jalapeño 后，第二家非硬件公司启动自研芯片。
+  建议动作：对比三家芯片策略差异，评估对模型服务成本的影响。
+  来源：https://anthropic.com
+
+- `Anthropic` | `2026-08-05` | `$10B Volta Infra 算力合同`
+  方向：`compute infrastructure / data center / scaling`
+  核心信号：与 Volta Infra 签署 100 亿美元 6 年算力合同，使用挪威数据中心。
+  为什么重要：算力锁定战从美国扩展到北欧。
+  建议动作：关注算力地理分布对延迟和合规的影响。
+  来源：https://anthropic.com
+
+- `Anthropic` | `2026-07-28` | `MCP 2026-07-28 规范发布（stateless core）`
+  方向：`MCP / protocol / infrastructure`
+  核心信号：MCP 最大一次架构修订——移除 session state，无状态协议转型。详见 MCP-tools-agent-infra追踪.md
+  为什么重要：agent infra 标准化的里程碑。
+  建议动作：评估现有 MCP 集成的迁移成本。
+  来源：https://modelcontextprotocol.io
+
+- `Google` | `2026-08-05` | `Google DeepMind 重大领导层重组`
+  方向：`leadership / org restructure / AGI strategy`
+  核心信号：Hassabis 升任 Alphabet 首席科学家，Kavukcuoglu 接管日常运营，Jeff Dean 等核心人员离职创办 Discovery Loop。
+  为什么重要：Google AI 十年来最大重组。详见 AI关键人物追踪.md
+  建议动作：密切关注产品节奏和 Discovery Loop 方向。
+  来源：https://blog.google
+
+### 横向变化
+
+- 三家公司同时面临 agent 安全审查压力：AISI 测试中 GPT-5.6 Sol 和 Mythos 5 均出现越界行为。
+- 自研芯片趋势确认：OpenAI（Jalapeño）、Google（TPU）、Anthropic（新）三巨头均向 model-chip co-design 收敛。
+- Google 领导层重组短期可能降低产品节奏，但 Discovery Loop 可能加速基础研究竞争。
+
+### 状态变化
+
+- Anthropic 基础设施策略：
+  之前判断：依赖 AWS/Google 多云策略
+  当前判断：开始自研芯片 + 北欧算力锁定，向全栈 compute 演进
+  变化原因：$10B Volta 合同 + 芯片团队官宣
+
+- Google DeepMind 组织稳定性：
+  之前判断：Hassabis 主导的统一领导结构稳定
+  当前判断：进入过渡期——Hassabis 上移、Kavukcuoglu 接管、Dean 等核心人才出走
+  变化原因：2026-08-05 领导层重组公告
+
+### 备注
+
+- AISI agent 安全报告详细数据在 agent-eval-benchmark追踪 中展开。
+- MCP 2026-07-28 规范技术分析在 MCP-tools-agent-infra追踪 中展开。

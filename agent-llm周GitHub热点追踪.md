@@ -1,6 +1,6 @@
 # Agent / LLM GitHub 每周热点追踪
 
-最后更新：2026-07-30
+最后更新：2026-08-06
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
@@ -939,3 +939,59 @@
 - 热度不等于生产成熟度；尤其是共享浏览器登录态与第三方 skills，需要把供应链、权限和审计风险放在试用之前。
 - **依据日期**：`2026-07-30`（Trending 周榜快照）
 - **依据**：https://github.com/trending?since=weekly ; https://github.com/trending/python?since=weekly
+
+## 2026-08-06 当周
+
+### 新上榜项目
+
+- 项目：`petersteinberger/openclaw`
+  方向：`local-first personal assistant / multi-integration`
+  热度：`~210,000+ stars（累计），本周持续高增长`
+  核心信号：本地优先的个人 AI 助手，连接 50+ 集成（Slack、Discord、终端等），数据保留在本地。
+  为什么重要：验证了 local-first + multi-integration 的产品形态。210K+ stars 代表社区共识。
+  建议动作：研究其集成架构和 MCP 适配模式；评估本地 agent 的隐私和安全模型。
+  来源日期：2026-08-06
+  来源：https://github.com/petersteinberger/openclaw
+
+- 项目：`All-Hands-AI/openhands`
+  方向：`autonomous SWE agent / coding`
+  热度：`持续上榜，社区活跃`
+  核心信号：开源自主软件工程 agent，与代码库和环境交互执行人类开发者级别的任务。
+  为什么重要：SWE agent 赛道的领先开源方案，与 Codex、Claude Code 形成对照。
+  建议动作：在标准 SWE-bench 上与 Codex / Claude Code 横向对比。
+  来源日期：2026-08-06
+  来源：https://github.com/All-Hands-AI/openhands
+
+- 项目：`browser-use/browser-use`
+  方向：`browser agent / web automation`
+  热度：`本周上升趋势`
+  核心信号：赋予 AI agent 直接控制浏览器的能力，执行复杂 web 任务。
+  为什么重要：browser agent 从 demo 进入可靠性工程阶段。
+  建议动作：对比 browser-use 与 ego-lite 的架构差异；评估安全边界。
+  来源日期：2026-08-06
+  来源：https://github.com/browser-use/browser-use
+
+- 项目：`huggingface/smolagents`
+  方向：`lightweight agent framework / code-first`
+  热度：`持续上升`
+  核心信号：Hugging Face 的 code-first、zero-bloat agent 框架。
+  为什么重要：在 LangChain/LangGraph 主导的市场中代表 less is more 设计哲学。
+  建议动作：评估在内部快速 agent 原型开发中的适用性。
+  来源日期：2026-08-06
+  来源：https://github.com/huggingface/smolagents
+
+### 状态变化
+
+- 整体趋势：
+  之前判断：agent 工具生态从 demo 向工程基础设施回归
+  当前判断：趋势延续并加速——local-first 产品形态（OpenClaw 210K+ stars）成为新共识方向。agent 框架分化为重型（LangChain）和轻型（smolagents）两极。
+  变化原因：OpenClaw 爆发增长 + smolagents 上升
+
+### 新信号 / 新风险
+
+- 信号：local-first agent 的爆发（OpenClaw）表明用户对“数据不出本地”有极强偏好。
+  对我们的影响：评估内部 agent 架构是否需要支持 local-first 部署模式。
+
+### 备注
+
+- 本周 trending 信号继续从垂直 demo 向基础设施和产品形态收敛。

@@ -193,6 +193,7 @@
 
 ## 最近一次补充
 
+- `2026-08-06`：全面更新全部 7 份追踪文档至 2026-08-06。核心高信号：`Google DeepMind 重大领导层重组`（Hassabis → Alphabet 首席科学家、Jeff Dean 等离职创办 Discovery Loop）、`Anthropic 自研芯片团队 + $10B Volta 算力合同`、`MCP 2026-07-28 stateless core 规范`（agent infra 里程碑）、`AISI agent 安全评测报告`（122 runs / 15.6% 越界率）、`Qwen3.8-Max / DeepSeek-V4-Flash / Claude Opus 5 / Kimi K3` 等新模型发布与补录、memory eval 三阶段 taxonomy（ACL 2026）、GitHub local-first agent 爆发（OpenClaw 210K+ stars）。
 - `2026-04-28`：更新至最新一周高信号，补入 `OpenAI GPT-5.5 / Privacy Filter / GPT-Rosalind`、`Anthropic Claude Opus 4.7 / Claude Design / Amazon 5GW compute`、`Google Gemini Enterprise Agent Platform / Decoupled DiLoCo`，补充 `HORIZON / AgenticQwen / SkillGraph / Tool-Overuse` 等论文漏项，并新增追踪分工与去重规则。
 - `2026-04-17`：已继续更新根目录追踪文档，新增 `OpenAI Agents SDK` 与 `Codex for (almost) everything`、`Google Gemini Robotics-ER 1.6 / Flash TTS`、`AMA-Bench / StructMemEval / self-evolving agent` 等论文补录，并刷新 GitHub 热点与关键人物判断。
 - `2026-04-11`：已全面更新根目录追踪文档，补入 `OpenAI GPT-5.4 mini/nano` 与 `enterprise AI operating layer`、`Anthropic Mythos preview / Project Glasswing / compute partnership` 与最新 `managed agents / auto mode / harness / eval` 信号、`Google Gemini 3.1 Pro / Flash Live / Gemma 4 / Antigravity`，并刷新论文、评测、GitHub 热点和人物判断。

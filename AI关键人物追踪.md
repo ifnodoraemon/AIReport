@@ -1,6 +1,6 @@
 # AI 关键人物追踪
 
-最后更新：2026-07-30
+最后更新：2026-08-06
 
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/模型发布追踪.md`、`/home/ifnodoraemon/myreport/MCP-tools-agent-infra追踪.md`
 
@@ -835,3 +835,65 @@
   变化原因：3.6 Flash / 3.5 Flash-Lite / 3.5 Flash Cyber 同日发布，并首次明确下一代训练状态。
   来源日期：`2026-07-21`
   来源：https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/
+
+## 2026-08-06 当周补充（覆盖 2026-07-31 至 2026-08-06）
+
+### 新增人物信号
+
+- 人物：`Demis Hassabis` / Google DeepMind → Alphabet
+  动作：卸任 Google DeepMind CEO，升任 Alphabet 首席科学家 + Google DeepMind 主席。聚焦 AGI 长期战略和 Isomorphic Labs。日常运营交由 Koray Kavukcuoglu（新任 SVP）。
+  来源级别：`公司官网已确认`
+  方向：`AGI strategy / org transition / research focus`
+  为什么重要：Google AI 十年来最大领导层调整。Hassabis 上移意味着 AGI 研究与产品运营正式分轨。
+  对我们的影响：短期关注产品节奏是否放缓；长期关注 Hassabis 的 AGI 战略方向。
+  来源日期：2026-08-05
+  来源：https://blog.google
+
+- 人物：`Jeff Dean` / Google → Discovery Loop
+  动作：离开 Google（27 年），联合 Sanjay Ghemawat、Oriol Vinyals、Quoc Le 创办 Discovery Loop（PBC），专注自动化 ML 研究和科学发现。Google 为创始投资人。
+  来源级别：`公司官网已确认`
+  方向：`departure / startup / automated AI research`
+  为什么重要：Google AI 核心团队分裂的标志性事件。四位离职者覆盖系统、模型、训练全栈能力。
+  对我们的影响：Discovery Loop 应作为新的独立追踪对象。
+  来源日期：2026-08-05
+  来源：https://blog.google
+
+- 人物：`Koray Kavukcuoglu` / Google DeepMind
+  动作：从 CTO 晋升为 SVP，全面负责 Gemini 模型、前沿研究和应用团队日常运营，向 Pichai 直接汇报。
+  来源级别：`公司官网已确认`
+  方向：`promotion / operational leadership`
+  为什么重要：Hassabis 长期技术搭档接管运营是 Google AI 产品化的关键。
+  对我们的影响：关注其上任后 Gemini 产品迭代速度。
+  来源日期：2026-08-05
+  来源：https://blog.google
+
+- 人物：`Tino Cuéllar (Mariano-Florentino Cuéllar)` / Anthropic
+  动作：加入 Anthropic 出任首任 Chief Global Affairs Officer。前加州最高法院大法官、Carnegie 国际和平基金会前主席。
+  来源级别：`公司官网已确认`
+  方向：`governance / regulatory preparation / international affairs`
+  为什么重要：Anthropic 在 IPO 准备期加强监管团队。
+  对我们的影响：Anthropic 政策框架发布可能影响 AI agent 部署合规要求。
+  来源日期：2026-08-04
+  来源：https://anthropic.com
+
+### 状态变化
+
+- 人物：`Demis Hassabis`
+  之前判断：Google DeepMind CEO，产品+研究全面负责
+  当前判断：Alphabet 首席科学家 + DeepMind 主席，聚焦 AGI
+  变化原因：2026-08-05 领导层重组
+  来源日期：2026-08-05
+  来源：https://blog.google
+
+- 人物：`Jeff Dean`
+  之前判断：Google 首席科学家，AI 技术领袖
+  当前判断：已离职，创办 Discovery Loop（PBC）
+  变化原因：2026-08-05 离职创业
+  来源日期：2026-08-05
+  来源：https://blog.google
+
+### 备注
+
+- 建议将 Jeff Dean 从 Google 追踪列表移至 Discovery Loop 独立追踪。
+- 建议将 Koray Kavukcuoglu 加入 P1 追踪名单。
+- 建议将 Tino Cuéllar 作为 Anthropic 监管动态的次级跟踪入口。

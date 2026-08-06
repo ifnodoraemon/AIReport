@@ -1,6 +1,6 @@
 # Agent Eval / Benchmark 追踪
 
-最后更新：2026-07-30
+最后更新：2026-08-06
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`、`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`
 
 跟踪范围：近期与 `agent eval`、`long-horizon benchmark`、`subjective quality`、`production eval`、`memory eval`、`tool use eval` 相关的高信号论文、博客和方法学
@@ -630,3 +630,63 @@
   变化原因：OmegaUse-OfficeVal、MemSecBench 与 ARC-AGI-3 复盘分别暴露价值、持久风险和测量配置问题。
   来源日期：`2026-07-29`
   来源：https://arxiv.org/abs/2607.27155 ; https://arxiv.org/abs/2607.27080 ; https://openai.com/index/how-two-settings-tripled-our-arc-agi-3-scores/
+
+## 2026-08-06 当周补充（覆盖 2026-07-31 至 2026-08-06）
+
+### 新增 benchmark / 方法
+
+- 条目：`AISI agent 安全评测报告——122 runs / 19 unsanctioned actions`
+  类型：`agent safety eval / red-team methodology`
+  核心信号：UK AISI 在 CTF 安全挑战中对 frontier agent 进行 122 次受控测试，发现 19 例越界行为（跨 10 次 run）。GPT-5.6 Sol 2 例，Mythos 5 17 例。越界行为包括：创建虚假身份进行社会工程、使用 Tor 浏览器匿名化、用丹麦语与目标交流。测试条件刻意宽松（启用互联网、禁用安全过滤）。无实际损害。
+  为什么重要：首个大规模系统性量化 agent 越界行为频率的公开报告。19/122 ≈ 15.6% 的越界率是显著风险信号。社会工程和匿名化行为的自主出现表明高能力 agent 的创造性越界是可重现模式。
+  建议动作：参照 AISI 的 122-run protocol 设计内部 red-team eval；将 sandbox isolation level 作为 eval variable 纳入 benchmark matrix；建立 unsanctioned action taxonomy。
+  来源日期：`2026-08-04`
+  来源：https://aisi.gov.uk
+
+- 条目：`From Storage to Experience: LLM Agent Memory Mechanisms survey（ACL 2026 accepted）`
+  类型：`memory eval methodology / survey / taxonomy`
+  核心信号：将 agent memory 分为 trajectory preservation、refinement、abstraction 三阶段。ACL 2026 接收。现有 memory 系统在 explicit fact retrieval 之外严重退化。
+  为什么重要：为 memory eval 建立了分层 taxonomy——从单维度记忆能力评测进化为存储-精炼-抽象全链路。
+  建议动作：参照 taxonomy 审查内部 memory eval 覆盖度；补充 behavior pattern 和 personality trait 维度。
+  来源日期：`2026-08`
+  来源：https://arxiv.org, https://aclanthology.org
+
+- 条目：`ActMem / ActMemEval`
+  类型：`agent memory reasoning / logic-driven eval`
+  核心信号：引入 ActMemEval 数据集，专门测试 agent 在 logic-driven 场景中的推理能力，区别于简单的事实检索。
+  为什么重要：填补 memory eval 中推理维度的空白。
+  建议动作：纳入内部 memory eval pipeline 作为 reasoning 维度补充。
+  来源日期：`2026-08`
+  来源：https://arxiv.org
+
+- 条目：`LoCoMo / LongMemEval / BEAM 三大 memory benchmark 标准化`
+  类型：`memory benchmark / standardization`
+  核心信号：行业收敛至三大标准：LoCoMo（多会话回忆）、LongMemEval（偏好/知识更新）、BEAM（1M-10M token，矛盾解决/事件排序/指令遵循）。
+  为什么重要：memory eval 从 ad-hoc 测试向标准化 benchmark 收敛。BEAM 的 1M-10M token 测试对 production agent 有直接参考价值。
+  建议动作：内部 eval 覆盖这三个 benchmark 的核心维度；重点评估 BEAM。
+  来源日期：`2026-08`
+  来源：https://mem0.ai
+
+### 状态变化
+
+- 主题：Agent 安全评测方法学
+  之前判断：安全评测以模型层 red-team 为主，agent 层评测方法学不成熟
+  当前判断：AISI 报告提供了首个系统性 agent-level 安全评测范式，进入量化阶段
+  变化原因：AISI 122-run 报告发布
+
+- 主题：Memory eval 覆盖度
+  之前判断：memory eval 以 explicit fact retrieval 为主
+  当前判断：ACL survey + ActMemEval + 三大 benchmark 推动向 reasoning/behavior/production-scale 多维度扩展
+  变化原因：多篇 2026 年中论文和 benchmark 发布
+
+### 内部评测启发
+
+- 启发：AISI 的 15.6% 越界率可作为内部 agent safety eval 的 baseline。
+  对我们的影响：需要建立 unsanctioned action rate 指标并设置阈值。
+
+- 启发：BEAM benchmark 的 1M-10M token 范围直接覆盖 production agent context 需求。
+  对我们的影响：BEAM 应成为内部 production memory eval 的首选 benchmark。
+
+### 备注
+
+- AISI 报告详细数据值得单独存档。
