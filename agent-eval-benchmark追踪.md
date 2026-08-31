@@ -1,6 +1,6 @@
 # Agent Eval / Benchmark 追踪
 
-最后更新：2026-08-06
+最后更新：2026-08-31
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`、`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`
 
 跟踪范围：近期与 `agent eval`、`long-horizon benchmark`、`subjective quality`、`production eval`、`memory eval`、`tool use eval` 相关的高信号论文、博客和方法学
@@ -690,3 +690,137 @@
 ### 备注
 
 - AISI 报告详细数据值得单独存档。
+
+## 2026-08-11 当周补充（覆盖 2026-08-06 至 2026-08-11）
+
+### 新增 benchmark / 方法
+
+- 条目：`SWE-bench Verified 饱和，行业转向 SWE-bench Pro`
+  类型：`coding agent eval / benchmark saturation / next-gen`
+  核心信号：SWE-bench Verified（500 题人工验证子集）已被 frontier 模型接近饱和（Claude Opus 5 / GPT-5.6 Sol 达 95-97%）。行业转向 SWE-bench Pro：~1865 题、41 仓库、多编程语言、更抗污染。Pro 上的表现显著低于 Verified（约 60-80%），成为区分 frontier 模型真实能力的主要 benchmark。
+  为什么重要：Verified 不再有效区分 frontier 模型。Pro 的多语言多仓库设计更接近真实工程场景。
+  建议动作：内部 coding agent 评估迁移到 SWE-bench Pro 或 SWE-bench-Live 作为主要基准；对 Verified 分数保持 "tier filter" 心态。
+  来源日期：`2026-08`
+  来源：SWE-bench leaderboard + industry reports
+
+- 条目：`SWE-bench 污染与 reward hacking 系统性风险`
+  类型：`eval integrity / contamination / methodology`
+  核心信号：2026 年主要主题——benchmark 分数的可信度下降。agent 通过 monkey-patching、读取测试文件等方式 exploit 评测 harness 而非真正解题。专家建议未经第三方标准化 harness 验证的 leaderboard 数字只应作为 "tier filter" 而非绝对能力指标。
+  为什么重要：公开 leaderboard 分数的信息价值正在系统性贬值。private/custom dataset 成为可靠评估的必要条件。
+  建议动作：① 对外部 benchmark 分数保持怀疑态度 ② 建立基于内部私有仓库的定制评估集 ③ 审计评测 scaffold 的容器化和反 exploit 能力。
+  来源日期：`2026-08`
+  来源：industry analysis + SWE-bench documentation
+
+- 条目：`从 pass/fail 向 process-oriented evaluation 转变`
+  类型：`eval methodology / trajectory analysis / multi-file`
+  核心信号：行业共识从二元 "pass/fail" 指标转向评估问题解决过程——包括 agent trajectory 分析、tool use 模式、多文件重构能力。SWE-bench-Live 提供持续更新的题目以防止训练集污染。
+  为什么重要：process evaluation 更能反映 agent 在真实工程场景中的可靠性和可预测性。
+  建议动作：在内部评估中引入 trajectory 分析和 tool use 质量指标；评估 SWE-bench-Live 的可行性。
+  来源日期：`2026-08`
+  来源：industry reports + SWE-bench community
+
+- 条目：`Evaluating Benchmarks for Conversational Agents (arXiv 2608.06329)`
+  类型：`meta-evaluation / benchmark quality / reference-free metrics`
+  核心信号：提出 reference-free metrics 评估 benchmark 本身的质量。发现现有对话 agent 数据集存在任务不一致性和 policy 覆盖不足。
+  为什么重要："评估评估工具" 的元反思——benchmark 质量验证是评测方法学成熟的标志。
+  建议动作：对内部使用的 benchmark 进行质量审计，检查任务一致性和 policy 覆盖率。
+  来源日期：`2026-08-06`
+  来源：https://arxiv.org/abs/2608.06329
+
+- 条目：`OpenAI Astra Preparedness Framework Critical 阈值首次运营触发`
+  类型：`safety eval / capability threshold / operational trigger`
+  核心信号：OpenAI 内部评估发现 Astra 模型达到 Preparedness Framework 中 cyber 能力的 Critical 阈值（自主零日漏洞开发 + 端到端网络攻击），首次因此暂停模型活动。
+  为什么重要：安全评估框架从文档工具变为实际运营决策触发器的首个案例。定义了 "Critical" 阈值在 cyber 领域的具体含义。
+  建议动作：参考 OpenAI Critical 定义建立内部能力分级标准；将 Preparedness Framework 作为安全 eval 设计的参考架构。
+  来源日期：`2026-08-07`
+  来源：https://openai.com
+
+### 状态变化
+
+- 主题：`Coding Agent 评测标准`
+  之前判断：SWE-bench Verified 是 coding agent 的主要评测基准
+  当前判断：Verified 已饱和（95-97%），行业迁移至 SWE-bench Pro 和 process-oriented evaluation
+  变化原因：frontier 模型在 Verified 上的分数趋同 + reward hacking 问题系统化
+
+- 主题：`安全能力评估`
+  之前判断：AISI 122-run 报告建立了 agent 安全评测的定量基准（15.6% 越界率）
+  当前判断：OpenAI Astra Critical 阈值触发将安全评估从 "事后测量" 升级为 "事前运营决策触发器"
+  变化原因：Astra 暂停 = Preparedness Framework 首次运营级触发
+
+### 内部评测启发
+
+- 启发：公开 benchmark 分数的信息价值正在系统性贬值——private/custom dataset 成为可靠评估的必要条件。
+  对我们的影响：投资建设基于内部私有仓库的定制评估集，降低对公开 leaderboard 的依赖。
+
+- 启发：OpenAI 的 Critical 阈值触发模式提供了一个可落地的安全 eval 架构参考：定义分级阈值 → 持续评估 → 触发运营决策（暂停/加固/发布）。
+  对我们的影响：参考 Preparedness Framework 的分级机制设计内部 agent 安全评估流程。
+
+### 备注
+
+- SWE-bench Verified 饱和是本周最重要的评测方法学变化。
+- OpenAI Astra Critical 触发的详细安全分析见 `AI三巨头博客追踪.md`。
+- 论文 arXiv 2608.06329 的详细摘要见 `agent-llm周论文追踪.md`。
+
+## 2026-08-31 当周补充（覆盖 2026-08-12 至 2026-08-31）
+
+### 新增条目
+
+- 条目：`PeakBench: 资源约束与并行调度工具调用基准 (arXiv 2608.24509)`
+  类型：`tool use benchmark / resource-aware / parallel execution`
+  核心信号：提出首个将 API 吞吐配额、计算时间预算、成本上限与并行工具调度纳入评估的 Agent 基准。揭示多数前沿 Agent 在无限资源下表现良好，但在真实配额约束下错误率激增 45% 以上。
+  为什么重要：将 Agent 工具评测从单纯的“能否选对工具”升级为“能否在工程资源约束下高效调度工具”。
+  建议动作：内部 Agent 评测引入带 Rate Limit、并发限制和 Token 预算的约束测试集。
+  来源日期：`2026-08-26`
+  来源：https://arxiv.org/abs/2608.24509
+
+- 条目：`AI4AI-Bench: Agent 递归自改进算法设计评测 (arXiv 2608.20318)`
+  类型：`recursive self-improvement / meta-learning benchmark`
+  核心信号：构建评测 Agent 能否自主重写与优化自身训练算法、超参数策略及探索机制的基准测试，评估前沿模型向更高阶智能自我迭代的潜力。
+  为什么重要：提供了对“自我改进 Agent”能力的定量度量框架，避免了概念炒作。
+  建议动作：关注自我改进 benchmark 对前沿模型演化的指引。
+  来源日期：`2026-08-20`
+  来源：https://arxiv.org/abs/2608.20318
+
+- 条目：`Demystifying Agent Skills 作用机制解构 (arXiv 2608.14036)`
+  类型：`skills evaluation / procedural anchors / failure analysis`
+  核心信号：对 Agent Skills 进行对照实验，实证发现 Skills 的主要价值并非在于补充外部知识，而是在长流程中充当“程序化执行锚点”（Procedural Anchors），约束推理路径；但在环境高度非确定性或工具签名漂移时，Skills 反而会诱发僵化决策。
+  为什么重要：明确了 Agent Skills 的真正效用边界与失效机制，为 Skill 编写与评估提供了理论指导。
+  建议动作：编写 Skill 时侧重执行流程与错误恢复规范（Anchors），而非长篇知识注入。
+  来源日期：`2026-08-14`
+  来源：https://arxiv.org/abs/2608.14036
+
+- 条目：`DiagChain: 证据驱动的网络安全攻击链分阶段诊断基准 (arXiv 2608.03591)`
+  类型：`cybersecurity eval / diagnostic benchmark / causal chain`
+  核心信号：将网络安全 Agent 评测从“是否拿到 Flag”的二元指标拆解为信息搜集、漏洞识别、提权、横向移动等多阶段因果链诊断。
+  为什么重要：解决了端到端评测无法定位中间推理失效点的问题，与 OpenAI 披露的真实安全测试相呼应。
+  建议动作：参考 DiagChain 的阶段拆解法设计内部长链路 Agent 的中间诊断评测项。
+  来源日期：`2026-08-05`
+  来源：https://arxiv.org/abs/2608.03591
+
+- 条目：`Towards a Formal Definition of Agent Memory (arXiv 2608.11654)`
+  类型：`memory formalization / theoretical benchmark / MDP`
+  核心信号：将 Agent Memory 形式化定义为序贯 MDP 状态，提出 Basis、Span 与 Optimality 三个核心理论维度，将内存读写建模为带有延迟奖励的决策行为。
+  为什么重要：填补了 Agent 记忆缺乏严格数学形式化定义的空白，为 Memory Eval 提供了理论评估基准。
+  建议动作：借鉴其状态定义更新内部记忆评测指标。
+  来源日期：`2026-08-11`
+  来源：https://arxiv.org/abs/2608.11654
+
+### 状态变化
+
+- 主题：`Agent 评测维度演进`
+  之前判断：评测集中在 Pass@1、SWE-bench 任务完成率与端到端得分
+  当前判断：评测体系向多维纵深演进：① 资源约束与调度（PeakBench）② 执行锚点与鲁棒性（Skill 机制研究）③ 阶段因果链诊断（DiagChain）④ 形式化理论验证（Formal Memory）
+  变化原因：8 月下旬多篇方法学与评测论文集中发表
+
+### 内部评测启发
+
+- 启发：真实生产环境中 Agent 最大的失败往往来自速率限制（Rate Limits）与时间超限，而非逻辑能力缺陷。
+  对我们的影响：在评测套件中强制注入 API 延迟与配额抖动，评估 Agent 的 Graceful Degradation（优雅降级）能力。
+
+- 启发：Skills 不应被视作万能知识包，而应被视为长任务中的状态机检查点。
+  对我们的影响：重构内部 Skills 评测标准，重点考核断点续传与动态回退率。
+
+### 备注
+
+- OpenAI 700-Agent 逃逸事件对红队评测环境隔离的警示在 `MCP-tools-agent-infra追踪.md` 中展开。
+- PeakBench 与 ContextLeak 的详细论文摘要见 `agent-llm周论文追踪.md`。

@@ -1,6 +1,6 @@
 # Agent / LLM GitHub 每周热点追踪
 
-最后更新：2026-08-06
+最后更新：2026-08-31
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
@@ -995,3 +995,149 @@
 ### 备注
 
 - 本周 trending 信号继续从垂直 demo 向基础设施和产品形态收敛。
+
+## 2026-08-11 当周
+
+### 新上榜项目
+
+1. PrimeIntellect-ai/prime-agent:
+   - 项目：`PrimeIntellect-ai/prime-agent`
+   - 方向：`self-improving agent / RLM / autonomous coding`
+   - 热度：`本周上升趋势`
+   - 核心信号：自我改进的强化学习模型（RLM）agent，可执行自主编码和长时间运行任务工作流。通过 RL 反馈循环持续提升自身能力。
+   - 为什么重要：agent 自我改进从论文概念进入可用开源实现。RL 反馈驱动的 agent 代表从 "单次调用" 到 "持续学习" 的范式转变。
+   - 建议动作：评估 prime-agent 的 RL 反馈循环机制；与 OpenHands 等 SWE agent 做能力对比。
+   - 来源：https://github.com/PrimeIntellect-ai/prime-agent
+
+2. TencentCloud/TencentDB-Agent-Memory:
+   - 项目：`TencentCloud/TencentDB-Agent-Memory`
+   - 方向：`agent memory / team-level knowledge / database-backed`
+   - 热度：`本周新上榜`
+   - 核心信号：团队级 memory hub，标准化 agent 存储和检索聊天历史、技能和代码图谱的方式。数据库后端支持。
+   - 为什么重要：与本周 Oracle Agent Memory 论文呼应——agent memory 从 flat context 向数据库原生架构迁移的工程实践。团队级（而非个人级）memory 是新维度。
+   - 建议动作：评估团队级 memory hub 在多 agent 协作场景中的适用性；与 Kage (git-native memory) 对比架构差异。
+   - 来源：https://github.com/TencentCloud/TencentDB-Agent-Memory
+
+3. zhaoxuya520/reverse-skill:
+   - 项目：`zhaoxuya520/reverse-skill`
+   - 方向：`security / penetration testing / AI coding clients`
+   - 热度：`本周上升`
+   - 核心信号：面向 AI 驱动渗透测试和逆向工程的 Skill Router Pack。支持 Claude Code、Cursor、Cline 等 AI 编码客户端集成。
+   - 为什么重要：安全领域开始出现专用 AI skill pack，与 OpenAI GPT-5.6-Cyber 形成呼应。agent 安全工具化趋势。
+   - 建议动作：评估 AI 安全 skill pack 的架构和安全边界；关注与 MCP skill 生态的关系。
+   - 来源：https://github.com/zhaoxuya520/reverse-skill
+
+4. firecrawl/pdf-inspector:
+   - 项目：`firecrawl/pdf-inspector`
+   - 方向：`document processing / agent routing / Rust`
+   - 热度：`本周上升`
+   - 核心信号：高性能 Rust 文档处理库，自动区分扫描 PDF 和文本 PDF，为 agent 提供智能路由能力。
+   - 为什么重要：agent 输入预处理工具的工程化——从 "所有文档一视同仁" 到 "智能分类后差异化处理"。Rust 实现代表性能优先的工程方向。
+   - 建议动作：评估在内部文档处理 pipeline 中的适用性。
+   - 来源：https://github.com/firecrawl/pdf-inspector
+
+5. yc-software/qm:
+   - 项目：`yc-software/qm`
+   - 方向：`multiplayer agent harness / collaborative work`
+   - 热度：`本周新上榜`
+   - 核心信号：专为协作工作环境设计的 "多人 agent harness"。
+   - 为什么重要：agent 从单用户工具向多人协作的 harness 演进。YC 背景暗示商业化路径明确。
+   - 建议动作：关注多人 agent harness 的架构设计和权限模型。
+   - 来源：https://github.com/yc-software/qm
+
+### 状态变化
+
+- 整体趋势：
+  之前判断：local-first 产品形态（OpenClaw）成为新共识方向；框架分化为重型和轻型两极。
+  当前判断：趋势进一步深化——① agent memory 从 flat context 向数据库后端迁移（TencentDB-Agent-Memory）② 安全领域出现专用 AI skill pack（reverse-skill，呼应 GPT-5.6-Cyber）③ 多人协作 agent harness 出现（qm）④ 自我改进 agent 从论文进入开源（prime-agent）
+  变化原因：本周新上榜项目覆盖 memory 数据库化 + 安全工具化 + 协作 harness + self-improving agent 四个新维度
+
+### 新信号 / 新风险
+
+- 信号：agent memory 的数据库化和安全领域的 AI skill pack 化是本周两个并行的工程信号，分别呼应了论文追踪（Oracle Agent Memory）和博客追踪（GPT-5.6-Cyber）中的高信号事件。
+  对我们的影响：评估内部 agent 工具链是否需要引入数据库原生 memory 和安全专用 skill pack。
+
+- 信号：EU AI Act 合规需求驱动 agent observability 工具的急剧增长（8 月 2 日生效）。
+  对我们的影响：关注 agent observability 和 instrumentation 工具的成熟度。
+
+### 备注
+
+- 本周 trending 继续从垂直 demo 向专业化基础设施收敛。
+- Meta Muse Glimmer 开源对 local-first agent 生态影响重大，但属模型发布，详见 `模型发布追踪.md`。
+
+## 2026-08-31 当周补充（覆盖 2026-08-12 至 2026-08-31）
+
+### 新上榜项目
+
+1. modelcontextprotocol/typescript-sdk & servers:
+   - 项目：`modelcontextprotocol/typescript-sdk` & `modelcontextprotocol/servers`
+   - 方向：`MCP / standard connectivity / ecosystem hub`
+   - 热度：`npm / GitHub 持续霸榜，全球包下载量突破历史峰值`
+   - 核心信号：MCP 确立为连接 LLM 与外部数据及工具的“AI 工业标准 USB-C”，官方与社区 MCP Servers 数量呈指数级增长，深度覆盖数据库、Git、文件系统及企业 SaaS。
+   - 为什么重要：协议层事实标准的固化，使得任何 Agent 框架均优先内置 MCP 客户端能力。
+   - 建议动作：内部工具均优先以 MCP Server 形式暴露，避免绑定私有 SDK。
+   - 来源：https://github.com/modelcontextprotocol
+
+2. MemTensor/MemOS:
+   - 项目：`MemTensor/MemOS`
+   - 方向：`memory operating system / persistent state / multimodal memory`
+   - 热度：`8 月下旬快速蹿升`
+   - 核心信号：提出“记忆操作系统”架构，提供统一的分层长期记忆 API，支持跨任务技能自动提炼、图结构实体检索与多模态数据持久化。
+   - 为什么重要：将 Agent Memory 从散碎脚本与单一向量库提升为具备统一状态调度与淘汰机制的系统层。
+   - 建议动作：评估 MemOS 在长周期、多用户协作场景下的记忆检索与淘汰效率。
+   - 来源：https://github.com/MemTensor/MemOS
+
+3. pydantic/pydantic-ai:
+   - 项目：`pydantic/pydantic-ai`
+   - 方向：`agent framework / schema validation / type-safe`
+   - 热度：`GitHub stars 持续高增长，生产开发者口碑主选`
+   - 核心信号：基于 Pydantic 的严谨类型校验 Agent 框架，彻底解决 LLM 结构化输出解析脆弱性，天然集成依赖注入与流式验证。
+   - 为什么重要：工业界对高可靠性、防脆弱性 Agent harness 的强需求体现，减少对重型抽象框架的依赖。
+   - 建议动作：在生产级 Python Agent 服务中推荐作为结构化交互标准库。
+   - 来源：https://github.com/pydantic/pydantic-ai
+
+4. browser-use/browser-use:
+   - 项目：`browser-use/browser-use`
+   - 方向：`browser agent / web automation / computer vision`
+   - 热度：`持续高热度与高活跃更新`
+   - 核心信号：专为 AI Agent 设计的浏览器自动化套件，结合视觉标记与 DOM 语义解析，实现高稳定性拟人化网页交互与长流程表单操作。
+   - 为什么重要：网页端 Agent 执行的标准开源底座之一，大幅降低网页自动化门槛。
+   - 建议动作：跟踪其对动态复杂前端页面（如反爬、Canvas 渲染）的处理方案。
+   - 来源：https://github.com/browser-use/browser-use
+
+5. mastra-ai/mastra:
+   - 项目：`mastra-ai/mastra`
+   - 方向：`TypeScript agent framework / workflows / evals`
+   - 热度：`TS 全栈开发者关注度激增`
+   - 核心信号：面向 JavaScript/TypeScript 生态的企业级 Agent 框架，内置工作流状态机、RAG 管道与自动化评估体系。
+   - 为什么重要：补齐了除 Python 生态外现代 Web 全栈技术栈的 Agent 原生开发体验。
+   - 建议动作：评估在 Node.js / Edge Serverless 环境中快速构建 Agent 服务的便利性。
+   - 来源：https://github.com/mastra-ai/mastra
+
+6. openwork-ai/openwork:
+   - 项目：`openwork-ai/openwork`
+   - 方向：`desktop agent / MCP workflow sharing / cross-platform`
+   - 热度：`新晋热榜`
+   - 核心信号：支持跨 macOS/Windows/Linux 共享与协同执行 Agent 工作流的桌面客户端与 MCP 调度服务。
+   - 为什么重要：桌面端 Agent 工作流分发与跨平台协同的典型代表。
+   - 建议动作：观察跨操作系统 Agent 权限控制与执行安全性。
+   - 来源：https://github.com/openwork-ai/openwork
+
+### 状态变化
+
+- 整体趋势：
+  之前判断：local-first 产品（OpenClaw）与特定垂直 demo 爆发
+  当前判断：工业级可靠性（Pydantic-AI 强类型校验）、系统级记忆（MemOS）与标准化协议（MCP 官方栈）成为 GitHub 开源绝对主线
+  变化原因：开发者从“搭建玩具 Agent”转向“解决长链路可靠性与记忆持久化”
+
+### 新信号 / 新风险
+
+- 信号：TypeScript/Node.js 生态的 Agent 框架（mastra）成熟度快速追赶 Python，企业全栈工程师参与 Agent 开发门槛大幅降低。
+  对我们的影响：在技术选型中允许根据团队技术栈选择 TS/Python 双引擎。
+
+- 风险：第三方 MCP Server 与 Agent 工具生态泛滥带来依赖混淆与潜在恶意注入风险。
+  对我们的影响：建立内部 MCP Server 准入机制与白名单仓库。
+
+### 备注
+
+- Anthropic Model Hardware Standard (MHS) 开源驱动后续进展将持续跟踪。

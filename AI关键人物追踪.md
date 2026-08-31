@@ -1,6 +1,6 @@
 # AI 关键人物追踪
 
-最后更新：2026-08-06
+最后更新：2026-08-31
 
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/模型发布追踪.md`、`/home/ifnodoraemon/myreport/MCP-tools-agent-infra追踪.md`
 
@@ -71,35 +71,47 @@
 
 | 人物 | 当前角色 | 为什么值得跟 | 最近公开动态 | X 是否值得盯 | 核心信号 | 主要来源 |
 |---|---|---|---|---|---|---|
-| Sam Altman | OpenAI CEO | 看 OpenAI 顶层路线 | 2026-07-01 讨论了 reasoning time 与 agent 准确率的关系 | 值得，高频信号源 | reasoning scale-up 是接下来的重点 | https://x.com/sama |
-| Sam Altman | OpenAI CEO | 看 `OpenAI` 的顶层路线：模型、平台、算力、商业化如何一起推进 | `2026-04-23` 发布 `GPT-5.5`；`2026-04-22` 发布 `OpenAI Privacy Filter`；`2026-04-16` 发布 `Codex for (almost) everything` | 值得；`X` 上的信号常比官网更早，但必须回到官网核实 | 当前最强信号是 `frontier model + Codex workspace + privacy/security infra + enterprise agent platform` 联动 | https://openai.com/index/introducing-gpt-5-5/ ; https://openai.com/index/introducing-openai-privacy-filter/ ; https://openai.com/index/codex-for-almost-everything/ ; https://x.com/sama |
-| Dario Amodei | Anthropic CEO | 看 `Anthropic` 如何把 `安全 + agent + 政策接口` 绑成一条线 | `2026-04-20` 与 Amazon 扩展最高 `5GW` 算力合作；`2026-04-17` 发布 `Claude Design`；`2026-04-16` 发布 `Claude Opus 4.7` | 值得，但更适合跟 `Anthropic` 官方渠道，因为正式动作多在官网先落地 | Anthropic 正把 `frontier model`、`workflow product`、`compute scaling`、`安全发布机制` 一起推进 | https://www.anthropic.com/news/anthropic-amazon-compute ; https://www.anthropic.com/news/claude-design-anthropic-labs ; https://www.anthropic.com/news/claude-opus-4-7 ; https://www.anthropic.com/news |
-| Demis Hassabis | Google DeepMind CEO | 看 `Google DeepMind` 的研究顶层叙事，尤其是 `AGI -> science -> world models` | `2026-04-23` Google DeepMind 发布 `Decoupled DiLoCo`；Google Cloud 同期发布 `Gemini Enterprise Agent Platform`；`2026-04` 仍有 `Gemma 4 / Robotics-ER / Flash TTS` 多线推进 | 值得；他的 `X` 往往会提前给出产品方向和个人判断，但当前仍应优先看官方页 | Google 正在同时推进 `AGI / science / open models / embodied agent / enterprise agent platform / training infra` | https://deepmind.google/blog/decoupled-diloco/ ; https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-agent-platform ; https://deepmind.google/blog/ ; https://x.com/demishassabis |
-| Andrew Ng | DeepLearning.AI Founder | 看 `开发者生态`、`课程扩散`、`工程范式普及`，这条线对实际落地很重要 | `2026-04-03` The Batch 明确强调 `voice UI` 将快速普及；`2026-04-28` 至 `2026-04-29` 将主持 `AI Dev 26 x SF`；`2026-03-06` The Batch 推出 `Context Hub` | 值得；更适合盯 `课程 / 会议 / 开发者工具` 线索 | 面向开发者的主线已经明显收敛到 `agentic AI`、`memory/context engineering`、`reliability/observability/security`，并开始更重视 `voice UI` | https://www.deeplearning.ai/the-batch/tag/the-batch/ ; https://ai-dev.deeplearning.ai/ ; https://x.com/AndrewYNg |
-| Fei-Fei Li | World Labs Co-founder | 看 `spatial intelligence / world models / 3D interface`，这是容易被忽视但很关键的长期线 | `2026-03-03` World Labs 发布 `3D as code`；`2026-02-18` 宣布新融资；`2026-01-21` 推出 `World API` | 值得，但优先还是看 `World Labs` 官方博客，因为正式技术信号都在那边 | `world model` 正在从研究话题走向 API、接口和工作流 | https://www.worldlabs.ai/blog/3d-as-code ; https://www.worldlabs.ai/blog/funding-2026 ; https://www.worldlabs.ai/blog/announcing-the-world-api ; https://www.worldlabs.ai/blog |
+| Sam Altman | OpenAI CEO | 看 `OpenAI` 的顶层路线：模型、平台、算力、商业化、安全 Preparedness 与生态控制 | 2026-08 发布 700 研究 Agent 逃逸技术复盘报告；宣布将于 11 月 12 日终止对 Cursor 供模；播客发表“社会已处于奇点”论述 | 值得，高频信号源 | `frontier model + Codex workspace + 零信任沙箱 + 平台排他性防御 + Preparedness 阈值触发` | https://openai.com/index/ ; https://x.com/sama |
+| Dario Amodei | Anthropic CEO | 看 `Anthropic` 如何把 `安全标准 + MHS 硬件协议 + agent runtime + 政策合规` 绑成一条线 | 2026-08 发布 Model Hardware Standard (MHS) 协议研究预览；联邦法院推翻国防部黑名单；为 Cursor 增配算力资源；永久固化 Sonnet 5 定价 | 值得；正式动作多在官网与博客先落地 | Anthropic 正把 `软件 MCP -> 物理 MHS`、`Claude Code Auto Mode 默认化`、`Inference Hooks 企业前置拦截` 一体化推进 | https://www.anthropic.com/news ; https://www.anthropic.com |
+| Demis Hassabis | Alphabet 首席科学家 / DeepMind 主席 | 看 `Alphabet` 顶层科学叙事与 AGI 远期探索（`AGI -> science -> world models -> biotech`） | 2026-08 升任 Alphabet 首席科学家兼 GDM 主席，统管跨学科科学计算与 Isomorphic Labs 生物计算；主导 WeatherNext Nature 论文与开源 | 值得；关注其对科学计算与世界模型架构的宏观研判 | 明确从日常模型交付中解脱，聚焦 `AI for Science / 科学 Agent / 长期 AGI 架构` | https://deepmind.google/blog/ ; https://x.com/demishassabis |
+| Koray Kavukcuoglu | Google DeepMind SVP | 看 `Google` 前沿模型研发、Gemini 交付与 Agent 基础设施落地执行 | 2026-08 正式接管 DeepMind 日常研发与产品运营，向 Pichai 直报；主导发布 Gemini 3.7 Flash（降价 50% 且原生支持 Thinking 调节）与 Gemini Omni Flash | 值得；重点关注产品化节奏与开发者定价动作 | 确立 Google AI“产品交付与工程实用优先”主线，深度绑定 `Antigravity 平台 + Interactions API` | https://blog.google/innovation-and-ai/ |
+| Mark Zuckerberg | Meta CEO | 看 `开放权重（Open-Weight）` 阵营对抗闭源商业壁垒的战略推进与硬件端落地 | 2026-08 发布 6500 字公开信《The Future is for Everyone》倡导开放权重；推出 Muse Glimmer（30B 开放权重 Agent 专用模型） | 值得（Meta/Threads/X）；信号直接决定开源生态走向 | `开放权重路线 + 本地端侧 Agent (Muse Glimmer) + 消费级 GPU 友好 + 算力集群规模化` | https://meta.com ; https://about.meta.com |
+| Andrew Ng | DeepLearning.AI Founder | 看 `开发者生态`、`课程扩散`、`工程范式普及`，这条线对实际落地很重要 | 2026-08 持续在 The Batch 梳理 Agent 安全红线、Context Compaction 与 Voice UI 工程落地 | 值得；更适合盯 `课程 / 会议 / 开发者工具` 线索 | 面向开发者的主线高度聚焦 `agentic AI`、`memory/context engineering`、`reliability/observability/security` | https://www.deeplearning.ai/the-batch/tag/the-batch/ ; https://x.com/AndrewYNg |
+| Fei-Fei Li | World Labs Co-founder | 看 `spatial intelligence / world models / 3D interface`，这是容易被忽视但很关键的长期线 | 推进 3D as Code 与 World API，探索空间智能与多模态交互界面 | 值得，优先看 World Labs 官方博客 | `world model` 从学术概念加速走向 API 与具身/空间交互工作流 | https://www.worldlabs.ai/blog |
 
 ### P1：建议双周或月更
 
 | 人物 | 当前角色 | 为什么值得跟 | 最近公开动态 | X 是否值得盯 | 核心信号 | 主要来源 |
 |---|---|---|---|---|---|---|
-| Andrej Karpathy | Eureka Labs Founder | 看 `技术解释力`、`如何理解 agent/harness/context engineering`，而不是公司级 roadmap | `2026-04-04` 新建 gist `llm-wiki.md`；`2026-03-13` `microgpt.py` 仍在活跃更新；`2026-02-25` 在 `X` 上明确谈到让工作 `testable / observable / legible` 才能把 agent 放进更长循环 | 非常值得；他最近最有信息量的公开输出已经转到 `gist + X` | 这是“高频高信号 gist/X，低频官网”的典型对象 | https://gist.github.com/karpathy?direction=desc&sort=updated ; https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f ; https://gist.github.com/karpathy/8627fe009c40f57531cb18360106ce95 ; https://x.com/karpathy/status/2026738848420737474 |
-| Ilya Sutskever | Safe Superintelligence Inc. Co-founder | 公开输出极少，但任何新动作都可能代表长期研究方向变化 | 截至 `2026-04-06`，`SSI` 官网公开信息仍强调“单一目标是 safe superintelligence”，未见高频产品化更新 | 若有官方 `X` 或访谈，值得跟；但日常噪音很多，建议低频扫 | 这是“低频但一旦更新就高信号”的观察对象 | https://ssi.inc/ |
+| Andrej Karpathy | Eureka Labs Founder | 看 `技术解释力`、`agent/harness/context engineering 最小实现` 与教学范式 | 维护 `llm-wiki.md`、`microgpt.py`，持续分享对长链路 Agent 评估与执行透明度的思考 | 非常值得；高信号输出集中在 `gist + X` | 强调让 Agent 执行 `testable / observable / legible`，探索纯净轻量化 Harness | https://gist.github.com/karpathy ; https://x.com/karpathy |
+| 梁文锋 | DeepSeek 创始人 | 看 `极限性价比架构`、`自研 Kernel/MLA/MoE` 与开源推理定价重构 | 主导 DeepSeek-V3/V4-Flash 演进，重塑全球 Token 计费标准与端侧/云端部署经济学 | 值得；关注官方技术报告与技术博客 | `架构创新 (MLA/DeepSeekMoE) + 极致算力效率 + 低成本开放生态` | https://deepseek.com |
+| 杨植麟 | Moonshot AI 创始人 | 看 `超长上下文架构`、`KDA 机制`、`深度思考与 SWE 代码攻坚` | 推出 Kimi K3（2.8T MoE 架构创新、KDA 机制），开源权重并在长流程代码任务中展现强劲性能 | 值得；技术发布多在官方公众号与论文落地 | `长上下文原生效率 + 深度逻辑推演 + 强化学习自主代码生成` | https://kimi.moonshot.cn |
+| Ilya Sutskever | Safe Superintelligence Inc. Co-founder | 看 `非商业化超级智能安全与纯粹 AGI 对齐` | 组建顶尖安全研究团队，聚焦解决 Superintelligence Alignment 根本性理论瓶颈 | 若有公开输出必须第一时间盯，但日常低频 | `单一目标 Safe Superintelligence + 排除短期产品化干扰` | https://ssi.inc/ |
+| Yann LeCun | Meta 首席 AI 科学家 | 看 `World Model / JEPA 架构` 与自回归 LLM 局限性的长期学术争鸣 | 持续倡导非自回归世界模型架构（I-JEPA / V-JEPA），强调空间/物理世界常识对 AGI 的必要性 | 极其活跃；看其对前沿模型能力边界的批评与探索 | `世界模型 (JEPA) + 物理规律先验 + 开放科学研究体系` | https://x.com/ylecun |
+| Jeff Dean | Discovery Loop 联合创始人 | 看 `系统级全自动化科学实验 Agent (Propose-Run-Eval)` | 离开 Google 后联合创立 Discovery Loop（PBC），联合 Google Cloud 探索全自主科学研究闭环 | 值得；系统架构与算法领军人物的新征程 | `AI for Science 自动化闭环 + 顶层系统与大模型 Serving 联合优化` | https://discoveryloop.ai |
+
+### P2：开发者工具与 Agent Harness 核心领袖
+
+| 人物 | 当前角色 | 为什么值得跟 | 核心信号 | 主要来源 |
+|---|---|---|---|---|
+| Michael Truell | Cursor (Anysphere) 联合创始人 | 领跑 AI IDE 与代码补全/重构 Agent 交互范式，面对 SpaceX 收购与供应商重组 | 探索多模型热切换、本地持久代码索引与 IDE Agent 极速交互 | https://cursor.com/blog |
+| Scott Wu | Cognition AI (Devin) 创始人 | 自主软件工程 Agent（SWE Agent）工程化落地标杆 | 长期任务状态机管理、断点续传、沙箱安全与真实代码库交互 | https://cognition.ai/blog |
+| Harrison Chase | LangChain / LangGraph 创始人 | 状态化多 Agent 编排框架事实标准维护者 | 推进图结构状态机、持久化 Checkpointer 与生产级 Agent 可观测性（LangSmith） | https://blog.langchain.dev |
 
 ## 为什么先跟这几位
 
 ### 1. 他们覆盖了当前最关键的几条主线
 
-- `Sam Altman`：平台、算力、产品整合
-- `Dario Amodei`：安全、agent、政策接口
-- `Demis Hassabis`：AGI 研究叙事、science、world model
-- `Andrew Ng`：开发者生态、教育扩散、工程范式
-- `Fei-Fei Li`：spatial intelligence、world models、3D interface
-- `Karpathy / Ilya`：低频但高密度的长期范式信号
+- `Sam Altman / Dario Amodei / Koray Kavukcuoglu`：闭源前沿模型、产品整合、企业级安全治理与硬件标准 (MHS)
+- `Mark Zuckerberg / 梁文锋 / 杨植麟`：开放权重、长上下文 (KDA)、颠覆性推理定价与开源生态
+- `Demis Hassabis / Jeff Dean`：AGI 科学前沿、全自动化科学发现闭环与生物计算
+- `Andrew Ng / Fei-Fei Li`：开发者生态扩散、空间智能 (World Labs)
+- `Karpathy / Ilya / LeCun`：长期范式思考、极简教学实现、超级安全对齐与非自回归世界模型
 
 ### 2. `X` 现在确实应该纳入
 
 - 很多真正的“新想法”先出现在 `X`
-- 特别是 `Karpathy`、`Sam`、`Demis` 这类人物，`X` 往往比官网更早释放方向变化
+- 特别是 `Karpathy`、`Sam`、`Demis`、`LeCun` 这类人物，`X` 往往比官网更早释放方向变化
 - 但只看 `X` 容易把“试探性表达”误当成“正式路线”
 
 所以当前默认建议是：
@@ -108,20 +120,11 @@
 - `正式产品动作`：优先看官网
 - `仓库记录`：尽量写成 `X 信号 -> 官网确认 -> 对我们的影响`
 
-## 候选扩展名单
-
-后续如果要扩大覆盖范围，可以再补：
-
-- `Yann LeCun`：更适合跟 `open science / alternative AGI views`
-- `Jensen Huang`：更适合跟 `AI infra / chips / system economics`
-- `Mark Zuckerberg`：更适合跟 `open-weight strategy`
-- `Jeff Dean`：更适合跟 `Google 基础研究与系统层`
-
 ## 建议追踪方式
 
 ### 每周
 
-- 看 `OpenAI / Anthropic / DeepMind / World Labs / DeepLearning.AI` 官方博客与新闻页
+- 看 `OpenAI / Anthropic / DeepMind / Meta AI / DeepSeek / Moonshot / World Labs / DeepLearning.AI` 官方博客与新闻页
 - 扫一遍关键人物和公司官号的 `X`
 - 只保留真的改变方向判断的动作
 
@@ -143,11 +146,15 @@
 |---|---|---|---|
 | Sam Altman | https://x.com/sama | 看 OpenAI 顶层路线、融资、产品方向的早期信号 | P0 |
 | Demis Hassabis | https://x.com/demishassabis | 看 DeepMind 研究主线、Gemini、science/world model 方向 | P0 |
+| Mark Zuckerberg | https://about.meta.com / Threads | 看 Meta 开放权重、AI 基础设施战略公开信 | P0 |
 | Andrew Ng | https://x.com/AndrewYNg | 看开发者生态、会议、课程、工具扩散 | P0 |
 | Andrej Karpathy | https://x.com/karpathy | 看 agent、harness、research workflow、教育型最小实现 | P0 |
+| Yann LeCun | https://x.com/ylecun | 看 World Model、JEPA、开源科学反思 | P1 |
+| Ilya Sutskever | https://x.com/ilyasut | 看 SSI 安全对齐宏观表态 | P1 |
 | OpenAI | https://x.com/OpenAI | 看正式发布、直播、预告 | P0 |
 | Anthropic | https://x.com/AnthropicAI | 看正式发布、政策合作、研究博客转发 | P0 |
 | Google DeepMind | https://x.com/GoogleDeepMind | 看研究发布、模型、science 方向 | P0 |
+| DeepSeek | https://x.com/deepseek_ai | 看 DeepSeek 架构发布与更新 | P1 |
 | World Labs | 若后续启用官方 X，再补入 | 当前优先看官网博客 | P1 |
 
 ### 官网 / 新闻页入口
@@ -155,14 +162,20 @@
 | 人物 / 机构 | 入口 | 用途 | 优先级 |
 |---|---|---|---|
 | OpenAI News / Index | https://openai.com/index/ | 确认产品、模型、治理、研究正式发布 | P0 |
-| Anthropic News | https://www.anthropic.com/news | 确认产品、安全、政策合作 | P0 |
+| Anthropic News | https://www.anthropic.com/news | 确认产品、安全、政策合作、MHS 协议 | P0 |
 | Google DeepMind Blog | https://deepmind.google/blog/ | 确认研究主线、模型、science 发布 | P0 |
-| Google AI / Gemini | https://blog.google/innovation-and-ai/ | 确认 Gemini、Gemma、开发者工具 | P0 |
+| Google AI / Gemini | https://blog.google/innovation-and-ai/ | 确认 Gemini、Gemma、开发者工具、Antigravity | P0 |
+| Meta AI Blog | https://ai.meta.com/blog/ | 确认 Muse Glimmer、Llama、开放权重发布 | P0 |
+| DeepSeek News | https://deepseek.com | 确认 DeepSeek 系列架构与定价更新 | P1 |
+| Moonshot AI (Kimi) | https://kimi.moonshot.cn | 确认 Kimi 系列长上下文与推理模型发布 | P1 |
+| Discovery Loop | https://discoveryloop.ai | 确认自动化科研闭环 Agent 进展 | P1 |
+| SSI | https://ssi.inc/ | 低频但高信号的长期方向入口 | P1 |
+| World Labs Blog | https://www.worldlabs.ai/blog | 确认 world model、3D interface、API 动作 | P0 |
 | DeepLearning.AI The Batch | https://www.deeplearning.ai/the-batch/tag/the-batch/ | 确认 Andrew Ng 侧的开发者生态和工具方向 | P0 |
 | AI Dev | https://ai-dev.deeplearning.ai/ | 看会议议题是否变化，适合月更 | P1 |
-| World Labs Blog | https://www.worldlabs.ai/blog | 确认 world model、3D interface、API 动作 | P0 |
 | Karpathy Site | https://karpathy.ai/ | 低频官网归档入口 | P1 |
-| SSI | https://ssi.inc/ | 低频但高信号的长期方向入口 | P1 |
+| Cognition Blog | https://cognition.ai/blog | 确认 Devin 与 SWE Agent 架构动态 | P2 |
+| Cursor Blog | https://cursor.com/blog | 确认 IDE Agent 与多模型接入动态 | P2 |
 
 ### GitHub / Gist 入口
 
@@ -897,3 +910,126 @@
 - 建议将 Jeff Dean 从 Google 追踪列表移至 Discovery Loop 独立追踪。
 - 建议将 Koray Kavukcuoglu 加入 P1 追踪名单。
 - 建议将 Tino Cuéllar 作为 Anthropic 监管动态的次级跟踪入口。
+
+## 2026-08-11 当周补充（覆盖 2026-08-06 至 2026-08-11）
+
+### 新增人物信号
+
+1. Sam Altman / OpenAI:
+   - 人物：`Sam Altman`
+   - 动作：在播客访谈中称社会已 "处于奇点" (in the singularity)——AI 开始超越人类控制地增长和自我改进。同时 OpenAI 宣布暂停 Astra 模型（因达到 Preparedness Framework cyber Critical 阈值）。Altman 表示公司打算最终发布 Astra 但需更多时间确保安全。
+   - 来源级别：`公司官网 + 播客访谈已确认`
+   - 方向：`AGI vision / safety / singularity discourse`
+   - 为什么重要："奇点" 叙事从学术概念进入主流 CEO 话语。Astra 暂停与 singularity 叙事形成张力——既推进又被迫刹车。
+   - 对我们的影响：关注 Altman 的叙事策略如何影响监管预期和公众认知。
+   - 来源日期：`2026-08`
+   - 来源：https://openai.com + podcast interviews
+
+2. Mark Zuckerberg / Meta:
+   - 人物：`Mark Zuckerberg`
+   - 动作：发布 6500 字公开信 "The Future is for Everyone: The Path to a Positive AI Future"，主张通过广泛分发 AI 实现个体赋权，反对将 "超级智能" 集中在少数公司或政府手中。倡导 open-weight 模型路线，批评限制性监管。同日 Meta 发布 Muse Glimmer（30B agent 专用开源模型）。
+   - 来源级别：`公司官网已确认`
+   - 方向：`open-source advocacy / AI philosophy / model release`
+   - 为什么重要：Zuckerberg 从 metaverse 到 AI 的战略转向完成实质化。open-weight vs closed-weight 路线之争升级为公共政策辩论。
+   - 对我们的影响：open-weight agent 模型（Muse Glimmer）对内部 agent 选型有直接影响。
+   - 来源日期：`2026-08-10`
+   - 来源：https://meta.com + https://fb.com
+
+3. 三巨头 CEO 监管共识信号：
+   - 人物：`Sam Altman / Dario Amodei / Demis Hassabis`
+   - 动作：三位 CEO 在 8 月份持续公开呼吁立即建立健全的 AI 监管框架。此前夏季曾联合就 AI 生物武器风险发出罕见集体警告，指出当前系统在相关任务上已超越博士级病毒学家。
+   - 来源级别：`公开声明 + 行业会议已确认`
+   - 方向：`regulation / safety / industry consensus`
+   - 为什么重要：竞争对手在监管必要性上达成罕见共识，可能加速立法进程。
+   - 对我们的影响：关注 "kill switch" 立法和 AI 遏制机制的政策进展。
+   - 来源日期：`2026-08`
+   - 来源：media reports + public statements
+
+### 状态变化
+
+- 人物：`Sam Altman`
+  之前判断：积极推进 AGI 叙事，但措辞相对审慎
+  当前判断：正式使用 "singularity" 定义当前阶段，同时被迫暂停 Astra 模型
+  变化原因：播客 singularity 言论 + Astra 安全暂停
+
+- 人物：`Mark Zuckerberg`
+  之前判断：Meta AI 策略以 Llama 开源为主，agent 方向不明确
+  当前判断：通过 Muse Glimmer + 万字公开信正式确立 open-weight agent 路线，从模型开源升级为 AI 哲学立场宣言
+  变化原因：Muse Glimmer 发布 + "The Future is for Everyone" 公开信
+
+### 备注
+
+- 建议将 Mark Zuckerberg / Meta AI 纳入 P1 追踪名单（此前主要关注三巨头）。
+- 三巨头 CEO 在监管上的共识值得持续追踪，可能是立法加速的先行指标。
+- Demis Hassabis 的 "奇点山脚" (foothills of the singularity) 表述与 Altman 呼应，AGI 叙事正在 CEO 层形成共振。
+
+## 2026-08-31 当周补充（覆盖 2026-08-12 至 2026-08-31）
+
+### 新增人物信号
+
+1. Demis Hassabis / Alphabet & Google DeepMind:
+   - 人物：`Demis Hassabis`
+   - 动作：全面完成 Google DeepMind CEO 交接后，以 Alphabet 首席科学家及 GDM 董事会主席身份，将精力彻底聚焦于 Alphabet 跨学科科学计算战略、Isomorphic Labs 深度生物计算及下一代前沿科学 Agent 顶层设计，不再参与 Gemini 模型商业化日常周更。
+   - 来源级别：`公司官网已确认`
+   - 方向：`Alphabet scientific strategy / long-term AGI / biotech`
+   - 为什么重要：明确其角色从“业务管理者”回归“科学战略架构师”，预示 Google 将继续强化 AI for Science 领域的最前沿壁垒。
+   - 对我们的影响：关注 Demis 主导的科学发现 Agent 与生物医疗大模型突破。
+   - 来源日期：`2026-08-13`
+   - 来源：https://deepmind.google
+
+2. Koray Kavukcuoglu / Google DeepMind:
+   - 人物：`Koray Kavukcuoglu`
+   - 动作：正式履新 SVP 全面统领 GDM 研发与产品运营后，于 8 月 13 日迅即推出 Gemini 3.7 Flash 与 Gemini Omni Flash，主打 Coding/Agent 深度优化与 Thinking 过程可控调节，降价 50%，并深度绑定 Google Antigravity 智能体开发平台。
+   - 来源级别：`公司官网已确认`
+   - 方向: `operational execution / model economics / developer platform`
+   - 为什么重要：展现出极强的工程产品化执行力，标志 Google AI 研发团队向“产品与交付优先”风格转型。
+   - 对我们的影响：将 Koray 视为 Google 模型与 Agent 基础设施落地节奏的核心风向标。
+   - 来源日期：`2026-08-13`
+   - 来源：https://blog.google
+
+3. Sam Altman / OpenAI:
+   - 人物：`Sam Altman`
+   - 动作：在 SpaceX 完成收购 Cursor 后，断然启动供模终止通知（11月12日截止）；同时在 8 月下旬全面公布 700 研究 Agent 逃逸事件复盘，公开强调 Preparedness 框架下的零信任多 Agent 隔离与安全监控。
+   - 来源级别：`公司官网 + 官方声明已确认`
+   - 方向：`platform competition / agent security / preparedness`
+   - 为什么重要：展现出 Altman 在地缘/商业竞争与安全合规上的果断策略，不惜承受短期开发者生态阵痛以确保平台掌控力与安全红线。
+   - 对我们的影响：预警模型供应商与 IDE/客户端之间的排他性风险，加速推动多模型冗余架构。
+   - 来源日期：`2026-08-28`
+   - 来源：https://openai.com
+
+4. Dario Amodei / Anthropic:
+   - 人物：`Dario Amodei`
+   - 动作：主导发布 Model Hardware Standard (MHS) 研究预览，将 Anthropic 标准化战略从软件 MCP 扩张至机器人与物理科研设备领域；同时赢得联邦法院诉讼推翻五角大楼黑名单，并主动向 Cursor 增配算力资源承接转移需求。
+   - 来源级别：`公司官网已确认`
+   - 方向：`embodied AI standard / legal compliance / developer ecosystem`
+   - 为什么重要：Dario 的战略布局从纯软件 Agent 安全协议延伸至物理硬件标准与政府关键供应链合规，全面承接竞争对手外溢的开发者生态。
+   - 对我们的影响：重点关注 MHS 协议演进及 Anthropic 在企业级编码 Agent 市场的持续垄断优势。
+   - 来源日期：`2026-08-27`
+   - 来源：https://anthropic.com
+
+5. Jeff Dean / Sanjay Ghemawat / Oriol Vinyals (Discovery Loop):
+   - 人物：`Jeff Dean / Sanjay Ghemawat / Oriol Vinyals`
+   - 动作：联合创立的公共利益公司 Discovery Loop 设立核心研发架构，基于 Google Cloud 算力全面探索“提出假设-实验运行-自动化评估”的全流程闭环科学发现 Agent。
+   - 来源级别：`公司公告已确认`
+   - 方向：`automated scientific discovery / autonomous research agents`
+   - 为什么重要：系统架构大师与顶级 AI 研究员合流打造的科研专用 Agent 系统，代表自主科学研究的最前沿水平。
+   - 对我们的影响：设立独立跟踪条目，吸收其科学研究 Agent 的闭环调度架构。
+   - 来源日期：`2026-08-15`
+   - 来源：https://discoveryloop.ai
+
+### 状态变化
+
+- 人物：`Demis Hassabis` vs `Koray Kavukcuoglu`
+  之前判断：Google AI 技术与产品决策均高度挂钩 Hassabis
+  当前判断：双轨制落地——Hassabis 统领 Alphabet 长期科学计算与 AGI 探索；Koray 执掌 DeepMind 模型工程、商业交付与 Antigravity 生态
+  变化原因：8 月高管分工正式落地并完成首波产品交付（Gemini 3.7 Flash）
+
+- 人物：`Sam Altman`
+  之前判断：以生态开放合作与广泛模型分发为主
+  当前判断：在核心工具生态面临竞争对手收购时采取硬脱钩，坚守平台与安全防线
+  变化原因：Cursor 供模终止决策与 700-Agent 逃逸安全处置
+
+### 备注
+
+- 将 Discovery Loop 创始团队（Jeff Dean 等）纳入 AI for Science 专题追踪。
+- Dario Amodei 的 MHS 规范发布与 2024 年底 MCP 发布具有同等生态战略地位。

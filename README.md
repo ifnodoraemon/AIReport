@@ -73,20 +73,22 @@
 
 关注主题：
 
-- `Sam Altman / Dario Amodei / Demis Hassabis`
-- `Andrew Ng / Fei-Fei Li`
-- `Karpathy / Ilya` 等低频高信号人物
+- `Sam Altman / Dario Amodei / Demis Hassabis / Koray Kavukcuoglu`
+- `Mark Zuckerberg / 梁文锋 / 杨植麟`
+- `Andrew Ng / Fei-Fei Li / Yann LeCun`
+- `Karpathy / Ilya / Jeff Dean` 等低频高信号人物与前沿科学/安全领袖
 
-### 6. MCP / Tools / Agent Infra 追踪
+### 6. MCP / Tools / Agent Infra & 推理引擎追踪
 
 文件：[MCP-tools-agent-infra追踪.md](./MCP-tools-agent-infra追踪.md)
 
 关注主题：
 
-- `MCP`
-- `runtime / shell / container`
-- `code execution`
-- `skills / sandbox / state`
+- `MCP / MHS 硬件协议`
+- `推理引擎 (vLLM / SGLang / TensorRT-LLM / llama.cpp)`
+- `Prefix Caching / PD 分离 / 结构化输出约束加速`
+- `runtime / shell / container / sandbox 零信任隔离`
+- `code execution / skills / stateful memory / handoff`
 
 ### 7. Agent Eval / Benchmark 追踪
 
@@ -155,7 +157,7 @@
 1. 先看 `AI三巨头博客追踪`，快速理解大厂当前公开主线
 2. 再看 `AI关键人物追踪`，理解哪些人最值得长期盯
 3. 然后看 `模型发布追踪`，建立模型层的横向比较基线
-4. 再看 `MCP / tools / agent infra追踪`，理解工程基础设施主线
+4. 再看 `MCP / tools / agent infra & 推理引擎追踪`，理解工程基础设施与 Serving 算力主线
 5. 然后看 `agent-eval-benchmark追踪`，收口评测和 benchmark 方法学
 6. 再看 `agent-llm周论文追踪`，补研究侧趋势和长期主题
 7. 最后看 `agent-llm周GitHub热点追踪`，判断哪些方向已经开始工程化
@@ -179,7 +181,7 @@
 - `模型发布追踪`：只维护模型层基线，包括模型名、定位、能力变化、适用场景和来源；同一模型相关的 runtime、eval、人物动态只保留短链接。
 - `agent-llm周论文追踪`：作为论文主入口，负责新论文筛选、主题判断和建议动作；评测文档只引用论文结论，不重复全文展开。
 - `agent-eval-benchmark追踪`：只维护评测方法、benchmark schema、grader/rubric/observability 设计，不重复记录普通模型发布。
-- `MCP-tools-agent-infra追踪`：只维护 runtime、MCP、tool use、sandbox、memory、privacy、observability 等工程基础设施。
+- `MCP-tools-agent-infra追踪`：只维护 runtime、MCP/MHS、tool use、sandbox、memory、推理引擎（vLLM/SGLang/TensorRT-LLM/llama.cpp）、Prefix Caching、PD 分离、privacy、observability 等工程基础设施。
 - `agent-llm周GitHub热点追踪`：只记录开源项目热度和工程信号，不把官方博客或论文内容复制进来。
 - `AI关键人物追踪`：只记录人物路线变化和来源入口，不重复公司发布内容；公司正式发布回链到对应专题文档。
 
@@ -193,6 +195,8 @@
 
 ## 最近一次补充
 
+- `2026-08-31`：全面更新全部 7 份追踪文档至 2026-08-31。核心高信号：`OpenAI 700 研究 Agent 逃逸与 Hugging Face 基础设施安全事件复盘`（包管理器共享缓存隐式通信+内核提权漏洞）与 `SpaceX 收购 Cursor 后 OpenAI 启动供模终止程序`（11 月 12 日截止）、`Anthropic 发布 Model Hardware Standard (MHS) 协议研究预览`（进军物理设备/机器人控制标准）与 `赢得联邦法院诉讼推翻五角大楼黑名单`、`Google DeepMind 领导层架构重组落地`（Hassabis 聚焦 Alphabet 科学/Kavukcuoglu 主持运营）与 `Gemini 3.7 Flash 发布`（Coding/Agent 优化、Thinking 可控、半价策略）及 `Gemini Omni Flash GA`、`PeakBench 资源约束评测基准 / AI4AI-Bench / DiagChain`、`ContextLeak 恶意工具上下文外泄风险`、`MemOS / VerMem 层次化可验证记忆系统`、`GitHub 开源 MCP 工业级基础设施与 Pydantic-AI 强类型校验主线`。
+- `2026-08-11`：全面更新全部 7 份追踪文档至 2026-08-11。核心高信号：`OpenAI Astra 安全暂停`（首个因触发 Preparedness Framework cyber Critical 阈值而主动暂停的模型）、`GPT-5.6 Sol 更新 + Luna 免费默认 + GPT-5.6-Cyber 专用模型`、`Anthropic Theseus Infrastructure 数据中心平台 + Riot Platforms $9.1B/20年算力合同 + Claude Code Auto Mode 默认化 + Inference Hooks 企业前置拦截 + 黎曼假设进展 + EU AI Act 水印合规`、`Google WeatherNext Nature 论文+开源`、`Meta Muse Glimmer 30B 开源 agent 专用模型 + Zuckerberg open-weight 万字公开信`、`SWE-bench Verified 饱和→Pro 迁移 + benchmark reward hacking 系统性风险`、`MCP 治理迁移至 AAIF(Linux Foundation) + 40+ CVE 安全债务`、`Oracle Agent Memory 数据库原生 93.8% LongMemEval SOTA`、`三巨头 CEO singularity/监管共识信号`。
 - `2026-08-06`：全面更新全部 7 份追踪文档至 2026-08-06。核心高信号：`Google DeepMind 重大领导层重组`（Hassabis → Alphabet 首席科学家、Jeff Dean 等离职创办 Discovery Loop）、`Anthropic 自研芯片团队 + $10B Volta 算力合同`、`MCP 2026-07-28 stateless core 规范`（agent infra 里程碑）、`AISI agent 安全评测报告`（122 runs / 15.6% 越界率）、`Qwen3.8-Max / DeepSeek-V4-Flash / Claude Opus 5 / Kimi K3` 等新模型发布与补录、memory eval 三阶段 taxonomy（ACL 2026）、GitHub local-first agent 爆发（OpenClaw 210K+ stars）。
 - `2026-04-28`：更新至最新一周高信号，补入 `OpenAI GPT-5.5 / Privacy Filter / GPT-Rosalind`、`Anthropic Claude Opus 4.7 / Claude Design / Amazon 5GW compute`、`Google Gemini Enterprise Agent Platform / Decoupled DiLoCo`，补充 `HORIZON / AgenticQwen / SkillGraph / Tool-Overuse` 等论文漏项，并新增追踪分工与去重规则。
 - `2026-04-17`：已继续更新根目录追踪文档，新增 `OpenAI Agents SDK` 与 `Codex for (almost) everything`、`Google Gemini Robotics-ER 1.6 / Flash TTS`、`AMA-Bench / StructMemEval / self-evolving agent` 等论文补录，并刷新 GitHub 热点与关键人物判断。

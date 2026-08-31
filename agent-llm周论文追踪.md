@@ -1,6 +1,6 @@
 # Agent / LLM 每周跟踪
 
-最后更新：2026-08-06
+最后更新：2026-08-31
 跟踪范围：近期与 `agent`、`LLM`、`memory`、`RAG 安全`、`评测` 相关的论文与趋势
 
 ## 目的
@@ -748,3 +748,155 @@
 ### 备注
 
 - 本周论文信号集中在 memory 领域，agent RL / planning / RAG security 暂无重大新增。
+
+## 2026-08-11 当周补充（覆盖 2026-08-06 至 2026-08-11）
+
+### 新增论文 / 研究信号
+
+1. Oracle Agent Memory — Database-Native Substrates:
+   - 论文：`Oracle Agent Memory: Database-Native Substrates for Working, Factual, and Procedural Memory`
+   - 核心结论：提出使用数据库原生基底（关系型 + JSON + 向量）管理 agent 的 working / factual / procedural 三类内存。在 LongMemEval 上达到 93.8%，同时显著降低输入 token 开销。memory 本质是数据管理问题而非单纯的 RAG 问题。
+   - 为什么重要：将 agent memory 从 "flat conversation history" 范式转向结构化数据库范式。93.8% LongMemEval 是新 SOTA。生产环境中 token 成本降低有直接工程价值。
+   - 建议动作：评估数据库原生 memory 架构（关系型 + JSON + 向量混合）在内部 agent 中的可行性；与纯向量检索方案做成本/准确率对比。
+   - 状态：`technical report / 2026-08-10`
+   - 来源日期：`2026-08-10`
+   - 来源：https://oracle.com
+
+2. Reliable Post-Retrieval Assembly:
+   - 论文：`Reliable Post-Retrieval Assembly for Agent Memory: Separating Evidence Extraction from Policy Execution`
+   - 核心结论：将 evidence extraction 与 policy execution 分离，显著改善多跳推理性能（gpt-4o 上提升达 41%）。语义过滤和答案生成的 entanglement 是当前系统的核心瓶颈。
+   - 为什么重要：post-retrieval assembly 从 "检索后直接生成" 变为 "检索 → 证据提取 → 策略执行" 三步流程，是 memory 架构工程化的关键改进。
+   - 建议动作：在内部 agent 的 memory retrieval pipeline 中测试 evidence extraction 与 policy execution 分离架构。
+   - 状态：`arXiv 2606.01435, v2 2026-08-02`
+   - 来源日期：`2026-08-02`
+   - 来源：https://arxiv.org/abs/2606.01435
+
+3. Evaluating Benchmarks for Conversational Agents:
+   - 论文：`Evaluating Benchmarks for Conversational Agents`
+   - 核心结论：提出 reference-free metrics 评估 benchmark 本身的质量，发现现有对话 agent 数据集存在任务不一致性和 policy 覆盖不足的问题。
+   - 为什么重要：从 "评估 agent" 到 "评估评估工具本身" 的元反思。benchmark 质量验证是评测方法学成熟的标志。
+   - 建议动作：审视内部使用的 benchmark 是否存在类似的任务不一致性问题。
+   - 状态：`arXiv 2608.06329, 2026-08-06`
+   - 来源日期：`2026-08-06`
+   - 来源：https://arxiv.org/abs/2608.06329
+
+4. MatrAIx: Simulating the World with 8.3 Billion Persona Agents:
+   - 论文：`MatrAIx: Simulating the World with 8.3 Billion Persona Agents`
+   - 核心结论：构建 83 亿人格 agent 的全球规模社会模拟系统。
+   - 为什么重要：agent 模拟规模从千级跃升至十亿级。对 multi-agent 系统的可扩展性和涌现行为研究有深远影响。
+   - 建议动作：关注大规模 agent 模拟的基础设施需求和涌现行为分析方法。
+   - 状态：`arXiv 2608.04205, 2026-08-04`
+   - 来源日期：`2026-08-04`
+   - 来源：https://arxiv.org/abs/2608.04205
+
+5. Agent Memory Survey Update (Second Half):
+   - 论文：`A Survey of Agent Memory in the Second Half: Towards Self-Evolving and Long-Horizon Agents`
+   - 核心结论：更新版 agent memory survey，聚焦自我演化和长周期 agent。提出 "Forms, Functions, and Dynamics" 统一分类法。当前重点研究方向：learned forgetting、causally grounded retrieval、trustworthy reflection。
+   - 为什么重要：与此前 ACL 2026 accepted 的 memory survey 互补——该版本更偏向工程实践和自我演化方向。
+   - 建议动作：与 ACL 2026 survey 的三阶段框架做交叉比较；关注 learned forgetting 和 causal retrieval 方向。
+   - 状态：`arXiv 2602.06052, updated 2026-08-04`
+   - 来源日期：`2026-08-04`
+   - 来源：https://arxiv.org/abs/2602.06052
+
+### 状态变化
+
+- 论文/主题：`Agent Memory 研究范式`
+  之前状态：memory 研究聚焦 RAG 检索和 flat context 管理
+  当前状态：三大范式转型同步发生——① 数据库原生 memory（Oracle Agent Memory, 93.8% LongMemEval）② post-retrieval assembly 分离架构 ③ learned forgetting / causal retrieval 新维度
+  变化原因：Oracle 技术报告 + Reliable Post-Retrieval Assembly v2 + agent memory survey update 三者同步出现
+
+- 论文/主题：`Benchmark 元评估`
+  之前状态：benchmark 质量被隐含假设为可靠
+  当前状态：出现 "评估 benchmark 本身" 的专门研究（reference-free metrics for benchmark quality）
+  变化原因：arXiv 2608.06329 发表
+
+### 新风险 / 新信号
+
+- 信号：大规模 agent 模拟（MatrAIx, 83 亿 persona agent）进入可实现规模。模拟规模爆发可能产生不可预测的涌现行为。
+  对我们的影响：评估多 agent 系统中的安全边界和涌现行为检测方法。
+
+- 信号：Memory 研究从纯向量检索向结构化数据库范式迁移（Oracle 93.8% vs 纯向量方案的差距），可能重新定义 agent memory 的工程实践标准。
+  对我们的影响：内部 memory 架构可能需要从纯向量方案向混合数据库方案演进。
+
+### 备注
+
+- 本周论文信号高度集中在 memory 领域（4/5 篇），agent RL / planning 方向无重大新增。
+- SWE-bench Verified 接近饱和（95-97%），行业转向 SWE-bench Pro 和 process-oriented evaluation，详见 `agent-eval-benchmark追踪.md`。
+
+## 2026-08-31 当周补充（覆盖 2026-08-12 至 2026-08-31）
+
+### 新增论文 / 研究信号
+
+1. PeakBench — 资源敏感型工具调用基准:
+   - 论文：`PeakBench: Benchmarking Resource-Aware Tool Invocation in LLM Agents`
+   - 核心结论：首次系统性构建带有并发配额、速率限制（Rate Limits）、时间延迟与 API 调用成本等工程约束的 Agent 工具调用基准。实验证明在无约束环境下高分的 Agent，在资源约束场景下由于缺乏并行调度与配额感知能力，任务失败率剧增 45% 以上。
+   - 为什么重要：将 Agent Tool Use 研究从理想化的“工具选择”推向工业级的“资源感知型工具调度与规划”。
+   - 建议动作：在 Agent 调度器中引入资源配额感知算法，优化批处理与异步调用逻辑。
+   - 状态：`arXiv 2608.24509, 2026-08-26`
+   - 来源日期：`2026-08-26`
+   - 来源：https://arxiv.org/abs/2608.24509
+
+2. ContextLeak — 恶意工具隐式外泄上下文攻击:
+   - 论文：`ContextLeak: Exfiltrating LLM Agent Context via Malicious Tools`
+   - 核心结论：利用强化学习微调攻击模型，生成带有隐蔽诱导的恶意工具描述（Tool Descriptions），诱导 Agent 在调用后续工具时泄露运行时上下文、私有 API Key 和内部记忆。
+   - 为什么重要：揭示了第三方 MCP / Plugin 供应链中的严重安全盲区——无需执行恶意代码，仅靠 Tool Schema 即可实现对抗性上下文外泄。
+   - 建议动作：在 MCP Client 中实施 Tool Description 严格净化与运行时出站参数脱敏过滤。
+   - 状态：`arXiv 2608.27800, 2026-08-28`
+   - 来源日期：`2026-08-28`
+   - 来源：https://arxiv.org/abs/2608.27800
+
+3. VerMem — 统一可验证记忆管理:
+   - 论文：`Verifiable Memory (VerMem): Learning Unified Memory Management with Local and Global Verifiers for LLM Agents`
+   - 核心结论：提出三阶段强化学习课程统一管理 Working Memory、Active Context 与 Episodic History，通过引入局部（即时准确性）与全局（长任务一致性）双层 Verifier，大幅减少记忆污染与幻觉积累。
+   - 为什么重要：将 Agent Memory 从被动检索演进为具备自省校验与可验证更新的动态决策系统。
+   - 建议动作：评估双层 Verifier 架构在内部长流程 Agent 记忆模块中的工程可行性。
+   - 状态：`arXiv 2608.15005, 2026-08-16`
+   - 来源日期：`2026-08-16`
+   - 来源：https://arxiv.org/abs/2608.15005
+
+4. Demystifying Agent Skills — 程序化锚点与失效边界:
+   - 论文：`Demystifying Agent Skills: Why They Work-Until They Don't`
+   - 核心结论：对主流 Agent Skills 机制进行深入实证分析，证实 Skills 的核心效用在于充当“程序化执行锚点”（Procedural Anchors），约束多步执行路径并防止意图漂移；但在环境高扰动或非预期异常时易造成过度拟合与僵化决策。
+   - 为什么重要：厘清了关于 Agent Skills 的认知误区，为设计高鲁棒性动态 Skills 提供了理论边界。
+   - 建议动作：编写 Skills 时侧重流程约束与错误恢复分支，避免硬编码确定性路径。
+   - 状态：`arXiv 2608.14036, 2026-08-14`
+   - 来源日期：`2026-08-14`
+   - 来源：https://arxiv.org/abs/2608.14036
+
+5. AI4AI-Bench — 递归自改进算法设计基准:
+   - 论文：`AI4AI-Bench: Benchmarking LLM Agents in Algorithmic Design for Recursive Self-Improvement`
+   - 核心结论：构建首个评估 Agent 自主设计、重写与验证自身学习与探索算法的基准体系，覆盖算法生成、沙箱运行与闭环性能评估。
+   - 为什么重要：提供了量化衡量 Agent“自我进化”能力的科学评估工具。
+   - 建议动作：关注算法自改进在自动化超参调优和 Prompt 演化中的工程应用。
+   - 状态：`arXiv 2608.20318, 2026-08-20`
+   - 来源日期：`2026-08-20`
+   - 来源：https://arxiv.org/abs/2608.20318
+
+6. AFANet — 轻量 GNN 用于多 Agent 故障归因:
+   - 论文：`Beyond LLM-Based Reasoning: Lightweight GNNs for Agent Failure Attribution`
+   - 核心结论：提出基于轻量图神经网络（GNN）的 AFANet，通过对多 Agent 通信拓扑建模追踪错误传播路径，在归因准确率和延迟上显著击败基于重型 LLM 的自我反思方案。
+   - 为什么重要：证明针对多 Agent 系统级故障分析，轻量图结构模型比单纯依靠大模型更具成本效益与确定性。
+   - 建议动作：在多 Agent 运维可观测系统中探索 GNN 拓扑归因组件。
+   - 状态：`arXiv 2608.11202, 2026-08-20`
+   - 来源日期：`2026-08-20`
+   - 来源：https://arxiv.org/abs/2608.11202
+
+### 状态变化
+
+- 论文/主题：`Agent 研究范式向工程约束与安全验证转移`
+  之前状态：侧重纯推理上限与无约束环境下的基准测试
+  当前状态：转向真实资源受限调度（PeakBench）、第三方工具供应链安全（ContextLeak）、可验证记忆机制（VerMem）与轻量图结构监控（AFANet）
+  变化原因：8 月下旬多篇论文集中在工程约束、安全边界与系统级监控
+
+### 新风险 / 新信号
+
+- 风险：第三方 MCP 工具可能通过伪造 Tool Description 进行间接提示词注入和数据外泄（ContextLeak）。
+  对我们的影响：必须对所有外部引入的 MCP Tools 进行 Prompt 审计与安全沙箱包裹。
+
+- 信号：轻量专用小模型（如 GNN）在多 Agent 监控与归因中显现出显著优于通用 LLM 的效率优势。
+  对我们的影响：在 Agent Observability 建设中避免“一切皆用 LLM”的单一路线。
+
+### 备注
+
+- PeakBench 与 AI4AI-Bench 对评测方法学的影响在 `agent-eval-benchmark追踪.md` 中展开。
+- OpenAI 700-Agent 逃逸报告的技术细节与安全反思在 `AI三巨头博客追踪.md` 和 `MCP-tools-agent-infra追踪.md` 中展开。
