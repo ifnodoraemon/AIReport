@@ -1,6 +1,6 @@
 # Agent / LLM GitHub 每周热点追踪
 
-最后更新：2026-08-31
+最后更新：2026-09-07
 
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`
 
@@ -1141,3 +1141,72 @@
 ### 备注
 
 - Anthropic Model Hardware Standard (MHS) 开源驱动后续进展将持续跟踪。
+
+## 2026-09-07 当周补充（覆盖 2026-09-01 至 2026-09-07）
+
+### 新上榜项目
+
+1. stablyai/orca:
+   - 项目：`stablyai/orca`
+   - 方向：`agent orchestration / parallel coding agents / ADE`
+   - 热度：`9 月初登顶 GitHub Trending`
+   - 核心信号：专为管理并行 Coding Agent 舰队打造的智能体开发环境（ADE）。支持将一个大型软件工程需求分解为多个独立分支，调度数十个 Agent 在独立沙箱中并发编码、跑测试与探索实现路径，并内建自动冲突解决与分支合并策略。
+   - 为什么重要：标志着代码 Agent 从“单线程结对编程（Pair Programming）”迈向“多 Agent 并发开发团队（Swarm Engineering）”，大幅缩短大规模重构的物理时间。
+   - 建议动作：跟进其并发分支测试沙箱与 PR 自动合并仲裁算法。
+   - 来源：https://github.com/stablyai/orca
+
+2. earendil-works/pi:
+   - 项目：`earendil-works/pi`
+   - 方向：`agent toolkit / minimal harness / TUI`
+   - 热度：`极客开发者圈高口碑蔓延`
+   - 核心信号：极简但功能完备的 Agent 开发工具链，整合了统一多供应商 LLM API、轻量级 Agent 循环调度器与现代化终端 UI（TUI）。拒绝臃肿的抽象层，提供极低延迟的本地终端交互。
+   - 为什么重要：开发者对 LangChain 等重型框架疲惫后的反拨，极简轻量化 Harness 越来越受到高级系统工程师青睐。
+   - 建议动作：借鉴其精炼的 Agent Loop 错误捕获与 TUI 实时流式渲染设计。
+   - 来源：https://github.com/earendil-works/pi
+
+3. NousResearch/hermes-agent:
+   - 项目：`NousResearch/hermes-agent`
+   - 方向：`open weights agent / workflow adaptation / function calling`
+   - 热度：`开源模型社区高热度关注`
+   - 核心信号：由 Nous Research 推出的通用开源自主 Agent，深度优化开源模型（如 Hermes 系列与开源权重底座）在复杂工作流中的角色自适应、多步函数调用与反思纠错能力。
+   - 为什么重要：为不依赖商业闭源 API 的团队提供了高质量的端到端开源 Agent 方案。
+   - 建议动作：评估结合本地开源模型（如 Llama/Qwen）在私有化环境中的端到端执行成功率。
+   - 来源：https://github.com/NousResearch/hermes-agent
+
+4. anthropics/skills & mattpocock/skills:
+   - 项目：`anthropics/skills` & `mattpocock/skills`
+   - 方向：`agent skills / composable tooling / standardized procedures`
+   - 热度：`Stars 爆发式增长，引发社区技能打包浪潮`
+   - 核心信号：可复用、模块化 Agent 技能仓库（Skills Packs）。将复杂专业流程（如 Git flow、AWS 部署、复杂前端重构、漏洞复现）固化为标准结构化指令与执行脚手架，Agent 按需挂载并执行。
+   - 为什么重要：验证了“Skills 是 Agent 长时任务程序化锚点”的理论，推动 Agent 工具形态从“离散单函数 API（Tools）”升级为“包含 SOP 的流程化技能（Skills）”。
+   - 建议动作：整理内部工程团队的高频操作 SOP，按照标准规范构建内部专用的 Skills 模块包。
+   - 来源：https://github.com/anthropics/skills + https://github.com/mattpocock/skills
+
+5. DietrichGebert/ponytail:
+   - 项目：`DietrichGebert/ponytail`
+   - 方向：`minimalist coding assistant / anti-bloat / code review`
+   - 热度：`新晋热榜黑马`
+   - 核心信号：主打“极致懒惰”哲学的 AI 编码助手，倡导“最优秀的代码是压根不需要写出来的代码”。在生成代码前强制审视架构是否冗余、能否复用标准库，专注于删除冗余代码与最小化补丁。
+   - 为什么重要：在 AI 肆意生成大量低质、难维护胶水代码的泛滥期，反思代码膨胀的“极简代码 Agent”获得强烈工程共鸣。
+   - 建议动作：在代码生成 Agent 的 System Prompt 中引入“精简代码审计与复用评估”阶段。
+   - 来源：https://github.com/DietrichGebert/ponytail
+
+### 状态变化
+
+- 整体趋势：
+  之前判断：聚焦在单机轻量网关（OpenClaw）与类型校验（Pydantic-AI）
+  当前判断：呈现“两极化”演化：宏观层面迈向管理大规模并发 Agent 舰队的 ADE 环境（Orca）；微观层面转向模块化 SOP 资产化（Skills 仓库爆发）与拒绝抽象膨胀的极简 Harness（Pi / Ponytail）
+  变化原因：多 Agent 并发开发需求爆发与重型框架维护负担显现
+
+### 新信号 / 新风险
+
+- 信号：可复用 Agent Skills 正在成为类似 npm / pip 的生态资产包，SOP 知识的封装与分发价值甚至超过单纯的模型提示词工程。
+  对我们的影响：启动内部业务 SOP 的“Agent Skill 化”沉淀工程。
+
+- 风险：并发 Agent 舰队（如 Orca 模式）在大幅加速重构的同时，可能造成严重的 Token 消耗风暴与测试环境状态冲突。
+  对我们的影响：部署并行 Agent 必须配套严格的 Token 限额与分支独立隔离沙箱。
+
+### 备注
+
+- OpenAI GPT-6 Astra 与 Anthropic 5.1 时代的 Skills 标准化演进在 `MCP-tools-agent-infra追踪.md` 中展开。
+- MASkills 论文对技能进化的理论评测见 `agent-llm周论文追踪.md`。

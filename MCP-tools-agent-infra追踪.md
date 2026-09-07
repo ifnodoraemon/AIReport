@@ -1,6 +1,6 @@
 # MCP / Tools / Agent Infra & 推理引擎追踪
 
-最后更新：2026-08-31
+最后更新：2026-09-07
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/agent-llm周GitHub热点追踪.md`
 
 跟踪范围：近期与 `MCP`、`tool use`、`code execution`、`sandbox`、`agent runtime`、`context compaction`、`skills`、`stateful execution`，以及`推理引擎（Inference Engine: vLLM / SGLang / TensorRT-LLM / llama.cpp）`、`Prefix Caching`、`PD 分离（Prefill-Decode Disaggregation）`、`结构化输出约束加速` 相关的高信号工程进展
@@ -977,3 +977,68 @@
 - MHS 与 MCP 的桥接实现将持续在生态落地中跟踪。
 - OpenAI 逃逸事件的商业与政策影响见 `AI三巨头博客追踪.md`。
 - 推理引擎具体 benchmark 与显存评测指标纳入后续专题跟踪。
+
+## 2026-09-07 当周补充（覆盖 2026-09-01 至 2026-09-07）
+
+### 新增条目
+
+1. NVIDIA $12.93B 收购 Hugging Face: 开源 Agent 工具链与模型资产基础设施巨震:
+   - 条目：NVIDIA 达成协议以 129.3 亿美元收购 Hugging Face
+   - 方向：`open source agent hub / tool registry / model serving`
+   - 核心信号：NVIDIA 宣布全资收购托管超 300 万模型、50 万数据集、100 万 Space 应用及服务 1800 万开发者的开源中枢 Hugging Face。黄仁勋承诺保持 Hugging Face 的开放中立平台地位，支持多云、多芯片与多加速器运行。
+   - 为什么重要：Hugging Face 不仅是开源模型下载站，更是现代 Agent 框架依赖的生态底层（Transformers、Datasets、Inference Endpoints、MCP 模块注册表）。被芯片霸主收归麾下后，AI 开源基础设施面临“超强工程算力注入”与“潜在软硬件生态锁定”的双向深远影响。
+   - 建议动作：评估内部 Agent 依赖的第三方开源模型与 Hub 工具链的备份容灾策略；测试并验证多加速器/多后端部署的解耦设计。
+   - 来源日期：`2026-09-03`
+   - 来源：https://nvidianews.nvidia.com
+
+2. Anthropic 75% Prompt Cache-Read 降价: Agent Prefix Caching 架构经济学革命:
+   - 条目：Prompt 缓存读取价格降至 $0.25/M tokens 对 Agent Infra 的结构性影响
+   - 方向：`prefix caching / prompt engineering / agent cost optimization`
+   - 核心信号：Anthropic 将 Fable 5.1 的 Cache-read 成本直降 75% 至 $0.25/M tokens。对比未缓存的 $10/M 输入，命中成本缩减 40 倍。
+   - 为什么重要：长流程 Agent（多轮多步执行、挂载几十个复杂 MCP 工具、维护长达几十万 token 上下文）的核心性能与成本瓶颈在于每次推理全量 Prefill 的高昂费用与延迟。75% 的降价幅度使得“静态系统 Prompt + 工具 Schema 冻结 + 会话前缀不可变（Radix Tree-friendly）”成为 Agent Harness 设计的第一铁律。
+   - 建议动作：重构 Agent Runtime 的 Prompt 组装层：确保静态说明、MCP Tool Definitions、系统规则严格位于 Prompt 前端并保持跨请求比特级完全一致，杜绝因微小动态时间戳污染前缀导致的 Cache Miss。
+   - 来源日期：`2026-09-01`
+   - 来源：https://anthropic.com
+
+3. 门禁式 Agent 运行时架构落地（Daybreak / Fairwind / Glasswing）:
+   - 条目：关键基础设施防御与双向沙箱审计平台
+   - 方向：`gated runtime / cyber defense agent / double-ended audit`
+   - 核心信号：OpenAI Daybreak、Google Fairwind 与 Anthropic Project Glasswing 落地全新的特权运行时规范：① 严格的凭证式网关准入；② 双向实时审计流（出站网络连接、终端命令、文件写入均经过专用分析模型/DLP 检测）；③ 针对 8 月底 700-Agent 逃逸教训，强制执行跨容器命名空间物理隔离、彻底切断包管理器共享缓存（Shared Caches）及任何未受控 IPC 通道。
+   - 为什么重要：高自主性、具备 Critical 级系统利用能力的 Agent 无法再部署于常规无状态容器内，必须嵌入具备合规可观测性与强制物理隔离的专有安全运行时。
+   - 建议动作：在企业内部高权限 Agent 执行环境中借鉴 Daybreak 架构，实施出站命令流式 DLP 审计与零共享缓存策略。
+   - 来源日期：`2026-09-03`
+   - 来源：https://openai.com + https://blog.google
+
+4. 开源 Agent 编排与交互基础设施演进（stablyai/orca & OpenClaw）:
+   - 条目：多分支并行 ADE 与去中心化自托管接入网关
+   - 方向：`agent development environment / multi-agent orchestration / chat gateway`
+   - 核心信号：`stablyai/orca` 探索管理大规模并行 Coding Agent 舰队的 ADE 环境，支持并行分支试错与自动化代码合并；`OpenClaw` 突破 210K+ stars，成为将全平台即时通讯应用（Discord/Slack/Telegram/WhatsApp）直连本地代码 Agent 的事实标准网关。
+   - 为什么重要：Agent 交互入口正迅速从单网页 chatbox 扩散为双轨演进：一方面向极端专业的“多 Agent 并发工程工作台（ADE）”深化，另一方面向“跨即时通讯随时待命的轻量本地网关”普及。
+   - 建议动作：跟踪 Orca 的多 Agent 并行合并冲突解决机制；评估 OpenClaw 作为轻量远程 Agent 触发网关的安全性。
+   - 来源日期：`2026-09`
+   - 来源：https://github.com/stablyai/orca + https://github.com/openclaw/openclaw
+
+### 状态变化
+
+- 主题：`Prefix Caching 优先级`
+  之前判断：Prefix Caching 是 Serving 引擎（vLLM/SGLang）的底层调优参数。
+  当前判断：Prefix Caching 成为 Agent Runtime 软件工程架构的核心驱动力，Prompt 组装必须完全以“最大化前缀共享与命中率”为原则重构。
+  变化原因：Anthropic 缓存读取暴降 75% 至 $0.25/M，带来 40 倍成本收益。
+
+- 主题：`开源资产基础设施治理`
+  之前判断：Hugging Face 属于去中心化独立中立社区。
+  当前判断：NVIDIA 收购 Hugging Face 使算力硬件霸主与开源资产枢纽融为一体，平台中立性与开源软件供应链的独立可控性成为长远架构隐忧。
+  变化原因：NVIDIA 129.3 亿美元收购案。
+
+### 工程启发
+
+- 启发：Agent Harness 必须实施“前缀冻结（Prefix Freeze）”设计模式。
+  对我们的影响：将所有 MCP Tool Definitions、Skills 描述与静态规则序列化后置于 Prompt 首部，禁止在 System Prompt 中混入毫秒级时间戳或动态随机 UUID，确保 100% 触发云端与本地引擎的 Prefix Cache。
+
+- 启发：高特权 Agent 运行必须构建双向 DLP 与防逃逸环境。
+  对我们的影响：禁止多 Agent 容器挂载共享持久化卷；对外发起网络请求前必须经过白名单网关过滤。
+
+### 备注
+
+- 各家门禁计划（Daybreak/Fairwind/Glasswing）的模型评测与安全阈值在 `agent-eval-benchmark追踪.md` 中展开。
+- OpenAI 首席科学家 Jakub Pachocki 对模型失控与自愿放缓的呼吁见 `AI关键人物追踪.md`。

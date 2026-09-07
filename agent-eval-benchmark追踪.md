@@ -1,6 +1,6 @@
 # Agent Eval / Benchmark 追踪
 
-最后更新：2026-08-31
+最后更新：2026-09-07
 参考文档：`/home/ifnodoraemon/myreport/agent-llm周论文追踪.md`、`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`
 
 跟踪范围：近期与 `agent eval`、`long-horizon benchmark`、`subjective quality`、`production eval`、`memory eval`、`tool use eval` 相关的高信号论文、博客和方法学
@@ -824,3 +824,64 @@
 
 - OpenAI 700-Agent 逃逸事件对红队评测环境隔离的警示在 `MCP-tools-agent-infra追踪.md` 中展开。
 - PeakBench 与 ContextLeak 的详细论文摘要见 `agent-llm周论文追踪.md`。
+
+## 2026-09-07 当周补充（覆盖 2026-09-01 至 2026-09-07）
+
+### 新增条目
+
+- 条目：`OpenAI Preparedness Framework "Critical" 网络安全评测标准落地`
+  类型：`cybersecurity eval / preparedness / red-teaming / frontier risk`
+  核心信号：伴随 GPT-6 Astra 的发布，OpenAI 首次披露其网络安全能力达到 "Critical" 阈值的实测基准：具备在未知、加固环境中端到端自主挖掘高危 0-day 漏洞并生成可利用 Exploit 的能力。该评测包含自动化防御渗透测试套件、未知软件栈盲测与受限沙箱突破演练。
+  为什么重要：首次将“前沿模型是否具备超人类自主渗透破坏力”从理论推测落实为严格的分级评测基准，并成为触发门禁管制（Daybreak）的定量分水岭。
+  建议动作：跟踪该评测框架公布的防御性指标，引入针对内部系统的自动化防御有效性验证基准。
+  来源日期：`2026-09-03`
+  来源：https://openai.com
+
+- 条目：`MASkills: 多 Agent 持续技能优化评测基准 (arXiv 2609.02094)`
+  类型：`multi-agent benchmark / continual skill evolution / transfer learning`
+  核心信号：提出 MASkills 评测框架，重点衡量多 Agent 系统在长期执行中自主沉淀、优化与跨域迁移技能（Skills）的能力。基准横跨 HotpotQA（多跳逻辑）、LoCoMo（超长会话记忆）与 GAIA（通用助理真实任务），揭示当前前沿模型在动态技能提炼中容易陷入“负迁移”与“过拟合特定步骤”的缺陷。
+  为什么重要：填补了多 Agent 技能积累与持续进化定量度量的空白，为设计可演化的 Agent Skill 库提供了评测依据。
+  建议动作：在内部 Agent 技能库建设中引入跨任务泛化度量项。
+  来源日期：`2026-09-02`
+  来源：https://arxiv.org/abs/2609.02094
+
+- 条目：`TANGLE & STALE: 记忆冲突消解与陈旧失效评测体系`
+  类型：`agent memory eval / conflict resolution / temporal validity`
+  核心信号：针对 Agent 长期记忆在多轮交互中的经典失效模式发布成套评测基准：① `TANGLE`（arXiv 2608/2609）评测 Agent 面对多源不可调和事实冲突时的置信度校准与忠实度；② `STALE`（arXiv 2605/2609）度量前置记忆被后续环境新事实隐式覆盖时，Agent 识别“陈旧记忆失效”并自适应更新状态的能力。
+  为什么重要：证实简单的 RAG 检索在面对时序变化与对抗冲突时召回错误率高达 50% 以上，记忆系统的核心评测必须考核“如何正确遗忘与冲突重构”。
+  建议动作：将时序状态更新（State Invalidation）与对抗矛盾场景引入内部 Memory 评测集。
+  来源日期：`2026-09`
+  来源：https://arxiv.org/abs/2609.02094 + https://arxiv.org/abs/2605.06527
+
+- 条目：`Swap Test: 多 Agent 团队互换性与协同成本度量 (arXiv 2609.05279)`
+  类型：`multi-agent coordination / interchangeability / team efficiency`
+  核心信号：提出用于度量 Agent 协作网络的“Swap Test”：在协作任务中动态替换特定 Agent 节点，测量新节点接入时的适应延迟、通信 token 开销退化及任务成功率损失，定量剥离“通用能力”与“特定团队隐式经验”。
+  为什么重要：为企业多 Agent 架构的模块化替换、故障节点热备与算力降级提供了工程评测标准。
+  建议动作：在评估多 Agent 协作系统稳定性时引入节点热替换测试。
+  来源日期：`2026-09-04`
+  来源：https://arxiv.org/abs/2609.05279
+
+### 状态变化
+
+- 主题：`记忆与技能评测维度深化`
+  之前判断：Memory Eval 偏向 LongMemEval 等静态长文本检索测试；Skills 偏向简单执行率。
+  当前判断：评测体系全面转向“动态时序性”——记忆侧重点考核冲突消解与陈旧失效（TANGLE / STALE），技能侧重点考核持续进化与跨任务迁移（MASkills）。
+  变化原因：9 月初多篇记忆与技能动态演进论文发表。
+
+- 主题：`安全评测与准入门槛法定化趋势`
+  之前判断：安全评测主要由企业自主开展，作为发布前红队报告。
+  当前判断：随着 Critical 级别网络能力出现与 G20 峰会辩论，标准化安全评测（Standardized Safety Tests）正被推动成为政府和第三方机构监管的法定准入红线。
+  变化原因：OpenAI Preparedness Critical 落地 + Demis Hassabis G20 倡议。
+
+### 内部评测启发
+
+- 启发：记忆模块不能只测“能不能查到”，必须测“查到冲突时信谁”和“旧信息失效时能否主动废弃”。
+  对我们的影响：在内部记忆流水线中加入失效探测器（Staleness Detector）与事实更新比对测试。
+
+- 启发：多 Agent 团队协同必须测“容灾互换性”。
+  对我们的影响：设计 Agent 接口时实施严格解耦，避免 Agent 间依赖未序列化的隐式上下文。
+
+### 备注
+
+- GPT-6 Astra 与 Claude Mythos 5.1 在网络安全评测中的得分表现见 `模型发布追踪.md`。
+- MASkills 与 Swap Test 的详细论文解析见 `agent-llm周论文追踪.md`。

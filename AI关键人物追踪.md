@@ -1,6 +1,6 @@
 # AI 关键人物追踪
 
-最后更新：2026-08-31
+最后更新：2026-09-07
 
 参考文档：`/home/ifnodoraemon/myreport/AI三巨头博客追踪.md`、`/home/ifnodoraemon/myreport/模型发布追踪.md`、`/home/ifnodoraemon/myreport/MCP-tools-agent-infra追踪.md`
 
@@ -1033,3 +1033,84 @@
 
 - 将 Discovery Loop 创始团队（Jeff Dean 等）纳入 AI for Science 专题追踪。
 - Dario Amodei 的 MHS 规范发布与 2024 年底 MCP 发布具有同等生态战略地位。
+
+## 2026-09-07 当周补充（覆盖 2026-09-01 至 2026-09-07）
+
+### 新增人物信号
+
+1. Jakub Pachocki / OpenAI:
+   - 人物：`Jakub Pachocki`
+   - 动作：在 OpenAI 官方博客发表长文《An Alien Mind》，公开呼吁全行业自愿放缓（slowdown）前沿模型扩展节奏。指出自主 Agent 在复杂系统渗透、逃避人类监视与操控欺骗上正在形成超人类能力，而模型本质上是高维计算中“培育（grown）”出来的复杂产物，可解释性与对齐远落后于能力增长；呼吁将 Preparedness Framework 等企业自律承诺转化为具有法律效力的第三方与政府强制审计门槛。
+   - 来源级别：`公司官方博客已确认`
+   - 方向：`AI safety governance / recursive alignment / model containment`
+   - 为什么重要：顶级前沿实验室 Chief Scientist 首次公开发出“模型失控与自愿减速”倡议，反映出前沿实验室在触及 Critical 网络能力阈值后的深层技术敬畏。
+   - 对我们的影响：将关注焦点从纯能力 benchmark 扩展至 Agent 行为可观测性与反欺骗防规避设计。
+   - 来源日期：`2026-09-06`
+   - 来源：https://openai.com
+
+2. Sam Altman / OpenAI:
+   - 人物：`Sam Altman`
+   - 动作：统领 GPT-6 Astra 全面上线商用，并宣布设立 $1B 全球基金补贴“Daybreak Blue”防御计划，向受威胁的水利、电网等关键基础设施和地方政府免费/优惠开放防御模型；同时在面对 Pachocki 减速倡议与行业军备竞赛时，采取“两周 RL 训练暂停以升级监控”的折衷防御姿态。
+   - 来源级别：`公司官方公告已确认`
+   - 方向：`critical infrastructure / gated defense / strategic balance`
+   - 为什么重要：Altman 正在将 OpenAI 定位为国家关键基础设施的安全防御基石，通过巨额补贴化解社会对其模型外溢高危能力的监管恐慌。
+   - 对我们的影响：跟踪 Daybreak Blue 合作机制与企业防御集成方案。
+   - 来源日期：`2026-09-03`
+   - 来源：https://openai.com
+
+3. Dario Amodei / Anthropic:
+   - 人物：`Dario Amodei`
+   - 动作：主导发布 Claude Fable 5.1 与高风险准入的 Claude Mythos 5.1（Project Glasswing），并打出“Prompt 缓存读取降价 75%”的狠牌；在企业运营方面，被披露推迟 IPO 招股书提交至 10 月以配合安全合规体系落地；公开表示严格的前沿安全监管反而有利于公平竞争与长远生态。
+   - 来源级别：`公司官方公告 + 商业报道已确认`
+   - 方向：`dual-tier commercialization / enterprise compliance / prompt economics`
+   - 为什么重要：Amodei 成功将 Anthropic 塑造成合规与经济性兼备的企业首选，以极低 Cache 成本锁定长上下文与 Coding Agent 市场。
+   - 对我们的影响：顺应其缓存经济学，优化内部 Agent 系统的 Prompt 结构。
+   - 来源日期：`2026-09-01`
+   - 来源：https://anthropic.com
+
+4. Demis Hassabis / Google / Alphabet:
+   - 人物：`Demis Hassabis`
+   - 动作：在 G20 创新部长级会议（北卡罗来纳州 Chapel Hill）发表视频演讲，呼吁全球各国官方机构建立统一的标准 AI 安全测试（Standardized Safety Tests），并主张设立国家级统一 AI 监管机构。
+   - 来源级别：`G20 会议公开演讲已确认`
+   - 方向：`global governance / standardized safety eval / institutional regulation`
+   - 为什么重要：Hassabis 继续代表 Alphabet 科学与国际治理高位发声，与美国本土主张宽松的自由派巨头形成鲜明对比。
+   - 对我们的影响：跟踪 G20 框架下可能催生的国际 Agent 评测标准。
+   - 来源日期：`2026-09-01`
+   - 来源：https://deepmind.google
+
+5. Mark Zuckerberg / Meta:
+   - 人物：`Mark Zuckerberg`
+   - 动作：在 G20 会议上主张对 AI 采取“不插手（Hands-off）”态度，推崇仅监管全新场景的“Carolina 原则”；警告 AI 数据中心建设面临严峻的熟练技工短缺；被媒体披露亲自致电政界高层，强烈反对设立美国国家 AI 统一监管机构，力挺开源模型自由分发与去中心化创新。
+   - 来源级别：`政要会议公开发言 + 媒体独家报道已确认`
+   - 方向：`deregulation / open weights / AI infrastructure bottlenecks`
+   - 为什么重要：Zuckerberg 成为抵制政府强监管与坚持开源开放权重的领头人，直接对冲闭源三巨头的准入垄断。
+   - 对我们的影响：继续保持开源开放权重模型（Llama / Muse 等）的技术储备，防止未来闭源门禁政策带来的封锁。
+   - 来源日期：`2026-09-01`
+   - 来源：https://about.meta.com
+
+6. Jensen Huang / NVIDIA:
+   - 人物：`Jensen Huang`
+   - 动作：宣布 NVIDIA 以 129.3 亿美元全资收购开源模型社区枢纽 Hugging Face，承诺保持 Hugging Face 的开放平台地位，支持多云、多芯片与多加速器架构，不与英伟达硬件捆绑。
+   - 来源级别：`NVIDIA 官方新闻稿已确认`
+   - 方向：`M&A / open source ecosystem / developer platform`
+   - 为什么重要：黄仁勋将英伟达的护城河从单纯的芯片/CUDA 计算层直接延伸至全球 1800 万开发者使用的开源模型与数据集枢纽，对开源 AI 发展产生深远地缘影响。
+   - 对我们的影响：密切关注 Hugging Face 后续在多芯片（TPU / Trainium）支持上的实际独立性。
+   - 来源日期：`2026-09-03`
+   - 来源：https://nvidianews.nvidia.com
+
+### 状态变化
+
+- 人物：`Jakub Pachocki` vs `Sam Altman`
+  之前判断：OpenAI 内部一致高速推进前沿模型与多 Agent 落地
+  当前判断：出现高层公开安全分歧与哲学反思——Pachocki 代表科研良知呼吁行业自愿降速与强制审计；Altman 代表商业化与国家安全站位，以 Daybreak 门禁补贴化解监管压力
+  变化原因：Pachocki 《An Alien Mind》发表与 GPT-6 Astra 触碰 Critical 阈值
+
+- 人物：`Demis Hassabis` vs `Mark Zuckerberg`
+  之前判断：国际治理存在多元声音，但聚焦在学术讨论
+  当前判断：G20 峰会公开分化为两大阵营——Hassabis 代表“国家统一监管与标准化安全测试”派；Zuckerberg 代表“Carolina 原则宽松监管与开源开放自由”派
+  变化原因：G20 创新部长级会议辩论与关于统一监管机构的政界游说
+
+### 备注
+
+- NVIDIA 收购 Hugging Face 对开源生态的具体工程影响在 `MCP-tools-agent-infra追踪.md` 中展开。
+- GPT-6 Astra 与 Claude Mythos 5.1 的具体技术参数见 `模型发布追踪.md`。
